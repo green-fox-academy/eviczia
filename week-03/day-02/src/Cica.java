@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Cica {
 
     public static void main(String[] args) {
@@ -51,8 +53,59 @@ public class Cica {
             System.out.println("third number is bigger than 15");
 
         }
+        System.out.println();
+// scanner
 
 
-    }
+        System.out.println("givenNumber");
 
-}
+        System.out.println("please give me a number");
+        Scanner scanner = new Scanner(System.in);
+
+        int givenNumber = scanner.nextInt();
+        System.out.println("your number is: " + givenNumber);
+
+        System.out.println();
+//loop -for
+
+
+        for(int i = 1; i < givenNumber; i++){
+            System.out.println(i);
+        }
+        System.out.println();
+//loop -while
+        int a = 4;
+        while (a < 10) {
+            System.out.println(a);
+            a++;
+        }
+        System.out.println();
+
+//loop -do while
+        int b = 4;
+        do {
+            b++;
+            System.out.println(b);
+
+        } while (b < 10);
+
+System.out.println();
+
+//Switch case
+        System.out.println("please tell me your name");
+        String myName = scanner.nextLine();
+        String output;
+        if (myName.equals("Furkesz")) {
+            output = "Hi Furkesz";
+        } else if (myName.equals("Bela")) {
+            output = "Nice to meet you Bela";
+        } else if (myName.equals("Karoly")) {
+            output = "What is up Karoly";
+        } else {
+            output = "Please leave the room";
+        }
+
+
+
+    }}
+
