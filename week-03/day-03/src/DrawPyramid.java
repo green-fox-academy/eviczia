@@ -22,8 +22,8 @@ public class DrawPyramid {
             int spaceNr = 1;
             while (spaceNr <= userInput - line) {
                 System.out.print(" ");
-                    spaceNr ++;
-                }
+                spaceNr ++;
+            }
             while (starNr <= (2 * line - 1)) {
                 System.out.print("*");
                 starNr++;

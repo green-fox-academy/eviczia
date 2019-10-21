@@ -90,7 +90,5 @@ public class VariableMutation {
             isDivisibleByThreeorFive = true;
         }
         System.out.println(j + " is divisible by 3 or 5: " + isDivisibleByThreeorFive);*/
-
-
     }
 }
