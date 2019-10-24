@@ -20,23 +20,24 @@ public class DrawSquare {
 
     }
 
-    private static void drawVerticals(int limit) {
-        System.out.print("*");
-        int i = 1;
-        for (int j =2; j < limit; j++) {
-            while ((i >= 1) & (i < limit - 1)) {
-                System.out.print(" ");
-                i++;
-            }
-            System.out.println("*");
-        }
-    }
-
     private static void drawHorizontal(int limit) {
         for (int j = 0; j < limit; j++) {
             System.out.print("*");
         }
         System.out.println();
     }
+
+    private static void drawVerticals(int limit) {
+        for (int line =2; line < limit; line++) {
+            System.out.print("*");
+            int spaceNr = 1;
+            while ((spaceNr >= 1) & (spaceNr < limit - 1)) {
+                System.out.print(" ");
+                spaceNr++;
+            }
+            System.out.println("*");
+        }
+    }
+
 }
 
