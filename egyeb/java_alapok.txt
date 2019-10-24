@@ -1,0 +1,10 @@
+ctrl / komentté teszi
+// sor
+/* (..) */
+
+
+to prompt an answer:
+ Scanner scanner = new Scanner(System.in);
+for loop
+
+for(int) honnan meddig mit csinál

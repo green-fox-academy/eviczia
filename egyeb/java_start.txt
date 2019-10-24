@@ -1,0 +1,9 @@
+function method függvénz: 
+main(name) {body}
+változók eltárolnak adatot (int boolean double float String char)
+szorzás * osztás / maradék %
+
+ctl shft F10 futtatás
+
+kódblokk összefüggő kódsorok egymásután
+
