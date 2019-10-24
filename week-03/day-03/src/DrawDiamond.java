@@ -1,4 +1,3 @@
-import java.util.Scanner;
 public class DrawDiamond {
     // Write a program that reads a
     // number from the standard input, then draws a
@@ -15,9 +14,7 @@ public class DrawDiamond {
     //
     // The diamond should have as many lines as the number was
     public static void main(String[] args) {
-        System.out.println("Please enter a whole number!");
-        Scanner scanner = new Scanner(System.in);
-        int userInput = scanner.nextInt();
+        int userInput = _PleaseEnterWholeNumber.getUserInput();
         if ((userInput % 2) ==0) {
             userInput += 1;
         }

@@ -1,10 +1,6 @@
-import java.util.Scanner;
-
 public class DrawDiamondWithTwoMiddleLines {
     public static void main(String[] args) {
-        System.out.println("Please enter a whole number!");
-        Scanner scanner = new Scanner(System.in);
-        int userInput = scanner.nextInt();
+        int userInput = _PleaseEnterWholeNumber.getUserInput();
         if (!((userInput % 2) ==0)) {
             int line = 1;
             while (line <= ((userInput + 1) / 2)) {
