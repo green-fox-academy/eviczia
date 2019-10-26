@@ -22,18 +22,18 @@ public class DrawDiagonal {
 
     private static void drawHorizontal(int limit) {
         for (int j = 0; j < limit; j++) {
-            System.out.print("*");
+            System.out.print("%");
         }
         System.out.println();
     }
 
     private static void drawVerticals(int limit) {
         for (int line = 2; line < limit; line++) {
-            System.out.print("*");
+            System.out.print("%");
             int spaceNr = 1;
             while ((spaceNr >= 1) & (spaceNr < limit - 1)) {
                 if (spaceNr == line) {
-                    System.out.print("*");
+                    System.out.print("%");
                 }
                 System.out.print(" ");
                 spaceNr++;

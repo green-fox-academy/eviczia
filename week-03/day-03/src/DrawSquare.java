@@ -22,7 +22,7 @@ public class DrawSquare {
 
     private static void drawHorizontal(int limit) {
         for (int j = 0; j < limit; j++) {
-            System.out.print("*");
+            System.out.print("%");
         }
         System.out.println();
     }
@@ -35,7 +35,7 @@ public class DrawSquare {
                 System.out.print(" ");
                 spaceNr++;
             }
-            System.out.println("*");
+            System.out.println("%");
         }
     }
 
