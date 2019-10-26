@@ -28,17 +28,17 @@ public class DrawDiagonal {
     }
 
     private static void drawVerticals(int limit) {
-        for (int line = 2; line < limit; line++) {
+        for (int line = 1; line < (limit - 1); line++) {
             System.out.print("%");
             int spaceNr = 1;
-            while ((spaceNr >= 1) & (spaceNr < limit - 1)) {
+            while ((spaceNr >= 1) & (spaceNr < limit - 2)) {
                 if (spaceNr == line) {
                     System.out.print("%");
                 }
                 System.out.print(" ");
                 spaceNr++;
             }
-            System.out.println("*");
+            System.out.println("%");
         }
     }
 }
