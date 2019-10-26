@@ -1,18 +1,18 @@
-public class DrawSquare {
+
+public class DrawDiagonal {
     // Write a program that reads a number from the standard input, then draws a
     // square like this:
     //
     //
-    // %%%%%%
-    // %    %
-    // %    %
-    // %    %
-    // %    %
-    // %%%%%%
+    // %%%%%
+    // %%  %
+    // % % %
+    // %  %%
+    // %%%%%
     //
     // The square should have as many lines as the number was
     public static void main(String[] args) {
-       int userInput = _PleaseEnterWholeNumber.getUserInput();
+        int userInput = _PleaseEnterWholeNumber.getUserInput();
 
         drawHorizontal(userInput);
         drawVerticals(userInput);
@@ -28,16 +28,17 @@ public class DrawSquare {
     }
 
     private static void drawVerticals(int limit) {
-        for (int line =2; line < limit; line++) {
-            System.out.print("%");
+        for (int line = 2; line < limit; line++) {
+            System.out.print("*");
             int spaceNr = 1;
             while ((spaceNr >= 1) & (spaceNr < limit - 1)) {
+                if (spaceNr == line) {
+                    System.out.print("*");
+                }
                 System.out.print(" ");
                 spaceNr++;
             }
             System.out.println("*");
         }
     }
-
 }
-
