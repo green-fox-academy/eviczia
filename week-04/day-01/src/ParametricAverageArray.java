@@ -8,12 +8,13 @@ public class ParametricAverageArray {
     public static void main(String[] args) {
         int sum = 0;
         int[] usersNrs = new int[5];
-        for (int i = 0; i < usersNrs.length; i++) {
+        double countUsersNrs = usersNrs.length;
+        for (int i = 0; i < countUsersNrs; i++) {
             usersNrs[i] = _PleaseEnterWholeNumber.getUserInput();
-            sum = sum + usersNrs[i];
+            sum += usersNrs[i];
         }
 
-        int ave = (sum /  usersNrs.length);
+        double ave = (sum / countUsersNrs);
 
         System.out.println("Sum: " + sum + ", Average: " + ave);
 
