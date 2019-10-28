@@ -14,18 +14,15 @@ public class DrawChess {
         String[][] chessTable = new String[8][8];
         for (int i = 0; i < chessTable.length; i++) {
             for (int j = 0; j < chessTable.length; j++) {
-                if (((i % 2) == 0 & (j % 2) == 0) | (!((i % 2) == 0) & !((j % 2) == 0))) {
+                if (((i % 2) == 0 & (j % 2) == 0) |
+                                (((i % 2) != 0) & ((j % 2) != 0))) {
                     chessTable[i][j] = "%";
                 } else {
                     chessTable[i][j] = " ";
                 }
-            }
-        }
-        for (int i = 0; i < chessTable.length; i++) {
-            for (int j = 0; j < chessTable[i].length; j++) {
                 System.out.print(chessTable[i][j]);
             }
-            System.out.println();
+        System.out.println();
         }
     }
 }
