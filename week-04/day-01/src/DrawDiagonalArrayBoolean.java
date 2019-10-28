@@ -22,15 +22,15 @@ public class DrawDiagonalArrayBoolean {
                 }
             }
         }
-            for (int i = 0; i < diagonal.length; i++) {
+         for (int i = 0; i < diagonal.length; i++) {
                 for (int j = 0; j < diagonal[i].length; j++) {
-                    if (diagonal[i][j]==false) {
-                        System.out.print(" ");
-                    } else {
+                    if (diagonal[i][j]) {
                         System.out.print("%");
+                    } else {
+                        System.out.print(" ");
                     }
                 }
                 System.out.println();
-            }
+         }
     }
 }
