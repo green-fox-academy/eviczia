@@ -7,13 +7,14 @@ public class Reverse {
 // - Print the elements of the reversed `aj`
     public static void main(String[] args) {
         int[] aj = {3, 4, 5, 6, 7};
+        int index = 0;
+        int temp = 0;
 
-        for (int i = 0; i > aj.length ; i++) {
-            for (int j = aj.length; j < 0; --j) {
-                int temp = aj[i] ;
-                aj[i]= aj[j];
-                aj[j] = temp;
-            }
+        while (index < (aj.length/2)) {
+            temp = aj[index];
+            aj[index] = aj[aj.length-index-1];
+            aj[aj.length-index-1] = temp;
+            index++;
         }
         System.out.println(Arrays.toString(aj));
     }
