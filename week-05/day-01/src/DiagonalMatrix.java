@@ -18,7 +18,7 @@ public class DiagonalMatrix {
                 } else {
                     diagonal[i][j] = 0;
                 }
-                System.out.print(diagonal[i][j]);
+                System.out.print(diagonal[i][j] + " ");
             }
             System.out.println();
         }
