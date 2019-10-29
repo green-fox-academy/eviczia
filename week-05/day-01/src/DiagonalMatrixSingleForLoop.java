@@ -12,12 +12,29 @@ public class DiagonalMatrixSingleForLoop {
     // - Print this two dimensional array to the output
     public static void main(String[] args) {
         int side = 4;
-        int[][] diagonal = new int[side][side];
-//
-        for (int i = 0; i < diagonal.length; i++) {
-            Arrays.fill(diagonal[i],0);
-            diagonal[i][i] = 1;
-        }
-        System.out.println(Arrays.toString(diagonal));
+        int content = 0;
+        int d = 1;
+        int[][] diagonal = diagonalMatrix(side, content, d);
+        printMatrix(diagonal);
+
     }
+    public static int[][] diagonalMatrix (int side, int content, int d) {
+        int[][] matrix = new int[side][side];
+        for (int i = 0; i < matrix.length; i++) {
+            Arrays.fill(matrix[i], content);
+            matrix[i][i] = d;
+        }
+        return  matrix;
+    }
+
+    public static void printMatrix (int[][] matrix) {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix.length; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+
+        }
+    }
+
 }
