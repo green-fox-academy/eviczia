@@ -10,6 +10,7 @@ public class SubInt {
         System.out.println(Arrays.toString(subInt(1, new int[] {1, 11, 34, 52, 61})));
         //  should print: `[0, 1, 4]`
         System.out.println(Arrays.toString(subInt(9, new int[] {1, 11, 34, 52, 61})));
+//        System.out.println(subInt(9, new int[] {1, 11, 34, 52, 61}));
         //  should print: '[]'
     }
 
@@ -23,7 +24,10 @@ public class SubInt {
             } else {
                 intsS[j] = Integer.toString(j);
             }
+  //          System.out.println(Arrays.binarySearch(intsS,"not"));
         }
+        
+
         return intsS;
     }
 }
