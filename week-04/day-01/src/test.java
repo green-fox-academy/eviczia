@@ -11,8 +11,7 @@ public class test {
         String[] strArr = proba.split("", proba.length());
         for (int i = 0; i < strArr.length; i++) {
             System.out.print(strArr[i] + " ");
-
-
         }
+        System.out.println(proba.charAt(4));
     }
 }
