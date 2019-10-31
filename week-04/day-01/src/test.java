@@ -8,6 +8,11 @@ public class test {
         String[] probaArray = {"not", "not", "no", "nt", "ot"};
         System.out.println(Arrays.binarySearch(probaArray,"not"));
         System.out.println(Arrays.asList(probaArray));
+        String[] strArr = proba.split("", proba.length());
+        for (int i = 0; i < strArr.length; i++) {
+            System.out.print(strArr[i] + " ");
 
+
+        }
     }
 }
