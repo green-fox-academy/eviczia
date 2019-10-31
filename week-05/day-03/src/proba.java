@@ -4,7 +4,7 @@ public class proba {
         System.out.println(nevem.charAt(4));
         System.out.println(nevem.indexOf("e"));
         System.out.printf("length: %d\n", nevem.length());
-        System.out.println(nevem.con );
+//        System.out.println(nevem.con );
 
     }
 }
