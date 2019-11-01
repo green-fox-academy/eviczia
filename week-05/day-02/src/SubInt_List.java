@@ -38,8 +38,10 @@ public class SubInt_List {
         }
         String[] output = new String[counter];
         for (int i = 0; i < withNot.length; i++) {
-            if (withNot[i] != "not") {
-                for (int j = 0; j < counter; j++) {
+            for (int j = 0; j < counter; j++) {
+                if (withNot[i] == "not") {
+                    break;
+                } else {
                 output[j]= withNot[i];
                 }
             }
