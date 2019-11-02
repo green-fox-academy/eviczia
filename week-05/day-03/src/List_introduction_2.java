@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class List_introduction_2 {
     public static void main(String[] args) {
@@ -33,8 +34,11 @@ public class List_introduction_2 {
     //Get the index of Durian from List B
         System.out.println("index of Durian is " + List_B.indexOf("Durian"));
     //Add Passion Fruit and Pomelo to List B in a single statement
-        (List_B. addAll("Passion Fruit", "Pomelo"));
+        List_B.addAll(Arrays.asList("Passion Fruit", "Pomelo"));
     //Print out the 3rd element from List A
+
+
+        System.out.println();
         System.out.println(List_A);
         System.out.println(List_B);
     }
