@@ -36,6 +36,7 @@ public class List_introduction_2 {
     //Add Passion Fruit and Pomelo to List B in a single statement
         List_B.addAll(Arrays.asList("Passion Fruit", "Pomelo"));
     //Print out the 3rd element from List A
+        System.out.println(List_A.get(2));
 
 
         System.out.println();
