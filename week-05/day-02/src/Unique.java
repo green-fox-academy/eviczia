@@ -6,6 +6,7 @@ public class Unique {
     public static void main(String[] args) {
         //  Create a function that takes a list of numbers as a parameter
         int[] listNumbers = {2, 3, 4, 3, 2, 2, 6, 5, 8, 4, 23};
+        System.out.println(Arrays.toString(unique(listNumbers)));
         //  Returns a list of numbers where every number in the list occurs only once
 //        int[] unique = unique(listNumbers);
 //        Arrays.sort(listNumbers);
@@ -13,8 +14,8 @@ public class Unique {
 //        System.out.println(Arrays.binarySearch(listNumbers, 6));
 //        System.out.println(Arrays.toString(listNumbers));
 
-        //  Example
-        System.out.println(unique(new int[] {1, 11, 34, 11, 52, 61, 1, 34}));
+        //  Example                                          0   1   2   3   4   5   6  7
+        System.out.println(Arrays.toString(unique(new int[] {1, 11, 34, 11, 52, 61, 1, 34})));
         //  should print: `[1, 11, 34, 52, 61]`
 
     }
@@ -25,8 +26,8 @@ public class Unique {
         for (int i = 0; i < n; i++) {
             for (int j = i + 1; j < n; ) { // A second loop starting from i+1 ! No incrementing yet!
                 if (listNumbers[i] == listNumbers[j]) {
-                    for (int k = j; k < n; k++) {
-                        listNumbers[k] = listNumbers[k + 1]; // go through the k loop shortening the length by one
+                    for (int k = j; k < n-1; k++) {
+                        listNumbers[k] = listNumbers[k+1]; // go through the k loop shortening the length by one
                     }
                     n--; //shorten the array length, go back to j without incrementing see again if equals
                 } else {
@@ -34,7 +35,11 @@ public class Unique {
                 }
             }
         }
-        return listNumbers;
+        int[] newArr = new int[n];
+        for (int i = 0; i < n; i++) {
+            newArr[i] = listNumbers[i];
+        }
+        return newArr;
     }
 }
 
