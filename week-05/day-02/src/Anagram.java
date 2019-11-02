@@ -7,8 +7,8 @@ public class Anagram {
     //"dog"	"god"	true
     //"green"	"fox"	false
     public static void main(String[] args) {
-        System.out.println(isAnagram("dog", "god"));
-        System.out.println(isAnagram("green", "fox"));
+//        System.out.println(isAnagram("dog", "god"));
+//        System.out.println(isAnagram("green", "fox"));
 
 
     }
