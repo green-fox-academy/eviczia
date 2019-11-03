@@ -6,6 +6,7 @@ import java.util.Map;
 public class Map_introduction_2 {
     public static void main(String[] args) {
         //Create a map where the keys are strings and the values are strings
+        HashMap<String, String> newMap = new HashMap<>();
         // with the following initial values
         //
         //Key	Value
@@ -14,7 +15,6 @@ public class Map_introduction_2 {
         //978-1-60309-444-3	Red Panda and Moon Bear
         //978-1-60309-461-0	The Lab
 
-        HashMap<String, String> newMap = new HashMap<>();
         newMap.put ("978-1-60309-452-8",	"A Letter to Jo");
         newMap.put ("978-1-60309-459-7",	"Lupus");
         newMap.put ("978-1-60309-444-3",	"Red Panda and Moon Bear");
@@ -39,19 +39,29 @@ public class Map_introduction_2 {
         System.out.println();
         //
         //Remove the key-value pair with value The Lab
-        newMap.remove(newMap. ("The Lab"));
+
 
         for (Map.Entry<String, String> thing : newMap.entrySet()) {
             System.out.printf(thing.getValue() + " (ISBN: %s)\n", thing.getKey());
         }
         //
+        System.out.println();
         //Add the following key-value pairs to the map
         //
         //Key	Value
         //978-1-60309-450-4	They Called Us Enemy
         //978-1-60309-453-5	Why Did We Trust Him?
+
+        newMap.put("978-1-60309-450-4",	"They Called Us Enemy");
+        newMap.put("978-1-60309-453-5", "Why Did We Trust Him?");
+
+        for (Map.Entry<String, String> thing : newMap.entrySet()) {
+            System.out.printf(thing.getValue() + " (ISBN: %s)\n", thing.getKey());
+        }
         //Print whether there is an associated value with key 478-0-61159-424-8 or not
+        System.out.println("**" +  (newMap.get("478-0-61159-424-8") != null));
         //
         //Print the value associated with key 978-1-60309-453-5
+        System.out.printf("The value associated with key 978-1-60309-453-5 is '%s'", newMap.get("978-1-60309-453-5"));
     }
 }
