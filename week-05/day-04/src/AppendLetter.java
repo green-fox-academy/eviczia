@@ -7,6 +7,7 @@ public class AppendLetter{
         // The parameter should be a list.
 
         System.out.println(appendA(far));
+// The output should be: "boa", "anaconda", "koala", "panda", "zebra"
     }
 
     private static List<String> appendA(List<String> far) {
@@ -17,4 +18,3 @@ public class AppendLetter{
     }
 }
 
-// The output should be: "boa", "anaconda", "koala", "panda", "zebra"
