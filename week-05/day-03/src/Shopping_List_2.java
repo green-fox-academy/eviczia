@@ -6,16 +6,16 @@ import java.util.Map;
 public class Shopping_List_2 {
     public static void main(String[] args) {
     //Represent the following products with their prices
-        HashMap<String, Float> priceList = new HashMap<>();
-        priceList.put("Milk", 1.07f);
-        priceList.put("Rice", 1.59f);
-        priceList.put("Eggs", 3.14f);
-        priceList.put("Cheese", 12.6f);
-        priceList.put("Chicken Breasts", 9.40f);
-        priceList.put("Apples", 2.31f);
-        priceList.put("Tomato",	2.58f);
-        priceList.put("Potato",	1.75f);
-        priceList.put("Onion",	1.10f);
+        HashMap<String, Double> priceList = new HashMap<>();
+        priceList.put("Milk", 1.07);
+        priceList.put("Rice", 1.59);
+        priceList.put("Eggs", 3.14);
+        priceList.put("Cheese", 12.6);
+        priceList.put("Chicken Breasts", 9.40);
+        priceList.put("Apples", 2.31);
+        priceList.put("Tomato",	2.58);
+        priceList.put("Potato",	1.75);
+        priceList.put("Onion",	1.10);
 
     //Represent Bob's shopping list
         HashMap<String, Integer> shoppingListBob = new HashMap<>();
@@ -91,8 +91,8 @@ public class Shopping_List_2 {
         }
     }
 
-    private static Float pays(HashMap<String, Integer> list, HashMap<String, Float> prices) {
-        Float total = 0f;
+    private static Double pays(HashMap<String, Integer> list, HashMap<String, Double> prices) {
+        Double total = 0.;
         for (Map.Entry<String, Integer> item:list.entrySet()) {
             total += (item.getValue()*(prices.get(item.getKey())));
         }
