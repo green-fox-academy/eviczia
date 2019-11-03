@@ -31,17 +31,17 @@ public class Product_Database_2 {
         System.out.printf("2. These are more expensive than %d:\n", limitMore);
         costsMoreThan(priceList, limitMore);
 //2. These are more expensive than 150:
-//	Fish
-//	Chicken
-//	Eggs
-//	Milk
+//	Fish (400)
+//	Chicken (550)
+//	Eggs (200)
+//	Milk (200)
     }
 
     private static void costsMoreThan(HashMap<String, Integer> priceList, int limitMore) {
         int moreExpThen = limitMore;
         for (Map.Entry<String, Integer> itemPrice : priceList.entrySet()) {
             if (itemPrice.getValue() > moreExpThen) {
-                System.out.println("\t" + itemPrice.getKey());
+                System.out.printf("\t%s (%d)\n", itemPrice.getKey(), itemPrice.getValue());
             }
         }
     }
