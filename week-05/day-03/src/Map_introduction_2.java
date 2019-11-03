@@ -39,11 +39,13 @@ public class Map_introduction_2 {
         System.out.println();
         //
         //Remove the key-value pair with value The Lab
-
-
-        for (Map.Entry<String, String> thing : newMap.entrySet()) {
-            System.out.printf(thing.getValue() + " (ISBN: %s)\n", thing.getKey());
+        String keyToRemove = "";
+        for (Map.Entry<String, String> bookData : newMap.entrySet()) {
+            if (bookData.getValue() == "The Lab") {
+                keyToRemove = bookData.getKey();
+            }
         }
+        newMap.remove(keyToRemove);
         //
         System.out.println();
         //Add the following key-value pairs to the map
