@@ -1,4 +1,5 @@
 import java.sql.SQLOutput;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,7 +36,7 @@ public class Shopping_List_2 {
         shoppingListAlice.put("Apples", 1);
         shoppingListAlice.put("Tomato", 10);
 
-    //Create an application which solves the following problems.
+        //Create an application which solves the following problems.
     //
     //1. How much does Bob pay?
         System.out.printf("1. Bob pays %f\n", pays(shoppingListBob, priceList));
@@ -48,11 +49,46 @@ public class Shopping_List_2 {
         item = "Potato";
         System.out.printf("4. %s\n", moreOf(shoppingListAlice, shoppingListBob, item));
     //5. Who buys more different products?
+        Integer itemsAlice = shoppingListAlice.size();
+        Integer itemsBob = shoppingListBob.size();
+        if (itemsAlice > itemsBob) {
+            System.out.println("5. Alice buys more kinds of stuff.");
+        } else if (itemsAlice < itemsBob) {
+            System.out.println("5. Bob buys more kinds of stuff.");
+        } else {
+            System.out.println("They buy equal amount of stuff");
+        }
     //6. Who buys more products? (piece)
+        if (productNo(shoppingListAlice) > productNo(shoppingListBob)) {
+            System.out.println("6. Alice buys more products");
+        } else if (productNo(shoppingListAlice) < productNo(shoppingListBob)) {
+            System.out.println("6. Bob buys more products");
+        } else {
+            System.out.println("6. They buy equal amount of products");
+        }
     }
 
     private static String moreOf(HashMap<String, Integer> shoppingListAlice, HashMap<String, Integer> shoppingListBob, String item) {
-        return "not finished";
+        Integer itemAlice;
+        Integer itemBob;
+        if (shoppingListAlice.containsKey(item)) {
+            itemAlice = shoppingListAlice.get(item);
+        } else {
+            itemAlice = 0;
+        }
+        if (shoppingListBob.containsKey(item)) {
+            itemBob = shoppingListBob.get(item);
+        } else {
+            itemBob = 0;
+        }
+
+        if (itemAlice > itemBob) {
+            return "Alice";
+        } else if (itemAlice < itemBob) {
+            return "Bob";
+        } else {
+            return "equals";
+        }
     }
 
     private static Float pays(HashMap<String, Integer> list, HashMap<String, Float> prices) {
@@ -62,5 +98,13 @@ public class Shopping_List_2 {
         }
         return  total;
     }
+    private static Integer productNo(HashMap<String, Integer> list) {
+        Integer total = 0;
+        for (Map.Entry<String, Integer> item:list.entrySet()) {
+           total += item.getValue();
+        }
+        return  total;
+    }
+
 
 }
