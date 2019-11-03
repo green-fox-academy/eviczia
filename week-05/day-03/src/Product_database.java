@@ -19,6 +19,7 @@ public class Product_database {
         priceList.put("Chicken", 550);
 
         System.out.println("0. " + priceList);
+    //0. {Apples=150, Fish=400, Chicken=550, Eggs=200, Milk=200, Bread=50}
 
     //Create an application which solves the following problems.
     //
@@ -26,24 +27,34 @@ public class Product_database {
         String item= "Fish";
         System.out.print("1. ");
         priceOf(priceList, item);
+    //1. The price of Fish is 400
+
     //What is the most expensive product?
         System.out.print("2. ");
         mostExp(priceList);
+    //2. The most expensive item: Chicken
+
     //What is the average price?
         System.out.print("3. ");
         average(priceList);
+    //3. The average price is 258
+
     //How many products' price is below 300?
         Integer limit = 300;
         System.out.print("4. ");
         belowLimit(priceList, limit);
+    //4. There are 4 items below 300
+
     //Is there anything we can buy for exactly 125?
         Integer spend = 125;
         System.out.print("5. ");
         forInt(priceList, spend);
+    //5. That's all.
 
     //What is the cheapest product?
         System.out.print("6. ");
         cheapest(priceList);
+    //6. The cheapest item: Bread
     }
 
     private static void forInt(HashMap<String, Integer> priceList, Integer money) {
