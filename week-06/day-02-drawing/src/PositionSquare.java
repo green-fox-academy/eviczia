@@ -4,21 +4,28 @@ import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class HorizontalLines {
-    public static void mainDraw(Graphics graphics) {
-        for (int i = 0; i < 5; i++) {
-            int a = (int) (Math.random() * WIDTH);
-            int b = (int) (Math.random() * HEIGHT);
-            drawHorizontal (a, b, graphics);
+public class PositionSquare {
+
+    public static void mainDraw(Graphics graphics){
+        int startX = 0;
+        int startY = 5;
+        for (int i = 0; i < 10; i++) {
+            startX += 20;
+            startY *=1.6;
+             drawSquare50(startX, startY, graphics);
         }
-        // Create a function that draws a single line and takes 3 parameters:
-        // The x and y coordinates of the line's starting point and the graphics
-        // and draws a 50 long horizontal line from that point.
-        // Draw at least 3 lines with that function using a loop.
+        // create a function that draws one square and takes 3 parameters:
+        // the x and y coordinates of the square's top left corner and the graphics
+        // and draws a 50x50 square from that point.
+        // draw 3 squares with that function.
+        // avoid code duplication.
+
+
+
     }
 
-    private static void drawHorizontal(int a, int b, Graphics graphics) {
-        graphics.drawLine(a, b, a + 50, b);
+    private static void drawSquare50(int x, int y, Graphics graphics) {
+        graphics.drawRect(x, y, 50, 50);
     }
 
     // Don't touch the code below
@@ -43,4 +50,5 @@ public class HorizontalLines {
             mainDraw(graphics);
         }
     }
+
 }
