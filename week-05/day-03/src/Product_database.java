@@ -46,7 +46,7 @@ public class Product_database {
     //4. There are 4 items below 300
 
     //Is there anything we can buy for exactly 125?
-        Integer spend = 125;
+        Integer spend = 200;
         System.out.print("5. ");
         forInt(priceList, spend);
     //5. That's all.

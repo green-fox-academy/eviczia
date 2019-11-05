@@ -1,4 +1,4 @@
-public class Unique {
+/*public class Unique {
     public static void main(String[] args) {
         //  Create a function that takes a list of numbers as a parameter
         int[] listNumbers = {2, 3, 4, 3, 2, 2, 6, 5, 8, 4, 23};
@@ -13,5 +13,5 @@ public class Unique {
     private static int[] unique(int[] listNumbers) {
 
     }
-}
+}*/
 
