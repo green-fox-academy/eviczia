@@ -20,7 +20,7 @@ public class QuoteSwap{
         String quoteCorrect = list.toString();
         int doAt = list.indexOf("do");
         int cannotAt =list.indexOf("cannot");
-        String temp = list.get(doAt);
+        String temp = list.get(2);
         list.set(doAt, list.get(cannotAt));
         list.set(cannotAt, temp);
         return quoteCorrect;
