@@ -19,8 +19,8 @@ public class Unique {
         //  should print: `[1, 11, 34, 52, 61]`
 
     }
-// with the help of Adam Tech https://www.youtube.com/watch?v=xDKW358fHiQ
-    private static int[] unique(int[] listNumbers) {
+// with the help of Adam Tech htt  ps://www.youtube.com/watch?v=xDKW358fHiQ
+    private static int[] unique(int [] listNumbers) {
         // no new array!! modify existing one
         int n = listNumbers.length;
         for (int i = 0; i < n; i++) {
