@@ -7,31 +7,30 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class RainbowBoxFunction {
     public static void mainDraw(Graphics graphics) {
-        int sqSize = WIDTH;
-        int[] rgb = {0, 0, 0};
-        int[][] rainbowRGB = new int[3][12];
-        rainbowRGB = {
-                {255, 0, 127},
+        int sqSize = WIDTH; //starting square side is the full canvas
+        int[][] rainbowRGB = { // used a 2D array to store the rgb codes of 12 different colours, source links below
+                {255, 0, 128},
                 {255, 0, 255},
-                {127, 0, 255},
+                {128, 0, 255},
                 {0,	0, 255},
-                0, 128, 255
-                0	255	255
-                0	255	128
-                0	255	0
-                128	255	0
-                255	255	0
-                255	128	0
-                255	0	0
-        }
+                {0, 128, 255},
+                {0, 255, 255},
+                {0, 255, 128},
+                {0, 255, 0},
+                {128, 255, 0},
+                {255, 255, 0},
+                {255, 128, 0},
+                {255, 0, 0}
+        };
 // https://docs.google.com/spreadsheets/d/1NpioqSTNIQ6nWKUh1Cye7D5O3qjlpyJZhuZs2XleGkY/edit?usp=sharing
 // this is my RGB chart for a rainbow, source: https://www.rapidtables.com/web/color/RGB_Color.html
-        for (int i = 0; i < 16; i++) {
-            for (int j = 0; j < 3; j++) {
-                rgb[j] += 10;
-            }
-            drawRainbowSq(sqSize, rgb, graphics);
-            sqSize -= 20;
+        int[] rgb = new int[3]; //defined a 3 item array that will store the one of the 12 colours' rgb code in the for loop
+        for (int i = 0; i < 12; i++) { // here's the for loop to go through the 12 different coloured squares of shrinking size
+            rgb[0] = rainbowRGB[i][0]; // here the red, green and blue get their value  from matrix to result the colour of the square
+            rgb[1] = rainbowRGB[i][1];
+            rgb[2] = rainbowRGB[i][2];
+            drawRainbowSq(sqSize, rgb, graphics); // function that gets the rgb color and square size and draw the square
+            sqSize -= 26; //decrease square side before going on to the next square
         }
 
 
