@@ -8,19 +8,16 @@ public class Checkerboard {
     public static void mainDraw(Graphics graphics) {
         // Fill the canvas with a checkerboard pattern.
         graphics.setColor(Color.WHITE);
-        graphics.fillRect(0, 0, WIDTH, HEIGHT);
-        int littleSqSide = WIDTH/8;
-        graphics.setColor(Color.BLACK);
-        int StartX = 0;
-        int StartY = 0;
-        for (int i = 0; i < 4; i++) {
-            graphics.fillRect(StartX, StartY, littleSqSide,HEIGHT);
-            StartX = StartX + 2*littleSqSide;
-
+        int littleSqSide = WIDTH/8; // side size for the 32 little squares
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) { // iteration to draw 32 little white squares
+                if ((i+j) % 2 == 0) { // check the sum of x,y starting coordinates of little square
+                    graphics.setColor(Color.BLACK); // if it's an even number, change colour to black
+                graphics.fillRect(i*littleSqSide, j*littleSqSide, littleSqSide, littleSqSide ); //draw the squares
+                }
+            }
+        graphics.drawRect(0,0, WIDTH, HEIGHT); // draw frame for checkerboard
         }
-
-
-
     }
 
     // Don't touch the code below
