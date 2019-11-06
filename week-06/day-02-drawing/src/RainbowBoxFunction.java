@@ -7,6 +7,11 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class RainbowBoxFunction {
     public static void mainDraw(Graphics graphics) {
+        // Create a square drawing function that takes 3 parameters:
+        // The square size, the fill color, graphics
+        // and draws a square of that size and color to the center of the canvas.
+        // Create a loop that fills the canvas with rainbow colored squares (red, orange, yellow, green, blue, indigo, violet).
+
         int sqSize = WIDTH; //starting square side is the full canvas
         int[][] rainbowRGB = { // used a 2D array to store the rgb codes of 12 different colours, source links below
                 {255, 0, 128},
@@ -22,23 +27,18 @@ public class RainbowBoxFunction {
                 {255, 128, 0},
                 {255, 0, 0}
         };
+// this is my RGB chart for 12 colours for rainbow:
 // https://docs.google.com/spreadsheets/d/1NpioqSTNIQ6nWKUh1Cye7D5O3qjlpyJZhuZs2XleGkY/edit?usp=sharing
-// this is my RGB chart for a rainbow, source: https://www.rapidtables.com/web/color/RGB_Color.html
+// source: https://www.rapidtables.com/web/color/RGB_Color.html
+
         int[] rgb = new int[3]; //defined a 3 item array that will store the one of the 12 colours' rgb code in the for loop
         for (int i = 0; i < 12; i++) { // here's the for loop to go through the 12 different coloured squares of shrinking size
             rgb[0] = rainbowRGB[i][0]; // here the red, green and blue get their value  from matrix to result the colour of the square
             rgb[1] = rainbowRGB[i][1];
             rgb[2] = rainbowRGB[i][2];
             drawRainbowSq(sqSize, rgb, graphics); // function that gets the rgb color and square size and draw the square
-            sqSize -= 26; //decrease square side before going on to the next square
+            sqSize -= 27; //decrease square in 12 equal steps from 320 full size
         }
-
-
-        // Create a square drawing function that takes 3 parameters:
-        // The square size, the fill color, graphics
-        // and draws a square of that size and color to the center of the canvas.
-        // Create a loop that fills the canvas with rainbow colored squares (red, orange, yellow, green, blue, indigo, violet).
-
     }
 
     private static void drawRainbowSq(int sqSize, int[] rgb, Graphics graphics) {
