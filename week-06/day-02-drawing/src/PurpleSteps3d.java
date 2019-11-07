@@ -21,7 +21,7 @@ public class PurpleSteps3d {
             graphics.drawRect(startX, startY, sqSide, sqSide);
             startX += sqSide;
             startY += sqSide;
-            sqSide *= 1.5;
+            sqSide += 10;
         }
     }
 
