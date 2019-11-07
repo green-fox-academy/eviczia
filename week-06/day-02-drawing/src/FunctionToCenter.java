@@ -10,16 +10,14 @@ public class FunctionToCenter {
         // The x and y coordinates of the line's starting point and the graphics
         // and draws a line from that point to the center of the canvas.
         // Fill the canvas with lines from the edges, every 20 px, to the center.
-        int n = 20;
-        for (int i = 0; i <= WIDTH/n; i++) {
-            for (int j = 0; j <= HEIGHT/n;) {
-                int startX = i*n;
-                int startY = j*n;
-                lineToCenter (startX, startY, graphics);
-                if (i == 0 || i == HEIGHT) {
+        int spacing = 20;
+        for (int i = 0; i <= WIDTH/spacing; i++) {
+            for (int j = 0; j <= HEIGHT/spacing;) {
+                lineToCenter (i*spacing, j*spacing, graphics);
+                if (i == 0 || i == HEIGHT/spacing) {
                     j++;
                 } else {
-                    j =j +HEIGHT/n;
+                    j =j + HEIGHT/spacing;
                 }
             }
         }
