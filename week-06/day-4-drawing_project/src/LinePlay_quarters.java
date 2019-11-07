@@ -8,8 +8,9 @@ public class LinePlay_quarters {
         // draw a red horizontal line to the canvas' middle.
         // draw a green vertical line to the canvas' middle.
         int density = 20;
-        int w = WIDTH/2;
-        int h = HEIGHT/2;
+        int splitInto = 4;
+        int w = WIDTH/splitInto;
+        int h = HEIGHT/splitInto;
         int startX = 0;
         int startY = 0;
         lineplayNE(startX, startY, density, w, h, graphics);
