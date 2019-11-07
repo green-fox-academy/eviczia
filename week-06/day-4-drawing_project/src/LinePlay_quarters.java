@@ -1,10 +1,9 @@
 import javax.swing.*;
-
 import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class LinePlay {
+public class LinePlay_quarters {
     public static void mainDraw(Graphics graphics) {
         // draw a red horizontal line to the canvas' middle.
         // draw a green vertical line to the canvas' middle.
