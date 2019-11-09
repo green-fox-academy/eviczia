@@ -28,7 +28,7 @@ public class RainbowSquares {
     private static void rainbowSquareR128(int r, int x, int y, Graphics graphics) {
         for (int g = 0; g < 256; g++) {
             for (int b = 0; b < 256; b++) {
-                graphics.setColor(new Color(127, g, b));
+                graphics.setColor(new Color(r, g, b));
                 graphics.fillRect(x + g,y + b,1,1);
             }
         }
