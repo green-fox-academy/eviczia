@@ -6,10 +6,10 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class TrianglesMatrix {
     public static void mainDraw(Graphics graphics) {
-        int base = 15;
-        int xTop = WIDTH /2;
+        int base = 50;
+        int xTop = WIDTH / 2;
         int yTop = 20;
-        double height = Math.sqrt(3)/2*base;
+        double height = Math.sqrt(3) / 2 * base;
         double w = WIDTH - (WIDTH % base);
         double h = (HEIGHT - ((HEIGHT - yTop) % height) - yTop);
         double divideW = w / base;
@@ -22,17 +22,24 @@ public class TrianglesMatrix {
 
 // Matrixes starting point
 
-
-        for (int i = 1; i < divideW; i++) {
-            for (int j = 0; j < Math.pow(2, i); j++) {
-                int[] A = new int[]{xTop, yTop + i*(int)height};
-                int[] B = new int[]{A[0] - i * base / 2, A[1] + (int)height};
-                int[] C = new int[]{A[0] + i * base / 2, A[1] + (int)height};
+        for (int i = 0; i < divideH; i++) {
+            for (int j = 0; j < i+1; j++) {
+                int[] A = new int[]{xTop-j*base/2, yTop + i*(int) height};
+                int[] B = new int[] {createCornerBC(A, base, height)[0], createCornerBC(A, base, height)[1]};
+                int[] C = new int[] {createCornerBC(A, base, height)[2], createCornerBC(A, base, height)[3]};
                 drawTriangle(A, B, C, graphics);
-                A = B;
+                A = new int[]{xTop+j*base/2, yTop + i*(int) height};
+                B = new int[] {createCornerBC(A, base, height)[0], createCornerBC(A, base, height)[1]};
+                C = new int[] {createCornerBC(A, base, height)[2], createCornerBC(A, base, height)[3]};
+                drawTriangle(A, B, C, graphics);
 
             }
         }
+    }
+
+    private static int[] createCornerBC(int[] A, int base, double height) {
+        int[] BC = new int[]{A[0] - base / 2, A[1] + (int) height, A[0] + base / 2, A[1] + (int) height};
+        return BC;
     }
 
     private static void drawTriangle(int[] A, int[] B, int[] C, Graphics graphics) {
