@@ -5,6 +5,7 @@ public class UniqueForDemo {
         //  Create a function that takes a list of numbers as a parameter
         System.out.println(Arrays.toString(unique(new int[] {1, 11, 34, 11, 52, 61, 1, 34})));
         //  should print: `[1, 11, 34, 52, 61]`
+
     }
 
 // with the help of Adam Tech https://www.youtube.com/watch?v=xDKW358fHiQ
@@ -16,8 +17,6 @@ public class UniqueForDemo {
                     for (int k = j; k < n-1; k++) {
                         listNumbers[k] = listNumbers[k+1];
                     }
-//                    listNumbers[n-1]=0; not necessary, but this would fill up the end of listnumbers with zero,
-//                                        to make the change more obvious
                     n--; // decrease n by one after each overwriting
                 } else {
                     j++; // doesn't equal anymore, then increment
