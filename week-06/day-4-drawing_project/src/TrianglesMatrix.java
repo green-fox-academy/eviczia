@@ -6,11 +6,12 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class TrianglesMatrix {
     public static void mainDraw(Graphics graphics) {
-        int base = 150;
-        int startY = 20;
+        int base = 15;
+        int xTop = WIDTH /2;
+        int yTop = 20;
         double height = Math.sqrt(3)/2*base;
         double w = WIDTH - (WIDTH % base);
-        double h = (HEIGHT - ((HEIGHT - startY) % height) - startY);
+        double h = (HEIGHT - ((HEIGHT - yTop) % height) - yTop);
         double divideW = w / base;
         double divideH = h / height;
         System.out.println(" height: " + height);
@@ -20,29 +21,18 @@ public class TrianglesMatrix {
         System.out.println("divideH: " + divideH);
 
 // Matrixes starting point
-//        int matrixOrigoX = (w % base) / 2;
-//        int matrixOrigoY = 0;
-//        int divideH =  HEIGHT % height;
-
-        int xA = WIDTH /2;
-        int yA = startY;
-        int[] A = new int[]{xA, yA};
-        int xB = xA - base / 2;//(int) (height/Math.sqrt(3));
-        int yB = yA + (int)height;
-        int[] B = new int[]{xB, yB};
-        int xC = xA + base / 2;//(int) (height/Math.sqrt(3));
-        int yC = yB;
-        int[] C = new int[]{xC, yC};
 
 
-        int[] corner = new int[]{xA, yA, xB, yB, xC, yC};
+        for (int i = 1; i < divideW; i++) {
+            for (int j = 0; j < Math.pow(2, i); j++) {
+                int[] A = new int[]{xTop, yTop + i*(int)height};
+                int[] B = new int[]{A[0] - i * base / 2, A[1] + (int)height};
+                int[] C = new int[]{A[0] + i * base / 2, A[1] + (int)height};
+                drawTriangle(A, B, C, graphics);
+                A = B;
 
- /*       for (int i = 0; i < divideW; i++) {
-            xA = */
-
-
-
-        drawTriangle(A, B, C, graphics);
+            }
+        }
     }
 
     private static void drawTriangle(int[] A, int[] B, int[] C, Graphics graphics) {
