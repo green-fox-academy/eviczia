@@ -6,8 +6,8 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class TrianglesMatrix {
     public static void mainDraw(Graphics graphics) {
-        int base = 90;
-        int startY = 30;
+        int base = 150;
+        int startY = 20;
         double height = Math.sqrt(3)/2*base;
         double w = WIDTH - (WIDTH % base);
         double h = (HEIGHT - ((HEIGHT - startY) % height) - startY);
@@ -26,27 +26,29 @@ public class TrianglesMatrix {
 
         int xA = WIDTH /2;
         int yA = startY;
+        int[] A = new int[]{xA, yA};
         int xB = xA - base / 2;//(int) (height/Math.sqrt(3));
         int yB = yA + (int)height;
+        int[] B = new int[]{xB, yB};
         int xC = xA + base / 2;//(int) (height/Math.sqrt(3));
         int yC = yB;
-
+        int[] C = new int[]{xC, yC};
 
 
         int[] corner = new int[]{xA, yA, xB, yB, xC, yC};
-/*        for (int i = 1; i < 10; i++) {
-            int[] newCorner = new int[i * 2];
-            newCorner[0] = corner[2];
-            newCorner[1] = corner[3];
 
-        }*/
-        drawTriangle(corner, graphics);
+ /*       for (int i = 0; i < divideW; i++) {
+            xA = */
+
+
+
+        drawTriangle(A, B, C, graphics);
     }
 
-    private static void drawTriangle(int[] corner, Graphics graphics) {
-        graphics.drawLine(corner[0], corner[1], corner[2], corner[3]);
-        graphics.drawLine(corner[2], corner[3], corner[4], corner[5]);
-        graphics.drawLine(corner[4], corner[5], corner[0], corner[1]);
+    private static void drawTriangle(int[] A, int[] B, int[] C, Graphics graphics) {
+        graphics.drawLine(A[0], A[1], B[0], B[1]);
+        graphics.drawLine(B[0], B[1], C[0], C[1]);
+        graphics.drawLine(C[0], C[1], A[0], A[1]);
     }
 
 
