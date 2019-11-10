@@ -22,10 +22,8 @@ public class ConnectTheDots {
         int n = box.length;
         graphics.setColor(Color.GREEN);
         for (int i = 1; i < n; i++) {
-            for (int j = 0; j <n ; j++) {
-                graphics.drawLine(box[i-1][0], box[i-1][1], box[i][0], box[i][1]);
-                graphics.drawLine(box[n-1][0], box[n-1][1], box[0][0], box[0][1]);
-            }
+            graphics.drawLine(box[i-1][0], box[i-1][1], box[i][0], box[i][1]);
+            graphics.drawLine(box[n-1][0], box[n-1][1], box[0][0], box[0][1]);
         }
     }
 
