@@ -9,13 +9,21 @@ public class LinePlay_quarters {
         // draw a green vertical line to the canvas' middle.
         int density = 20;
         int splitInto = 4;
-        int w = WIDTH/splitInto;
-        int h = HEIGHT/splitInto;
+        int w = WIDTH/splitInto*2;
+        int h = HEIGHT/splitInto*2;
         int startX = 0;
         int startY = 0;
-        lineplayNE(startX, startY, density, w, h, graphics);
-        lineplaySW(startX, startY, density, w, h, graphics);
+        drawImage(startX, startY, density, w, h, splitInto, graphics);
 
+    }
+
+    private static void drawImage(int startX, int startY, int density, int w, int h, int splitInto, Graphics graphics) {
+        for (int i = 0; i < 2; i++) {
+                startX = startX + i*w;
+                startY = startY + i*h;
+                lineplayNE(startX, startY, density, w, h, graphics);
+                lineplaySW(startX, startY, density, w, h, graphics);
+        }
     }
 
     private static void lineplaySW(int startX, int startY, int density, int w, int h, Graphics graphics) {
@@ -23,7 +31,7 @@ public class LinePlay_quarters {
             for (int j = startY + 1; j <= h; j = j + h / density) {
                 if (Math.abs(i - j) == 1) {
                     graphics.setColor(Color.GREEN);
-                    graphics.drawLine(0, i, j, h);
+                    graphics.drawLine(startX, i, j, h);
                 }
             }
         }
