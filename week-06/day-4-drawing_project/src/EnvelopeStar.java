@@ -9,8 +9,10 @@ public class EnvelopeStar {
     public static void mainDraw(Graphics graphics) {
         int w = WIDTH / 2;
         int h = HEIGHT / 2;
-        int units = 40;
+        int units = 16;
         int unitLength = WIDTH / units / 2;
+
+        graphics.setColor(Color.GREEN);
 
         for (int i = 0; i < units; i++) {
             graphics.drawLine(w, i*unitLength, w-(i+1)*unitLength, h);
