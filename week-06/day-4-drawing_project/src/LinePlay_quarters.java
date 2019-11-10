@@ -42,7 +42,7 @@ public class LinePlay_quarters {
             for (int j = startY + 1; j <= h; j = j + h / density) {
                 if (Math.abs(i - j) == 1) {
                     graphics.setColor(new Color(200, 32, 255));
-                    graphics.drawLine(i, 0, h, j);
+                    graphics.drawLine(startX+i, startY+ 0, startX+h, startY+j);
                 }
             }
         }

@@ -9,7 +9,7 @@ public class StarryNight {
         graphics.setColor(Color.BLACK);
         graphics.fillRect(0,0, WIDTH, HEIGHT);
         int starNo = 100;
-        int starSize = 20;
+        int starSize = 2;
         for (int i = 0; i < starNo; i++) {
             drawStar(starSize, graphics);
         }
@@ -24,8 +24,9 @@ public class StarryNight {
     }
 
     private static void drawStar(int starSize, Graphics graphics) {
+        int num = (int)(Math.random()*256);
         int[] randomCoord = {(int)(Math.random()*(WIDTH-starSize)), (int)(Math.random()*(HEIGHT-starSize))};
-        graphics.setColor(new Color((int)(0 + Math.random()*20), (int)(0 + Math.random()*20),(int)(0 + Math.random()*20)));
+        graphics.setColor(new Color(num, num,num));
         graphics.fillRect(randomCoord[0], randomCoord[1], starSize, starSize);
     }
 
