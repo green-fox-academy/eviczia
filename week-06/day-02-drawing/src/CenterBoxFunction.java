@@ -21,8 +21,6 @@ public class CenterBoxFunction {
         // draw 3 squares with that function.
         // avoid code duplication.
 
-
-
     }
 
     private static void drawSquare(int sqSize, Color color, Graphics graphics) {
