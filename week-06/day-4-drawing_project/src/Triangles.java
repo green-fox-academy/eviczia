@@ -6,6 +6,7 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class Triangles {
     public static void mainDraw(Graphics graphics) {
+
 // define data for equlateral triangle
         int base =50; //  little triangle's side
         int w = WIDTH - (WIDTH % base); //big triangle's base (side)
