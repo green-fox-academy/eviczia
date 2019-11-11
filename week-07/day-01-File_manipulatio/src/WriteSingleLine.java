@@ -13,10 +13,10 @@ public class WriteSingleLine {
         // It should print the following error message: "Unable to write file: my-file.txt"
 
         String myFilesName = "my-file.txt";
-        Path lookHere = Paths.get("my-file.txt");
+        Path lookHere = Paths.get(myFilesName);
 
         List<String> content = new ArrayList<>();
- /*       try {
+/*        try {
             content = Files.readAllLines(lookHere);
         } catch (IOException e) {
             System.out.println("Sorry, cannot read 'my-file.txt'");
