@@ -19,10 +19,6 @@ public class DrawThings {
 
         }
 
-
-
-
-
 /*    private static int getUserInput() {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
@@ -36,21 +32,12 @@ public class DrawThings {
     public static void main(String[] args) {
         JFrame jFrame = new JFrame("Drawing");
         jFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        ImagePanel panel = new ImagePanel();
+        RainbowSquares.ImagePanel panel = new RainbowSquares.ImagePanel();
         panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         jFrame.add(panel);
-yyyyyyyyyyyyy        jFrame.setLocationRelativeTo(null);
+        jFrame.setLocationRelativeTo(null);
         jFrame.setVisible(true);
         jFrame.pack();
-
-        // write text
-
-        String text = "Hello, world;";
-        char[] stringArray[] = text.toCharArray();
-        for (char output: stringArray) {
-            System.out.println(output);
-        }
-
     }
 
     static class ImagePanel extends JPanel {
