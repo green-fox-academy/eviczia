@@ -8,7 +8,7 @@ public class Triangles {
     public static void mainDraw(Graphics graphics) {
 
 // define data for equlateral triangle
-        int base =50; //  little triangle's side
+        int base =15; //  little triangle's side
         int w = WIDTH - (WIDTH % base); //big triangle's base (side)
         int n = w / base; // number of lines in big triangle
 
