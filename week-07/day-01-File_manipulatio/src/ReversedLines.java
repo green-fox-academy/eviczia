@@ -23,7 +23,12 @@ public class ReversedLines {
             e.printStackTrace();
         }
         for (int i = 0; i < content.size(); i++) {
-            newContent.add(content.get(content.size() - i-1));
+            String addReversedHere = "";
+            for (int j = 0; j < content.get(i).length(); j++) {
+                String c = String.valueOf(content.get(i).charAt(content.get(i).length()-1-j));
+                addReversedHere += c;
+            }
+            newContent.add(addReversedHere);
         }
         Path pathOfReversed = Paths.get("reversed-lines-done.txt");
         try {
