@@ -6,6 +6,7 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class Triangles {
     public static void mainDraw(Graphics graphics) {
+        System.out.println(Math.pow(2, 3));
 
 // define data for equlateral triangle
         int base =5; //  little triangle's side
