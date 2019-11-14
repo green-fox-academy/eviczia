@@ -3,18 +3,15 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class Logs {
     public static void main(String[] args) {
-        Path logFileHere = Paths.get("log.txt");
         // Read all data from 'log.txt'.
+        Path logFileHere = Paths.get("log.txt");
         // Each line represents a log message from a web server
         // Write a function that returns an array with the unique IP adresses.
         uniqueIP(logFileHere);
-//        System.out.println(uniqueIP(logFileHere).length);
 
         // Write a function that returns the GET / POST request ratio.
         List<String> logContent = fileToList(logFileHere);
@@ -84,4 +81,3 @@ public class Logs {
     }
 
 }
-
