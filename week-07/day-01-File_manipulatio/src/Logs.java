@@ -3,6 +3,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Logs {
@@ -24,13 +25,13 @@ public class Logs {
         }
 
 
-        String[][] contentArray = new String[][]{};
+        String[][] arrayLine = new String[logContent.size()][];
         for (int i = 0; i < logContent.size(); i++) {
-            contentArray[i] = logContent.get(i).split(" ");
-
+           arrayLine[i] = logContent.get(i).split(" ");
+           arrayLine[i].
+           System.out.println(Arrays.toString(arrayLine[i]));
+            }
+            System.out.println();
         }
-
-
-
     }
-}
+
