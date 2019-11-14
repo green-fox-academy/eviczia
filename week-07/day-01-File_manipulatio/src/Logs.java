@@ -4,16 +4,36 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Logs {
-    // Read all data from 'log.txt'.
-// Each line represents a log message from a web server
-// Write a function that returns an array with the unique IP adresses.
     public static void main(String[] args) {
         Path logFileHere = Paths.get("log.txt");
-        System.out.println(Arrays.toString(uniqueIP(logFileHere)));
-        System.out.println(uniqueIP(logFileHere).length);
+        // Read all data from 'log.txt'.
+        // Each line represents a log message from a web server
+        // Write a function that returns an array with the unique IP adresses.
+        uniqueIP(logFileHere);
+//        System.out.println(uniqueIP(logFileHere).length);
+
+        // Write a function that returns the GET / POST request ratio.
+        List<String> logContent = fileToList(logFileHere);
+        String get = "GET";
+        String post = "POST";
+        ratioGetPost(logContent, get, post);
+    }
+
+    private static void ratioGetPost(List<String> logContent, String get, String post) {
+        int getCounter = 0;
+        int postCounter = 0;
+        for (int i = 0; i < logContent.size(); i++) {
+            if (logContent.get(i).contains(get)) {
+                getCounter++;
+            } else if (logContent.get(i).contains(post)) {
+                postCounter++;
+            }
+        }
+        System.out.printf("The GET / POST request ratio of the logfile is %d / %d \n", getCounter, postCounter);
     }
 
     private static String[] uniqueIP(Path logFileHere) {
@@ -62,7 +82,6 @@ public class Logs {
         }
         return logContent;
     }
-// Write a function that returns the GET / POST request ratio.
 
 }
 
