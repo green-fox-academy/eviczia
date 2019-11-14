@@ -14,30 +14,32 @@ public class SuperHexagon {
         int halfHeight = (int)(Math.sqrt(3)*side)/2;
         int w = WIDTH / 2;
         int h = HEIGHT / 2;
-        int[] x = new int[]{w - halfSide, w + halfSide, w + side, w + halfSide, w - halfSide, w - side, };
-        int[] y = new int[]{h - halfHeight, h - halfHeight, h, h + halfHeight, h + halfHeight, h};
+        int[] x = new int[5];
+        int[] y = new int[9];
 
    //     Polygon hex = new Polygon(w, y,side);
-        int n = 6;
-        graphics.setColor(Color.BLUE);
-        graphics.drawPolygon(x, y, n);
-
-        int hxNo = 7;
-        int xY = 2;
-        int[][] middleLineXYs = new int[hxNo][xY];
-        middleLineXYs[0][0] = -hxNo/2 * (-3*halfSide);
-        middleLineXYs[0][1] = -(hxNo/2+1) * (-3*halfSide);
-        middleLineXYs[0][2] = -(hxNo/2+2) * (-3*halfSide);
-        middleLineXYs[0][3] = -(hxNo/2+3) * (-3*halfSide);
-
-        for (int i = -3; i < hxNo-3; i++) {
-            middleLineXYs[i+3] = {
 
 
+        for (int i = 0; i < x.length; i++) {
+            x[i] = (int)(w + (i-2)*1.5 * side);
+        }
 
+        for (int i = 0; i < y.length; i++) {
+            y[i] = h + (i-4) * halfHeight;
+        }
+
+        for (int i = 0; i < y.length; i++) {
+            for (int j = 0; j < x.length; j++) {
+                if ((i+j)%2==0) {
+                    int[] xx = new int[]{x[j] - side/2, x[j] + side/2, x[j] + side, x[j] + side/2, x[j] - side/2, x[j] - side, };
+                    int[] yy = new int[]{y[i] - halfHeight, y[i] - halfHeight, y[i], y[i] + halfHeight, y[i] + halfHeight, y[i]};
+
+                    //     Polygon hex = new Polygon(w, y,side);
+                    int n = 6;
+                    graphics.setColor(Color.BLUE);
+                    graphics.drawPolygon(xx, yy, n);
+                }
             }
-            middleLineXYs
-
         }
     }
 
