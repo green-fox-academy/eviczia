@@ -10,7 +10,6 @@ public class Logs {
     // Read all data from 'log.txt'.
 // Each line represents a log message from a web server
 // Write a function that returns an array with the unique IP adresses.
-// Write a function that returns the GET / POST request ratio.
     public static void main(String[] args) {
         Path logFileHere = Paths.get("log.txt");
         System.out.println(Arrays.toString(uniqueIP(logFileHere)));
@@ -18,22 +17,13 @@ public class Logs {
     }
 
     private static String[] uniqueIP(Path logFileHere) {
-        List<String> logContent = new ArrayList<>();
         // read logfile into an ArrayList
-        try {
-            logContent = Files.readAllLines(logFileHere);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        List<String> logContent = fileToList(logFileHere);
 
         // put logcontent into a 2D Array
-        String[][] arrayLine = new String[logContent.size()][];
-        for (int i = 0; i < logContent.size(); i++) {
-            arrayLine[i] = logContent.get(i).split(" ");
- //           System.out.println((arrayLine[i][8]));
-        }
+        String[][] arrayLine = listTo2DArray(logContent);
 
-        // iterate through the line of the array, checking for IP duplicates (8th column),
+        // iterate through the lines of the array, checking for IP duplicates (8th item per line),
         // rewrite each line with the next one if duplicate, decrease n with every find
         int n = arrayLine.length;
         for (int i = 0; i < n; i++) {
@@ -54,5 +44,25 @@ public class Logs {
         }
         return uniqueIP;
     }
+
+    private static String[][] listTo2DArray(List<String> logContent) {
+        String[][] arrayLine = new String[logContent.size()][];
+        for (int i = 0; i < logContent.size(); i++) {
+            arrayLine[i] = logContent.get(i).split(" ");
+        }
+        return arrayLine;
+    }
+
+    private static List<String> fileToList(Path logFileHere) {
+        List<String> logContent = new ArrayList<>();
+        try {
+            logContent = Files.readAllLines(logFileHere);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return logContent;
+    }
+// Write a function that returns the GET / POST request ratio.
+
 }
 
