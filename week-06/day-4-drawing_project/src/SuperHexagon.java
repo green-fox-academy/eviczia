@@ -9,7 +9,7 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public class SuperHexagon {
     public static void mainDraw(Graphics graphics) {
 
-        int side = 10;
+        int side = 30;
         int halfSide = side / 2;
         int halfHeight = (int)(Math.sqrt(3)*side)/2;
         int w = WIDTH / 2;
@@ -30,7 +30,7 @@ public class SuperHexagon {
 
         for (int i = 0; i < y.length; i++) {
             for (int j = 0; j < x.length; j++) {
-                if ((i+j)%2==0) {
+                if (((i+j) % 2==0) && ((i+j!=0) && (i+j !=12) && (i-j !=8) && (j-i !=4))) {
                     int[] xx = new int[]{x[j] - side/2, x[j] + side/2, x[j] + side, x[j] + side/2, x[j] - side/2, x[j] - side, };
                     int[] yy = new int[]{y[i] - halfHeight, y[i] - halfHeight, y[i], y[i] + halfHeight, y[i] + halfHeight, y[i]};
 
