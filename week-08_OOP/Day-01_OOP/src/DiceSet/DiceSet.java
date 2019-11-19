@@ -73,10 +73,12 @@ public class DiceSet {
         System.out.println(diceSet.getCurrent());*/
 
         DiceSet diceSet1 = new DiceSet();
+        System.out.println("Initial throw of dice:");
         System.out.println(diceSet1.roll()); // roll the 6 dice
+        System.out.println("Repeated throws, keeping 6es:");
         int n = diceSet1.repeatThrowTillAll6(); // keep 6es, repeat throws till all are 6es
-        System.out.println(n); // n shows the number of repeated throws
-        System.out.println(diceSet1.getCurrent()); //show end result
+        System.out.println("Number of repeated throws: "+ n); // n shows the number of repeated throws
+        System.out.println(diceSet1.getCurrent()); //show end result (again)
 
     }
 }
