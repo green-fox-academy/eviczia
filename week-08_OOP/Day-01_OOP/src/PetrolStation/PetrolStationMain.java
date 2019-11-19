@@ -2,7 +2,7 @@ package PetrolStation;
 
 public class PetrolStationMain {
     public static void main(String[] args) {
-        Car ford = new Car(0, 100);
+        Car ford = new Car();
         Station omv = new Station(7000);
 
         System.out.println(ford.gasAmount + " " + ford.capacity + " " + omv.gasAmount);
