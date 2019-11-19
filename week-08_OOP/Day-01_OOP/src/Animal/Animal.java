@@ -3,16 +3,14 @@ package Animal;
 public class Animal {
     int hunger;
     int thirst;
-    boolean isAlive;
 
     public Animal() {
-    this(50,50, true);
+    this(50,50);
     }
 
-    public Animal(int hunger, int thirst, boolean isAlive) {
+    public Animal(int hunger, int thirst) {
         this.hunger = hunger;
         this.thirst = thirst;
-        this.isAlive = true;
     }
 
     public void eat() {
@@ -21,20 +19,12 @@ public class Animal {
 
     public void drink() {
         this.thirst --;
-        this.diedOfThirst();
     }
 
     public void play() {
         this.hunger ++;
         this.thirst ++;
     }
-
-    public void diedOfThirst() {
-        if (this.thirst <= 0) {
-            this.isAlive = false;
-            System.out.println("Sorry, your animal is dead");
-        }
-     }
 
 
     //Create an Animal class
