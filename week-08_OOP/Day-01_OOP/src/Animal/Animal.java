@@ -1,7 +1,9 @@
 package Animal;
 
+import Farm.Farm;
+
 public class Animal {
-    int hunger;
+    public int hunger;
     int thirst;
 
     public Animal() {
@@ -25,6 +27,8 @@ public class Animal {
         this.hunger ++;
         this.thirst ++;
     }
+
+
 
 
     //Create an Animal class
