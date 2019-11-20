@@ -31,15 +31,62 @@ public class TicTacToe {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String[][] matchArray = (matchFin);
-
-    }
-    private static String[][] listTo2DArray(List<String> logContent) {
-        String[][] arrayLine = new String[logContent.size()][];
-        for (int i = 0; i < logContent.size(); i++) {
-            arrayLine[i] = logContent.get(i).split(" ");
+        int counter = 0;
+        for (int i = 0; i < matchFin.size();) {
+            for (int j = 0; j < matchFin.get(i).length(); j++) {
+                if (isX(matchFin.get(i).charAt(j))) {
+                    counter ++;
+                }
+            }
+            if (counter == 3) {
+                return "X";
+            } else if (counter == 0) {
+                return "0";
+            } else {
+                counter = 0;
+                i ++;
+            }
         }
-        return arrayLine;
+        counter = 0;
+        for (int i = 0; i < matchFin.size();) {
+            for (int j = 0; j < matchFin.get(i).length(); j++) {
+                if (isX(matchFin.get(i).charAt(j))) {
+                    counter ++;
+                }
+            }
+            if (counter == 3) {
+                return "X";
+            } else if (counter == 0) {
+                return "O";
+            } else {
+                counter = 0;
+                i ++;
+            }
+        }
+        for (int i = 0; i < 3 ;) {
+            for (int j = 0; j < matchFin.size(); j++) {
+                if (isX(matchFin.get(j).charAt(i))) {
+                    counter ++;
+                }
+            }
+            if (counter == 3) {
+                return "X";
+            } else if (counter == 0) {
+                return "O";
+            } else {
+                counter = 0;
+                i ++;
+            }
+        } return "Draw";
     }
+
+    private static boolean isX(char xo) {
+        boolean isX = false;
+        if (xo == 'X') {
+            isX = true;
+        }
+        return isX;
+    }
+
 
 }
