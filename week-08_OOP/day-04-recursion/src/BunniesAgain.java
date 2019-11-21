@@ -14,7 +14,7 @@ public class BunniesAgain {
     private static int countBunniesEars(int bunnies) {
         if (bunnies == 0) {
             return 0; //no bunnies have no ears
-        } if else {
+        } if else () {
             return countBunniesEars(bunnies-1)+2; // it is not a bunny, just a pair of floppy ears
         }
     }
