@@ -47,7 +47,6 @@ public class TicTacToe {
                 i ++;
             }
         }
-        counter = 0;
         for (int i = 0; i < matchFin.size();) {
             for (int j = 0; j < matchFin.get(i).length(); j++) {
                 if (isX(matchFin.get(i).charAt(j))) {
