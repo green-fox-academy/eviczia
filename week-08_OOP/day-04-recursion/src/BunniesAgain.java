@@ -7,7 +7,7 @@ public class BunniesAgain {
     // Recursively return the number of "ears" in the bunny line 1, 2, ... n (without loops or multiplication).
 
     public static void main(String[] args) {
-        int bunnies = 4;
+        int bunnies = 120;
         System.out.printf("%d bunnies have %d floppy ears", bunnies, countBunniesEarsAgain(bunnies));
     }
 
