@@ -7,7 +7,7 @@ public class Bunnies {
         System.out.printf("%d bunnies have %d floppy ears", bunnies, countBunniesEars(bunnies));
     }
 
-    private static int countBunniesEars(int bunnies) {
+    public static int countBunniesEars(int bunnies) {
         if (bunnies == 0) {
             return 0; //no bunnies have no ears
         } else {

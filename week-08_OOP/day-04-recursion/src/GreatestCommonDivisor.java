@@ -2,7 +2,7 @@ public class GreatestCommonDivisor {
     //Greatest Common Divisor
     //Find the greatest common divisor of two numbers using recursion.
     public static void main(String[] args) {
-        System.out.println(greatestCommonDivisor(10, 225));
+        System.out.println(greatestCommonDivisor(2541, 331));
     }
 
     private static int greatestCommonDivisor(int num1, int num2) {

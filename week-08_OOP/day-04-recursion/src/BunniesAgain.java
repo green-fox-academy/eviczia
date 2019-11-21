@@ -7,15 +7,17 @@ public class BunniesAgain {
     // Recursively return the number of "ears" in the bunny line 1, 2, ... n (without loops or multiplication).
 
     public static void main(String[] args) {
-        int bunnies = 30;
-        System.out.printf("%d bunnies have %d floppy ears", bunnies, countBunniesEars(bunnies));
+        int bunnies = 4;
+        System.out.printf("%d bunnies have %d floppy ears", bunnies, countBunniesEarsAgain(bunnies));
     }
 
-    private static int countBunniesEars(int bunnies) {
+    private static int countBunniesEarsAgain(int bunnies) {
         if (bunnies == 0) {
             return 0; //no bunnies have no ears
-        } if else () {
-            return countBunniesEars(bunnies-1)+2; // it is not a bunny, just a pair of floppy ears
+        } else if (bunnies % 2 !=0 ){
+            return countBunniesEarsAgain(bunnies - 1) + 2; // it is not a bunny, just a pair of floppy ears
+        } else {
+            return countBunniesEarsAgain(bunnies - 1) + 3; // it is not a bunny, just an pair and a half of floppy ears
         }
     }
 }
