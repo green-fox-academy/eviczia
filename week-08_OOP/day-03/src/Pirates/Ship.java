@@ -23,11 +23,74 @@ import java.util.List;
 public class Ship {
     List<Pirates> thePirateCrew = new ArrayList<Pirates>();
     Pirates captain = new Pirates();
+    boolean wonBattle;
 
     public Ship() {
     }
 
     public void fillShip() {
+        this.captain = new Pirates();
+        this.thePirateCrew = new ArrayList<Pirates>();
+        for (int i = 0; i < (int) (Math.random()*30) + 5 ; i++) {
+            thePirateCrew.add(new Pirates());
+        }
+    }public int countLivePirates(List<Pirates> thePC) {
+        int livePirateCounter = 0;
+        for (int i = 0; i < thePC.size(); i++) {
+            if (!thePC.get(i).isDead) {
+                livePirateCounter ++;
+            }
+        }
+        return livePirateCounter;
+    }
 
+    public int calculateScore () {
+        int score = 0;
+        score = this.countLivePirates(this.thePirateCrew) - this.captain.intoxicationLevel;
+        return score;
+    }
+
+    public boolean battle(Ship otherShip) {
+        if (this.calculateScore() > otherShip.calculateScore()) {
+             this.wonBattle = true;
+             otherShip.wonBattle = false;
+        } else if (this.calculateScore() < otherShip.calculateScore()) {
+            this.wonBattle = false;
+            otherShip.wonBattle = true;
+        }
+        this.afterBattle();
+        otherShip.afterBattle();
+        return this.wonBattle;
+
+    }
+
+    public void afterBattle() {
+        if (this.wonBattle) {
+            System.out.println(this.captain + " and " + this.thePirateCrew + " won a battle, they may party");
+            for (int i = 0; i < 1 + (int) (Math.random() * 4); i++) {
+                this.captain.drinkSomeRum();
+                for (int i = 0; i < thePirateCrew.size(); i++) {
+                    this.thePirateCrew.get(i).drinkSomeRum();
+                }
+            }
+        } else {
+            for (int i = 0; i < thePirateCrew.size(); i++) {
+                if (!thePirateCrew.get(i).isDead) {
+                    if ((int) (Math.random() * 2) == 0) {
+                        thePirateCrew.get(i).isDead = true;
+                    }
+                }
+            }
+        }
+    }
+
+
+    @Override
+    public String toString() {
+        String result = "";
+        for(int i = 0; i < thePirateCrew.size(); i++) {
+            result += (i+1) + ". " + thePirateCrew.get(i) + "\n";
+        }
+        return result;
     }
 }

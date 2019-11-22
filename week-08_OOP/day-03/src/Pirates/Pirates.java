@@ -53,4 +53,13 @@ public class Pirates {
     public void die() {
         this.isDead = true;
     }
+
+    @Override
+    public String toString() {
+        if (!isDead & !isPassedOut) {
+            return "This pirate is alive and well (intoxication level " + this.intoxicationLevel+1 + "/5)";
+        } else if (isPassedOut) {
+            return "This pirate passed out (had too mch rum)";
+        } else return "This pirate died";
+    }
 }
