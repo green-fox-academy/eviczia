@@ -32,7 +32,7 @@ public class Ship {
         this.captain = new Pirates();
         this.thePirateCrew = new ArrayList<Pirates>();
         for (int i = 0; i < (int) (Math.random()*30) + 5 ; i++) {
-            thePirateCrew.add(new Pirates());
+            this.thePirateCrew.add(new Pirates());
         }
     }public int countLivePirates(List<Pirates> thePC) {
         int livePirateCounter = 0;
@@ -67,17 +67,19 @@ public class Ship {
     public void afterBattle() {
         if (this.wonBattle) {
             System.out.println(this.captain + " and " + this.thePirateCrew + " won a battle, they may party");
+
             for (int i = 0; i < 1 + (int) (Math.random() * 4); i++) {
                 this.captain.drinkSomeRum();
-                for (int i = 0; i < thePirateCrew.size(); i++) {
-                    this.thePirateCrew.get(i).drinkSomeRum();
+                for (int j = 0; j < this.thePirateCrew.size(); j++) {
+                    if (!this.thePirateCrew.get(j).isDead)
+                    this.thePirateCrew.get(j).drinkSomeRum();
                 }
             }
         } else {
-            for (int i = 0; i < thePirateCrew.size(); i++) {
-                if (!thePirateCrew.get(i).isDead) {
+            for (int i = 0; i < this.thePirateCrew.size(); i++) {
+                if (!this.thePirateCrew.get(i).isDead) {
                     if ((int) (Math.random() * 2) == 0) {
-                        thePirateCrew.get(i).isDead = true;
+                        this.thePirateCrew.get(i).die();
                     }
                 }
             }
@@ -88,8 +90,8 @@ public class Ship {
     @Override
     public String toString() {
         String result = "";
-        for(int i = 0; i < thePirateCrew.size(); i++) {
-            result += (i+1) + ". " + thePirateCrew.get(i) + "\n";
+        for(int i = 0; i < this.thePirateCrew.size(); i++) {
+            result += (i+1) + ". " + this.thePirateCrew.get(i) + "\n";
         }
         return result;
     }
