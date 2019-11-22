@@ -14,4 +14,43 @@
 package Pirates;
 
 public class Pirates {
+
+    boolean isDead;
+    boolean isPassedOut;
+    int intoxicationLevel;
+
+
+    public Pirates() {
+        this.isDead = false;
+        this.isPassedOut = false;
+        this.intoxicationLevel = 0;
+    }
+
+    public void drinkSomeRum() {
+        if (isDead) {
+            System.out.println("he's dead");
+        } else {
+            this.intoxicationLevel ++;
+        }
+    }
+
+    public void howsItGoingMate() {
+        if (isDead) {
+            System.out.println("he's dead");
+        } else if (this.intoxicationLevel <= 4) {
+            System.out.println("Pour me anudder!");
+            drinkSomeRum();
+        } else {
+            System.out.println("Arghh, I'ma Pirate. How d'ya d'ink its goin?");
+            passOut();
+        }
+    }
+
+    private void passOut() {
+        this.isPassedOut = true;
+    }
+
+    public void die() {
+        this.isDead = true;
+    }
 }

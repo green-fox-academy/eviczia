@@ -17,5 +17,17 @@
 //The winner captain and crew has a party, including a random number of rum :)
 package Pirates;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Ship {
+    List<Pirates> thePirateCrew = new ArrayList<Pirates>();
+    Pirates captain = new Pirates();
+
+    public Ship() {
+    }
+
+    public void fillShip() {
+
+    }
 }
