@@ -7,15 +7,17 @@ public class Strings {
 
         String stringWithX = "xax, xou did it!";
         System.out.println(stringWithX.replace('x', 'y'));
+        System.out.println(stringWithX.split("x"));
 
-        System.out.println(xIsY(stringWithX));
+//        System.out.println(xIsY(stringWithX));
     }
 
-    private static String xIsY(String x) {
-        if (x.charAt(0) == 'x'){
-            return "y" + xIsY(x.substring(1, x.length()-2));
+ /*   private static String xIsY(String x) {
+        x.split("x");
+        if (x.charAt(x.length()-1) == 'x'){
+            return xIsY(x.substring(0, x.length()-2)) + "y";
         } else {
-            return x;
+            return xIsY(x.substring(0, x.length()-1));
         }
-    }
+    }*/
 }
