@@ -59,14 +59,21 @@ public class Pirates {
     }
 
     public void brawl(Pirates otherPirate) {
-        int randomNumber = (int) (Math.random()*4);
-        if (randomNumber == 1) {
-            this.die();
-        } else if (randomNumber == 1) {
-            otherPirate.die();
-        } else {
-            this.passOut();
-            otherPirate.passOut();
+        if (
+                !this.isDead &
+                !otherPirate.isDead &
+                !this.isPassedOut &
+                !otherPirate.isPassedOut
+        )  {
+            int randomNumber = (int) (Math.random()*4);
+            if (randomNumber == 1) {
+                this.die();
+            } else if (randomNumber == 1) {
+                otherPirate.die();
+            } else {
+                this.passOut();
+                otherPirate.passOut();
+            }
         }
     }
 
