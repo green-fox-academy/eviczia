@@ -5,8 +5,8 @@ import java.util.Arrays;
 public class MaximumFinder {
     public static void main(String[] args) {
         int[] myArray = {2, 32, 43, 66, 45, 2, 88, 101, 12, 8, 10, 43};
-        int max = findMax(myArray);
-        System.out.println(max);
+  //      int max = findMax(myArray);
+  //      System.out.println(max);
 
     }
 

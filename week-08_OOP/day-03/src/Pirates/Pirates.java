@@ -31,6 +31,9 @@ public class Pirates {
             System.out.println("he's dead");
         } else {
             this.intoxicationLevel ++;
+            if (intoxicationLevel >= 4) {
+                this.passOut();
+            }
         }
     }
 
@@ -40,13 +43,14 @@ public class Pirates {
         } else if (this.intoxicationLevel <= 4) {
             System.out.println("Pour me anudder!");
             drinkSomeRum();
+            this.intoxicationLevel++;
         } else {
             System.out.println("Arghh, I'ma Pirate. How d'ya d'ink its goin?");
             passOut();
         }
     }
 
-    private void passOut() {
+    public void passOut() {
         this.isPassedOut = true;
     }
 
@@ -57,9 +61,9 @@ public class Pirates {
     @Override
     public String toString() {
         if (!isDead & !isPassedOut) {
-            return "This pirate is alive and well (intoxication level " + this.intoxicationLevel+1 + "/5)";
+            return "pirate is alive and well (intoxication level " + this.intoxicationLevel + "/4)";
         } else if (isPassedOut) {
-            return "This pirate passed out (had too mch rum)";
-        } else return "This pirate died";
+            return "pirate passed out (had too much rum)";
+        } else return "pirate died";
     }
 }

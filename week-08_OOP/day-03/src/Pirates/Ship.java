@@ -21,11 +21,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Ship {
+    String name;
     List<Pirates> thePirateCrew = new ArrayList<Pirates>();
     Pirates captain = new Pirates();
     boolean wonBattle;
 
-    public Ship() {
+    public Ship(String name) {
+        this.name = name;
     }
 
     public void fillShip() {
@@ -66,11 +68,11 @@ public class Ship {
 
     public void afterBattle() {
         if (this.wonBattle) {
-            System.out.println(this.captain + " and " + this.thePirateCrew + " won a battle, they may party");
-
             for (int i = 0; i < 1 + (int) (Math.random() * 4); i++) {
                 this.captain.drinkSomeRum();
-                for (int j = 0; j < this.thePirateCrew.size(); j++) {
+            }
+            for (int j = 0; j < this.thePirateCrew.size(); j++) {
+                for (int i = 0; i < 1 + (int) (Math.random() * 4); i++) {
                     if (!this.thePirateCrew.get(j).isDead)
                     this.thePirateCrew.get(j).drinkSomeRum();
                 }
@@ -84,12 +86,17 @@ public class Ship {
                 }
             }
         }
+        System.out.println(this.name + " won battle: " + this.wonBattle);
+    }
+
+    public void sinkShip() {
+
     }
 
 
     @Override
     public String toString() {
-        String result = "";
+        String result = "The " + this.name + " crew: \n";
         for(int i = 0; i < this.thePirateCrew.size(); i++) {
             result += (i+1) + ". " + this.thePirateCrew.get(i) + "\n";
         }
