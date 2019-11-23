@@ -10,6 +10,7 @@
 package Pirates;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Armada {
@@ -30,8 +31,18 @@ public class Armada {
         }
     }
     public boolean war(Armada otherArmada) {
+        int i = this.myArmada.size()-1;
+        int j = otherArmada.myArmada.size()-1;
         while (this.myArmada.get(0).wonBattle & otherArmada.myArmada.get(0).wonBattle) {
-            this.myArmada.get(myArmada.lastIndexOf(true)).battle(otherArmada.myArmada.get(otherArmada.myArmada.lastIndexOf(true)));
+//            this.myArmada.get(this.myArmada.lastIndexOf(true)+4).battle(otherArmada.myArmada.get(otherArmada.myArmada.lastIndexOf(true   )+4));
+            if (this.myArmada.get(i).wonBattle & otherArmada.myArmada.get(j).wonBattle) {
+                System.out.println("combat: "+ i + this.myArmada.get(i).wonBattle + " vs " + j + otherArmada.myArmada.get(j).wonBattle);
+                this.myArmada.get(i).battle(otherArmada.myArmada.get(j));
+            } else if (this.myArmada.get(i).wonBattle) {
+                j--;
+            } else {
+                i--;
+            }
         }
         if (!otherArmada.myArmada.get(0).wonBattle) {
             System.out.println(this.name + " won the war");

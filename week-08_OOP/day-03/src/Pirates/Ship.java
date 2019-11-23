@@ -93,9 +93,6 @@ public class Ship {
         System.out.println(this.name + " won battle: " + this.wonBattle);
     }
 
-    public void sinkShip() {
-
-    }
 
 
     @Override
