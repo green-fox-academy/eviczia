@@ -22,7 +22,8 @@ public class BattleApp {
         whydah.thePirateCrew.get(3).drinkSomeRum();
         whydah.thePirateCrew.get(0).drinkSomeRum();
         whydah.thePirateCrew.get(4).drinkSomeRum();
-        whydah.thePirateCrew.get(0).drinkSomeRum();
+        whydah.thePirateCrew.get(0).brawl(jollyRoger.thePirateCrew.get(3));
+        System.out.println();
         whydah.thePirateCrew.get(4).passOut();
 
         jollyRoger.captain.howsItGoingMate();

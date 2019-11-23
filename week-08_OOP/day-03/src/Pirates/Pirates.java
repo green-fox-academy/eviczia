@@ -58,12 +58,24 @@ public class Pirates {
         this.isDead = true;
     }
 
+    public void brawl(Pirates otherPirate) {
+        int randomNumber = (int) (Math.random()*4);
+        if (randomNumber == 1) {
+            this.die();
+        } else if (randomNumber == 1) {
+            otherPirate.die();
+        } else {
+            this.passOut();
+            otherPirate.passOut();
+        }
+    }
+
     @Override
     public String toString() {
         if (!isDead & !isPassedOut) {
             return "pirate is alive and well (intoxication level " + this.intoxicationLevel + "/4)";
         } else if (isPassedOut) {
-            return "pirate passed out (had too much rum)";
+            return "pirate passed out";
         } else return "pirate died";
     }
 }
