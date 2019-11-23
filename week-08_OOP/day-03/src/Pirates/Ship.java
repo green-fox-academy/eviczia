@@ -28,6 +28,7 @@ public class Ship {
 
     public Ship(String name) {
         this.name = name;
+        this.wonBattle = true;
     }
 
     public void fillShip() {
@@ -66,8 +67,8 @@ public class Ship {
         this.afterBattle();
         otherShip.afterBattle();
         return this.wonBattle;
-
     }
+
 
     public void afterBattle() {
         if (this.wonBattle) {

@@ -18,58 +18,42 @@ public class Armada {
 
     public Armada() {
     }
+
     public Armada(String name) {
         this.name = name;
     }
 
     public List<Ship> fillArmada() {
         List<Ship> armadaOfShips = new ArrayList<Ship>();
-        for (int i = 0; i < (int)(Math.random()*11 + 4); i++) {
-            armadaOfShips.add(i, new Ship("BigBadShip" + i));
+        for (int i = 0; i < (int) (Math.random() * 11 + 4); i++) {
+            armadaOfShips.add(i, new Ship("BigBadShip_" + i));
             armadaOfShips.get(i).fillShip();
         }
         return armadaOfShips;
     }
-
     public boolean war(Armada otherArmada) {
-        int nextOtherShipAtWar = 0;
-        for (int i = 0; i < this.myArmada.size();) {
-            for (int j = nextOtherShipAtWar; j < otherArmada.myArmada.size();) {
-                if (j==otherArmada.myArmada.size() & i==this.myArmada.size()) {
-                    System.out.println("draw");
-                    return false;
-                } else if (j==otherArmada.myArmada.size()) {
-                    System.out.println(this.name + " won");
-                    return true;
-                } else if (i==this.myArmada.size()){
-                    System.out.println(this.name + " lost");
-                    return false;
-                } else {
-
-                this.myArmada.get(i).battle(otherArmada.myArmada.get(j));
-
-                if (!this.myArmada.get(i).wonBattle & !otherArmada.myArmada.get(j).wonBattle) {
-                    System.out.println("hi");
-                    nextOtherShipAtWar++;
-                    j++;
-                    i++;
-                } else if (this.myArmada.get(i).wonBattle) {
-                    nextOtherShipAtWar++;
-                    j++;
-                    if (j==otherArmada.myArmada.size()) {
-                        System.out.println(this.name + " won");
-                        return true;
-                    }
-                } else {
-                    i++;
-                    if (i==this.myArmada.size()) {
-                        System.out.println(this.name + " lost");
-                        return false;
-                    }
-                }
-            }
+        while (this.myArmada.get(0).wonBattle & otherArmada.myArmada.get(0).wonBattle) {
+            this.myArmada.get(myArmada.lastIndexOf(true)).battle(otherArmada.myArmada.get(otherArmada.myArmada.lastIndexOf(true)));
         }
-        System.out.println("somethnf");
-        return false;
+        if (!otherArmada.myArmada.get(0).wonBattle) {
+            System.out.println(this.name + " won the war");
+            return true;
+        } else if (!this.myArmada.get(0).wonBattle) {
+            System.out.println(otherArmada.name + " won the war");
+            return false;
+        } else {
+            System.out.println("The war could not be decided");
+            return false;
+        }
     }
+
+    @Override
+    public String toString() {
+        String result = "The " + this.name + " ships: \n";
+        for(int i = 0; i < this.myArmada.size(); i++) {
+            result += (i+1) + ". " + this.myArmada.get(i).name + " was defeated: " + !this.myArmada.get(i).wonBattle + "\n";
+        }
+        return result;
+    }
+
 }

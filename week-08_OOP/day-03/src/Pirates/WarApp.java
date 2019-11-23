@@ -11,8 +11,11 @@ public class WarApp {
 
         thisArmada.fillArmada();
         thatArmada.fillArmada();
+        System.out.println(thisArmada.toString());
+        System.out.println(thatArmada.toString());
 
-        thisArmada.war(thatArmada);
+
+ //       thisArmada.war(thatArmada);
 
     }
 }
