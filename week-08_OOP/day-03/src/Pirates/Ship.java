@@ -59,6 +59,9 @@ public class Ship {
         } else if (this.calculateScore() < otherShip.calculateScore()) {
             this.wonBattle = false;
             otherShip.wonBattle = true;
+        } else {
+            this.wonBattle = false;
+            otherShip.wonBattle = false;
         }
         this.afterBattle();
         otherShip.afterBattle();
