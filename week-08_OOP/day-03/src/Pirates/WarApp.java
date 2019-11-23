@@ -6,8 +6,8 @@ package Pirates;
 
 public class WarApp {
     public static void main(String[] args) {
-        Armada thisArmada = new Armada("This armada");
-        Armada thatArmada = new Armada("That armada");
+        Armada thisArmada = new Armada("ThisArmada");
+        Armada thatArmada = new Armada("ThatArmada");
 
         thisArmada.fillArmada();
         thatArmada.fillArmada();
@@ -15,7 +15,11 @@ public class WarApp {
         System.out.println(thatArmada.toString());
 
 
- //       thisArmada.war(thatArmada);
+        boolean thisArmadaWon = thisArmada.war(thatArmada);
+        System.out.println(thisArmada.name + " won: " + thisArmadaWon);
+
+        System.out.println(thisArmada.toString());
+        System.out.println(thatArmada.toString());
 
     }
 }

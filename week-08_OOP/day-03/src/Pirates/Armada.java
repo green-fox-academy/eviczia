@@ -23,13 +23,11 @@ public class Armada {
         this.name = name;
     }
 
-    public List<Ship> fillArmada() {
-        List<Ship> armadaOfShips = new ArrayList<Ship>();
-        for (int i = 0; i < (int) (Math.random() * 11 + 4); i++) {
-            armadaOfShips.add(i, new Ship("BigBadShip_" + i));
-            armadaOfShips.get(i).fillShip();
+    public void fillArmada() {
+        for (int i = 0; i < (int) (Math.random() * 11) + 4; i++) {
+            this.myArmada.add(i, new Ship("BigBadShip_" + i));
+            this.myArmada.get(i).fillShip();
         }
-        return armadaOfShips;
     }
     public boolean war(Armada otherArmada) {
         while (this.myArmada.get(0).wonBattle & otherArmada.myArmada.get(0).wonBattle) {
