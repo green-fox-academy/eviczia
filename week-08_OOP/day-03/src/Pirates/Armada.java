@@ -34,9 +34,8 @@ public class Armada {
         int i = this.myArmada.size()-1;
         int j = otherArmada.myArmada.size()-1;
         while (this.myArmada.get(0).wonBattle & otherArmada.myArmada.get(0).wonBattle) {
-//            this.myArmada.get(this.myArmada.lastIndexOf(true)+4).battle(otherArmada.myArmada.get(otherArmada.myArmada.lastIndexOf(true   )+4));
             if (this.myArmada.get(i).wonBattle & otherArmada.myArmada.get(j).wonBattle) {
-                System.out.println("combat: "+ i + this.myArmada.get(i).wonBattle + " vs " + j + otherArmada.myArmada.get(j).wonBattle);
+                System.out.println("combat: "+ this.name + i + this.myArmada.get(i).wonBattle + " vs " + j + otherArmada.myArmada.get(j).wonBattle);
                 this.myArmada.get(i).battle(otherArmada.myArmada.get(j));
             } else if (this.myArmada.get(i).wonBattle) {
                 j--;
@@ -44,14 +43,14 @@ public class Armada {
                 i--;
             }
         }
-        if (!otherArmada.myArmada.get(0).wonBattle) {
-            System.out.println(this.name + " won the war");
-            return true;
-        } else if (!this.myArmada.get(0).wonBattle) {
-            System.out.println(otherArmada.name + " won the war");
+        if (!otherArmada.myArmada.get(0).wonBattle & !this.myArmada.get(0).wonBattle) {
+            System.out.println("The war could not be decided\n");
             return false;
+        } else if (!otherArmada.myArmada.get(0).wonBattle) {
+            System.out.println(this.name + " won the war\n");
+            return true;
         } else {
-            System.out.println("The war could not be decided");
+            System.out.println(otherArmada.name + " won the war\n");
             return false;
         }
     }
@@ -60,7 +59,7 @@ public class Armada {
     public String toString() {
         String result = "The " + this.name + " ships: \n";
         for(int i = 0; i < this.myArmada.size(); i++) {
-            result += (i+1) + ". " + this.myArmada.get(i).name + " was defeated: " + !this.myArmada.get(i).wonBattle + "\n";
+            result += (i+1) + ". " + this.name + this.myArmada.get(i).name + " is undefeated: " + this.myArmada.get(i).wonBattle + "\n";
         }
         return result;
     }
