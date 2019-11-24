@@ -59,7 +59,9 @@ public class Pirates {
     }
 
     public void brawl(Pirates otherPirate) {
-        if (
+        if (isDead) {
+            System.out.println("he's dead");
+        } else if (
                 !this.isDead &
                 !otherPirate.isDead &
                 !this.isPassedOut &
