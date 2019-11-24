@@ -68,7 +68,7 @@ public class Pirates {
             int randomNumber = (int) (Math.random()*4);
             if (randomNumber == 1) {
                 this.die();
-            } else if (randomNumber == 1) {
+            } else if (randomNumber == 2) {
                 otherPirate.die();
             } else {
                 this.passOut();
