@@ -13,6 +13,7 @@ public class TicTacToe {
         // We have provided you some example files (draw.txt, win-x.txt, win-o.txt)
         // Return "X", "O" or "Draw" based on the input file
 
+
         System.out.println(ticTacResult("win-o.txt"));
         // Should print "O"
 
@@ -31,6 +32,38 @@ public class TicTacToe {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        String result = checkLinesForWin(matchFin);
+        if (result.equals("draw")) {
+            result = checkDiagonalForWin(matchFin);
+        } else {
+            return result;
+        }
+        if (result.equals("draw")) {
+            result = checkLinesForWin(rotateMatrix(matchFin));
+        } else {
+            return result;
+        }
+        return result;
+    }
+
+    private static String checkDiagonalForWin (List<String> matchFin) {
+        String result = "draw";
+        if (isX(matchFin.get(0).charAt(0)) & isX(matchFin.get(1).charAt(1)) & isX(matchFin.get(2).charAt(2))) {
+            result = "X";
+        }
+        if (!isX(matchFin.get(0).charAt(0)) & !isX(matchFin.get(1).charAt(1)) & !isX(matchFin.get(2).charAt(2))) {
+            result = "O";
+        }
+        if (isX(matchFin.get(0).charAt(2)) & isX(matchFin.get(1).charAt(1)) & isX(matchFin.get(2).charAt(0))) {
+            result = "X";
+        }
+        if (!isX(matchFin.get(0).charAt(2)) & !isX(matchFin.get(1).charAt(1)) & !isX(matchFin.get(2).charAt(0))) {
+            result = "O";
+        }
+        return result;
+        }
+
+    private static String checkLinesForWin(List<String> matchFin) {
         int counter = 0;
         for (int i = 0; i < matchFin.size();) {
             for (int j = 0; j < matchFin.get(i).length(); j++) {
@@ -46,37 +79,17 @@ public class TicTacToe {
                 counter = 0;
                 i ++;
             }
-        }
-        for (int i = 0; i < matchFin.size();) {
+        } return "draw";
+    }
+
+    private static List<String> rotateMatrix(List<String> matchFin) {
+        List<String> rotatedMatchfin = new ArrayList<>();
+        for (int i = 0; i < matchFin.size(); i++) {
             for (int j = 0; j < matchFin.get(i).length(); j++) {
-                if (isX(matchFin.get(i).charAt(j))) {
-                    counter ++;
-                }
-            }
-            if (counter == 3) {
-                return "X";
-            } else if (counter == 0) {
-                return "O";
-            } else {
-                counter = 0;
-                i ++;
+                rotatedMatchfin.add(i, matchFin.get(i).substring(matchFin.get(i).length()-j));
             }
         }
-        for (int i = 0; i < 3 ;) {
-            for (int j = 0; j < matchFin.size(); j++) {
-                if (isX(matchFin.get(j).charAt(i))) {
-                    counter ++;
-                }
-            }
-            if (counter == 3) {
-                return "X";
-            } else if (counter == 0) {
-                return "O";
-            } else {
-                counter = 0;
-                i ++;
-            }
-        } return "Draw";
+        return rotatedMatchfin;
     }
 
     private static boolean isX(char xo) {
