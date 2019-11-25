@@ -35,7 +35,7 @@ public class Armada {
         int j = otherArmada.myArmada.size()-1;
         while (this.myArmada.get(0).wonBattle & otherArmada.myArmada.get(0).wonBattle) {
             if (this.myArmada.get(i).wonBattle & otherArmada.myArmada.get(j).wonBattle) {
-                System.out.println("combat: "+ this.name + i + this.myArmada.get(i).wonBattle + " vs " + j + otherArmada.myArmada.get(j).wonBattle);
+                System.out.println("combat: "+ this.name + i + this.myArmada.get(i).wonBattle + " vs " + otherArmada.name + j + otherArmada.myArmada.get(j).wonBattle);
                 this.myArmada.get(i).battle(otherArmada.myArmada.get(j));
             } else if (this.myArmada.get(i).wonBattle) {
                 j--;
