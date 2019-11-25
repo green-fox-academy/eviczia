@@ -8,39 +8,29 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class Squares {
     public static void mainDraw(Graphics graphics) {
-
-        int n = 3;
-        int w = WIDTH;
-        int h = HEIGHT;
-        splitIntoThree(w, h, n, graphics);
-    }
-
-    private static void splitIntoThree(int w, int h, int n, Graphics graphics) {
         graphics.setColor(Color.yellow);
         graphics.fillRect(0,0, WIDTH, HEIGHT);
 
-        int startX = 0;
-        int startY = 0;
-
-        w = w /n;
-        h = h /n;
+        int n = 3;
+        int size = WIDTH/3;
+        int level = 5;
         graphics.setColor(Color.black);
-        drawLines(startX, startY, w, h, n, graphics);
+        splitIntoThree(size, n, level, graphics);
     }
 
-    private static void drawLines(int startX, int startY, int w, int h, int n, Graphics graphics) {
-        if (w == w/n/n/n/n/n) {
+    private static void splitIntoThree(int size, int n, int level, Graphics graphics) {
+        if (size == size /(Math.pow(n, level))) {
             return;
         }
-        for (int i = 1; i < n; i++) {
-            graphics.drawLine(startX + i * w, startY, startX + i * w, startY + n * h);
-            graphics.drawLine(startX, startY + i * h,  startX + n * w, startY + i * h);
-            startX = startX + i * w;
-            startY = startY + i* h;
-            drawLines(startX, startY, w/n, h/n, n, graphics);
-        }
+        graphics.drawLine(WIDTH/2-size/2, 0, WIDTH/2-size/2, HEIGHT);
+        graphics.drawLine(WIDTH/2+size/2, 0, WIDTH/2+size/2, HEIGHT);
+        graphics.drawLine(0, HEIGHT/2-size/2, WIDTH, HEIGHT/2-size/2);
+        graphics.drawLine(0, HEIGHT/2+size/2, WIDTH, HEIGHT/2+size/2);
+
+        splitIntoThree(size/n, n, level -1, graphics);
 
     }
+// TODO
 
 
     static int WIDTH = 320;
