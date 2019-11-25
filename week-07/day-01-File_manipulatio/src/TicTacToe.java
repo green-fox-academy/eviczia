@@ -8,11 +8,6 @@ import java.util.List;
 public class TicTacToe {
 
     public static void main(String[] args) {
-        // Write a function that takes a filename as a parameter
-        // The file contains an ended Tic-Tac-Toe match
-        // We have provided you some example files (draw.txt, win-x.txt, win-o.txt)
-        // Return "X", "O" or "Draw" based on the input file
-
 
         System.out.println(ticTacResult("win-o.txt"));
         // Should print "O"
@@ -25,6 +20,55 @@ public class TicTacToe {
     }
 
     private static String ticTacResult(String s) {
+
+        // read match results from text files, return output in an int Array
+        // (ie: OXOOXXOOX = [0, 1, 0, 0, 1, 1, 0, 0, 1])
+        int[] intResult = matchToIntArray(s);
+
+        // put the 8 instances of winning combination in a 2D array,
+        // where the 1s in each line represent a possible winning combination
+        int[][] winners = fillWinningSequences();
+
+        // compare the given match to the winning sequences by multiplying each match line item
+        // with the corresponding winning matrix line item and sum lines
+        int winnerInt[] = traceWinners(intResult, winners);
+
+        // winning lines can be recognised because they contain a 0 (then "O" wins") or a 3 (then "X" wins")
+        // if they contain neither, then it's a draw
+        for (int i = 0; i < 8; i++) {
+            switch (winnerInt[i]) {
+                case 3:
+                    return "X";
+                case 0:
+                    return "O";
+            }
+        }
+        return "Draw";
+    }
+
+    private static int[] traceWinners(int[] intResult, int[][] winners) {
+        int[] winnerInt = new int[8];
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 9; j++) {
+                winnerInt[i] += intResult[j] * winners[i][j];
+            }
+        } return winnerInt;
+    }
+
+    private static int[][] fillWinningSequences() {
+        int[][] winners = new int[][]{
+        {1, 0, 0, 1, 0, 0, 1, 0, 0},
+        {0, 1, 0, 0, 1, 0, 0, 1, 0},
+        {0, 0, 1, 0, 0, 1, 0, 0, 1},
+        {1, 1, 1, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 1, 1, 1, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 1, 1, 1},
+        {1, 0, 0, 0, 1, 0, 0, 0, 1},
+        {0, 0, 1, 0, 1, 0, 1, 0, 0}};
+        return winners;
+    }
+
+    private static int[] matchToIntArray(String s) {
         Path path = Paths.get(s);
         List<String> matchFin = new ArrayList<>();
         try {
@@ -32,73 +76,18 @@ public class TicTacToe {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String result = checkLinesForWin(matchFin);
-        if (result.equals("draw")) {
-            result = checkDiagonalForWin(matchFin);
-        } else {
-            return result;
-        }
-        if (result.equals("draw")) {
-            result = checkLinesForWin(rotateMatrix(matchFin));
-        } else {
-            return result;
-        }
-        return result;
-    }
-
-    private static String checkDiagonalForWin (List<String> matchFin) {
-        String result = "draw";
-        if (isX(matchFin.get(0).charAt(0)) & isX(matchFin.get(1).charAt(1)) & isX(matchFin.get(2).charAt(2))) {
-            result = "X";
-        }
-        if (!isX(matchFin.get(0).charAt(0)) & !isX(matchFin.get(1).charAt(1)) & !isX(matchFin.get(2).charAt(2))) {
-            result = "O";
-        }
-        if (isX(matchFin.get(0).charAt(2)) & isX(matchFin.get(1).charAt(1)) & isX(matchFin.get(2).charAt(0))) {
-            result = "X";
-        }
-        if (!isX(matchFin.get(0).charAt(2)) & !isX(matchFin.get(1).charAt(1)) & !isX(matchFin.get(2).charAt(0))) {
-            result = "O";
-        }
-        return result;
-        }
-
-    private static String checkLinesForWin(List<String> matchFin) {
-        int counter = 0;
-        for (int i = 0; i < matchFin.size();) {
-            for (int j = 0; j < matchFin.get(i).length(); j++) {
-                if (isX(matchFin.get(i).charAt(j))) {
-                    counter ++;
-                }
-            }
-            if (counter == 3) {
-                return "X";
-            } else if (counter == 0) {
-                return "0";
-            } else {
-                counter = 0;
-                i ++;
-            }
-        } return "draw";
-    }
-
-    private static List<String> rotateMatrix(List<String> matchFin) {
-        List<String> rotatedMatchfin = new ArrayList<>();
+        String stringResult = "";
         for (int i = 0; i < matchFin.size(); i++) {
-            for (int j = 0; j < matchFin.get(i).length(); j++) {
-                rotatedMatchfin.add(i, matchFin.get(i).substring(matchFin.get(i).length()-j));
+            stringResult += matchFin.get(i);
+        }
+        int[] intResult = new int[9];
+        for (int i = 0; i < 9; i++) {
+            String xXx = "X";
+            if (stringResult.substring(i, i+1).equals(xXx)) {
+                intResult[i] = 1;
+            } else {
+                intResult[i] = 0;
             }
-        }
-        return rotatedMatchfin;
+        } return intResult;
     }
-
-    private static boolean isX(char xo) {
-        boolean isX = false;
-        if (xo == 'X') {
-            isX = true;
-        }
-        return isX;
-    }
-
-
 }
