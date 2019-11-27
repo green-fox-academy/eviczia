@@ -15,7 +15,8 @@ public class Unique {
 //        System.out.println(Arrays.toString(listNumbers));
 
         //  Example                                          0   1   2   3   4   5   6  7
-        System.out.println(Arrays.toString(unique(new int[] {1, 11, 34, 11, 52, 61, 1, 34})));
+        System.out.println(Arrays.toString(unique(new int[] {1, 11, 34, 11, 52, 61,
+                1, 34})));
         //  should print: `[1, 11, 34, 52, 61]`
 
     }

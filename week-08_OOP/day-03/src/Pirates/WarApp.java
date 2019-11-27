@@ -6,8 +6,8 @@ package Pirates;
 
 public class WarApp {
     public static void main(String[] args) {
-        Armada thisArmada = new Armada("This");
-        Armada thatArmada = new Armada("That");
+        Armada thisArmada = new Armada("Bandi");
+        Armada thatArmada = new Armada("Miki");
 
         thisArmada.fillArmada();
         thatArmada.fillArmada();
