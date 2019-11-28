@@ -14,20 +14,37 @@ public class Squares {
         int n = 3;
         int size = WIDTH/3;
         int level = 5;
+        int cornerX = 0;
+        int cornerY = 0;
         graphics.setColor(Color.black);
-        splitIntoThree(size, n, level, graphics);
+        splitIntoThree(cornerX, cornerY, size, level, graphics);
+        level = level-1;
+        cornerX = size;
+        cornerY = 0;
+        splitIntoThree(cornerX, cornerY, size/3, level, graphics);
+
+        cornerX = 0;
+        cornerY = size;
+        splitIntoThree(cornerX, cornerY, size/3, level, graphics);
+
+        cornerX = size;
+        cornerY = 2*size;
+        splitIntoThree(cornerX, cornerY, size/3, level, graphics);
+
+        cornerX = 2*size;
+        cornerY = size;
+        splitIntoThree(cornerX, cornerY, size/3, level, graphics);
     }
 
-    private static void splitIntoThree(int size, int n, int level, Graphics graphics) {
-        if (size == size /(Math.pow(n, level))) {
+    private static void splitIntoThree(int cornerX, int cornerY, int size, int level, Graphics graphics) {
+/*        if (size == size /(Math.pow(n, level))) {
             return;
-        }
-        graphics.drawLine(WIDTH/2-size/2, 0, WIDTH/2-size/2, HEIGHT);
-        graphics.drawLine(WIDTH/2+size/2, 0, WIDTH/2+size/2, HEIGHT);
-        graphics.drawLine(0, HEIGHT/2-size/2, WIDTH, HEIGHT/2-size/2);
-        graphics.drawLine(0, HEIGHT/2+size/2, WIDTH, HEIGHT/2+size/2);
-
-        splitIntoThree(size/n, n, level -1, graphics);
+        }*/
+        int w = 3*size;
+        graphics.drawLine(cornerX+size, cornerY,  cornerX+size, cornerY+3*size);
+        graphics.drawLine(cornerX+2*size, cornerY, cornerX+2*size, cornerY+3*size);
+        graphics.drawLine(cornerX, cornerY+size, cornerX+3*size, cornerY+size);
+        graphics.drawLine(cornerX, cornerY+2*size, cornerX+3*size, cornerY+2*size);
 
     }
 // TODO
