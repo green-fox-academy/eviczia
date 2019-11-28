@@ -7,22 +7,21 @@ public class Sierpinsky_Carpet {
 
         int size = WIDTH/3;
         drawSquare(size, graphics);
-        drawNineSquares(size/3, graphics);
+        int limit = 6;
+        drawNineSquares(size/3, limit, graphics);
     }
 
-    private static void drawNineSquares(int size, Graphics graphics) {
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
+    private static void drawNineSquares(int size, int limit, Graphics graphics) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
                 int x = size*(j*3 +1);
                 int y= size*(i*3 +1);
                 graphics.fillRect(x, y, size, size);
-
-
             }
-
         }
-
-
+        if (size> WIDTH/Math.pow(3,limit)) {
+            drawNineSquares(size/3, limit, graphics);
+        }
     }
 
     private static void drawSquare(int size, Graphics graphics) {
@@ -33,8 +32,8 @@ public class Sierpinsky_Carpet {
 
     }
 
-    static int WIDTH = 320;
-    static int HEIGHT = 320;
+    static int WIDTH = 729;
+    static int HEIGHT = 729;
 
     public static void main(String[] args) {
         JFrame jFrame = new JFrame("Drawing");
