@@ -11,9 +11,8 @@ public class Squares {
         graphics.setColor(Color.yellow);
         graphics.fillRect(0,0, WIDTH, HEIGHT);
 
-        int n = 3;
         int size = WIDTH/3;
-        int level = 3;
+        int level = 4;
         int cornerX = 0;
         int cornerY = 0;
         graphics.setColor(Color.black);
@@ -22,6 +21,7 @@ public class Squares {
 
     private static void splitIntoThree(int cornerX, int cornerY, int size, int level, Graphics graphics) {
         int w = 3*size;
+//        graphics.drawRect(cornerX, cornerY, size*3, size*3);
         graphics.drawLine(cornerX+size, cornerY,  cornerX+size, cornerY+3*size);
         graphics.drawLine(cornerX+2*size, cornerY, cornerX+2*size, cornerY+3*size);
         graphics.drawLine(cornerX, cornerY+size, cornerX+3*size, cornerY+size);
@@ -44,8 +44,8 @@ public class Squares {
 // TODO
 
 
-    static int WIDTH = 320;
-    static int HEIGHT = 320;
+    static int WIDTH = 729;
+    static int HEIGHT = 729;
 
     public static void main(String[] args) {
         JFrame jFrame = new JFrame("Drawing");
