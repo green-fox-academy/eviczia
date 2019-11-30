@@ -22,7 +22,7 @@ public class DrawTriangle {
                 starNr++;
             }
             System.out.println();
-            line ++;
+            line++;
         }
     }
- }
+}
