@@ -1,11 +1,13 @@
 import javax.swing.*;
-
 import java.awt.*;
-import java.util.Arrays;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class EnvelopeStar {
+    // Don't touch the code below
+    static int WIDTH = 320;
+    static int HEIGHT = 320;
+
     public static void mainDraw(Graphics graphics) {
         int w = WIDTH / 2;
         int h = HEIGHT / 2;
@@ -15,17 +17,12 @@ public class EnvelopeStar {
         graphics.setColor(Color.GREEN);
 
         for (int i = 0; i < units; i++) {
-            graphics.drawLine(w, i*unitLength, w-(i+1)*unitLength, h);
-            graphics.drawLine(w, i*unitLength, w+(i+1)*unitLength, h);
-            graphics.drawLine(w, h + (i+1)*unitLength, i*unitLength, h);
-            graphics.drawLine(w, h + (i+1)*unitLength, 2*w-i*unitLength, h);
+            graphics.drawLine(w, i * unitLength, w - (i + 1) * unitLength, h);
+            graphics.drawLine(w, i * unitLength, w + (i + 1) * unitLength, h);
+            graphics.drawLine(w, h + (i + 1) * unitLength, i * unitLength, h);
+            graphics.drawLine(w, h + (i + 1) * unitLength, 2 * w - i * unitLength, h);
         }
-   }
-
-
-    // Don't touch the code below
-    static int WIDTH = 320;
-    static int HEIGHT = 320;
+    }
 
     public static void main(String[] args) {
         JFrame jFrame = new JFrame("Drawing");
