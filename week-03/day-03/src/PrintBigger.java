@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 public class PrintBigger {
-    // Write a program that asks for two numbers and prints the bigger one
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
@@ -13,12 +12,8 @@ public class PrintBigger {
         if (firstNr > secondNr) {
             System.out.println(firstNr + " is bigger.");
         } else if (secondNr > firstNr) {
-            System.out.println(secondNr  + " is bigger.");
-        /*} else {
-            System.out.println("cool");*/
+            System.out.println(secondNr + " is bigger.");
         }
-
-
     }
 
 }
