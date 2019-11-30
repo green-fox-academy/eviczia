@@ -1,10 +1,13 @@
 import javax.swing.*;
-
 import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class LinePlay {
+    // Don't touch the code below
+    static int WIDTH = 320;
+    static int HEIGHT = 320;
+
     public static void mainDraw(Graphics graphics) {
         // draw a red horizontal line to the canvas' middle.
         // draw a green vertical line to the canvas' middle.
@@ -15,7 +18,6 @@ public class LinePlay {
         int startY = 0;
         lineplayNE(startX, startY, density, w, h, graphics);
         lineplaySW(startX, startY, density, w, h, graphics);
-
     }
 
     private static void lineplaySW(int startX, int startY, int density, int w, int h, Graphics graphics) {
@@ -39,12 +41,6 @@ public class LinePlay {
             }
         }
     }
-
-
-
-    // Don't touch the code below
-    static int WIDTH = 320;
-    static int HEIGHT = 320;
 
     public static void main(String[] args) {
         JFrame jFrame = new JFrame("Drawing");
