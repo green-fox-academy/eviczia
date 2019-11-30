@@ -1,7 +1,7 @@
 public class DrawDiamondWithTwoMiddleLines {
     public static void main(String[] args) {
         int userInput = _PleaseEnterWholeNumber.getUserInput();
-        if (!((userInput % 2) ==0)) {
+        if (!((userInput % 2) == 0)) {
             int line = 1;
             while (line <= ((userInput + 1) / 2)) {
                 int starNr = 1;
