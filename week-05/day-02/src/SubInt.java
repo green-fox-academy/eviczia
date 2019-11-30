@@ -7,9 +7,9 @@ public class SubInt {
         //  Or returns an empty array if the number is not part of any of the integers in the array
 
         //  Example:
-        System.out.println(Arrays.toString(subInt(1, new int[] {1, 11, 34, 52, 61})));
+        System.out.println(Arrays.toString(subInt(1, new int[]{1, 11, 34, 52, 61})));
         //  should print: `[0, 1, 4]`
-        System.out.println(Arrays.toString(subInt(9, new int[] {1, 11, 34, 52, 61})));
+        System.out.println(Arrays.toString(subInt(9, new int[]{1, 11, 34, 52, 61})));
 //        System.out.println(subInt(9, new int[] {1, 11, 34, 52, 61}));
         //  should print: '[]'
     }
@@ -19,15 +19,12 @@ public class SubInt {
         String[] intsS = new String[ints.length];
         for (int j = 0; j < ints.length; j++) {
             intsS[j] = Integer.toString(ints[j]);
-            if (intsS[j].indexOf(iS) == -1) {
+            if (!intsS[j].contains(iS)) {
                 intsS[j] = "not";
             } else {
                 intsS[j] = Integer.toString(j);
             }
-  //          System.out.println(Arrays.binarySearch(intsS,"not"));
         }
-        
-
         return intsS;
     }
 }
