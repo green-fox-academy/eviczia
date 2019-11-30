@@ -4,7 +4,7 @@ public class ConditionalVariableMutation {
         int out = 0;
         // if a is even increment out by one
         if ((a % 2) == 0) {
-            out ++;
+            out++;
         }
         System.out.println(out);
 
@@ -13,16 +13,15 @@ public class ConditionalVariableMutation {
         // if b is between 10 and 20 set out2 to "Sweet!"
         if ((10 <= b) && (b <= 20)) {
             out2 = "Sweet!";
-        // if less than 10 set out2 to "Less!",
+            // if less than 10 set out2 to "Less!",
         } else if (b < 10) {
             out2 = "Less!";
-        // if more than 20 set out2 to "More!"
-        } else  {
+            // if more than 20 set out2 to "More!"
+        } else {
             out2 = "More!";
         }
 
         System.out.println(out2);
-
 
 
         int c = 123;
@@ -39,12 +38,10 @@ public class ConditionalVariableMutation {
         } else if (credits >= 50) {
             c -= 2;
         } else {
-            c --;
+            c--;
         }
 
         System.out.println(c);
-
-
 
 
         int d = 8;
