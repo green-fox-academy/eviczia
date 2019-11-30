@@ -6,8 +6,8 @@ public class HelloOthers {
         // Hello, Esther!
         // Hello, Mary!
         // Hello, Joe!
-        System.out.println("Hello, Gabi");
-        System.out.println("Hello, Hajni");
-        System.out.println("Hello, Csenge");
+        System.out.println("Hello, Gabi!");
+        System.out.println("Hello, Hajni!");
+        System.out.println("Hello, Csenge!");
     }
 }
