@@ -21,22 +21,22 @@ public class LinePlay {
     }
 
     private static void lineplaySW(int startX, int startY, int density, int w, int h, Graphics graphics) {
-        for (int i = startX; i < w; i = i + w / density) {
-            for (int j = startY + 1; j <= h; j = j + h / density) {
+        for (int i = startX; i < w; i += w / density) {
+            for (int j = startY + 1; j <= h; j += h / density) {
                 if (Math.abs(i - j) == 1) {
                     graphics.setColor(Color.GREEN);
-                    graphics.drawLine(0, i, j, h);
+                    graphics.drawLine(startX, i, j + h / density , h);
                 }
             }
         }
     }
 
     private static void lineplayNE(int startX, int startY, int density, int w, int h, Graphics graphics) {
-        for (int i = startX; i < w; i = i + w / density) {
-            for (int j = startY + 1; j <= h; j = j + h / density) {
+        for (int i = startX; i < w; i += w / density) {
+            for (int j = startY + 1; j <= h; j += h / density) {
                 if (Math.abs(i - j) == 1) {
                     graphics.setColor(new Color(200, 32, 255));
-                    graphics.drawLine(i, 0, h, j);
+                    graphics.drawLine(i, startY, h, j + w / density);
                 }
             }
         }
