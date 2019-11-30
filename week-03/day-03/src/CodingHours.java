@@ -12,7 +12,6 @@ public class CodingHours {
         int sumCodinHours = hrPerDay * semWeeks * 5;
         System.out.println(sumCodinHours);
 
-        //
         // Print the percentage of the coding hours in the semester if the average
         // work hours weekly is 52
 
