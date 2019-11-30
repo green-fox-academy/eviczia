@@ -10,6 +10,5 @@ public class HelloUser {
         String usersName = scanner.nextLine();
 
         System.out.println("Hello, " + usersName + "!");
-
     }
 }
