@@ -1,5 +1,6 @@
-import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class SubInt_List {
     public static void main(String[] args) {
@@ -8,44 +9,31 @@ public class SubInt_List {
         //  Or returns an empty array if the number is not part of any of the integers in the array
 
         //  Example:
-        System.out.println(Arrays.toString(eliminateNots(subInt(1, new int[] {1, 11, 34, 52, 61}))));
+        System.out.println(Arrays.toString(subInt(1, new int[]{1, 11, 34, 52, 61})));
         //  should print: `[0, 1, 4]`
-        System.out.println(Arrays.toString(eliminateNots(subInt(9, new int[] {1, 11, 34, 52, 61}))));
-//        System.out.println(subInt(9, new int[] {1, 11, 34, 52, 61}));
+        System.out.println(Arrays.toString(subInt(9, new int[]{1, 11, 34, 52, 61})));
+        //  System.out.println(subInt(9, new int[] {1, 11, 34, 52, 61}));
         //  should print: '[]'
     }
 
-    private static String[] subInt(int i, int[] ints) {
-        String iS = Integer.toString(i);
-        String[] intsS = new String[ints.length];
+    private static int[] subInt(int i, int[] ints) {
+        List<Integer> indexOfTrues = new ArrayList<>();
         for (int j = 0; j < ints.length; j++) {
-            intsS[j] = Integer.toString(ints[j]);
-            if (intsS[j].indexOf(iS) == -1) {
-                intsS[j] = "not";
-            } else {
-                intsS[j] = Integer.toString(j);
-            }
-        }
-        return intsS;
-    }
-
-    private static String[] eliminateNots(String[] withNot) {
-        int counter = 0;
-        for (int i = 0; i < withNot.length; i++) {
-            if (withNot[i] != "not") {
-                counter += 1;
-            }
-        }
-        String[] output = new String[counter];
-        for (int i = 0; i < withNot.length; i++) {
-            for (int j = 0; j < counter; j++) {
-                if (withNot[i] == "not") {
+            while (ints[j] >= 1) {
+                if (ints[j] % 10 == i) {
+                    indexOfTrues.add(j);
                     break;
                 } else {
-                output[j]= withNot[i];
+                    ints[j] /= 10;
                 }
             }
         }
-        return output;
+        int[] indexes = new int[indexOfTrues.size()];
+        for (int j = 0; j < indexOfTrues.size(); j++) {
+            indexes[j] = indexOfTrues.get(j);
+        }
+        return indexes;
     }
 }
+
+
