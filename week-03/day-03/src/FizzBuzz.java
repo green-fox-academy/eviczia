@@ -5,7 +5,7 @@ public class FizzBuzz {
         // and for the multiples of five print “Buzz”.
         // For numbers which are multiples of both three and five print “FizzBuzz”.
         int i = 1;
-        while ( i <= 100) {
+        while (i <= 100) {
             if (((i % 3) == 0) & ((i % 5) == 0)) {
                 System.out.println("Fizzbuzz");
             } else if ((i % 3) == 0) {
@@ -15,7 +15,7 @@ public class FizzBuzz {
             } else {
                 System.out.println(i);
             }
-            i ++;
+            i++;
         }
     }
 }
