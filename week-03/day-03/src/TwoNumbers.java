@@ -17,8 +17,8 @@ public class TwoNumbers {
         System.out.println(e);
 
         // Print the result of 22 divided by 13 (as a decimal fraction)
-        double A  = 22;
-        double B  = 13;
+        double A = 22;
+        double B = 13;
         double F = A / B;
         System.out.println(F);
 
