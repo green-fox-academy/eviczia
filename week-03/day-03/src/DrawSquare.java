@@ -12,7 +12,7 @@ public class DrawSquare {
     //
     // The square should have as many lines as the number was
     public static void main(String[] args) {
-       int userInput = _PleaseEnterWholeNumber.getUserInput();
+        int userInput = _PleaseEnterWholeNumber.getUserInput();
         drawHorizontal(userInput);
         drawVerticals(userInput);
         drawHorizontal(userInput);
@@ -26,7 +26,7 @@ public class DrawSquare {
     }
 
     private static void drawVerticals(int limit) {
-        for (int line =2; line < limit; line++) {
+        for (int line = 2; line < limit; line++) {
             System.out.print("%");
             int spaceNr = 1;
             while ((spaceNr >= 1) & (spaceNr < limit - 1)) {
