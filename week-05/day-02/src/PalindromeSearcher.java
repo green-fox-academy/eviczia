@@ -1,5 +1,3 @@
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,20 +16,35 @@ public class PalindromeSearcher {
         String text3 = "racecar";
         String text4 = "";
 
-        List<String> foundPalindromes = findPalindromes(text1);
-        System.out.println(foundPalindromes.toString());
+        List<String> foundPalindromes1 = findPalindromes(text1);
+        System.out.println(foundPalindromes1.toString());
+        List<String> foundPalindromes2 = findPalindromes(text2);
+        System.out.println(foundPalindromes2.toString());
+        List<String> foundPalindromes3 = findPalindromes(text3);
+        System.out.println(foundPalindromes3.toString());
+        List<String> foundPalindromes4 = findPalindromes(text4);
+        System.out.println(foundPalindromes4.toString());
     }
 
     private static List<String> findPalindromes(String text) {
         List<String> palindromes = new ArrayList<>();
-
-        for (int i = 1; i < text.length() - 1; i++) {
+        for (int i = 1; i < text.length(); i++) {
             for (int j = 1; j < Math.min(i + 1, text.length() - i); j++) {
-                if (text.substring(i - j, i).equals(text.substring(i + j, i + j + 1))) {
+                if (j > 1 & text.substring(i - j, i).equals(reverse(text.substring(i, i + j)))) {
+                    palindromes.add(text.substring(i - j, i + j));
+                } else if (text.substring(i - j, i).equals(reverse(text.substring(i + 1, i + j + 1)))) {
                     palindromes.add(text.substring(i - j, i + j + 1));
                 }
             }
         }
         return palindromes;
+    }
+
+    private static String reverse(String substring) {
+        StringBuilder reversedLetters = new StringBuilder();
+        for (int i = substring.length() - 1; i >= 0; i--) {
+            reversedLetters.append(substring.charAt(i));
+        }
+        return reversedLetters.toString();
     }
 }
