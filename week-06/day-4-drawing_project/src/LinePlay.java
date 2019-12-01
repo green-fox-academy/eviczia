@@ -9,36 +9,27 @@ public class LinePlay {
     static int HEIGHT = 320;
 
     public static void mainDraw(Graphics graphics) {
-        // draw a red horizontal line to the canvas' middle.
-        // draw a green vertical line to the canvas' middle.
         int density = 20;
         int w = WIDTH;
-        int h = HEIGHT;
         int startX = 0;
         int startY = 0;
-        lineplayNE(startX, startY, density, w, h, graphics);
-        lineplaySW(startX, startY, density, w, h, graphics);
+        lineplay(startX, startY, density, w, graphics);
     }
 
-    private static void lineplaySW(int startX, int startY, int density, int w, int h, Graphics graphics) {
-        for (int i = startX; i < w; i += w / density) {
-            for (int j = startY + 1; j <= h; j += h / density) {
-                if (Math.abs(i - j) == 1) {
-                    graphics.setColor(Color.GREEN);
-                    graphics.drawLine(startX, i, j + h / density , h);
-                }
+    private static void lineplay(int startX, int startY, int density, int w, Graphics graphics) {
+        for (int i = 0; i < w; i += w / density) {
+            for (int j = 1; j <= w; j += w / density) {
+                drawColouredLine(startX, startY, density, w, graphics, i, j);
             }
         }
     }
 
-    private static void lineplayNE(int startX, int startY, int density, int w, int h, Graphics graphics) {
-        for (int i = startX; i < w; i += w / density) {
-            for (int j = startY + 1; j <= h; j += h / density) {
-                if (Math.abs(i - j) == 1) {
-                    graphics.setColor(new Color(200, 32, 255));
-                    graphics.drawLine(i, startY, h, j + w / density);
-                }
-            }
+    static void drawColouredLine(int startX, int startY, int density, int w, Graphics graphics, int i, int j) {
+        if (Math.abs(i - j) == 1) {
+            graphics.setColor(Color.GREEN);
+            graphics.drawLine(startX, startY + i, startX + j + w / density, startY + w);
+            graphics.setColor(new Color(200, 32, 255));
+            graphics.drawLine(startX + i, startY, startX + w, startY + j + w / density);
         }
     }
 
