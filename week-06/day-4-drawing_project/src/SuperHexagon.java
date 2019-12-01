@@ -19,7 +19,7 @@ public class SuperHexagon {
         // if we want to change the layers, we need to manually set the x,y array length and then
         // the if condition to omit hexagons
 
-        int[] xHexCenters = findXs(w,side,layers);
+        int[] xHexCenters = findXs(w, side, layers);
         int[] yHexCenters = findYs(h, halfHeight, layers);
 // pair the xy coordinates to form the center of the hexagons,
 // from starting from hexagon center, define  each hexagons' angles' coordinates as parameters.
