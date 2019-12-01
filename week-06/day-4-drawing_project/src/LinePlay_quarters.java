@@ -26,7 +26,7 @@ public class LinePlay_quarters {
 
     private static void lineplay(int startX, int startY, int density, int w, Graphics graphics) {
         for (int i = 0; i < w + startX; i += w / density) {
-            for (int j = 1; j <= w +startY; j += w / density) {
+            for (int j = 1; j <= w + startY; j += w / density) {
                 if (Math.abs(i - j) == 1) {
                     graphics.setColor(Color.GREEN);
                     graphics.drawLine(startX, startY + i, startX + j + w / density, startY + w);
