@@ -9,47 +9,34 @@ public class LinePlay_quarters {
     static int HEIGHT = 320;
 
     public static void mainDraw(Graphics graphics) {
-        // draw a red horizontal line to the canvas' middle.
-        // draw a green vertical line to the canvas' middle.
-        int density = 20;
-        int splitInto = 4;
-        int w = WIDTH / splitInto * 2;
-        int h = HEIGHT / splitInto * 2;
-        int startX = 0;
-        int startY = 0;
-        drawImage(startX, startY, density, w, h, splitInto, graphics);
+        int density = 15;
+        int w = WIDTH / 2;
+        drawImage(density, w, graphics);
     }
 
-    private static void drawImage(int startX, int startY, int density, int w, int h, int splitInto, Graphics graphics) {
+    private static void drawImage(int density, int w, Graphics graphics) {
         for (int i = 0; i < 2; i++) {
-            startX = startX + i * w;
-            startY = startY + i * h;
-            lineplayNE(startX, startY, density, w, h, graphics);
-            lineplaySW(startX, startY, density, w, h, graphics);
+            for (int j = 0; j < 2; j++) {
+                int startX = i * w;
+                int startY = j * w;
+                lineplay(startX, startY, density, w, graphics);
+            }
         }
     }
 
-    private static void lineplaySW(int startX, int startY, int density, int w, int h, Graphics graphics) {
-        for (int i = startX; i < w; i = i + w / density) {
-            for (int j = startY + 1; j <= h; j = j + h / density) {
+    private static void lineplay(int startX, int startY, int density, int w, Graphics graphics) {
+        for (int i = 0; i < w + startX; i += w / density) {
+            for (int j = 1; j <= w +startY; j += w / density) {
                 if (Math.abs(i - j) == 1) {
                     graphics.setColor(Color.GREEN);
-                    graphics.drawLine(startX, i, j, h);
+                    graphics.drawLine(startX, startY + i, startX + j + w / density, startY + w);
+                    graphics.setColor(new Color(200, 32, 255));
+                    graphics.drawLine(startX + i, startY, startX + w, startY + j + w / density);
                 }
             }
         }
     }
 
-    private static void lineplayNE(int startX, int startY, int density, int w, int h, Graphics graphics) {
-        for (int i = startX; i < w; i = i + w / density) {
-            for (int j = startY + 1; j <= h; j = j + h / density) {
-                if (Math.abs(i - j) == 1) {
-                    graphics.setColor(new Color(200, 32, 255));
-                    graphics.drawLine(startX + i, startY + 0, startX + h, startY + j);
-                }
-            }
-        }
-    }
 
     public static void main(String[] args) {
         JFrame jFrame = new JFrame("Drawing");
