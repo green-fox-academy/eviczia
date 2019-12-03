@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class list_introduction_1 {
+public class ListIntroduction1 {
     public static void main(String[] args) {
         //Create an empty list which will contain names (strings)
         ArrayList<String> namesList = new ArrayList<>();
@@ -37,7 +37,7 @@ public class list_introduction_1 {
 
         // Iterate through the list and print
         for (int i = 0; i < namesList.size(); i++) {
-            System.out.println((i+1) + ". " + namesList.get(i));
+            System.out.println((i + 1) + ". " + namesList.get(i));
         }
 
         System.out.println();
@@ -47,7 +47,7 @@ public class list_introduction_1 {
         System.out.println();
 
         //Iterate through the list in a reversed order and print out each name
-        for (int i = namesList.size()-1; i >= 0; i--) {
+        for (int i = namesList.size() - 1; i >= 0; i--) {
             System.out.println(namesList.get(i));
         }
         System.out.println();
@@ -58,10 +58,6 @@ public class list_introduction_1 {
 
         namesList.remove(0);
         System.out.println(namesList.isEmpty());
-
-
-
-
 
 
     }
