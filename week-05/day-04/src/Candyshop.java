@@ -1,7 +1,7 @@
-import java.util.*;
+import java.util.ArrayList;
 
-public class Candyshop{
-    public static void main(String... args){
+public class Candyshop {
+    public static void main(String... args) {
         ArrayList<Object> arrayList = new ArrayList<Object>();
         arrayList.add("Cupcake");
         arrayList.add(2);
