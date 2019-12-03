@@ -1,11 +1,9 @@
-import java.sql.SQLOutput;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Shopping_List_2 {
     public static void main(String[] args) {
-    //Represent the following products with their prices
+        //Represent the following products with their prices
         HashMap<String, Double> priceList = new HashMap<>();
         priceList.put("Milk", 1.07);
         priceList.put("Rice", 1.59);
@@ -13,11 +11,11 @@ public class Shopping_List_2 {
         priceList.put("Cheese", 12.6);
         priceList.put("Chicken Breasts", 9.40);
         priceList.put("Apples", 2.31);
-        priceList.put("Tomato",	2.58);
-        priceList.put("Potato",	1.75);
-        priceList.put("Onion",	1.10);
+        priceList.put("Tomato", 2.58);
+        priceList.put("Potato", 1.75);
+        priceList.put("Onion", 1.10);
 
-    //Represent Bob's shopping list
+        //Represent Bob's shopping list
         HashMap<String, Integer> shoppingListBob = new HashMap<>();
         shoppingListBob.put("Milk", 3);
         shoppingListBob.put("Rice", 2);
@@ -28,7 +26,7 @@ public class Shopping_List_2 {
         shoppingListBob.put("Tomato", 2);
         shoppingListBob.put("Potato", 1);
 
-    //Represent Alice's shopping list
+        //Represent Alice's shopping list
         HashMap<String, Integer> shoppingListAlice = new HashMap<>();
         shoppingListAlice.put("Rice", 1);
         shoppingListAlice.put("Eggs", 5);
@@ -37,18 +35,18 @@ public class Shopping_List_2 {
         shoppingListAlice.put("Tomato", 10);
 
         //Create an application which solves the following problems.
-    //
-    //1. How much does Bob pay?
+        //
+        //1. How much does Bob pay?
         System.out.printf("1. Bob pays %f\n", pays(shoppingListBob, priceList));
-    //2. How much does Alice pay?
-        System.out.printf("2. Alice pays %f\n", pays(shoppingListAlice,priceList));
-    //3. Who buys more Rice?
+        //2. How much does Alice pay?
+        System.out.printf("2. Alice pays %f\n", pays(shoppingListAlice, priceList));
+        //3. Who buys more Rice?
         String item = "Rice";
         System.out.printf("3. %s\n", moreOf(shoppingListAlice, shoppingListBob, item));
-    //4. Who buys more Potato?
+        //4. Who buys more Potato?
         item = "Potato";
         System.out.printf("4. %s\n", moreOf(shoppingListAlice, shoppingListBob, item));
-    //5. Who buys more different products?
+        //5. Who buys more different products?
         Integer itemsAlice = shoppingListAlice.size();
         Integer itemsBob = shoppingListBob.size();
         if (itemsAlice > itemsBob) {
@@ -58,7 +56,7 @@ public class Shopping_List_2 {
         } else {
             System.out.println("They buy equal amount of stuff");
         }
-    //6. Who buys more products? (piece)
+        //6. Who buys more products? (piece)
         if (productNo(shoppingListAlice) > productNo(shoppingListBob)) {
             System.out.println("6. Alice buys more products");
         } else if (productNo(shoppingListAlice) < productNo(shoppingListBob)) {
@@ -93,17 +91,18 @@ public class Shopping_List_2 {
 
     private static Double pays(HashMap<String, Integer> list, HashMap<String, Double> prices) {
         Double total = 0.;
-        for (Map.Entry<String, Integer> item:list.entrySet()) {
-            total += (item.getValue()*(prices.get(item.getKey())));
+        for (Map.Entry<String, Integer> item : list.entrySet()) {
+            total += (item.getValue() * (prices.get(item.getKey())));
         }
-        return  total;
+        return total;
     }
+
     private static Integer productNo(HashMap<String, Integer> list) {
         Integer total = 0;
-        for (Map.Entry<String, Integer> item:list.entrySet()) {
-           total += item.getValue();
+        for (Map.Entry<String, Integer> item : list.entrySet()) {
+            total += item.getValue();
         }
-        return  total;
+        return total;
     }
 
 

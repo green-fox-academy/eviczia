@@ -7,13 +7,13 @@ public class Personal_finance {
 
     public static void main(String[] args) {
 
-    //Create a list with the following items.
-    //500, 1000, 1250, 175, 800 and 120
+        //Create a list with the following items.
+        //500, 1000, 1250, 175, 800 and 120
         ArrayList<Integer> spent = new ArrayList<>();
         spent.addAll(Arrays.asList(500, 1000, 1250, 175, 800, 120));
         System.out.println(spent);
 
-    // Create an application which solves the following problems.
+        // Create an application which solves the following problems.
         int weSpent = 0;
         int mostExp = 0;
         int cheapest = spent.get(0);

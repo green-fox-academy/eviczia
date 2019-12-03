@@ -1,6 +1,4 @@
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 
 public class Map_introduction_2 {
@@ -15,10 +13,10 @@ public class Map_introduction_2 {
         //978-1-60309-444-3	Red Panda and Moon Bear
         //978-1-60309-461-0	The Lab
 
-        newMap.put ("978-1-60309-452-8",	"A Letter to Jo");
-        newMap.put ("978-1-60309-459-7",	"Lupus");
-        newMap.put ("978-1-60309-444-3",	"Red Panda and Moon Bear");
-        newMap.put ("978-1-60309-461-0",	"The Lab");
+        newMap.put("978-1-60309-452-8", "A Letter to Jo");
+        newMap.put("978-1-60309-459-7", "Lupus");
+        newMap.put("978-1-60309-444-3", "Red Panda and Moon Bear");
+        newMap.put("978-1-60309-461-0", "The Lab");
 
         //Print all the key-value pairs in the following format
         //
@@ -54,14 +52,14 @@ public class Map_introduction_2 {
         //978-1-60309-450-4	They Called Us Enemy
         //978-1-60309-453-5	Why Did We Trust Him?
 
-        newMap.put("978-1-60309-450-4",	"They Called Us Enemy");
+        newMap.put("978-1-60309-450-4", "They Called Us Enemy");
         newMap.put("978-1-60309-453-5", "Why Did We Trust Him?");
 
         for (Map.Entry<String, String> thing : newMap.entrySet()) {
             System.out.printf(thing.getValue() + " (ISBN: %s)\n", thing.getKey());
         }
         //Print whether there is an associated value with key 478-0-61159-424-8 or not
-        System.out.println("**" +  (newMap.get("478-0-61159-424-8") != null));
+        System.out.println("**" + (newMap.get("478-0-61159-424-8") != null));
         //
         //Print the value associated with key 978-1-60309-453-5
         System.out.printf("The value associated with key 978-1-60309-453-5 is '%s'", newMap.get("978-1-60309-453-5"));

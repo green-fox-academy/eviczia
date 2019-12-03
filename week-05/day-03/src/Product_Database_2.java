@@ -6,7 +6,7 @@ public class Product_Database_2 {
     // the product's name and the values are numbers representing the product's price.
     //
     public static void main(String[] args) {
-    //Create a map with the following key-value pairs.
+        //Create a map with the following key-value pairs.
         HashMap<String, Integer> priceList = new HashMap<>();
         priceList.put("Eggs", 200);
         priceList.put("Milk", 200);
@@ -14,9 +14,9 @@ public class Product_Database_2 {
         priceList.put("Apples", 150);
         priceList.put("Bread", 50);
         priceList.put("Chicken", 550);
-    //Create an application which solves the following problems.
-    //
-    //Which products cost less than 201? (just the name)
+        //Create an application which solves the following problems.
+        //
+        //Which products cost less than 201? (just the name)
         int limitLess = 201;
         System.out.printf("1. These are cheaper than %d:\n", limitLess);
         costsLessThan(priceList, limitLess);
@@ -26,7 +26,7 @@ public class Product_Database_2 {
 //	Milk
 //	Bread
 
-    //Which products cost more than 150? (name + price)
+        //Which products cost more than 150? (name + price)
         int limitMore = 150;
         System.out.printf("2. These are more expensive than %d:\n", limitMore);
         costsMoreThan(priceList, limitMore);

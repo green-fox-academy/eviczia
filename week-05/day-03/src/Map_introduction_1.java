@@ -61,7 +61,7 @@ public class Map_introduction_1 {
 //        nosChars.put(100, null);
         //Print whether there is an associated value with key 100 or not
         System.out.println(nosChars.containsKey(100));
-        System.out.println(nosChars.get(100)==null);
+        System.out.println(nosChars.get(100) == null);
         //
         //Remove all the key-value pairs
         nosChars.clear();
