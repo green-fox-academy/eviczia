@@ -18,10 +18,10 @@ public class Bubble {
             bubble(ints);
         } else {
             int n = ints.length;
-            for (int i = 0; i < n; i++) {
-                for (int j = 1; j < Math.min(n - i, i + 1); j++) {
-                    int temp = ints[i];
+            for (int i = 0; i < n - 1; i++) {
+                for (int j = 1; j < n - i; j++) {
                     if (ints[i] < ints[i + j]) {
+                        int temp = ints[i];
                         ints[i] = ints[i + j];
                         ints[i + j] = temp;
                     }
@@ -41,8 +41,8 @@ public class Bubble {
         int n = ints.length;
         for (int i = n - 1; i > 0; i--) {
             for (int j = 1; j <= Math.min(n - i, i); j++) {
-                int temp = ints[i];
                 if (ints[i] < ints[i - j]) {
+                    int temp = ints[i];
                     ints[i] = ints[i - j];
                     ints[i - j] = temp;
                 }
