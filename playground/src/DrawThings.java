@@ -1,38 +1,57 @@
 import javax.swing.*;
 
 import java.awt.*;
-import java.util.Scanner;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class DrawThings {
-    public static void mainDraw(Graphics graphics){
- /*       int[]xP = new int[] {10,20, 20, 10};
-        int[]yP = new int[] {90,90,100, 100};
-        Polygon p = new Polygon(xP, yP, 4);
-        graphics.drawPolygon(p);*/
+    public static void mainDraw(Graphics graphics) {
+        System.out.println(Math.pow(2, 3));
 
-        // draw circle
+// define data for equlateral triangle
+        int base =40; //  little triangle's side
+        int w = WIDTH - (WIDTH % base); //big triangle's base (side)
+        int n = w / base; // number of lines in big triangle
 
+        // Create arrays that contain the x and y coorinates for the two sloping sides (a and b)
+        int[] aSideX = new int[n];
+        int[] aSideY = new int[n];
+        int[] bSideX = new int[n];
+        int[] bSideY = new int[n];
 
+        //  give the starting and end coordinates of sides a and be
+        aSideX[0] = WIDTH/2;
+        aSideY[0] = 20;
+        bSideX[0] = aSideX[0];
+        bSideY[0] = aSideY[0];
 
+        // calculate the height of little triangle (height) and big triangle (h)
+        int height = (int)(Math.sqrt(3)/2*base);
+        int h = height * (n);
 
+        // fill up the side a and b sides' coordinates AND then draw the triangles by connecting them
+        for (int i = 1; i < n -1; i++) {
+            aSideX[i] = aSideX[0] - i*base /2;
+            aSideY[i] = aSideY[0] + i*height;
+            bSideX[i] = bSideX[0] + i*base /2;
+            bSideY[i] = bSideY[0] + i*height;
+            //connect sides a and b with horizontal lines:
+            graphics.drawLine(aSideX[i], aSideY[i], bSideX[i], bSideY[i]);
+
+            // go from side b coordinates' to the base
+            graphics.drawLine(bSideX[i-1], bSideY[i-1], (WIDTH - w) / 2 + i * base, aSideY[0] + height*(n-2));
+            // go from side b coordinates' to the base
+            graphics.drawLine(aSideX[i-1], aSideY[i-1], WIDTH - (WIDTH - w) / 2 - i * base, aSideY[0] + height*(n-2));
         }
+    }
 
-/*    private static int getUserInput() {
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextInt();
-    }*/
-
-
-    // Don't touch the code below
-    static int WIDTH = 512;
-    static int HEIGHT = 512;
+    static int WIDTH = 320;
+    static int HEIGHT = 320;
 
     public static void main(String[] args) {
         JFrame jFrame = new JFrame("Drawing");
         jFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        RainbowSquares.ImagePanel panel = new RainbowSquares.ImagePanel();
+        ImagePanel panel = new ImagePanel();
         panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         jFrame.add(panel);
         jFrame.setLocationRelativeTo(null);
