@@ -1,7 +1,8 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 
-public class ElementFinder{
-    public static void main(String... args){
+public class ElementFinder {
+    public static void main(String... args) {
         ArrayList<Integer> arrayList = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
         System.out.println(containsSeven1(arrayList));
         System.out.println(containsSeven2(arrayList));
@@ -19,16 +20,14 @@ public class ElementFinder{
             if (element == 7) {
                 contains7 = "Hoorray";
             }
-            return contains7;
         }
-
         return contains7;
     }
 
     private static String containsSeven3(ArrayList<Integer> arrayList) {
         String contains7 = "Noooooo";
         if (arrayList.indexOf(7) != -1) {
-            contains7= "Hoorray";
+            contains7 = "Hoorray";
         }
         return contains7;
     }
@@ -36,8 +35,9 @@ public class ElementFinder{
     private static String containsSeven2(ArrayList<Integer> arrayList) {
         String contains7 = "Noooooo";
         if (arrayList.contains(7)) {
-            contains7= "Hoorray";
-        };
+            contains7 = "Hoorray";
+        }
+        ;
         return contains7;
     }
 
@@ -45,7 +45,7 @@ public class ElementFinder{
         String contains7 = "Noooooo";
         for (int i = 0; i < arrayList.size(); i++) {
             if (arrayList.get(i).equals(7)) {
-                contains7= "Hoorray";
+                contains7 = "Hoorray";
             }
         }
         return contains7;
