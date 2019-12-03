@@ -7,7 +7,7 @@ public class Anagram {
     //"dog"	"god"	true
     //"green"	"fox"	false
     public static void main(String[] args) {
-        System.out.println(isAnagram("eszter", "szeret"));
+        System.out.println(isAnagram("dog", "god"));
         System.out.println(isAnagram("green", "fox"));
     }
 
@@ -18,16 +18,13 @@ public class Anagram {
             int counter = 0;
             for (int i = 0; i < word1.length(); i++) {
                 for (int j = 0; j < word2.length(); j++) {
-                    if (word1.charAt(i) == word2.charAt(j)) {
-                        word2.replace(word2.charAt(j), '@');
+                    if (word1.substring(i, i + 1).equals(word2.substring(j, j + 1))) {
                         counter++;
+                        word2 = word2.substring(0, j) + "@" + word2.substring(j + 1);
                     }
                 }
             }
-            if (counter== word1.length()) {
-                return true;
-            }
+            return counter == word1.length();
         }
-        return false;
     }
 }
