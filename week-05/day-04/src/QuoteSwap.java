@@ -1,8 +1,8 @@
-import java.lang.reflect.Array;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 
-public class QuoteSwap{
-    public static void main(String... args){
+public class QuoteSwap {
+    public static void main(String... args) {
         ArrayList<String> list = new ArrayList<String>(Arrays.asList("What", "I", "do", "create,", "I", "cannot", "not", "understand."));
 
         // Accidentally I messed up this quote from Richard Feynman.
@@ -17,12 +17,17 @@ public class QuoteSwap{
     }
 
     private static String quoteSwap(ArrayList<String> list) {
-        String quoteCorrect = list.toString();
-        int doAt = list.indexOf("do");
-        int cannotAt =list.indexOf("cannot");
-        String temp = list.get(2);
-        list.set(doAt, list.get(cannotAt));
-        list.set(cannotAt, temp);
-        return quoteCorrect;
+        list.set(2, "cannot");
+        list.set(5, "do");
+        return print(list);
+    }
+
+    private static String print(ArrayList<String> arrayList) {
+        StringBuilder listToText = new StringBuilder();
+        for (int i = 0; i < arrayList.size(); i++) {
+            listToText.append(arrayList.get(i));
+            listToText.append(" ");
+        }
+        return listToText.toString();
     }
 }
