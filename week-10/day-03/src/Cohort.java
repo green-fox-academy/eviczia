@@ -13,17 +13,15 @@ public class Cohort {
         mentors = new ArrayList<>();
     }
 
-    private void addStudent(Student newStudent) {
+    public void addStudent(Student newStudent) {
         students.add(newStudent);
     }
 
-    private void addMentor(Mentor newMentor) {
+    public void addMentor(Mentor newMentor) {
         mentors.add(newMentor);
     }
 
-    private void info() {
+    public void info() {
         System.out.printf("The %s cohort has %d students and %d mentors.", name, students.size(), mentors.size());
     }
-
-
 }
