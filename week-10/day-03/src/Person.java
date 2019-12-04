@@ -39,7 +39,7 @@ public class Person {
     }
 
     public void setGender(String gender) {
-        if (gender == "female" || gender == "male") {
+        if (gender.equals("female") || gender.equals("male")) {
             this.gender = gender;
         }
     }
