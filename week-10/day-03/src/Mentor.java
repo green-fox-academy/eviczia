@@ -17,7 +17,7 @@ public class Mentor extends Person {
     }
 
     public void setLevel(String level) {
-        if (level.equals("junior") || level.equals("intermediate") ||level.equals("senior")) {
+        if (level.equals("junior") || level.equals("intermediate") || level.equals("senior")) {
             this.level = level;
         }
     }

@@ -44,7 +44,7 @@ public class Person {
         }
     }
 
-    public void introduce(){
+    public void introduce() {
         System.out.printf("Hi, I'm %s, a %d year old %s.\n", name, age, gender);
     }
 

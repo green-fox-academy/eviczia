@@ -40,7 +40,7 @@ public class Student extends Person {
 
     @Override
     public void introduce() {
-        System.out.printf("Hi, I'm %s, a %d year old %s from %s who skipped %d days from the course already.", getName(), getAge(), getGender(), previousOrganization, skippedDays);
+        System.out.printf("Hi, I'm %s, a %d year old %s from %s who skipped %d days from the course already.\n", getName(), getAge(), getGender(), previousOrganization, skippedDays);
     }
 
     public void skipDays(int numberOfDays) {
