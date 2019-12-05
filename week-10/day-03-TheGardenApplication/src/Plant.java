@@ -1,19 +1,19 @@
-public class Plant {
+abstract public class Plant {
 
     private String color;
-    private int waterLevel;
+    private float waterLevel;
+    private boolean isThirsty;
 
-    public Plant(String color, int waterLevel) {
+
+    public Plant(String color) {
         this.color = color;
         waterLevel = 0;
+        isThirsty = true;
     }
 
     public Plant() {
         waterLevel = 0;
-    }
-
-    public void water(int waterAmount) {
-        waterLevel += waterAmount;
+        isThirsty = true;
     }
 
     public String getColor() {
@@ -24,11 +24,23 @@ public class Plant {
         this.color = color;
     }
 
-    public int getWaterLevel() {
+    public float getWaterLevel() {
         return waterLevel;
     }
 
-    public void setWaterLevel(int waterLevel) {
+    public void setWaterLevel(float waterLevel) {
         this.waterLevel = waterLevel;
     }
+
+    public boolean isThirsty() {
+        return isThirsty;
+    }
+
+    public void setThirsty(boolean thirsty) {
+        isThirsty = thirsty;
+    }
+
+    public abstract void status();
+
+    public abstract void beWatered(int waterAmount);
 }
