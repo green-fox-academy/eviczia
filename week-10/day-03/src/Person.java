@@ -1,4 +1,4 @@
-public class Person {
+public class Person implements Cloneable{
 
     private String name;
     private int age;
@@ -51,4 +51,11 @@ public class Person {
     public void getGoal() {
         System.out.println("My goal is: Live for the moment!");
     }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        System.out.println("cloning in process");
+        return super.clone();
+    }
+
 }
