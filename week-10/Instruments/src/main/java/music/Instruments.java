@@ -22,5 +22,4 @@ public abstract class Instruments {
 
     public abstract String sound();
 
-
 }

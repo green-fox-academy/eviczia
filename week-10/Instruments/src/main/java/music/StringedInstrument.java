@@ -4,17 +4,9 @@ public abstract class StringedInstrument extends Instruments {
 
     protected int numberOfStrings;
 
-/*    public StringedInstrument(String name, int numberOfStrings) {
-        super(name);
-        this.numberOfStrings = numberOfStrings;
-    }*/
 
     public StringedInstrument(int numberOfStrings) {
         this.numberOfStrings = numberOfStrings;
-    }
-
-    public StringedInstrument(String name) {
-        super(name);
     }
 
     public StringedInstrument() {
@@ -31,10 +23,14 @@ public abstract class StringedInstrument extends Instruments {
     public abstract String sound();
 
     public void play() {
-        System.out.println("Play");
-        System.out.printf("%s, a %d-stringed instrument that goes %s\n", getName(), numberOfStrings, this.sound());
+        String stringedInstrument = "";
+        if (this instanceof BassGuitar) {
+            stringedInstrument = "Bass Guitar";
+        } else if (this instanceof ElectricGuitar) {
+            stringedInstrument = "Electric Guitar";
+        } else if (this instanceof Violin) {
+            stringedInstrument = "Violin";
+        }
+        System.out.printf("%s, a %d-stringed instrument that goes %s\n", stringedInstrument, numberOfStrings, this.sound());
     }
-
-
-
 }

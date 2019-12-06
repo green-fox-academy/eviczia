@@ -6,11 +6,6 @@ public class ElectricGuitar extends StringedInstrument {
         super(numberOfStrings);
     }
 
-    public ElectricGuitar(String name) {
-        super(name);
-        this.numberOfStrings = 6;
-
-    }
 
     public ElectricGuitar() {
         this.numberOfStrings = 6;

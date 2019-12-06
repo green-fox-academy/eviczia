@@ -6,11 +6,6 @@ public class BassGuitar extends StringedInstrument{
         super(numberOfStrings);
     }
 
-    public BassGuitar(String name) {
-        super(name);
-        this.numberOfStrings = 4;
-    }
-
     public BassGuitar() {
         this.numberOfStrings = 4;
     }

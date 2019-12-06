@@ -6,11 +6,6 @@ public class Violin extends StringedInstrument {
         super(numberOfStrings);
     }
 
-    public Violin(String name) {
-        super(name);
-        this.numberOfStrings = 4;
-    }
-
     public Violin() {
         this.numberOfStrings = 4;
     }
