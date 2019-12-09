@@ -18,11 +18,15 @@ public class Reptile extends Animal  implements Oviparous {
 
     @Override
     public void makeSound() {
-
     }
 
     @Override
     public void move() {
 
+    }
+
+    @Override
+    public String layEggs() {
+        return null;
     }
 }

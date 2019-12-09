@@ -1,6 +1,6 @@
 package main.java.animals;
 
-public class Mammal extends Animal implements FourLegged{
+public class Mammal extends Animal {
     int gestationDays;
     boolean isPredator;
 
@@ -10,7 +10,7 @@ public class Mammal extends Animal implements FourLegged{
 
     @Override
     public String breed() {
-        return "by pushing miniature versions out.";
+        return "pushing miniature versions out.";
     }
 
     @Override
@@ -20,7 +20,7 @@ public class Mammal extends Animal implements FourLegged{
 
     @Override
     public void makeSound() {
-        System.out.println("sleeping");
+        System.out.println("making sound");
     }
 
     @Override
