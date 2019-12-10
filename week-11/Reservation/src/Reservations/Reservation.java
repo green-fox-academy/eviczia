@@ -31,8 +31,8 @@ public class Reservation implements Reservationy {
     }
 
     public String getRandomCapitolLetterOrNumber() {
-        if ((int) (Math.random() * 2) == 1) {
-            return String.valueOf((char) (int) (Math.random() * 27 + 65));
+        if ((int) (Math.random() * 36) <= 26) {
+            return String.valueOf((char) (int) (Math.random() * 26 + 65));
         } else {
             return String.valueOf((char) (int) (Math.random() * 10 + 48));
         }
