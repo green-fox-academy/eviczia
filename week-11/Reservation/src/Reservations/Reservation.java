@@ -2,8 +2,8 @@ package Reservations;
 
 public class Reservation implements Reservationy {
 
-    String bookingCode;
-    String bookingDOW;
+    private String bookingCode;
+    private String bookingDOW;
 
     public Reservation() {
         this.bookingCode = getCodeBooking();
