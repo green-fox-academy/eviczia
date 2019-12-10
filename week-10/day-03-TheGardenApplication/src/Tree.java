@@ -17,14 +17,6 @@ public class Tree extends Plant {
     }
 
 
-    @Override
-    public void status() {
-        if (!isThirsty()) {
-            System.out.printf("The %s Tree doesn't need water.\n", getColor());
-        } else {
-            System.out.printf("The %s Tree needs water.\n", getColor());
-        }
-    }
 
     @Override
     public void beWatered(int waterAmount) {
