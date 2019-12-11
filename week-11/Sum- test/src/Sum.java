@@ -1,7 +1,7 @@
 public class Sum {
 
 
-    public int sum(int[] listOfIntegers) {
+    public int sumArray(int[] listOfIntegers) {
         int sum = 0;
         for (int number : listOfIntegers) {
             sum += number;
