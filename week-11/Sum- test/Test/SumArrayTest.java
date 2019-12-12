@@ -1,36 +1,38 @@
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class SumArrayTest {
 
     @Test
-    public void sumArray_should_add_arrayElements_returnSum() {
+    public void sumListElements_should_add_arrayElements_returnSum() {
         Sum sum = new Sum();
-        int[] sumThis = {1, 2};
-        int[] nowSumThis = {1, 2, 3};
+        List<Integer> sumThis = Arrays.asList(1, 2);
+        List<Integer> nowSumThis = Arrays.asList(1, 2, 3);
 
-        assertEquals(3, sum.sumArray(sumThis));
-        assertEquals(6, sum.sumArray(nowSumThis));
+        assertEquals(3, sum.sumListElements(sumThis));
+        assertEquals(6, sum.sumListElements(nowSumThis));
     }
 
     @Test
-    public void sumArray_should_return0_if_list_isEmpty() {
+    public void sumListElements_should_return0_if_list_isEmpty() {
         Sum sum = new Sum();
-        int[] sumThis = {};
+        List<Integer> sumThis = Arrays.asList();
 
-        assertEquals(0, sum.sumArray(sumThis));
+        assertEquals(0, sum.sumListElements(sumThis));
     }
 
     @Test
-    public void sumArray_should_return_elementValue_if_list_contains_one_element() {
+    public void sumListElements_should_return_elementValue_if_list_contains_one_element() {
         Sum sum = new Sum();
-        int[] sumThis = {4};
-        int[] nowSumThis = {5};
+        List<Integer> sumThis = Arrays.asList(4);
+        List<Integer> nowSumThis = Arrays.asList(5);
 
-        assertEquals(4, sum.sumArray(sumThis));
-        assertEquals(5, sum.sumArray(nowSumThis));
+        assertEquals(4, sum.sumListElements(sumThis));
+        assertEquals(5, sum.sumListElements(nowSumThis));
 
     }
-
 }
