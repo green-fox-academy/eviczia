@@ -51,6 +51,14 @@ public class AnagramForTestingTest {
         assertTrue(AnagramForTesting.isAnagram(word1, word2));
     }
 
+    @Test
+    public void isAnagram_ComparisionNotCaseSensitive_True() {
+        AnagramForTesting anagramForTesting = new AnagramForTesting();
+        String word1 = "Eszter";
+        String word2 = "szeret";
+
+        assertTrue(AnagramForTesting.isAnagram(word1, word2));
+    }
 
 
 }

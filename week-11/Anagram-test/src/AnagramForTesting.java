@@ -4,6 +4,8 @@ public class AnagramForTesting {
         if (word1.length() != word2.length()) {
             return false;
         } else {
+            word1 = word1.toLowerCase();
+            word2 = word2.toLowerCase();
             int counter = 0;
             for (int i = 0; i < word1.length(); i++) {
                 for (int j = 0; j < word2.length(); j++) {
