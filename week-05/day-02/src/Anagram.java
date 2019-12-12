@@ -9,6 +9,8 @@ public class Anagram {
     public static void main(String[] args) {
         System.out.println(isAnagram("dog", "god"));
         System.out.println(isAnagram("green", "fox"));
+        System.out.println(isAnagram("gaga", "gaaa"));
+
     }
 
     private static boolean isAnagram(String word1, String word2) {
@@ -20,7 +22,8 @@ public class Anagram {
                 for (int j = 0; j < word2.length(); j++) {
                     if (word1.substring(i, i + 1).equals(word2.substring(j, j + 1))) {
                         counter++;
-                        word2 = word2.substring(0, j) + "@" + word2.substring(j + 1);
+                        word1 = word1.substring(0, i) + "#" + word1.substring(i + 1);
+                        word2 = word2.substring(0, j) + "*" + word2.substring(j + 1);
                     }
                 }
             }
