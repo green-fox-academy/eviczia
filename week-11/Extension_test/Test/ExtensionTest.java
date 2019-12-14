@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class ExtensionTest {
 
-    Extension extension = new Extension();
+    private Extension extension = new Extension();
 
     @Test
     void testAdd_2and3is5() {

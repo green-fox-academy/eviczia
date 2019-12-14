@@ -25,7 +25,7 @@ public class Extension {
     }
 
     boolean isVowel(char c) {
-        return Arrays.asList('a', 'u', 'o', 'e', 'i', 'A', 'U', 'O', 'E', 'I').contains(c);
+        return Arrays.asList('a', 'á', 'Á', 'é', 'É', 'í', 'Í', 'ó', 'Ó', 'ö', 'Ö', 'ő', 'Ő', 'ú', 'Ú', 'ü', 'Ü', 'ű', 'Ű', 'u', 'o', 'e', 'i', 'A', 'U', 'O', 'E', 'I').contains(c);
     }
 
     String translate(String hungarian) {
