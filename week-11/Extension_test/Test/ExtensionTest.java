@@ -17,6 +17,20 @@ class ExtensionTest {
     }
 
     @Test
+    void testAdd_3and3is6() {
+        int[] actual = new int[6];
+        actual[0] = extension.add(2,3);
+        actual[1] = extension.add(-2,3);
+        actual[2] = extension.add(0,0);
+        actual[3] = extension.add(123,321);
+        actual[4] = extension.add(-10,-10);
+        actual[5] = extension.add(6,6);
+        int[] expected = {5, 1, 0, 444, -20, 12};
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
     void testAdd_1and4is5() {
         assertEquals(5, extension.add(1, 4));
     }
