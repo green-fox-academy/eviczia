@@ -6,14 +6,15 @@
 //Define a recursive fibonacci(n) method that returns the nth fibonacci number, with n=0 representing the start of the sequence.
 
 public class Fibonacci {
-    public static void main(String[] args) {
-        int n= 14;
+    public static void main(String[] args) throws NotPositiveWholeNumberException {
+        int n= 9;
         int nThFibonacci = fibonacci(n);
         System.out.println(nThFibonacci);
 
     }
 
-    private static int fibonacci(int n) {
+    private static int fibonacci(int n) throws NotPositiveWholeNumberException {
+        if (n <= 0) throw new NotPositiveWholeNumberException();
         if (n==1) {
             return 0;
         } else if (n==2) {
