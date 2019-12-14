@@ -62,6 +62,11 @@ class ExtensionTest {
     }
 
     @Test
+    void testMedian_medianIs3() {
+        assertEquals(17.5, extension.median(Arrays.asList(10000,2000,3,4,5,3,3,30,3000,300000)));
+    }
+
+    @Test
     void testIsVowel_a() {
         assertTrue(extension.isVowel('a'));
     }

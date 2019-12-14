@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -18,10 +19,14 @@ public class Extension {
     }
 
     int median(List<Integer> pool) {
+        System.out.println(pool);;
+        Collections.sort(pool);
+        System.out.println(pool);;
         return pool.get((pool.size()-1)/2);
     }
 
-    boolean isVowel(char c) {
+    boolean isVowel(char c
+    ) {
         return Arrays.asList('a', 'u', 'o', 'e', 'i').contains(c);
     }
 
