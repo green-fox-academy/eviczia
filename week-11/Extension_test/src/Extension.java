@@ -24,8 +24,7 @@ public class Extension {
         return ((float)(pool.get(pool.size()/2-1)) + pool.get(pool.size()/2))/2;
     }
 
-    boolean isVowel(char c
-    ) {
+    boolean isVowel(char c) {
         return Arrays.asList('a', 'u', 'o', 'e', 'i').contains(c);
     }
 

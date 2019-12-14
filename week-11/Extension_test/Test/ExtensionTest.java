@@ -77,6 +77,16 @@ class ExtensionTest {
     }
 
     @Test
+    void testIsVowel_A() {
+        assertTrue(extension.isVowel('A'));
+    }
+
+    @Test
+    void testIsVowel_U() {
+        assertTrue(extension.isVowel('U'));
+    }
+
+    @Test
     void testTranslate_bemutatkozik() {
         assertEquals("bevemuvutavatkovozivik", extension.translate("bemutatkozik"));
     }
