@@ -1,7 +1,6 @@
 public class AnagramForTesting {
 
     public static boolean isAnagram(String word1, String word2) {
-        System.out.println(word1 + " " + word2);
         word1 = word1.toLowerCase();
         word2 = word2.toLowerCase();
         for (int i = 0; i < word1.length(); ) {
@@ -14,13 +13,10 @@ public class AnagramForTesting {
                     }
                 }
                 i++;
-                System.out.println(i + word1 + " " + word2);
             }
         }
-        System.out.println("done");
         word1 = word1.replace(" ", "");
         word2 = word2.replace(" ", "");
-        System.out.println(word1 + " " + word2);
         return word1.equals(word2);
 
     }
