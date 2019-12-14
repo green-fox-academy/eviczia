@@ -10,26 +10,28 @@ public class Anagram {
         System.out.println(isAnagram("dog", "god"));
         System.out.println(isAnagram("green", "fox"));
         System.out.println(isAnagram("gaga", "gaaa"));
+        System.out.println(isAnagram("New York Times", "monkeys write"));
 
     }
 
     private static boolean isAnagram(String word1, String word2) {
-        if (word1.length() != word2.length()) {
-            return false;
-        } else {
-            word1 = word1.toLowerCase();
-            word2 = word2.toLowerCase();
-            int counter = 0;
-            for (int i = 0; i < word1.length(); i++) {
+        word1 = word1.toLowerCase();
+        word2 = word2.toLowerCase();
+        for (int i = 0; i < word1.length(); ) {
+            if (word1.substring(i, i + 1).equals(" ")) i++;
+            else {
                 for (int j = 0; j < word2.length(); j++) {
                     if (word1.substring(i, i + 1).equals(word2.substring(j, j + 1))) {
-                        counter++;
-                        word1 = word1.substring(0, i) + "#" + word1.substring(i + 1);
-                        word2 = word2.substring(0, j) + "*" + word2.substring(j + 1);
+                        word1 = word1.substring(0, i) + " " + word1.substring(i + 1);
+                        word2 = word2.substring(0, j) + " " + word2.substring(j + 1);
                     }
                 }
+                i++;
             }
-            return counter == word1.length();
         }
+        word1 = word1.replace(" ", "");
+        word2 = word2.replace(" ", "");
+        return word1.equals(word2);
+
     }
 }
