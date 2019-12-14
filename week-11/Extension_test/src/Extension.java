@@ -10,10 +10,11 @@ public class Extension {
     }
 
     int maxOfThree(int a, int b, int c) {
-        if (a > b)
+        if (a > b & a > c)
             return a;
-        else
-            return c;
+        else if (b > c)
+            return b;
+        else return c;
     }
 
     int median(List<Integer> pool) {
