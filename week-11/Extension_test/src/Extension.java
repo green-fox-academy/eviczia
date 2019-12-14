@@ -30,6 +30,7 @@ public class Extension {
 
     String translate(String hungarian) {
         String teve = hungarian;
+        System.out.println(teve);
         int length = teve.length();
         for (int i = 0; i < length; i++) {
             char c = teve.charAt(i);
@@ -39,6 +40,7 @@ public class Extension {
                 length+=2;
             }
         }
+        System.out.println(teve);
         return teve;
     }
 }

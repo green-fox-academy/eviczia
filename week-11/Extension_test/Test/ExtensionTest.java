@@ -95,4 +95,10 @@ class ExtensionTest {
     void testTranslate_lagopus() {
         assertEquals("lavagovopuvus", extension.translate("lagopus"));
     }
+
+    @Test
+    void testTranslate_magyarakarakter() {
+        assertEquals("Tuvudsz ívígy beveszévélnivi?", extension.translate("Tudsz így beszélni?"));
+    }
+
 }
