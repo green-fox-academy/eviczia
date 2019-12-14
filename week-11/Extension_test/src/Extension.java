@@ -18,11 +18,10 @@ public class Extension {
         else return c;
     }
 
-    int median(List<Integer> pool) {
-        System.out.println(pool);;
+    float median(List<Integer> pool) {
         Collections.sort(pool);
-        System.out.println(pool);;
-        return pool.get((pool.size()-1)/2);
+        if (!(pool.size() % 2 == 0)) return pool.get((pool.size()-1)/2);
+        return ((float)(pool.get(pool.size()/2-1)) + pool.get(pool.size()/2))/2;
     }
 
     boolean isVowel(char c

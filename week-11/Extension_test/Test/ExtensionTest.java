@@ -62,8 +62,8 @@ class ExtensionTest {
     }
 
     @Test
-    void testMedian_medianIs3() {
-        assertEquals(17.5, extension.median(Arrays.asList(10000,2000,3,4,5,3,3,30,3000,300000)));
+    void testMedian_evenNumberOfElements_MedianMIddleAverage() {
+        assertEquals(2.5, extension.median(Arrays.asList(1,2,3,4)));
     }
 
     @Test
