@@ -17,7 +17,7 @@ class ExtensionTest {
     }
 
     @Test
-    void testAdd_3and3is6() {
+    void testAdd_AandBisAandB() {
         int[] actual = new int[6];
         actual[0] = extension.add(2,3);
         actual[1] = extension.add(-2,3);
