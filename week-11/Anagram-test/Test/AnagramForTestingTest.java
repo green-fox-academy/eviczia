@@ -53,4 +53,13 @@ public class AnagramForTestingTest {
 
         assertTrue(AnagramForTesting.isAnagram(word1, word2));
     }
+
+    @Test
+    public void isAnagram_ComparisionOverlooksSpaces_True() {
+        String word1 = "New York Times";
+        String word2 = "monkeys write";
+
+        assertTrue(AnagramForTesting.isAnagram(word1, word2));
+    }
+
 }
