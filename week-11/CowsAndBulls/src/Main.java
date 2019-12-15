@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
         CowsAndBulls cowsAndBulls = new CowsAndBulls();
@@ -9,6 +11,9 @@ public class Main {
         cowsAndBulls.numberToArray(cowsAndBulls.getNumberToGuess());
 
         cowsAndBulls.numberToHashMap(cowsAndBulls.getNumberToGuess());
+
+         int[] result = cowsAndBulls.compareNumbers(6756);
+        System.out.println(Arrays.toString(result));
 
     }
 }

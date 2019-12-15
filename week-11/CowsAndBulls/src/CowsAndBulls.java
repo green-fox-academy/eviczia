@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
 
 public class CowsAndBulls {
 
@@ -59,9 +60,33 @@ public class CowsAndBulls {
 
         return fourDigitsHashMap;
     }
-}
-/*
     public int[] compareNumbers (int guess) {
-        this.numberToArray(guess);
-    }*/
+        int cowCounter = 0;
+        int bullCounter = 0;
+        HashMap<String, Integer> myGuess = this.numberToHashMap(guess);
+        HashMap<String, Integer> guessThis = this.numberToHashMap(numberToGuess);
 
+        for (Map.Entry digitGuess : myGuess.entrySet()) {
+            for (Map.Entry digitNumber : guessThis.entrySet()) {
+                if (digitGuess.getKey() == digitNumber.getKey() & digitGuess.getValue() == digitNumber.getValue()) {
+                    cowCounter++;
+                    guessThis.remove(digitNumber.getKey());
+                    System.out.println(guessThis + " removeAfterCow " + digitNumber.getKey());
+                    break;
+                }
+            }
+        }
+        for (Map.Entry digitGuess : myGuess.entrySet()) {
+            for (Map.Entry digitNumber : guessThis.entrySet()) {
+                if (digitGuess.getValue() == digitNumber.getValue()) {
+                    bullCounter++;
+                    guessThis.remove(digitNumber.getKey());
+                    System.out.println(guessThis + " removeAfterBull " + digitNumber.getKey());
+                    break;
+                }
+            }
+        }
+        return new int[]{cowCounter, bullCounter};
+    }
+
+}
