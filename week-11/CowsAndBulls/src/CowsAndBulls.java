@@ -1,6 +1,9 @@
+import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class CowsAndBulls {
 
@@ -34,6 +37,29 @@ public class CowsAndBulls {
         this.countGuesses = countGuesses;
     }
 
+    public void playCowsAndBulls() {
+        System.out.println("Guess my four-digit number!");
+
+        int[] result = new int[2];
+
+        while (result[0] < 4 ) {
+            countGuesses++;
+            int guess = getUserInput();
+            result = compareNumbers(guess);
+            System.out.println(cowBullResult(result));
+            if (result[0] == 4) break;
+        }
+        System.out.printf("You win! You got it from %d guesses.\n", countGuesses);
+    }
+
+    public int getUserInput () {
+        Scanner scanner = new Scanner(System.in);
+        int guess = scanner.nextInt();
+        if (guess < 1000 || guess > 9999) {
+            getUserInput();
+        } return guess;
+    }
+
     public HashMap<String, Integer> numberToHashMap(int fourDigitNumber) {
         HashMap<String, Integer> fourDigitsHashMap = new HashMap<>();
         int n = fourDigitNumber;
@@ -59,8 +85,6 @@ public class CowsAndBulls {
                     cowCounter++;
                     guessThis.remove(digitNumber.getKey());
                     myGuess.replace((String)digitGuess.getKey(), -1);
-                    System.out.println(guessThis);
-                    System.out.println(myGuess);
                     break;
                 }
             }
@@ -70,6 +94,7 @@ public class CowsAndBulls {
                 if (digitGuess.getValue() == digitNumber.getValue()) {
                     bullCounter++;
                     guessThis.remove(digitNumber.getKey());
+                    myGuess.replace((String)digitGuess.getKey(), -1);
                     break;
                 }
             }
@@ -77,8 +102,8 @@ public class CowsAndBulls {
         return new int[]{cowCounter, bullCounter};
     }
 
-    public String getResult (int[] cowBullresult) {
-        return cowBullresult[0] + " cow, " + cowBullresult[1] + " bull";
+    public String cowBullResult(int[] cowsBulls) {
+        return cowsBulls[0] + " cow, " + cowsBulls[1] + " bull";
     }
 
 }
