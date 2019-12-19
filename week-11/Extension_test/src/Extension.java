@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -20,8 +21,8 @@ public class Extension {
 
     float median(List<Integer> pool) {
         Collections.sort(pool);
-        if (!(pool.size() % 2 == 0)) return pool.get((pool.size()-1)/2);
-        return ((float)(pool.get(pool.size()/2-1)) + pool.get(pool.size()/2))/2;
+        if (!(pool.size() % 2 == 0)) return pool.get((pool.size() - 1) / 2);
+        return ((float) (pool.get(pool.size() / 2 - 1)) + pool.get(pool.size() / 2)) / 2;
     }
 
     boolean isVowel(char c) {
@@ -31,13 +32,15 @@ public class Extension {
     String translate(String hungarian) {
         String teve = hungarian;
         System.out.println(teve);
-        int length = teve.length();
-        for (int i = 0; i < length; i++) {
-            char c = teve.charAt(i);
-            if (isVowel(c)) {
-                teve = String.join(c + "v" + c, teve.split(""+c));
-                i+=2;
-                length+=2;
+        List<String> vowelsList = new ArrayList<>(Arrays.asList("a", "A", "á", "Á", "e", "E", "é", "É", "i", "I", "í", "Í", "o", "O", "ó", "Ó", "ö", "Ö", "ő", "Ő", "u", "U", "ú", "Ú", "ü", "Ü", "ű", "Ű"));
+        for (int i = 0; i < vowelsList.size(); i++) {
+            String c = vowelsList.get(i);
+            if (teve.contains(c) & teve.endsWith(c)) {
+                teve = String.join(c + "v" + c, teve.split(c)) + c + "v" + c;
+                i += 1;
+            } else if (teve.contains(c)) {
+                teve = String.join(c + "v" + c, teve.split(c));
+                i += 1;
             }
         }
         System.out.println(teve);

@@ -100,5 +100,32 @@ class ExtensionTest {
     void testTranslate_magyarakarakter() {
         assertEquals("Tuvudsz ívígy beveszévélnivi?", extension.translate("Tudsz így beszélni?"));
     }
+    @Test
+    void testTranslate_pepecs() {
+        assertEquals("pevepevecs", extension.translate("pepecs"));
+    }
+    @Test
+    void testTranslate_kacsa() {
+        assertEquals("kavacsava", extension.translate("kacsa"));
+    }
+
+    @Test
+    void testTranslate_elefant() {
+        assertEquals("evelevefávánt", extension.translate("elefánt"));
+    }
+
+    @Test
+    void testTranslate_teve() {
+        assertEquals("teveveve", extension.translate("teve"));
+    }
+    @Test
+    void testTranslate_anakonda() {
+        assertEquals("avanavakovondava", extension.translate("anakonda"));
+    }
+
+    @Test
+    void testTranslate_ezvanmost() {
+        assertEquals("lévégyszivi mevenj mávár fovogavat movosnivi, ivirguvumbuvurguvum", extension.translate("légyszi menj már fogat mosni, irgumburgum"));
+    }
 
 }
