@@ -1,9 +1,5 @@
-public interface AllFourRightAngles {
+public interface AllFourRightAngles extends HasTwoParallelSidePairs{
 
-    void whatAmI();
-
-
-
-
+   void haveFourRightAngles();
 
 }
