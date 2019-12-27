@@ -3,14 +3,14 @@ public class F16 extends Aircraft {
     public static final int MAX_AMMO = 8;
     public static final int BASE_DAMAGE = 30;
 
-    private int ammoSupply;
-    private int allDamage;
-    private boolean isPriority;
 
     public F16() {
-        super();
-        isPriority = false;
-
+        super(MAX_AMMO, BASE_DAMAGE);
+        super.setPriority(false);
     }
 
+    @Override
+    public int refill(int ammoRefill) {
+        return super.refill(ammoRefill);
+    }
 }
