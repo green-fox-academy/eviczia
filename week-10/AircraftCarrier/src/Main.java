@@ -2,24 +2,56 @@ public class Main {
 
     public static void main(String[] args) {
 
-        F16 f16_1 = new F16();
-        F35 f35_1 = new F35();
+        Carrier friendlyCarrier = new Carrier(2500, 5000);
+        Carrier enemyCarrier = new Carrier(2500, 5000);
 
-        System.out.println(f16_1.getStatus());
-        System.out.println(f35_1.getStatus());
+        fillCarrier(friendlyCarrier);
+        fillCarrier(enemyCarrier);
 
-        f16_1.refill(13);
-        System.out.println(f16_1.getStatus());
-        System.out.println(f35_1.getStatus());
+        System.out.println(friendlyCarrier.getStatus());
+        System.out.println(enemyCarrier.getStatus());
 
-        f16_1.setAmmoSupply(31);
-        System.out.println(f16_1.getAmmoSupply());
+        friendlyCarrier.fill();
+        enemyCarrier.fill();
+
+        enemyCarrier.fight(friendlyCarrier);
+        friendlyCarrier.fight(enemyCarrier);
+
+        enemyCarrier.fight(friendlyCarrier);
+        friendlyCarrier.fight(enemyCarrier);
+        enemyCarrier.fight(friendlyCarrier);
+        friendlyCarrier.fight(enemyCarrier);
+        enemyCarrier.fight(friendlyCarrier);
+        friendlyCarrier.fight(enemyCarrier);
+        enemyCarrier.fight(friendlyCarrier);
+        friendlyCarrier.fight(enemyCarrier);
+        enemyCarrier.fight(friendlyCarrier);
+        friendlyCarrier.fight(enemyCarrier);
+        enemyCarrier.fight(friendlyCarrier);
+        friendlyCarrier.fight(enemyCarrier);
+        enemyCarrier.fight(friendlyCarrier);
+        friendlyCarrier.fight(enemyCarrier);
+        enemyCarrier.fight(friendlyCarrier);
+        friendlyCarrier.fight(enemyCarrier);
+        enemyCarrier.fight(friendlyCarrier);
+        friendlyCarrier.fight(enemyCarrier);
+        enemyCarrier.fight(friendlyCarrier);
+        friendlyCarrier.fight(enemyCarrier);
 
 
-        f16_1.fight();
-        System.out.println(f16_1.getStatus());
-        System.out.println(f35_1.getStatus());
+        System.out.println(friendlyCarrier.getStatus());
+        System.out.println(enemyCarrier.getStatus());
 
+    }
+
+    private static void fillCarrier(Carrier carrier) {
+        for (int i = 0; i < (int) (Math.random()*10 + 5); i++) {
+            if ((int)(Math.random()*2) == 0) {
+                carrier.add(new F16());
+            } else {
+                carrier.add(new F35());
+            }
+        }
 
     }
 }

@@ -13,4 +13,5 @@ public class F16 extends Aircraft {
     public int refill(int ammoRefill) {
         return super.refill(ammoRefill);
     }
+
 }
