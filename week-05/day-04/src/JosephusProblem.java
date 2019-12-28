@@ -9,14 +9,14 @@ public class JosephusProblem {
 
         System.out.println(josephus(41));
 
+        System.out.println(josephus(34));
 
     }
 
     private static int josephus(int numberOfPeople) {
         String binaryNumber = Integer.toBinaryString(numberOfPeople);
         int twoToThisPower = binaryNumber.length();
-        int place = (numberOfPeople - (int) (Math.pow(2, twoToThisPower - 1)))*2 + 1;
 
-        return place;
+        return (numberOfPeople - (int) (Math.pow(2, twoToThisPower - 1))) * 2 + 1;
     }
 }
