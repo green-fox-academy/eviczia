@@ -15,8 +15,8 @@ public class JosephusProblem {
 
     private static int josephus(int numberOfPeople) {
         String binaryNumber = Integer.toBinaryString(numberOfPeople);
-        int twoToThisPower = binaryNumber.length();
+        int twoToThisPower = binaryNumber.length() - 1;
 
-        return (numberOfPeople - (int) (Math.pow(2, twoToThisPower - 1))) * 2 + 1;
+        return (numberOfPeople - (int) (Math.pow(2, twoToThisPower))) * 2 + 1;
     }
 }
