@@ -14,11 +14,9 @@ public class SubStrList {
     }
 
     private static int subStrList(String substr, String[] searchArr) {
-        for (int j = 0; j < searchArr.length; j++) {
-            for (int i = 0; i < searchArr[j].length(); i++) {
-                if (searchArr[j].substring(i).equals(substr)) {
-                    return j;
-                }
+        for (int i = 0; i < searchArr.length; i++) {
+            if (searchArr[i].contains(substr)) {
+                return i;
             }
         } return -1;
     }
