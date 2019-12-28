@@ -29,8 +29,8 @@ public class ListIntroduction1 {
         System.out.println();
 
         //Iterate through the list and print out each name
-        for (int i = 0; i < namesList.size(); i++) {
-            System.out.println(namesList.get(i));
+        for (String s : namesList) {
+            System.out.println(s);
         }
 
         System.out.println();
