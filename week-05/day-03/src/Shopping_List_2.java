@@ -69,16 +69,8 @@ public class Shopping_List_2 {
     private static String moreOf(HashMap<String, Integer> shoppingListAlice, HashMap<String, Integer> shoppingListBob, String item) {
         Integer itemAlice;
         Integer itemBob;
-        if (shoppingListAlice.containsKey(item)) {
-            itemAlice = shoppingListAlice.get(item);
-        } else {
-            itemAlice = 0;
-        }
-        if (shoppingListBob.containsKey(item)) {
-            itemBob = shoppingListBob.get(item);
-        } else {
-            itemBob = 0;
-        }
+        itemAlice = shoppingListAlice.getOrDefault(item, 0);
+        itemBob = shoppingListBob.getOrDefault(item, 0);
 
         if (itemAlice > itemBob) {
             return "Alice";
@@ -89,8 +81,8 @@ public class Shopping_List_2 {
         }
     }
 
-    private static Double pays(HashMap<String, Integer> list, HashMap<String, Double> prices) {
-        Double total = 0.;
+    private static double pays(HashMap<String, Integer> list, HashMap<String, Double> prices) {
+        double total = 0.;
         for (Map.Entry<String, Integer> item : list.entrySet()) {
             total += (item.getValue() * (prices.get(item.getKey())));
         }
