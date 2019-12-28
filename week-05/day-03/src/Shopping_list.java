@@ -6,8 +6,7 @@ public class Shopping_list {
     public static void main(String[] args) {
         //Create a list with the following items.
         //Eggs, milk, fish, apples, bread and chicken
-        ArrayList<String> shoppingList = new ArrayList<>();
-        shoppingList.addAll(Arrays.asList("Eggs", "milk", "fish", "apples", "bread", "chicken"));
+        ArrayList<String> shoppingList = new ArrayList<>(Arrays.asList("Eggs", "milk", "fish", "apples", "bread", "chicken"));
         //Create an application which solves the following problems.
         //Do we have milk on the list?
         System.out.println(shoppingList.contains("milk"));
