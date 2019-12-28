@@ -64,11 +64,15 @@ public class Carrier {
     }
 
     public String getStatus() {
-        StringBuilder carrierStatus = new StringBuilder();
-        carrierStatus.append("HP: " + this.healthPoints + ", Aircraft count: " + getAircraftCount() + ", Ammo Storage: " + ammoStorage + ", Total damage: " + getTotalDamage() + "\nAircrafts:\n");
-        for (int i = 0; i < this.carrier.size(); i++) {
-            carrierStatus.append(this.carrier.get(i).getStatus());
+        if (healthPoints == 0) {
+            return "It's dead Jim :(";
+        } else {
+            StringBuilder carrierStatus = new StringBuilder();
+            carrierStatus.append("HP: " + this.healthPoints + ", Aircraft count: " + getAircraftCount() + ", Ammo Storage: " + ammoStorage + ", Total damage: " + getTotalDamage() + "\nAircrafts:\n");
+            for (int i = 0; i < this.carrier.size(); i++) {
+                carrierStatus.append(this.carrier.get(i).getStatus());
+            }
+            return carrierStatus.toString();
         }
-        return carrierStatus.toString();
     }
 }
