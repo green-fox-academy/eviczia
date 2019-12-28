@@ -9,8 +9,6 @@ public class JosephusProblem {
 
         System.out.println(josephus(41));
 
-        System.out.println(josephus(34));
-
     }
 
     private static int josephus(int numberOfPeople) {
