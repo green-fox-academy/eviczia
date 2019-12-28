@@ -8,9 +8,8 @@ public class ArmstrongFinder {
 
         List<Integer> numbers = new ArrayList<>(Arrays.asList(371, 1634, 153, 42));
 
-        for (int i = 0; i < numbers.size(); i++) {
-            System.out.printf("The %d is%s an Armstrong number.\n", numbers.get(i), isArmstrongNumber(numbers.get(i)) ? "" : " not");
-
+        for (Integer number : numbers) {
+            System.out.printf("The %d is%s an Armstrong number.\n", number, isArmstrongNumber(number) ? "" : " not");
         }
     }
 
@@ -23,12 +22,12 @@ public class ArmstrongFinder {
         return i == sumDigitsPowered;
     }
 
-    private static List<Integer> returnDigits(int i) {
+    private static List<Integer> returnDigits(int numberToDigits) {
         List<Integer> digits = new ArrayList<>();
-        for (int j = Integer.toString(i).length() - 1; j >= 0; j--) {
+        for (int j = Integer.toString(numberToDigits).length() - 1; j >= 0; j--) {
             int divider = (int) Math.pow(10, j);
-            digits.add((i / divider));
-            i = i % divider;
+            digits.add((numberToDigits / divider));
+            numberToDigits = numberToDigits % divider;
         }
         return digits;
     }
