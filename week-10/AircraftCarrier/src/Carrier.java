@@ -53,18 +53,18 @@ public class Carrier {
 
     public void fight(Carrier enemy) {
         for (int i = 0; i < this.carrier.size(); i++) {
-            int damageCaused = this.carrier.get(i).fight();
-            enemy.healthPoints -= damageCaused;
             if (enemy.healthPoints <= 0) {
                 enemy.healthPoints = 0;
                 System.out.println("It's dead Jim :(");
                 break;
             }
+            int damageCaused = this.carrier.get(i).fight();
+            enemy.healthPoints -= damageCaused;
         }
     }
 
     public String getStatus() {
-        if (healthPoints == 0) {
+        if (healthPoints <= 0) {
             return "It's dead Jim :(";
         } else {
             StringBuilder carrierStatus = new StringBuilder();

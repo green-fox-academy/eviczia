@@ -34,8 +34,8 @@ public class Main {
     }
 
     private static void fillCarrier(Carrier carrier) {
-        for (int i = 0; i < (int) (Math.random()*10 + 5); i++) {
-            if ((int)(Math.random()*2) == 0) {
+        for (int i = 0; i < (int) (Math.random() * 10 + 5); i++) {
+            if ((int) (Math.random() * 2) == 0) {
                 carrier.add(new F16());
             } else {
                 carrier.add(new F35());
