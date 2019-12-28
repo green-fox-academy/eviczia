@@ -1,6 +1,6 @@
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ZeroAmmoException {
 
         Carrier friendlyCarrier = new Carrier(2500, 5000);
         Carrier enemyCarrier = new Carrier(2500, 5000);
@@ -11,34 +11,23 @@ public class Main {
         System.out.println(friendlyCarrier.getStatus());
         System.out.println(enemyCarrier.getStatus());
 
+        System.out.println("fill then fight:");
+
         friendlyCarrier.fill();
         enemyCarrier.fill();
 
         enemyCarrier.fight(friendlyCarrier);
         friendlyCarrier.fight(enemyCarrier);
 
-        enemyCarrier.fight(friendlyCarrier);
-        friendlyCarrier.fight(enemyCarrier);
-        enemyCarrier.fight(friendlyCarrier);
-        friendlyCarrier.fight(enemyCarrier);
-        enemyCarrier.fight(friendlyCarrier);
-        friendlyCarrier.fight(enemyCarrier);
-        enemyCarrier.fight(friendlyCarrier);
-        friendlyCarrier.fight(enemyCarrier);
-        enemyCarrier.fight(friendlyCarrier);
-        friendlyCarrier.fight(enemyCarrier);
-        enemyCarrier.fight(friendlyCarrier);
-        friendlyCarrier.fight(enemyCarrier);
-        enemyCarrier.fight(friendlyCarrier);
-        friendlyCarrier.fight(enemyCarrier);
-        enemyCarrier.fight(friendlyCarrier);
-        friendlyCarrier.fight(enemyCarrier);
-        enemyCarrier.fight(friendlyCarrier);
-        friendlyCarrier.fight(enemyCarrier);
+        System.out.println("fill then fight:");
+
+        friendlyCarrier.fill();
+        enemyCarrier.fill();
+
         enemyCarrier.fight(friendlyCarrier);
         friendlyCarrier.fight(enemyCarrier);
 
-
+        System.out.println("result:");
         System.out.println(friendlyCarrier.getStatus());
         System.out.println(enemyCarrier.getStatus());
 

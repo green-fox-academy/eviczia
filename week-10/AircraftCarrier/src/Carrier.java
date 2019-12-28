@@ -56,8 +56,8 @@ public class Carrier {
 
     public void fight(Carrier enemy) {
         for (int i = 0; i < this.carrier.size(); i++) {
-            enemy.healthPoints -= this.carrier.get(i).fight();
-            System.out.println(this.carrier.get(i).fight());
+            int damageCaused = this.carrier.get(i).fight();
+            enemy.healthPoints -= damageCaused;
             if (enemy.healthPoints <= 0) {
                 enemy.healthPoints = 0;
                 System.out.println("It's dead Jim :(");
