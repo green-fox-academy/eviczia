@@ -13,9 +13,6 @@ public class Carrier {
         this.healthPoints = healthPoints;
     }
 
-    public List<Aircraft> getCarrier() {
-        return carrier;
-    }
 
     public void add(Aircraft aircraft) {
         if (aircraft.isPriority()) {

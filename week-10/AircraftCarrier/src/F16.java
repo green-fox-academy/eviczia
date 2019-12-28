@@ -9,9 +9,4 @@ public class F16 extends Aircraft {
         super.setPriority(false);
     }
 
-    @Override
-    public int refill(int ammoRefill) {
-        return super.refill(ammoRefill);
-    }
-
 }

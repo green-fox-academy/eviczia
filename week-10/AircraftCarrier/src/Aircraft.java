@@ -14,17 +14,6 @@ public abstract class Aircraft {
         allDamage = 0;
     }
 
-    public void setAmmoSupply(int ammoSupply) {
-        if (ammoSupply > maxAmmo) {
-            this.ammoSupply = maxAmmo;
-        } else {
-            this.ammoSupply = ammoSupply;
-        }
-    }
-
-    public int getAmmoSupply() {
-        return ammoSupply;
-    }
 
     public int fight() {
         int damageDealt = ammoSupply * baseDamage;
@@ -35,17 +24,17 @@ public abstract class Aircraft {
 
     public int refill(int ammoRefill) {
         int ammoSpace = maxAmmo - ammoSupply;
-         ammoSupply = Math.min(ammoRefill, maxAmmo);
-         return Math.max(0, ammoRefill - ammoSpace);
+        ammoSupply = Math.min(ammoRefill, maxAmmo);
+        return Math.max(0, ammoRefill - ammoSpace);
     }
 
     public String getType() {
-         return this.getClass().getName();
+        return this.getClass().getName();
     }
 
 
     public String getStatus() {
-        return "Type " + this.getType() + ", Ammo: " + this.getAmmoSupply() + ", Base Damage: " + baseDamage + ", All Damage: " + allDamage + "\n";
+        return "Type " + this.getType() + ", Ammo: " + ammoSupply + ", Base Damage: " + baseDamage + ", All Damage: " + allDamage + "\n";
     }
 
     public boolean isPriority() {
@@ -68,7 +57,5 @@ public abstract class Aircraft {
             return -1;
         } else return 0;
     }*/
-
-
 
 }
