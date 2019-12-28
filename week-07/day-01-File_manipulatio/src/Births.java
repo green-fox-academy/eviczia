@@ -1,4 +1,5 @@
 // Create a function that
+
 // - takes the name of a CSV file as a parameter,
 //   - every row is in the following format: <person name>;<birthdate in YYYY-MM-DD format>;<city name>
 // - returns the year when the most births happened.
@@ -10,52 +11,61 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Births {
+    private static String fileHere = "births.csv";
+
     public static void main(String[] args) {
-        String fileHere = "births.csv";
-        String year = mostYearsFromText(fileHere);
-        System.out.println(year);
+        System.out.println(mostYearsFromText().toString());
 
     }
 
-    private static String mostYearsFromText(String fileHere) {
-        List<String> birthDatabase = readFileToList(fileHere);
+    private static List<String> mostYearsFromText() {
+        List<String> birthDatabase = readFileToList();
         String[][] birthDBmatrix = convertListToMatrix(birthDatabase);
-        HashMap<String, Integer> hashMapYearOccurence= new HashMap<String, Integer>();
-        int count = 0;
-        for (int i = 0; i < birthDBmatrix.length; i++) {
-            String year = birthDBmatrix[i][1].substring(0,4);
-            if (!hashMapYearOccurence.containsKey(year)) {
-                hashMapYearOccurence.put(year, 1);
-            } else {
-                hashMapYearOccurence.replace(year, hashMapYearOccurence.get(year)+1);
+        HashMap<String, Integer> hashMapYearOccurrence = yearsToHashmap(birthDBmatrix);
+
+        int max = 0;
+        for (Map.Entry<String, Integer> yearOccurrence : hashMapYearOccurrence.entrySet()) {
+            max = Math.max(max, yearOccurrence.getValue());
+        }
+        List<String> mostFrequentYears = new ArrayList<>();
+        for (Map.Entry<String, Integer> yearOccurrence : hashMapYearOccurrence.entrySet()) {
+            if (yearOccurrence.getValue() == max) {
+                mostFrequentYears.add(yearOccurrence.getKey());
             }
         }
-        hashMapYearOccurence.;
-                HashMap
-        int max = 0;
-        for (Integer yearOccurence: hashMapYearOccurence.values()) {
-            max = Math.max(max, yearOccurence);
-            if (max== yearOccurence) {
-                String year = hashMapYearOccurence.get(max);
-            }//TODO need to get the year which occurs max times, and return it
+
+        return mostFrequentYears;
+    }
+
+    private static HashMap<String, Integer> yearsToHashmap(String[][] birthDBmatrix) {
+        HashMap<String, Integer> hashMapYearOccurrence = new HashMap<>();
+        for (int i = 0; i < birthDBmatrix.length; i++) {
+            String year = birthDBmatrix[i][1].substring(0, 4);
+            if (!hashMapYearOccurrence.containsKey(year)) {
+                hashMapYearOccurrence.put(year, 1);
+            } else {
+                hashMapYearOccurrence.replace(year, hashMapYearOccurrence.get(year) + 1);
+            }
         }
-        return "eszter";
+        return hashMapYearOccurrence;
     }
 
 
     private static String[][] convertListToMatrix(List<String> birthDatabase) {
-        String [][] birthDBmatrix = new String[birthDatabase.size()][];
+        String[][] birthDBmatrix = new String[birthDatabase.size()][];
         for (int i = 0; i < birthDatabase.size(); i++) {
-            birthDBmatrix[i] = birthDatabase.get(i).split(";",3);
-            System.out.println(Arrays.toString(birthDBmatrix[i]));
+            birthDBmatrix[i] = birthDatabase.get(i).split(";", 3);
         }
         return birthDBmatrix;
     }
 
-    private static List<String> readFileToList(String fileHere) {
+    private static List<String> readFileToList() {
         Path path = Paths.get(fileHere);
         List<String> birthDatabase = new ArrayList<>();
 
