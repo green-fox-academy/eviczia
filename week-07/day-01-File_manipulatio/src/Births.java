@@ -14,7 +14,6 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Births {
     private static String fileHere = "births.csv";
@@ -27,20 +26,8 @@ public class Births {
     private static List<String> mostYearsFromText() {
         List<String> birthDatabase = readFileToList();
         String[][] birthDBmatrix = convertListToMatrix(birthDatabase);
-        HashMap<String, Integer> hashMapYearOccurrence = yearsToHashmap(birthDBmatrix);
 
-        int max = 0;
-        for (Map.Entry<String, Integer> yearOccurrence : hashMapYearOccurrence.entrySet()) {
-            max = Math.max(max, yearOccurrence.getValue());
-        }
-        List<String> mostFrequentYears = new ArrayList<>();
-        for (Map.Entry<String, Integer> yearOccurrence : hashMapYearOccurrence.entrySet()) {
-            if (yearOccurrence.getValue() == max) {
-                mostFrequentYears.add(yearOccurrence.getKey());
-            }
-        }
-
-        return mostFrequentYears;
+        return Lottery.getMaximumOccurence(yearsToHashmap(birthDBmatrix));
     }
 
     private static HashMap<String, Integer> yearsToHashmap(String[][] birthDBmatrix) {
