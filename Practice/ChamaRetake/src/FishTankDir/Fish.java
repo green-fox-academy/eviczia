@@ -1,14 +1,19 @@
 package FishTankDir;
 
-public abstract class Fish {
+public class Fish {
 
     private String name;
     private int weight;
     private String color;
 
-    public Fish(int weight, String color) {
+    public Fish(String name, int weight, String color) {
+        this.name = name;
         this.weight = weight;
         this.color = color;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getWeight() {
@@ -19,7 +24,9 @@ public abstract class Fish {
         this.weight = weight;
     }
 
-    public abstract void feed();
+    public void feed() {
+        this.setWeight(this.getWeight() + 1);
+    }
 
     public String status() {
         return name + ", weight: " + weight + ", color: " + color;

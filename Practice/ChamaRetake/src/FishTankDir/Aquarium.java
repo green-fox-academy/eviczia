@@ -21,26 +21,30 @@ public class Aquarium {
     }
 
     public void feed() {
-        for (Fish fish:myAquarium) {
+        for (Fish fish : myAquarium) {
             fish.feed();
         }
+        removeFish();
     }
 
     public void removeFish() {
-        for (Fish fish:myAquarium) {
-            if (fish.getWeight() >= WEIGHT_LIMIT) {
-                myAquarium.remove(fish);
+        List<Integer> removeIndexes = new ArrayList<>();
+        for (int i = 0; i < myAquarium.size(); i++) {
+            if (myAquarium.get(i).getWeight() >= WEIGHT_LIMIT) {
+                removeIndexes.add(i - removeIndexes.size());
             }
+        }
+        for (int i : removeIndexes) {
+            System.out.printf("Removed %s from aquarium.\n", myAquarium.get(i).getName());
+            myAquarium.remove(i);
         }
     }
 
     public void getStatus() {
-        for (Fish fish:myAquarium) {
+        for (Fish fish : myAquarium) {
             System.out.println(fish.status());
-
         }
-
-
+        System.out.println();
     }
 
 

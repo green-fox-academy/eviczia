@@ -3,8 +3,8 @@ package FishTankDir;
 public class Kong extends Fish {
 
 
-    public Kong(int weight, String color) {
-        super(weight, color);
+    public Kong(String name, int weight, String color) {
+        super(name, weight, color);
     }
 
     @Override
