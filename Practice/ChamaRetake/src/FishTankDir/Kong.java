@@ -1,6 +1,6 @@
 package FishTankDir;
 
-public class Kong extends Fish implements Feedable {
+public class Kong extends Fish {
 
 
     public Kong(int weight, String color) {

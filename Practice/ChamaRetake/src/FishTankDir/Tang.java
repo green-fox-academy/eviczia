@@ -1,6 +1,6 @@
 package FishTankDir;
 
-public class Tang extends Fish implements Feedable {
+public class Tang extends Fish {
 
     private boolean suffersShortTermMemoryLoss;
 
@@ -15,4 +15,10 @@ public class Tang extends Fish implements Feedable {
         this.setWeight(this.getWeight() + 1);
 
     }
+
+    @Override
+    public String status() {
+        return super.status() + ", short-term memory loss: " + suffersShortTermMemoryLoss;
+    }
+
 }

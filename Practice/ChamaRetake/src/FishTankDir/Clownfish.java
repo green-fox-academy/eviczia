@@ -1,6 +1,6 @@
 package FishTankDir;
 
-public class Clownfish extends Fish implements Feedable {
+public class Clownfish extends Fish {
 
     private String secondColor;
 
@@ -14,5 +14,10 @@ public class Clownfish extends Fish implements Feedable {
     public void feed() {
         this.setWeight(this.getWeight() + 1);
 
+    }
+
+    @Override
+    public String status() {
+        return super.status() + ", second color: " + secondColor;
     }
 }
