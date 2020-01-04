@@ -21,6 +21,7 @@ public class Aquarium {
     }
 
     public void feed() {
+        System.out.println("Feeding in process, removing big fish.");
         for (Fish fish : myAquarium) {
             fish.feed();
         }
