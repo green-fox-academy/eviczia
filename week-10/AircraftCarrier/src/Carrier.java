@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Carrier {
@@ -15,12 +17,10 @@ public class Carrier {
 
 
     public void add(Aircraft aircraft) {
-        if (aircraft.isPriority()) {
-            carrier.add(0, aircraft);
-        } else {
-            carrier.add(aircraft);
-        }
-//        Collections.sort(carrier);
+
+        carrier.add(aircraft);
+
+        Collections.sort(carrier);
     }
 
     public int getAircraftCount() {
@@ -75,4 +75,5 @@ public class Carrier {
             return carrierStatus.toString();
         }
     }
+
 }

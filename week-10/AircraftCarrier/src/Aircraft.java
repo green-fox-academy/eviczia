@@ -1,4 +1,4 @@
-public abstract class Aircraft {
+public abstract class Aircraft implements Comparable<Aircraft>{
 
     private int maxAmmo;
     private int baseDamage;
@@ -49,13 +49,14 @@ public abstract class Aircraft {
         return allDamage;
     }
 
-/*    @Override
-    public int compareTo(Aircraft aircraft) {
-        if (this.isPriority() && !aircraft.isPriority()) {
-            return 1;
-        } else if (!this.isPriority() && aircraft.isPriority()) {
+
+    @Override
+    public int compareTo(Aircraft o) {
+        if (this.isPriority && !o.isPriority) {
             return -1;
+        } else if(!this.isPriority && o.isPriority) {
+            return 1;
         } else return 0;
-    }*/
+    }
 
 }
