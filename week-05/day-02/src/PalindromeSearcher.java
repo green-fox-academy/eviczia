@@ -10,7 +10,7 @@ import java.util.List;
 //"racecar"	["racecar", "aceca", "cec"]
 //""	[]
 public class PalindromeSearcher {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ThisIsMyownException {
         String text1 = "dog goat dad duck doodle never";
         String text2 = "apple";
         String text3 = "racecar";
@@ -26,8 +26,11 @@ public class PalindromeSearcher {
         System.out.println(foundPalindromes4.toString());
     }
 
-    private static List<String> findPalindromes(String text) {
+    public static List<String> findPalindromes(String text) throws ThisIsMyownException {
         List<String> palindromes = new ArrayList<>();
+        if (text == null) {
+            throw new ThisIsMyownException();
+        }
         for (int i = 1; i < text.length(); i++) {
             for (int j = 1; j < Math.min(i + 1, text.length() - i); j++) {
                 if (j > 1 & text.substring(i - j, i).equals(reverse(text.substring(i, i + j)))) {
