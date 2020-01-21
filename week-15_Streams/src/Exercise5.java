@@ -11,18 +11,16 @@ public class Exercise5 {
 
         int oddAdder = 0;
 
-        for (int number:numbers) {
-            oddAdder += (number % 2 != 0 ? number:0);
+        for (int number : numbers) {
+            oddAdder += (number % 2 != 0 ? number : 0);
         }
         System.out.println(oddAdder);
 
         int addOdds = numbers.stream()
-                .filter(n -> n % 2 !=0)
+                .filter(n -> n % 2 != 0)
                 .reduce(0, (sum, n) -> sum + n);
 
         System.out.println(addOdds);
-
-
 
 
     }
