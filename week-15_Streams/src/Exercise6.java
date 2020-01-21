@@ -1,6 +1,5 @@
-import java.util.Arrays;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class Exercise6 {
 
@@ -10,30 +9,43 @@ public class Exercise6 {
         String name = "Czagányi Rozi";
 
         String capitalLetters = findInitials(name);
-        System.out.println(capitalLetters);
+        System.out.println("with simple for each solution: " + capitalLetters);
 
+        System.out.print("with a void stream function: ");
         findInitialsWithStreamVoid(name);
 
-        String capitalLetters2 = findInitialsWithStream(name);
-        System.out.println(capitalLetters2);
+        String capitalLetters2 = findInitialsWithStream1(name);
+        System.out.println("with a string return stream function (stringbuilder): " + capitalLetters2);
+
+        String capitalLetters3 = findInitialsWithStream2(name);
+        System.out.println("with a string return stream function (string collections): " + capitalLetters3);
 
 
     }
 
-    private static String findInitialsWithStream(String text) {
+    private static String findInitialsWithStream1(String text) {
 
         return text.codePoints()
                 .filter(n -> n < 91 && n > 64)
                 .collect(StringBuilder::new,
-                StringBuilder::appendCodePoint, StringBuilder::append)
+                        StringBuilder::appendCodePoint, StringBuilder::append)
                 .toString();
 
     }
 
+    private static String findInitialsWithStream2(String text) {
+
+        return text.codePoints()
+                .filter(n -> n < 91 && n > 64)
+                .mapToObj(c -> String.valueOf((char) c))
+                .collect(Collectors.joining());
+
+    }
+
+
     private static void findInitialsWithStreamVoid(String text) {
 
         IntStream intStream = text.chars();
-
         intStream.filter(n -> n < 91 && n > 64)
                 .forEach(n -> System.out.print((char) n));
         System.out.println();
