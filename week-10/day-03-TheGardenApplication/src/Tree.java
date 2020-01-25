@@ -17,7 +17,6 @@ public class Tree extends Plant {
     }
 
 
-
     @Override
     public void beWatered(int waterAmount) {
         setWaterLevel(getWaterLevel() + waterAmount * getAbsorptionLevel());

@@ -35,7 +35,7 @@ public class Exercise6 {
 
     private static String findInitialsWithStream2(String text) {
 
-        return text.codePoints()
+        return text.chars()
                 .filter(n -> n < 91 && n > 64)
                 .mapToObj(c -> String.valueOf((char) c))
                 .collect(Collectors.joining());

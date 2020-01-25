@@ -25,7 +25,8 @@ public class Garden {
             if (myPlants.get(i).isThirsty()) {
                 thirstyPlantCounter++;
             }
-        } return thirstyPlantCounter;
+        }
+        return thirstyPlantCounter;
     }
 
     public void waterPlants(int waterAmount) {

@@ -1,6 +1,6 @@
 abstract public class Plant {
 
-     private String color;
+    private String color;
     private float waterLevel;
     private boolean isThirsty;
 
@@ -40,7 +40,7 @@ abstract public class Plant {
         isThirsty = thirsty;
     }
 
-    public void status(){
+    public void status() {
         if (!isThirsty()) {
             System.out.printf("The %s %s doesn't need water.\n", this.getClass().getSimpleName(), getColor());
         } else {

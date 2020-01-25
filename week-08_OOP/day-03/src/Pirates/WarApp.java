@@ -8,8 +8,7 @@ public class WarApp {
     public static void main(String[] args) {
         Armada thisArmada = new Armada("Bandi");
         Armada thatArmada = new Armada("Miki");
-
-        thisArmada.fillArmada();
+           thisArmada.fillArmada();
         thatArmada.fillArmada();
         System.out.println(thisArmada.toString());
         System.out.println(thatArmada.toString());

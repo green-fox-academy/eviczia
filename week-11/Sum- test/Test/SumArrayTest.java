@@ -21,7 +21,7 @@ public class SumArrayTest {
     @Test
     public void sumListElements_IfListIsEmpty_Return0() throws ListDoesNotExistException {
         Sum sum = new Sum();
-        List<Integer> sumThis = Arrays.asList();
+        List<Integer> sumThis = Collections.emptyList();
 
         assertEquals(0, sum.sumListElements(sumThis));
     }
@@ -37,7 +37,7 @@ public class SumArrayTest {
 
     }
     @Test(expected = ListDoesNotExistException.class)
-    public void sumListElements_IfInputNull_Return() throws ListDoesNotExistException {
+    public void sumListElements_IfInputNull_ReturnMessage() throws ListDoesNotExistException {
         Sum sum = new Sum();
         sum.sumListElements(null);
 

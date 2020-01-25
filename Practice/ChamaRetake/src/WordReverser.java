@@ -17,7 +17,7 @@ public class WordReverser {
         System.out.println(reverseWordByWord(toReverse));
     }
 
-    private static String reverseWordByWord(String toReverse) {
+    public static String reverseWordByWord(String toReverse) {
         StringBuilder reversedString = new StringBuilder();
         String[] wordArray = toReverse.split(" ");
         for (String word:wordArray) {

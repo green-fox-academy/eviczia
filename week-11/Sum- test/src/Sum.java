@@ -10,6 +10,7 @@ public class Sum {
         int sum = 0;
         for (int number : listOfIntegers) {
             sum += number;
-        } return sum;
+        }
+        return sum;
     }
 }

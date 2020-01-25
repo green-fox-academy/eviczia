@@ -7,11 +7,13 @@ public class Sierpinsky_Carpet {
 
         int size = WIDTH/3;
         drawSquare(size, graphics);
-        int limit = 6;
+        int limit = 8;
+
         drawNineSquares(size/3, limit, graphics);
     }
-
+//TODO
     private static void drawNineSquares(int size, int limit, Graphics graphics) {
+        if (size> WIDTH/Math.pow(3,limit)) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 for (int k = 0; k < 3; k++) {
@@ -21,12 +23,9 @@ public class Sierpinsky_Carpet {
                         graphics.fillRect(x, y, size, size);
                     }
                 }
-
             }
-
         }
-        if (size> WIDTH/Math.pow(3,limit)) {
-            drawNineSquares(size/3, limit, graphics);
+        drawNineSquares(size/3, limit, graphics);
         }
     }
 
