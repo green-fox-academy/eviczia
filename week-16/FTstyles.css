@@ -1,0 +1,40 @@
+body {
+    background-color: #3E94EC;
+    font-family: 'Barlow', sans-serif;
+    font-size: 24px;
+    font-weight: 300;
+    color: #666A85;
+    width: 100%;
+}
+
+table {
+    width: 400px;
+    border-spacing: 0px;
+    border-radius: 10px;
+
+}
+
+
+table, td {
+    border: 1px solid #9EA7AF;
+
+}
+
+tr:nth-child(even){
+    background-color: #EBEBEB;
+}
+
+tr:nth-child(odd){
+    background-color: #FFFFFF;
+}
+
+th, td {
+    padding: 10px;
+}
+
+th {
+    color: gray;
+    background-color: #1B1E24;
+    text-align: left;
+    font-weight: 400
+}
