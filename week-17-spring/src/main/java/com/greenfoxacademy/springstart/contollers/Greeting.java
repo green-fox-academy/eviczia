@@ -1,17 +1,19 @@
 package com.greenfoxacademy.springstart.contollers;
 
+import java.util.concurrent.atomic.AtomicLong;
+
 public class Greeting {
 
-    private long id;
+    private AtomicLong greetCount;
     private String content;
 
-    public Greeting(long id, String content) {
-        this.id = id;
+    public Greeting(AtomicLong greetCount, String content) {
+        this.greetCount = greetCount;
         this.content = content;
     }
 
-    public long getId() {
-        return id;
+    public AtomicLong getGreetCount() {
+        return greetCount;
     }
 
     public String getContent() {
