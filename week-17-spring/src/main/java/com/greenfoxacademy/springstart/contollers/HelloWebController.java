@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Controller
-public class HelloWebController {
+public class  HelloWebController {
     private AtomicLong numberOfCalls = new AtomicLong(0);
 
 
