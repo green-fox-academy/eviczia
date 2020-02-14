@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Bank of Simba</title>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="https://freepngimg.com/save/82620-king-lion-simba-cartoon-mammal-free-hd-image/200x200">
+</head>
+<body>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Owner</th>
+        <th>Balance</th>
+        <th>Animal Type</th>
+        <th>Good or Bad</th>
+        <th>Is King</th>
+    </tr>
+    <!--/* th:attr="class=${account.getIsKing()} ? 'king' : 'notking' "*/-->
+    <tr th:each="account : ${bank}" th:object="${account}">
+        <td th:text="*{name}"></td>
+        <td class="td_balance" th:text="*{name}"></td>
+        <td class="td_balance" th:text="*{#numbers.formatDecimal(balance,0,'DEFAULT', 2, 'DEFAULT')} + ' Zebra'"></td>
+        <td th:text="*{animalType}"></td>
+        <td th:text="*{goodOrBad}"></td>
+        <td th:text="*{isKing}"></td>
+    </tr>
+</table>
+
+</body>
+</html>

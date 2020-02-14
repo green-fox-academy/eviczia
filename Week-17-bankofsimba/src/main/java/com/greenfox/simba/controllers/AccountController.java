@@ -1,5 +1,6 @@
 package com.greenfox.simba.controllers;
 
+import com.greenfox.simba.models.Bank;
 import com.greenfox.simba.models.BankAccount;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,9 +16,23 @@ public class AccountController {
 
         model.addAttribute("bankaccount", simba);
 
-
         return "index";
     }
+
+    @GetMapping("/show-all")
+    public String showAllAccounts(Model model) {
+
+        Bank simbaBank = new Bank();
+
+        simbaBank.fillList();
+
+        model.addAttribute("bank", simbaBank.getThisBanksAccounts());
+
+        return "show-accounts";
+    }
+
+
+
 
 
 }
