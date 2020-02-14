@@ -66,6 +66,9 @@ public class BookController {
         return "create";
     }
 
-
-
+    @RequestMapping(path = "/books/add", method = RequestMethod.POST)
+    public String addBook(@ModelAttribute(name="book") Book book) {
+        books.add(book);
+        return "redirect:/books";
+    }
 }
