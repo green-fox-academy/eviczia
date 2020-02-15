@@ -3,10 +3,53 @@
 <head>
     <title>Bank of Simba</title>
     <meta charset="utf-8" />
+    <script src="https://kit.fontawesome.com/1f4b05aa97.js" crossorigin="anonymous"></script>
+    <link href="../static/css/style.css" rel="stylesheet" type="text/css">
     <link rel="icon" type="image/png" href="https://freepngimg.com/save/82620-king-lion-simba-cartoon-mammal-free-hd-image/200x200">
+    <link href="https://fonts.googleapis.com/css?family=Cagliostro&display=swap" rel="stylesheet">
+    <style>
+        .td_balance {
+            text-align: right;
+            color: slategray;
+        }
+        .td_name {
+            text-align: left;
+            color: slategray;
+            font-weight: bold;
+        }
+
+        .king {
+            color: goldenrod;
+            font-weight: bold;
+        }
+
+        body {
+            text-align: center;
+            color: green;
+            font-family: 'Cagliostro', sans-serif;
+        }
+        thead {
+            color: beige;
+            background-color: darkslategray;
+            font-weight: bold;
+
+        }
+
+        table, th, td {
+            border: 0px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: beige;
+
+        }
+    </style>
 </head>
 <body>
 <table>
+    <thead>
     <tr>
         <th>ID</th>
         <th>Owner</th>
@@ -15,15 +58,18 @@
         <th>Good or Bad</th>
         <th>Is King</th>
     </tr>
-    <!--/* th:attr="class=${account.getIsKing()} ? 'king' : 'notking' "*/-->
-    <tr th:each="account : ${bank}" th:object="${account}">
-        <td th:text="*{name}"></td>
-        <td class="td_balance" th:text="*{name}"></td>
+    </thead>
+    <!--/* */-->
+    <tbody>
+    <tr th:each="account : ${bank}" th:object="${account}" th:attr="class=${account.isKing} ? 'king' : 'notking' ">
+        <td th:id="1"></td>
+        <td class="td_name" th:text="*{name}"></td>
         <td class="td_balance" th:text="*{#numbers.formatDecimal(balance,0,'DEFAULT', 2, 'DEFAULT')} + ' Zebra'"></td>
         <td th:text="*{animalType}"></td>
         <td th:text="*{goodOrBad}"></td>
-        <td th:text="*{isKing}"></td>
+        <td  th:utext="*{isKing} ? '<i class=&quot;fas fa-crown&quot;></i>'"></td>
     </tr>
+    </tbody>
 </table>
 
 </body>

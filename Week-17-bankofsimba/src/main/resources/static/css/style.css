@@ -7,15 +7,16 @@ body {
     text-align: right;
     color: green;
 }
+thead {
+
+}
 
 table, th, td {
     border: 1px solid black;
 }
 
-tbody tr {
+tbody tr:nth-child(even) {
+    background-color: beige;
 
 }
 
-thead {
-
-}
