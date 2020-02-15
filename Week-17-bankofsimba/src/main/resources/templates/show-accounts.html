@@ -6,45 +6,67 @@
     <script src="https://kit.fontawesome.com/1f4b05aa97.js" crossorigin="anonymous"></script>
     <link href="../static/css/style.css" rel="stylesheet" type="text/css">
     <link rel="icon" type="image/png" href="https://freepngimg.com/save/82620-king-lion-simba-cartoon-mammal-free-hd-image/200x200">
-    <link href="https://fonts.googleapis.com/css?family=Cagliostro&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cagliostro|Special+Elite&display=swap" rel="stylesheet">
     <style>
-        .td_balance {
-            text-align: right;
-            color: slategray;
-        }
+
         .td_name {
             text-align: left;
+        }
+
+        .td_balance {
+            text-align: right;
+        }
+
+        .td_name, .td_balance {
             color: slategray;
-            font-weight: bold;
+
+        }
+
+        .crown {
+            color: goldenrod;
+            text-align: center;
+            width: auto;
         }
 
         .king {
-            color: goldenrod;
-            font-weight: bold;
+            font-weight: bolder;
         }
 
         body {
+/*            background-image: url("simba_sunset.jpg");
+            background-size: cover;*/
+            font-size: 24px;
             text-align: center;
             color: green;
-            font-family: 'Cagliostro', sans-serif;
+            font-family: 'Special Elite', cursive;
         }
-        thead {
-            color: beige;
-            background-color: darkslategray;
-            font-weight: bold;
 
+        thead {
+            background-color: darkslategray;
         }
+
+        thead, th.td_name, th.td_balance {
+            color: beige;
+        }
+
+        table {
+            border: 1px darkslategray;
+            position: center;
+            width:auto;
+            margin-left:10%;
+            margin-right:10%;         }
 
         table, th, td {
-            border: 0px solid black;
             border-collapse: collapse;
-            padding: 20px;
+            padding: 10px;
+            width: auto;
         }
 
         tbody tr:nth-child(even) {
             background-color: beige;
-
         }
+
+
     </style>
 </head>
 <body>
@@ -52,22 +74,22 @@
     <thead>
     <tr>
         <th>ID</th>
-        <th>Owner</th>
-        <th>Balance</th>
+        <th class="crown"></th>
+        <th class="td_name">Owner</th>
+        <th class="td_balance">Balance</th>
         <th>Animal Type</th>
         <th>Good or Bad</th>
-        <th>Is King</th>
     </tr>
     </thead>
     <!--/* */-->
     <tbody>
-    <tr th:each="account : ${bank}" th:object="${account}" th:attr="class=${account.isKing} ? 'king' : 'notking' ">
-        <td th:id="1"></td>
+    <tr th:each="account, iterStat : ${bank}" th:object="${account}" th:attr="class=${account.isKing} ? 'king' : 'notking' ">
+        <td th:text="${iterStat.count}"></td>
+        <td class="crown" th:utext="*{isKing} ? '<i class=&quot;fas fa-crown&quot;></i>'"></td>
         <td class="td_name" th:text="*{name}"></td>
-        <td class="td_balance" th:text="*{#numbers.formatDecimal(balance,0,'DEFAULT', 2, 'DEFAULT')} + ' Zebra'"></td>
+        <td class="td_balance" th:utext="*{#numbers.formatDecimal(balance,0,'DEFAULT', 2, 'DEFAULT')} + ' <i class=&quot;fas fa-hryvnia&quot;></i>'"></td>
         <td th:text="*{animalType}"></td>
-        <td th:text="*{goodOrBad}"></td>
-        <td  th:utext="*{isKing} ? '<i class=&quot;fas fa-crown&quot;></i>'"></td>
+        <td th:attr="class=*{isGood} ? 'crown'" th:utext="*{isGood} ? '<i class=&quot;far fa-thumbs-up&quot;></i>' : '<i class=&quot;far fa-thumbs-down&quot;></i>'"></td>
     </tr>
     </tbody>
 </table>

@@ -1,19 +1,20 @@
 package com.greenfox.simba.models;
 
 public class BankAccount {
+    private static int nextId = 1;
 
     private String name;
     private double balance;
     private String animalType;
     private boolean isKing;
-    private String goodOrBad;
+    private boolean isGood;
 
     public BankAccount(String name, double balance, String animalType) {
         this.name = name;
         this.balance = balance;
         this.animalType = animalType;
         isKing = false;
-        goodOrBad = "good";
+        isGood = true;
     }
 
     public BankAccount(String name, double balance, String animalType, boolean isKing) {
@@ -21,22 +22,19 @@ public class BankAccount {
         this.balance = balance;
         this.animalType = animalType;
         this.isKing = isKing;
-        goodOrBad = "good";
+        isGood = true;
     }
 
-    public BankAccount(String name, double balance, String animalType, boolean isKing, String goodOrBad) {
+    public BankAccount(String name, double balance, String animalType, boolean isKing, boolean isGood) {
         this.name = name;
         this.balance = balance;
         this.animalType = animalType;
         this.isKing = isKing;
-        this.goodOrBad = goodOrBad;
+        this.isGood = isGood;
     }
 
-    public BankAccount(String name, double balance, String animalType, String goodOrBad) {
-        this.name = name;
-        this.balance = balance;
-        this.animalType = animalType;
-        this.goodOrBad = goodOrBad;
+    public boolean isKing() {
+        return isKing;
     }
 
     public String getName() {
@@ -71,11 +69,11 @@ public class BankAccount {
         isKing = king;
     }
 
-    public String getGoodOrBad() {
-        return goodOrBad;
+    public boolean getIsGood() {
+        return isGood;
     }
 
-    public void setGoodOrBad(String goodOrBad) {
-        this.goodOrBad = goodOrBad;
+    public void setIsGood(boolean isGood) {
+        this.isGood = isGood;
     }
 }
