@@ -4,72 +4,19 @@
     <title>Bank of Simba</title>
     <meta charset="utf-8" />
     <script src="https://kit.fontawesome.com/1f4b05aa97.js" crossorigin="anonymous"></script>
-    <link href="../static/css/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
     <link rel="icon" type="image/png" href="https://freepngimg.com/save/82620-king-lion-simba-cartoon-mammal-free-hd-image/200x200">
     <link href="https://fonts.googleapis.com/css?family=Cagliostro|Special+Elite&display=swap" rel="stylesheet">
-    <style>
+    <!--  <style>
 
-        .td_name {
-            text-align: left;
-        }
-
-        .td_balance {
-            text-align: right;
-        }
-
-        .td_name, .td_balance {
-            color: slategray;
-
-        }
-
-        .crown {
-            color: goldenrod;
-            text-align: center;
-            width: auto;
-        }
-
-        .king {
-            font-weight: bolder;
-        }
-
-        body {
-/*            background-image: url("simba_sunset.jpg");
-            background-size: cover;*/
-            font-size: 24px;
-            text-align: center;
-            color: green;
-            font-family: 'Special Elite', cursive;
-        }
-
-        thead {
-            background-color: darkslategray;
-        }
-
-        thead, th.td_name, th.td_balance {
-            color: beige;
-        }
-
-        table {
-            border: 1px darkslategray;
-            position: center;
-            width:auto;
-            margin-left:10%;
-            margin-right:10%;         }
-
-        table, th, td {
-            border-collapse: collapse;
-            padding: 10px;
-            width: auto;
-        }
-
-        tbody tr:nth-child(even) {
-            background-color: beige;
-        }
-
-
-    </style>
+   </style> -->
 </head>
 <body>
+<div class='section content'>
+    <div class='illustration'>
+        <img src='simba-logo.jpg' style='max-width: 500px'/>
+    </div>
+</div>
 <table>
     <thead>
     <tr>
@@ -93,6 +40,9 @@
     </tr>
     </tbody>
 </table>
+
+<input type="image" src="paw-colored.png" name="saveForm" class="btTxt submit" id="saveForm"  alt="lion-paw-button"/>
+
 
 </body>
 </html>
