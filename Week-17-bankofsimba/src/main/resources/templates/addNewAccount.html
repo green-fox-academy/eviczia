@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Bank of Simba</title>
+    <meta charset="utf-8"/>
+    <script src="https://kit.fontawesome.com/1f4b05aa97.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel="icon" type="image/png"
+          href="https://freepngimg.com/save/82620-king-lion-simba-cartoon-mammal-free-hd-image/200x200">
+    <link href="https://fonts.googleapis.com/css?family=Cagliostro|Special+Elite&display=swap" rel="stylesheet">
+    <!--    <style>
+            .add-form {
+                background-color: #F6F7F8;
+                border: 1px solid #D6D9DC;
+                border-radius: 3px;
+
+                width: 80%;
+                padding: 50px;
+                margin: 0 0 40px 0;
+            }
+
+        </style>-->
+</head>
+<body>
+<header>
+    <h1 class='illustration'>
+        <img src='bank-of-simba-logo.jpg' style='max-width: 500px' alt="Bank of Simba"/>
+    </h1>
+</header>
+<form
+        action="#"
+        th:action="@{/show-all/add}"
+        th:object="${account}"
+        th:class="'add-form'"
+        method="post"
+>
+    <div>
+        <label for="name">Name</label>
+        <input
+                type="text"
+                name="name"
+                id="name"
+                th:field="*{name}"
+                required
+        /></div>
+    <div>
+        <label for="balance">Balance</label>
+        <input
+                type="number"
+                name="balance"
+                id="balance"
+                th:field="*{balance}"
+                required
+        /></div>
+    <div>
+        <label for="animalType">Animal Type</label>
+        <input
+                type="text"
+                name="animalType"
+                id="animalType"
+                th:field="*{animalType}"
+                required
+        /></div>
+    <br>
+    <div><p>Tick if you are</p>
+        <label for="isKing">a King:</label>
+        <input
+                type="checkbox"
+                name="isKing"
+                th:value="true"
+                id="isKing"
+        />
+    <label for="isGood">Good:</label>
+    <input
+            type="checkbox"
+            name="isGood"
+            th:value="true"
+            id="isGood"
+    />
+    <div>
+        <button type="submit">
+            Add
+        </button>
+    </div>
+</form>
+
+</body>
+</html>

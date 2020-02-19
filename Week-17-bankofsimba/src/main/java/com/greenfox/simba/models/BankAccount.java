@@ -1,13 +1,15 @@
 package com.greenfox.simba.models;
 
 public class BankAccount {
-    private static int nextId = 1;
 
     private String name;
     private double balance;
     private String animalType;
     private boolean isKing;
     private boolean isGood;
+
+    public BankAccount() {
+    }
 
     public BankAccount(String name, double balance, String animalType) {
         this.name = name;
@@ -65,7 +67,7 @@ public class BankAccount {
         return isKing;
     }
 
-    public void setKing(boolean king) {
+    public void setIsKing(boolean king) {
         isKing = king;
     }
 
@@ -75,5 +77,10 @@ public class BankAccount {
 
     public void setIsGood(boolean isGood) {
         this.isGood = isGood;
+    }
+
+    public void increaseBalance() {
+        int increaseBy = (animalType.equals("lion")) ? 100 : 10;
+        setBalance(getBalance()+increaseBy);
     }
 }
