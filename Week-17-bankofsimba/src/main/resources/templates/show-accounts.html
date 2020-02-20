@@ -8,56 +8,72 @@
     <link rel="icon" type="image/png"
           href="https://freepngimg.com/save/82620-king-lion-simba-cartoon-mammal-free-hd-image/200x200">
     <link href="https://fonts.googleapis.com/css?family=Cagliostro|Special+Elite&display=swap" rel="stylesheet">
-    <!--  <style>
+    <style>
 
-   </style> -->
+    </style>
 </head>
 <body>
-<header>
-    <h1 class='illustration'>
-        <img src='bank-of-simba-logo.jpg' style='max-width: 500px' alt="Bank of Simba"/>
-    </h1>
-</header>
-<table>
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th class="crown"></th>
-        <th class="td_name">Owner</th>
-        <th class="td_balance">Balance</th>
-        <th>Animal Type</th>
-        <th>Good or Bad</th>
-        <th>Increase Balance</th>
-    </tr>
-    </thead>
-    <!--/* */-->
-    <tbody>
-    <tr th:each="account, iterStat : ${bank}" th:object="${account}"
-        th:attr="class=${account.isKing} ? 'king' : 'notking' ">
-        <td th:text="${iterStat.count}"></td>
-        <td class="crown" th:utext="*{isKing} ? '<i class=&quot;fas fa-crown&quot;></i>'"></td>
-        <td class="td_name" th:text="*{name}"></td>
-        <td class="td_balance"
-            th:utext="*{#numbers.formatDecimal(balance,0,'DEFAULT', 2, 'DEFAULT')} + ' <i class=&quot;fas fa-hryvnia&quot;></i>'"></td>
-        <td th:text="*{animalType}"></td>
-        <td th:attr="class=*{isGood} ? 'crown'"
-            th:utext="*{isGood} ? '<i class=&quot;far fa-thumbs-up&quot;></i>' : '<i class=&quot;far fa-thumbs-down&quot;></i>'"></td>
-        <td>
+<div class="grid-container">
+    <div class="grid-item">
+        <header>
+            <h1 class='illustration'>
+                <img src='bank-of-simba-logo.jpg' style='max-width: 300px' alt="Bank of Simba"/>
+            </h1>
+        </header>
+    </div>
+    <div class="grid-item">
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th class="crown"></th>
+                <th class="td_name">Owner</th>
+                <th class="td_balance">Balance</th>
+                <th></th>
+                <th>Animal Type</th>
+                <th>Good or Bad</th>
+            </tr>
+            </thead>
+            <!--/* */-->
+            <tbody>
+            <tr th:each="account, iterStat : ${bank}" th:object="${account}"
+                th:attr="class=${account.isKing} ? 'king' : 'notking' ">
+                <td th:text="${iterStat.count}"></td>
+                <td class="crown" th:utext="*{isKing} ? '<i class=&quot;fas fa-crown&quot;></i>'"></td>
+                <td class="td_name" th:text="*{name}"></td>
+                <td class="td_balance"
+                    th:utext="*{#numbers.formatDecimal(balance,1,'DEFAULT', 2, 'DEFAULT')} + ' <i class=&quot;fas fa-hryvnia&quot;></i>'"></td>
+                <td>
+                    <form action="#" th:action="@{/show-all/increase}" method="post">
+                        <input type="hidden" name="name" th:value="*{name}"/>
+                        <button type="submit"><i class="fas fa-caret-square-up"></i></button>
+                    </form>
+                    <form action="#" th:action="@{/show-all/decrease}" method="post">
+                        <input type="hidden" name="name" th:value="*{name}"/>
+                        <button type="submit"><i class="fas fa-caret-square-down"></i></button>
+                    </form>
+                    <!--  <form action="#" th:action="@{/show-all}" th:class="'raise-button'" method="post">
+                    <button type="submit" th:value="account">raise</button>
+                    </form>-->
+                </td>
+                <td th:text="*{animalType}"></td>
+                <td th:attr="class=*{isGood} ? 'crown'"
+                    th:utext="*{isGood} ? '<i class=&quot;far fa-thumbs-up&quot;></i>' : '<i class=&quot;far fa-thumbs-down&quot;></i>'"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="grid-item">
 
-            <form action="#" th:action="@{/show-all/raise}" th:class="'raise-button'" method="post">
-                <button type="submit" th:value="account">raise</button>
-            </form>
-        </td>
-    </tr>
-    </tbody>
-</table>
-<p> If you would like to add an account, please click here: </p>
-<a href="/show-all/add">
-    <input type="image" src="paw-colored.png" name="saveForm" class="btTxt submit" id="saveForm" alt="lion-paw-button"/>
-</a>
+        <div> Add an account, click here:</div>
+        <div><a href="/show-all/add">
+            <input type="image" src="paw-colored.png" name="saveForm" class="btTxt submit" id="saveForm"
+                   alt="lion-paw-button"/>
+        </a></div>
 
-<!-- <input type="image" src="paw-colored.png" name="saveForm" class="btTxt submit" id="saveForm"  alt="lion-paw-button"/> -->
+        <!-- <input type="image" src="paw-colored.png" name="saveForm" class="btTxt submit" id="saveForm"  alt="lion-paw-button"/> -->
 
-
+    </div>
+</div>
 </body>
 </html>

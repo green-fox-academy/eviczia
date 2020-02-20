@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Mat review</title>
+    <meta charset="utf-8">
+    <link href="
+://fonts.googleapis.com/css?family=Oswald|Raleway:200,600&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <h1>Material review</h1>
+    <section>
+      <h2>My table</h2>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Chicken pox</th>
+          <th>Measles</th>
+          <th>Asthma</th>
+          <th>Diarrhea</th>
+        </tr>
+        <tr>
+          <td>Jancsi</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>Juliska</td>
+          <td>0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+        </tr>
+      </table>
+    </section>
+    <section>
+      <h2>My form</h2>
+    <form action="/diseases" method="POST">
+      <div>
+        <label class="form-title" for="name">Name:</label>
+        <input id="name" type="text" placeholder="Name">
+      </div>
+      <div>
+        <label class="form-title"  for="age">Age:</label>
+        <input id="age" type="number" maxlength="3" placeholder="1-99">
+      </div>
+      <div>
+        <span class="form-title">Gender:</span>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">male</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">female</label>
+      </div>
+      <div>
+        <label class="form-title" for="favourite">Favourite game:</label>
+        <select id="favourite">
+          <option>Puzzle</option>
+          <option selected>Lego</option>
+          <option>Barbie</option>
+        </select>
+      </div>
+      <div>
+        <span class="form-title">Diseases:</span>
+        <div>
+          <input type="checkbox" id="chicken-pox" name="cp">
+          <label for="chicken-pox">Chicken Pox</label>
+        </div>
+        <div>
+          <input type="checkbox" id="measles" name="measles">
+          <label for="measles">Measles</label>
+        </div>
+        <div>
+          <input type="checkbox" id="asthma" name="asthma">
+          <label for="asthma">Asthma</label>
+        </div>
+        <div>
+          <label class="form-title" for="other">Other:</label>
+          <div>
+            <textarea rows="5"></textarea>
+          </div>
+        </div>
+      </div>
+      <div>
+        <input id="facebook-login" type="button" value="Login with facebook">
+      </div>
+      <div>
+        <input type="submit" value="Send">
+      </div>
+    </form>
+    </section>
+  </body>
+</html>

@@ -80,7 +80,23 @@ public class BankAccount {
     }
 
     public void increaseBalance() {
-        int increaseBy = (animalType.equals("lion")) ? 100 : 10;
-        setBalance(getBalance()+increaseBy);
+        if (animalType == null) {
+            System.err.println("keep looking!");
+        } else {
+
+            int increaseBy = (animalType.equals("lion")) ? 100 : 10;
+            setBalance(getBalance() + increaseBy);
+        }
+    }
+
+    public void decreaseBalance() {
+        if (animalType == null) {
+            System.err.println("keep looking!");
+        } else {
+
+            int decreaseBy = (animalType.equals("lion")) ? 100 : 10;
+            setBalance(getBalance() - decreaseBy);
+        }
     }
 }
+

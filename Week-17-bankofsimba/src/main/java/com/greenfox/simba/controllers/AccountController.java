@@ -4,7 +4,10 @@ import com.greenfox.simba.models.Bank;
 import com.greenfox.simba.models.BankAccount;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class AccountController {
@@ -43,11 +46,26 @@ public class AccountController {
         return "redirect:/show-all";
     }
 
-    @RequestMapping(path = "/show-all/raise", method = RequestMethod.POST)
-    public String increaseBalance(@RequestParam("increaseInfo") BankAccount account) {
-        account.increaseBalance();
+    @RequestMapping(path = "/show-all/increase", method = RequestMethod.POST/*, params="action=raise"*/)
+    public String increaseBalance(@ModelAttribute(name = "name") String name) {
+        for (BankAccount account : simbaBank.getThisBanksAccounts()) {
+            if (account.getName().equals(name)) {
+                account.increaseBalance();
+            }
+        }
+
         return "redirect:/show-all";
+
     }
+    @RequestMapping(path = "/show-all/decrease", method = RequestMethod.POST/*, params="action=raise"*/)
+    public String decreaseBalance(@ModelAttribute(name = "name") String name) {
+        for (BankAccount account : simbaBank.getThisBanksAccounts()) {
+            if (account.getName().equals(name)) {
+                account.decreaseBalance();
+            }
+        }
 
+        return "redirect:/show-all";
 
+    }
 }

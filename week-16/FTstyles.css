@@ -1,40 +1,55 @@
+* {
+    box-sizing: border-box;
+  }
+  
 body {
+    border-radius: 10px;
+
     background-color: #3E94EC;
     font-family: 'Barlow', sans-serif;
     font-size: 24px;
-    font-weight: 300;
+    font-weight: 200;
     color: #666A85;
     width: 100%;
 }
 
 table {
+    border-radius: 10px;
     width: 400px;
     border-spacing: 0px;
-    border-radius: 10px;
+    margin: auto;
+    border: 0px solid #C1C3D1;
 
-}
-
-
-table, td {
-    border: 1px solid #9EA7AF;
-
-}
-
-tr:nth-child(even){
-    background-color: #EBEBEB;
-}
-
-tr:nth-child(odd){
-    background-color: #FFFFFF;
 }
 
 th, td {
     padding: 10px;
+    border: 1px solid #C1C3D1;
 }
 
-th {
+
+tr:first-child {
+    border-radius: 10px;
     color: gray;
-    background-color: #1B1E24;
     text-align: left;
-    font-weight: 400
+    background-color: #1B1E24;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
 }
+
+
+tr:nth-child(2n) {
+    background-color: #EBEBEB;
+}
+
+tr:nth-child(2n+3) {
+    background-color: #FFFFFF;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+
+
+.th_dollars::before { content:"$ "; }
+.th_dollars::after { content:",000.00"; }
