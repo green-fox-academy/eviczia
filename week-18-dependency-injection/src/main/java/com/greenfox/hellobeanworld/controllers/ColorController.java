@@ -30,7 +30,6 @@ public class ColorController {
     }
 
 
-
     @GetMapping("/useful/email")
     public String checkEmail(@RequestParam(value = "email", required = false) String email, Model model) {
         if (email == null) {
@@ -42,14 +41,21 @@ public class ColorController {
         return "evaluate";
     }
 
-    @GetMapping("/useful/code")
-    public String checkEmail(@RequestParam(value = "text", required = false) String text, @RequestParam(value = "number", required = false) int number, Model model) {
+    @GetMapping("/useful/encode")
+    public String ceasarEncode(@RequestParam(value = "text", required = false) String text, Model model) {
+        if (text == null) {
+            return "code_message";
+        }
+        model.addAttribute("text", utilityService.caesar(text, 1));
+        return "encode";
+    }
+    @GetMapping("/useful/decode")
+    public String ceasarDecode(@RequestParam(value = "text", required = false) String text, Model model) {
         if (text == null) {
             return "code_message";
         }
 
-        model.addAttribute("text", utilityService.caesar(text, number));
-        model.addAttribute("number", number);
+        model.addAttribute("text", utilityService.caesar(text, -1));
         return "decode";
     }
 
