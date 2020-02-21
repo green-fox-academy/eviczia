@@ -17,3 +17,10 @@ background-color: red;
 .magenta {
        background-color: magenta;
 }
+.valid {
+    color: green;
+}
+
+.inValid {
+    color: red;
+}

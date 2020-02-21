@@ -26,6 +26,21 @@ public class UtilityService {
         return colors.get(random.nextInt(colors.size()));
     }
 
+    public boolean emailValidator(String email) {
+        if (email.contains(" ")) return false;
+        String[] splitEmail = email.split("@");
+        if (checkSplitText(splitEmail)) {
+            String domain = splitEmail[1];
+            String[] splitDomain = domain.split("\\.");
+            return (checkSplitText(splitDomain));
+        } else return false;
+    }
+
+
+    private boolean checkSplitText(String[] splitText) {
+        return splitText.length == 2 && splitText[0].length() > 0 && splitText[1].length() > 0;
+
+    }
 
     public String caesar(String text, int number) {
         if (number < 0) {
@@ -39,4 +54,6 @@ public class UtilityService {
         }
         return result;
     }
+
+
 }
