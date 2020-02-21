@@ -29,19 +29,28 @@ public class ColorController {
         return "colored";
     }
 
-    @GetMapping("/useful/email")
-    public String checkEmail() {
-
-        return "email-form";
-    }
 
 
     @GetMapping("/useful/email")
-    public String checkEmail(@RequestParam(value = "email") String email, Model model) {
+    public String checkEmail(@RequestParam(value = "email", required = false) String email, Model model) {
+        if (email == null) {
+            return "message";
+        }
         model.addAttribute("email", email);
         model.addAttribute("isValid", utilityService.emailValidator(email) ? "valid" : "inValid");
         model.addAttribute("result", utilityService.emailValidator(email) ? " is a valid email address" : " is not a valid email address");
         return "evaluate";
+    }
+
+    @GetMapping("/useful/code")
+    public String checkEmail(@RequestParam(value = "text", required = false) String text, @RequestParam(value = "number", required = false) int number, Model model) {
+        if (text == null) {
+            return "code_message";
+        }
+
+        model.addAttribute("text", utilityService.caesar(text, number));
+        model.addAttribute("number", number);
+        return "decode";
     }
 
 }

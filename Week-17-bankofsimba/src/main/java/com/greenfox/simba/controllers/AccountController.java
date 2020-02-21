@@ -35,13 +35,13 @@ public class AccountController {
 
 
     @RequestMapping(path = "/show-all/add", method = RequestMethod.GET)
-    public String addAccount(@ModelAttribute(name = "account") BankAccount account, Model model) {
+    public String showAddAccountForm(@ModelAttribute(name = "account") BankAccount account) {
 
         return "addNewAccount";
     }
 
     @RequestMapping(path = "/show-all/add", method = RequestMethod.POST)
-    public String addAccount(@ModelAttribute(name = "account") BankAccount account) {
+    public String addAccount1(@ModelAttribute(name = "account") BankAccount account) {
         simbaBank.addAccount(account);
         return "redirect:/show-all";
     }
