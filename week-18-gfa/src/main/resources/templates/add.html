@@ -10,7 +10,18 @@
 <div><a href="/gfa">home</a></div>
 <div><a href="/gfa/list">list students</a></div>
 <div><a href="/gfa/add">add new student</a></div>
-<div><a href="/gfa/student checker">encode</a></div>
+<div><a href="/gfa/student_checker">check if student is in list</a></div>
+
+<form  action="#"
+       th:action="@{/gfa/save}"
+       method="post">
+    <div class='form-row'>
+        <label for='name'>Name</label>
+        <input id='name' th:name='name' type='text'/>
+
+        <button>Submit</button>
+    </div>
+</form>
 
 </body>
 </html>
