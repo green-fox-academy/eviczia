@@ -3,13 +3,12 @@ package com.greenfox.mycolor.services;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-@Qualifier("g")
+@Qualifier("rp")
 @Service
-
-public class GreenColor implements MyColor{
+public class Rebeccapurple implements MyColor {
     @Override
     public String printColor() {
-        return "It is green in color...";
 
+        return "It is rebeccapurple in color...";
     }
 }

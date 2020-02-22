@@ -18,7 +18,7 @@ public class GreenFoxController {
 
     @GetMapping("/gfa")
     public String gfaHome() {
-        return "index";
+        return "main";
     }
 
     @GetMapping("/gfa/list")
