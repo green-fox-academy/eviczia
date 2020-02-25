@@ -27,8 +27,10 @@ public class UtilityService {
     }
 
     public boolean emailValidator(String email) {
-        if (email.contains(" ")) return false;
+        if (email.contains(" ") || email.contains("..")) return false;
+        if (email.endsWith("@") || email.endsWith(".")) return false;
         String[] splitEmail = email.split("@");
+        if (splitEmail[0].endsWith("@") || splitEmail[0].endsWith(".")) return false;
         if (checkSplitText(splitEmail)) {
             String domain = splitEmail[1];
             String[] splitDomain = domain.split("\\.");

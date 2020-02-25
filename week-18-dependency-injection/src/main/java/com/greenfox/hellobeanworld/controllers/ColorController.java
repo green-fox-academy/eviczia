@@ -42,21 +42,26 @@ public class ColorController {
     }
 
     @GetMapping("/useful/encode")
-    public String ceasarEncode(@RequestParam(value = "text", required = false) String text, Model model) {
-        if (text == null) {
+    public String ceasarEncode(@RequestParam(value = "text", required = false) String text, @RequestParam(value = "number", required = false) Integer numb, Model model) {
+        if (text == null && numb == null) {
             return "code_message";
         }
-        model.addAttribute("text", utilityService.caesar(text, 1));
-        return "encode";
+        model.addAttribute("text", utilityService.caesar(text, Math.abs(numb)));
+        return "coder";
     }
     @GetMapping("/useful/decode")
-    public String ceasarDecode(@RequestParam(value = "text", required = false) String text, Model model) {
-        if (text == null) {
+    public String ceasarDecode(@RequestParam(value = "text", required = false) String text, @RequestParam(value = "number", required = false) Integer numb, Model model) {
+        if (text == null && numb == null) {
             return "code_message";
         }
-
-        model.addAttribute("text", utilityService.caesar(text, -1));
-        return "decode";
+        model.addAttribute("text", utilityService.caesar(text, -1*Math.abs(numb)));
+        return "coder";
     }
+
+    @GetMapping("/gfa")
+    public String gfaHome() {
+        return "main";
+    }
+
 
 }

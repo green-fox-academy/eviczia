@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Fox</title>
+    <link rel="icon" type="image/png"
+          href='greenfox.png'>
+
+</head>
+<body>
+<ul>
+    <li><a href="/gfa">Information</a></li>
+</ul>
+<p><img src='greenfox.png' alt="greenfox logo"/></p>
+<p>This is Mr. Fox. Currently living on <span>pizza</span> and <span th:text="{myFox.getThisFoxesDrink}"></span>. He knows 2 tricks.</p>
+
+<h1>Known tricks</h1>
+<ul th:each="trick:${myFox.thisFoxesTricks}">
+    <li>write HTML</li>
+    <li>code in Java</li>
+</ul>
+
+</body>
+</html>

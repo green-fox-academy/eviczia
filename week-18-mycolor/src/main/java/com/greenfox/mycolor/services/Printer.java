@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Service
 public class Printer {
 
-    MyColor myColor;
+    private MyColor myColor;
 
     @Autowired
     public Printer(@Qualifier("lg") MyColor myColor) {

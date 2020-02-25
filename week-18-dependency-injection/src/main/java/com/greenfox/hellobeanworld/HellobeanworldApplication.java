@@ -14,13 +14,12 @@ public class HellobeanworldApplication implements CommandLineRunner {
 
     private Printer printer;
     private MyColor color;
-    private UtilityService utilityService;
 
     @Autowired
     HellobeanworldApplication(Printer printer, @Qualifier("green") MyColor myColor, UtilityService utilityService) {
         this.printer = printer;
         color = myColor;
-        this.utilityService = utilityService;
+
     }
 
     public static void main(String[] args) {
@@ -30,7 +29,6 @@ public class HellobeanworldApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         printer.log(color);
-
 
 
     }
