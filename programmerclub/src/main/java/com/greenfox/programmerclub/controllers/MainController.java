@@ -19,7 +19,8 @@ public class MainController {
     }
 
     @GetMapping("/index")
-    public String startPage(@RequestParam(value = "name") String name) {
+    public String startPage(Model model, @RequestParam(value = "name") String name) {
+        model.addAttribute("myFox", myFoxes.findMyFoxByName(name));
         return "index";
     }
 
@@ -29,14 +30,13 @@ public class MainController {
     }
 
     @PostMapping("/login")
-    public String sendLoginData(Model model, @RequestParam(value = "name") String name) {
+    public String sendLoginData(@RequestParam(value = "name") String name) {
         if (name.equals("")) {
             return "redirect:/login";
         } else if (myFoxes.findMyFoxByName(name) == null) {
             myFoxes.addFox(new Fox(name));
             System.out.println("new fox added");
         }
-        model.addAttribute("myFox", myFoxes.findMyFoxByName(name));
         System.out.println(myFoxes);
         return "redirect:/index?name=" + name;
     }

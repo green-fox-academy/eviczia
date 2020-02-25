@@ -12,11 +12,11 @@
     <li><a href="/#">Information</a></li>
 </ul>
 <p><img src='greenfox.png' alt="greenfox logo"/></p>
-<p>This is Mr. Fox. Currently living on <span th:text="${myFox.getThisFoxesFood}"></span> and <span th:text="${myFox.getThisFoxesDrink}"></span>. He knows 2 tricks.</p>
+<p th:text="${myFox}"></p>
 
 <h1>Known tricks</h1>
-<ul th:each="trick:${myFox.thisFoxesTricks}">
-    <li th:text="${trick}"></li>
+<ul>
+    <li> write html</li>
     <li>code in Java</li>
 </ul>
 
