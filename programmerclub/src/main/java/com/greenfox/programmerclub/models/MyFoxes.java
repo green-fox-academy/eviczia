@@ -37,7 +37,7 @@ public class MyFoxes {
     public String toString() {
         StringBuilder listFoxes = new StringBuilder();
         for (Fox fox : myFoxes) {
-            listFoxes.append(fox.getName());
+            listFoxes.append(fox.toString()).append("\n");
 
         }
         return "Hi we are your foxes: " + listFoxes.toString();

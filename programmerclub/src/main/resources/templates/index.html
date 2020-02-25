@@ -15,9 +15,9 @@
 <p th:text="${myFox}"></p>
 
 <h1>Known tricks</h1>
-<ul>
-    <li> write html</li>
-    <li>code in Java</li>
+<p th:text="${myFox.getThisFoxesTricks().isEmpty()} ? 'You know no tricks yet. Go and learn some.' "></p>
+<ul th:each="trick : ${myFox.getThisFoxesTricks()}">
+    <li th:text="${trick}"> </li>
 </ul>
 
 </body>

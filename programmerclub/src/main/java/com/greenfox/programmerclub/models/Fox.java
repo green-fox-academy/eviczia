@@ -15,7 +15,8 @@ public class Fox {
     public Fox() {
         thisFoxesTricks = new ArrayList<>();
         thisFoxesFood = "chocolate";
-        thisFoxesDrink = "coffee";
+        thisFoxesDrink = "tea";
+        thisFoxesTricks.add(Tricks.WHISTLE);
     }
 
     public Fox(String name) {
@@ -23,6 +24,7 @@ public class Fox {
         thisFoxesTricks = new ArrayList<>();
         thisFoxesFood = "chocolate";
         thisFoxesDrink = "coffee";
+//        thisFoxesTricks.add(Tricks.COFFEE);
     }
 
     public String getName() {
