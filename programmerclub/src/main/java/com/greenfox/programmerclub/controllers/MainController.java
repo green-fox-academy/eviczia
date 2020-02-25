@@ -18,8 +18,11 @@ public class MainController {
         this.myFoxes = new FoxService();
     }
 
-    @GetMapping("/index")
-    public String startPage(Model model, @RequestParam(value = "name") String name) {
+    @GetMapping("/")
+    public String startPage(Model model, @RequestParam(value = "name", required = false) String name) {
+        if (name == null) {
+            return "redirect:/login";
+        }
         model.addAttribute("myFox", myFoxes.findMyFoxByName(name));
         return "index";
     }
@@ -38,6 +41,6 @@ public class MainController {
             System.out.println("new fox added");
         }
         System.out.println(myFoxes);
-        return "redirect:/index?name=" + name;
+        return "redirect:/?name=" + name;
     }
 }
