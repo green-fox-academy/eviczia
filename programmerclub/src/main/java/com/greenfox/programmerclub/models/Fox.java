@@ -8,17 +8,21 @@ public class Fox {
 
     private String name;
     private List<Tricks> thisFoxesTricks;
-    private Food thisFoxesFood;
-    private Drinks thisFoxesDrink;
+    private String thisFoxesFood;
+    private String thisFoxesDrink;
 
 
     public Fox() {
         thisFoxesTricks = new ArrayList<>();
+        thisFoxesFood = "chocolate";
+        thisFoxesDrink = "coffee";
     }
 
     public Fox(String name) {
         this.name = name;
         thisFoxesTricks = new ArrayList<>();
+        thisFoxesFood = "chocolate";
+        thisFoxesDrink = "coffee";
     }
 
     public String getName() {
@@ -29,7 +33,7 @@ public class Fox {
         this.name = name;
     }
 
-    public Food getThisFoxesFood() {
+/*    public Food getThisFoxesFood() {
         return thisFoxesFood;
     }
 
@@ -43,7 +47,7 @@ public class Fox {
 
     public void setThisFoxesDrink(Drinks thisFoxesDrink) {
         this.thisFoxesDrink = thisFoxesDrink;
-    }
+    }*/
 
     public void addTrick(Tricks trick){
         thisFoxesTricks.add(trick);

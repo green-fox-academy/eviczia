@@ -4,9 +4,11 @@ public enum Tricks {
 
     RIDE,
     DANCE,
-    COOK
+    COOK;
 
 
-
-
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
