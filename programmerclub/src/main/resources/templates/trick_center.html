@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tricks</title>
+    <link rel="icon" type="image/png"
+          href='greenfox.png'>
+
+</head>
+<body th:object="${myFox}">
+<ul>
+    <li><a th:href="'/?name=' + *{name}">Information</a></li>
+    <li><a th:href="'/nutritionStore?name=' + *{name}">Nutrition Store</a></li>
+    <li><a th:href="'/trickCenter?name=' + *{name}">Trick Center</a></li>
+    <li><a th:href="'/actionHistory?name=' + *{name}">Action History</a></li>
+</ul>
+<form action="#" th:action="@{/trickCenter}" id="tricksCenter" method="post">
+    <div class='form-row'>
+        <label for='tricks'>Tricks</label>
+        <select id='tricks' form="tricksCenter" >
+            <option disabled th:each="trick: ${tricks}" th:text="${trick}"></option>
+        </select>
+        <input type="hidden" name="name" th:value="*{name}">
+        <button>Go</button>
+    </div>
+</form>
+
+<footer><a href="/login">Login with/add another fox</a></footer>
+</body>
+</html>

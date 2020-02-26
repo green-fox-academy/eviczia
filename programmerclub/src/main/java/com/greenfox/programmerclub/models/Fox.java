@@ -14,16 +14,16 @@ public class Fox {
 
     public Fox() {
         thisFoxesTricks = new ArrayList<>();
-        thisFoxesFood = "chocolate";
-        thisFoxesDrink = "tea";
-        thisFoxesTricks.add(Tricks.WHISTLE);
+//        thisFoxesFood = "chocolate";
+//        thisFoxesDrink = "tea";
+//        thisFoxesTricks.add(Tricks.WHISTLE);
     }
 
     public Fox(String name) {
         this.name = name;
         thisFoxesTricks = new ArrayList<>();
-        thisFoxesFood = "chocolate";
-        thisFoxesDrink = "coffee";
+//        thisFoxesFood = "chocolate";
+//        thisFoxesDrink = "coffee";
 //        thisFoxesTricks.add(Tricks.COFFEE);
     }
 
@@ -35,21 +35,21 @@ public class Fox {
         this.name = name;
     }
 
-/*    public Food getThisFoxesFood() {
+    public String getThisFoxesFood() {
         return thisFoxesFood;
     }
 
-    public void setThisFoxesFood(Food thisFoxesFood) {
+    public void setThisFoxesFood(String thisFoxesFood) {
         this.thisFoxesFood = thisFoxesFood;
     }
 
-    public Drinks getThisFoxesDrink() {
+    public String getThisFoxesDrink() {
         return thisFoxesDrink;
     }
 
-    public void setThisFoxesDrink(Drinks thisFoxesDrink) {
+    public void setThisFoxesDrink(String thisFoxesDrink) {
         this.thisFoxesDrink = thisFoxesDrink;
-    }*/
+    }
 
     public void addTrick(Tricks trick){
         thisFoxesTricks.add(trick);

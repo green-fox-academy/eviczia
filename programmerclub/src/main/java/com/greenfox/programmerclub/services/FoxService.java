@@ -1,6 +1,7 @@
 package com.greenfox.programmerclub.services;
 
 import com.greenfox.programmerclub.models.Fox;
+import com.greenfox.programmerclub.models.Tricks;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -9,7 +10,8 @@ import java.util.List;
 @Service
 public class FoxService {
 
-    List<Fox> myFoxes;
+    private List<Fox> myFoxes;
+ //   private Tricks tricksList;
 
     public FoxService() {
         this.myFoxes = new ArrayList<>();
@@ -19,8 +21,16 @@ public class FoxService {
         myFoxes.add(fox);
     }
 
-    public Fox findMyFoxByName(String foxName) {
+    public void replace(Fox newFox) {
+        for (Fox oldFox : myFoxes) {
+            if (oldFox.getName().equals(newFox.getName())) {
+                myFoxes.remove(oldFox);
+                myFoxes.add(newFox);
+            }
+        }
+    }
 
+    public Fox findMyFoxByName(String foxName) {
         for (Fox fox : myFoxes) {
             if (fox.getName().equals(foxName)) {
                 return fox;
@@ -33,9 +43,6 @@ public class FoxService {
         return myFoxes;
     }
 
-    public void setMyFoxes(List<Fox> myFoxes) {
-        this.myFoxes = myFoxes;
-    }
 
     @Override
     public String toString() {
@@ -45,5 +52,12 @@ public class FoxService {
 
         }
         return "Hi we are your foxes: " + listFoxes.toString();
+    }
+
+    public String getWelcomeMessage(String name) {
+        if (findMyFoxByName(name) == null) {
+            addFox(new Fox(name));
+            return "New fox added. Please take good care of him!";
+        } else return "Hello again!";
     }
 }

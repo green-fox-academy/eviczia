@@ -8,10 +8,14 @@
 
 </head>
 <body>
-<ul>
-    <li><a href="/#">Information</a></li>
+<ul >
+    <li><a th:href="'/?name=' + ${myFox.name}">Information</a></li>
+    <li><a th:href="'/nutritionStore?name=' + ${myFox.name}">Nutrition Store</a></li>
+    <li><a th:href="'/trickCenter?name=' + ${myFox.name}">Trick Center</a></li>
+    <li><a th:href="'/actionHistory?name=' + ${myFox.name}">Action History</a></li>
 </ul>
 <p><img src='greenfox.png' alt="greenfox logo"/></p>
+<p th:text="${message}"></p>
 <p th:text="${myFox}"></p>
 
 <h1>Known tricks</h1>
@@ -20,5 +24,6 @@
     <li th:text="${trick}"> </li>
 </ul>
 
+<footer><a href="/login">Login with/add another fox</a></footer>
 </body>
 </html>
