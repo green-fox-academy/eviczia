@@ -19,8 +19,8 @@
 <p th:text="${myFox}"></p>
 
 <h1>Known tricks</h1>
-<p th:text="${myFox.getThisFoxesTricks().isEmpty()} ? 'You know no tricks yet. Go and learn some.' "></p>
-<ul th:each="trick : ${myFox.getThisFoxesTricks()}">
+<p th:text="${myFox.learntTricks().isEmpty()} ? 'You know no tricks yet. Go and learn some.' "></p>
+<ul th:each="trick : ${myFox.learntTricks()}">
     <li th:text="${trick}"> </li>
 </ul>
 

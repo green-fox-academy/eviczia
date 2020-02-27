@@ -17,8 +17,8 @@
 <form action="#" th:action="@{/trickCenter}" id="tricksCenter" method="post">
     <div class='form-row'>
         <label for='tricks'>Tricks</label>
-        <select id='tricks' form="tricksCenter" >
-            <option disabled th:each="trick: ${tricks}" th:text="${trick}"></option>
+        <select id='tricks' name="trick" form="tricksCenter">
+            <option th:each="trick: ${learnableTricks}" th:value="${trick}" th:text="${trick}"></option>
         </select>
         <input type="hidden" name="name" th:value="*{name}">
         <button>Go</button>

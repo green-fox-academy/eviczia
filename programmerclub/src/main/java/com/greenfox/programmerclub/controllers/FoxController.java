@@ -22,7 +22,29 @@ public class FoxController {
     }
 
 
+    @GetMapping("/nutritionStore")
+    public String renderNutritionFrom(@RequestParam(value = "name") String name, Model model) {
+        model.addAttribute("myFox", myFoxes.findMyFoxByName(name));
+        return "nutrition_store";
+    }
 
+    @PostMapping("/nutritionStore")
+    public String sendNutritionData(@ModelAttribute("") Fox fox) {
+        myFoxes.replace(fox);
+        return "redirect:/?name=" + fox.getName();
+    }
 
+    @GetMapping("/trickCenter")
+    public String renderTricksFrom(@RequestParam(value = "name") String name, Model model) {
+        model.addAttribute("myFox", myFoxes.findMyFoxByName(name));
+        model.addAttribute("learnableTricks", myFoxes.findMyFoxByName(name).learnableTricks());
+        return "trick_center";
+    }
 
+    @PostMapping("/trickCenter")
+    public String sendTricksData(@ModelAttribute(name = "trick") String trick, @ModelAttribute(name="name") String name) {
+        myFoxes.findMyFoxByName(name).addTrick(trick);
+        return "redirect:/?name="+name;
+
+    }
 }

@@ -45,29 +45,4 @@ public class MainController {
         } else return "redirect:/?name=" + name;
     }
 
-    @GetMapping("/nutritionStore")
-    public String renderNutritionFrom(@RequestParam(value = "name") String name, Model model) {
-        model.addAttribute("myFox", myFoxes.findMyFoxByName(name));
-        return "nutrition_store";
-    }
-
-    @PostMapping("/nutritionStore")
-    public String sendNutritionData(@ModelAttribute("") Fox fox) {
-        myFoxes.replace(fox);
-        return "redirect:/?name=" + fox.getName();
-    }
-
-    @GetMapping("/trickCenter")
-    public String renderTricksFrom(@RequestParam(value = "name") String name, Model model) {
-        model.addAttribute("myFox", myFoxes.findMyFoxByName(name));
-        model.addAttribute("tricks", Tricks.values());
-        return "trick_center";
-    }
-
-    @PostMapping("/trickCenter")
-    public String sendTricksData(@ModelAttribute(name = "trick") Tricks trick) {
-        System.out.println(trick);
-        //myFoxes.findMyFoxByName(name).;
-        return "redirect:/trickCenter?name=Sly";
-    }
 }
