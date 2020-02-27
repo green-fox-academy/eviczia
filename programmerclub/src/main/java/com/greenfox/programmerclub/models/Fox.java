@@ -1,6 +1,7 @@
 package com.greenfox.programmerclub.models;
 
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -82,6 +83,7 @@ public class Fox {
         for (Map.Entry<Tricks, Boolean> entry : learntTricks.entrySet()) {
             if (trick.equals(entry.getKey().toString())) {
                 entry.setValue(true);
+                timeStamps.add(LocalDateTime.now() + " : New trick has been added: " + name + " now " + trick.toLowerCase());
             }
         }
     }
