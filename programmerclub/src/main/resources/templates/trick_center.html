@@ -14,7 +14,7 @@
     <li><a th:href="'/trickCenter?name=' + *{name}">Trick Center</a></li>
     <li><a th:href="'/actionHistory?name=' + *{name}">Action History</a></li>
 </ul>
-<div th:if="*{learnableTricks().isEmpty()}">Congratulations, you have learnt all there is to learn!</div>
+<div th:if="*{learnableTricks().isEmpty()}"><img src='yoda_passon.jpg' style='max-width: 300px' alt="Pass on what you have learnt (Yoda)"/></div>
 <div th:if="*{!learnableTricks().isEmpty()}" class='form-row'>
     <label for='tricks'>Tricks</label>
     <select id='tricks' name="trick" form="tricksCenter">

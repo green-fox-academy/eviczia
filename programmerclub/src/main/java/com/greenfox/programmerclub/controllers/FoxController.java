@@ -42,7 +42,7 @@ public class FoxController {
     }
 
     @PostMapping("/trickCenter")
-    public String sendTricksData(@ModelAttribute(name = "trick") String trick, @ModelAttribute(name="name") String name) {
+    public String sendTricksData(@RequestParam(value = "name") String name, @ModelAttribute(name = "trick") String trick) {
         myFoxes.findMyFoxByName(name).addTrick(trick);
         return "redirect:/?name="+name;
 

@@ -33,16 +33,6 @@ public class Fox {
         }
     }
 
-    public int countKnownTricks() {
-        int countTrue = 0;
-        for (Boolean knowsIt : learntTricks.values()) {
-            if (knowsIt) {
-                countTrue++;
-            }
-        }
-        return countTrue;
-    }
-
     public String getName() {
         return name;
     }
@@ -105,6 +95,6 @@ public class Fox {
 
     @Override
     public String toString() {
-        return "This is " + name + ". Currently living on " + thisFoxesFood + " and " + thisFoxesDrink + ". He knows " + countKnownTricks() + " trick(s).";
+        return "This is " + name + ". Currently living on " + thisFoxesFood + " and " + thisFoxesDrink + ". He knows " + learntTricks().size() + " trick(s).";
     }
 }
