@@ -14,15 +14,16 @@
     <li><a th:href="'/trickCenter?name=' + *{name}">Trick Center</a></li>
     <li><a th:href="'/actionHistory?name=' + *{name}">Action History</a></li>
 </ul>
-<form action="#" th:action="@{/trickCenter}" id="tricksCenter" method="post">
-    <div class='form-row'>
-        <label for='tricks'>Tricks</label>
-        <select id='tricks' name="trick" form="tricksCenter">
-            <option th:each="trick: ${learnableTricks}" th:value="${trick}" th:text="${trick}"></option>
-        </select>
-        <input type="hidden" name="name" th:value="*{name}">
-        <button>Go</button>
-    </div>
+<div th:if="*{learnableTricks().isEmpty()}">Congratulations, you have learnt all there is to learn!</div>
+<div th:if="*{!learnableTricks().isEmpty()}" class='form-row'>
+    <label for='tricks'>Tricks</label>
+    <select id='tricks' name="trick" form="tricksCenter">
+        <option th:each="trick: ${learnableTricks}" th:value="${trick}" th:text="${trick}"></option>
+    </select>
+</div>
+<form th:if="*{!learnableTricks().isEmpty()}" action="#" th:action="@{/trickCenter}" id="tricksCenter" method="post">
+    <input type="hidden" name="name" th:value="*{name}">
+    <button>Go</button>
 </form>
 
 <footer><a href="/login">Login with/add another fox</a></footer>

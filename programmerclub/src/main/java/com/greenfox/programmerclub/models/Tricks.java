@@ -10,9 +10,6 @@ public enum Tricks {
 
     public final String name;
 
-    Tricks() {
-        name = "Ride a bike";
-    }
 
     Tricks(String name) {
         this.name = name;
