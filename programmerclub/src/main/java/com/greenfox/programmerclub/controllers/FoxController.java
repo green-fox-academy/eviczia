@@ -1,7 +1,6 @@
 package com.greenfox.programmerclub.controllers;
 
 import com.greenfox.programmerclub.models.Fox;
-import com.greenfox.programmerclub.models.Tricks;
 import com.greenfox.programmerclub.services.FoxService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,8 +28,8 @@ public class FoxController {
     }
 
     @PostMapping("/nutritionStore")
-    public String sendNutritionData(@ModelAttribute("") Fox fox) {
-        myFoxes.replace(fox);
+    public String sendNutritionData(@ModelAttribute() Fox fox) {
+        myFoxes.updateFoodOrDrink(fox);
         return "redirect:/?name=" + fox.getName();
     }
 
@@ -45,7 +44,6 @@ public class FoxController {
     public String sendTricksData(@RequestParam(value = "name") String name, @ModelAttribute(name = "trick") String trick) {
         myFoxes.findMyFoxByName(name).addTrick(trick);
         return "redirect:/?name="+name;
-
     }
 
     @GetMapping("/actionHistory")

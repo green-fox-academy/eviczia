@@ -24,6 +24,16 @@
     <li th:text="${trick}"> </li>
 </ul>
 
+<br>
+
+<h1>Recent events</h1>
+<p th:text="${timeStamps.isEmpty()} ? 'Nothing happened yet.' "></p>
+
+<ul th:each="timeStamp : ${timeStamps}">
+    <li th:text="${timeStamp}"></a></li>
+</ul>
+<br>
+
 <footer><a href="/login">Login with/add another fox</a></footer>
 </body>
 </html>

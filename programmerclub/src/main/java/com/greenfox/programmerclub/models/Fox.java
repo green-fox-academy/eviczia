@@ -112,4 +112,14 @@ public class Fox {
     public String toString() {
         return "This is " + name + ". Currently living on " + thisFoxesFood + " and " + thisFoxesDrink + ". He knows " + learntTricks().size() + " trick(s).";
     }
+
+    public List<String> getTruncatedTimeStamps() {
+        if (timeStamps.size() > 5) {
+            List<String> truncList = new ArrayList<>();
+            for (int i = timeStamps.size() - 5; i < timeStamps.size(); i++) {
+                truncList.add(timeStamps.get(i));
+            }
+            return truncList;
+        } else return timeStamps;
+    }
 }

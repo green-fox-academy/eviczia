@@ -1,7 +1,6 @@
 package com.greenfox.programmerclub.services;
 
 import com.greenfox.programmerclub.models.Fox;
-import com.greenfox.programmerclub.models.Tricks;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -12,29 +11,10 @@ import java.util.List;
 public class FoxService {
 
     private List<Fox> myFoxes;
- //   private Tricks tricksList;
+    //   private Tricks tricksList;
 
     public FoxService() {
         this.myFoxes = new ArrayList<>();
-    }
-
-    public void addFox(Fox fox) {
-        myFoxes.add(fox);
-    }
-
-    public void replace(Fox newFox) {
-        for (Fox oldFox : myFoxes) {
-            if (oldFox.getName().equals(newFox.getName())) {
-                if (!oldFox.getThisFoxesFood().equals(newFox.getThisFoxesFood())){
-                    oldFox.getTimeStamps().add(LocalDateTime.now() + " : Food has been changed from: " + oldFox.getThisFoxesFood() + " to: " +newFox.getThisFoxesFood());
-                    oldFox.setThisFoxesFood(newFox.getThisFoxesFood());
-                }
-                if (!oldFox.getThisFoxesDrink().equals(newFox.getThisFoxesDrink())){
-                    oldFox.getTimeStamps().add(LocalDateTime.now() + " : Drink has been changed from: " + oldFox.getThisFoxesDrink() + " to: " + newFox.getThisFoxesDrink());
-                    oldFox.setThisFoxesDrink(newFox.getThisFoxesDrink());
-                }
-            }
-        }
     }
 
     public Fox findMyFoxByName(String foxName) {
@@ -44,6 +24,32 @@ public class FoxService {
             }
         }
         return null;
+    }
+
+    public void addFox(Fox fox) {
+        myFoxes.add(fox);
+    }
+
+    public String getWelcomeMessage(String name) {
+        if (findMyFoxByName(name) == null) {
+            addFox(new Fox(name));
+            return "New fox added. Please take good care of him!";
+        } else return "Hello again!";
+    }
+
+    public void updateFoodOrDrink(Fox newFox) {
+        for (Fox oldFox : myFoxes) {
+            if (oldFox.getName().equals(newFox.getName())) {
+                if (!oldFox.getThisFoxesFood().equals(newFox.getThisFoxesFood())) {
+                    oldFox.getTimeStamps().add(LocalDateTime.now() + " : Food has been changed from: " + oldFox.getThisFoxesFood() + " to: " + newFox.getThisFoxesFood());
+                    oldFox.setThisFoxesFood(newFox.getThisFoxesFood());
+                }
+                if (!oldFox.getThisFoxesDrink().equals(newFox.getThisFoxesDrink())) {
+                    oldFox.getTimeStamps().add(LocalDateTime.now() + " : Drink has been changed from: " + oldFox.getThisFoxesDrink() + " to: " + newFox.getThisFoxesDrink());
+                    oldFox.setThisFoxesDrink(newFox.getThisFoxesDrink());
+                }
+            }
+        }
     }
 
     public List<Fox> getMyFoxes() {
@@ -56,15 +62,8 @@ public class FoxService {
         StringBuilder listFoxes = new StringBuilder();
         for (Fox fox : myFoxes) {
             listFoxes.append(fox.toString()).append("\n");
-
         }
         return "Hi we are your foxes: " + listFoxes.toString();
     }
 
-    public String getWelcomeMessage(String name) {
-        if (findMyFoxByName(name) == null) {
-            addFox(new Fox(name));
-            return "New fox added. Please take good care of him!";
-        } else return "Hello again!";
-    }
 }
