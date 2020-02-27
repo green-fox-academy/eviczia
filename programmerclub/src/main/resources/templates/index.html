@@ -8,7 +8,7 @@
 
 </head>
 <body>
-<ul >
+<ul>
     <li><a th:href="'/?name=' + ${myFox.name}">Information</a></li>
     <li><a th:href="'/nutritionStore?name=' + ${myFox.name}">Nutrition Store</a></li>
     <li><a th:href="'/trickCenter?name=' + ${myFox.name}">Trick Center</a></li>
@@ -21,7 +21,7 @@
 <h1>Known tricks</h1>
 <p th:text="${myFox.learntTricks().isEmpty()} ? 'You know no tricks yet. Go and learn some.' "></p>
 <ul th:each="trick : ${myFox.learntTricks()}">
-    <li th:text="${trick}"> </li>
+    <li th:text="${trick}"></li>
 </ul>
 
 <br>

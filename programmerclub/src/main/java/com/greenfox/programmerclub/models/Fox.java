@@ -13,7 +13,7 @@ public class Fox {
     private String thisFoxesFood;
     private String thisFoxesDrink;
     private HashMap<Tricks, Boolean> learntTricks;
-    private List<String> timeStamps;
+    private List<String> loggedActions;
 
 
     public Fox() {
@@ -23,9 +23,9 @@ public class Fox {
         for (int i = 0; i < Tricks.values().length; i++) {
             learntTricks.put(Tricks.values()[i], false);
         }
-        timeStamps = new ArrayList<>();
-        timeStamps.add("2017. december 18. 16:22:24 : Food etc. ");
-        timeStamps.add("2017. december 18. 16:22:24 : Drink etc. ");
+        loggedActions = new ArrayList<>();
+        loggedActions.add("2017. december 18. 16:22:24 : Food etc. ");
+        loggedActions.add("2017. december 18. 16:22:24 : Drink etc. ");
     }
 
     public Fox(String name) {
@@ -36,7 +36,7 @@ public class Fox {
         for (int i = 0; i < Tricks.values().length; i++) {
             learntTricks.put(Tricks.values()[i], false);
         }
-        timeStamps = new ArrayList<>();
+        loggedActions = new ArrayList<>();
     }
 
     public String getName() {
@@ -71,19 +71,20 @@ public class Fox {
         this.learntTricks = learntTricks;
     }
 
-    public List<String> getTimeStamps() {
-        return timeStamps;
+    public List<String> getLoggedActions() {
+        return loggedActions;
     }
 
-    public void setTimeStamps(List<String> timeStamps) {
-        this.timeStamps = timeStamps;
+
+    public void setLoggedActions(List<String> loggedActions) {
+        this.loggedActions = loggedActions;
     }
 
     public void addTrick(String trick) {
         for (Map.Entry<Tricks, Boolean> entry : learntTricks.entrySet()) {
             if (trick.equals(entry.getKey().toString())) {
                 entry.setValue(true);
-                timeStamps.add(LocalDateTime.now() + " : New trick has been added: " + name + " now " + trick.toLowerCase());
+                loggedActions.add(LocalDateTime.now() + " : New trick has been added: " + name + " now " + trick.toLowerCase());
             }
         }
     }
@@ -114,12 +115,12 @@ public class Fox {
     }
 
     public List<String> getTruncatedTimeStamps() {
-        if (timeStamps.size() > 5) {
+        if (loggedActions.size() > 5) {
             List<String> truncList = new ArrayList<>();
-            for (int i = timeStamps.size() - 5; i < timeStamps.size(); i++) {
-                truncList.add(timeStamps.get(i));
+            for (int i = loggedActions.size() - 5; i < loggedActions.size(); i++) {
+                truncList.add(loggedActions.get(i));
             }
             return truncList;
-        } else return timeStamps;
+        } else return loggedActions;
     }
 }

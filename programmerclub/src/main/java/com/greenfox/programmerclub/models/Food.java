@@ -7,5 +7,4 @@ public enum Food {
     MEAT
 
 
-
 }

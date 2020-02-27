@@ -41,15 +41,29 @@ public class FoxService {
         for (Fox oldFox : myFoxes) {
             if (oldFox.getName().equals(newFox.getName())) {
                 if (!oldFox.getThisFoxesFood().equals(newFox.getThisFoxesFood())) {
-                    oldFox.getTimeStamps().add(LocalDateTime.now() + " : Food has been changed from: " + oldFox.getThisFoxesFood() + " to: " + newFox.getThisFoxesFood());
+                    oldFox.getLoggedActions().add(dateTimeFormatted() + " : Food has been changed from: " + oldFox.getThisFoxesFood() + " to: " + newFox.getThisFoxesFood());
                     oldFox.setThisFoxesFood(newFox.getThisFoxesFood());
                 }
                 if (!oldFox.getThisFoxesDrink().equals(newFox.getThisFoxesDrink())) {
-                    oldFox.getTimeStamps().add(LocalDateTime.now() + " : Drink has been changed from: " + oldFox.getThisFoxesDrink() + " to: " + newFox.getThisFoxesDrink());
+                    oldFox.getLoggedActions().add(dateTimeFormatted() + " : Drink has been changed from: " + oldFox.getThisFoxesDrink() + " to: " + newFox.getThisFoxesDrink());
                     oldFox.setThisFoxesDrink(newFox.getThisFoxesDrink());
                 }
             }
         }
+    }
+
+    private String dateTimeFormatted() {
+        return LocalDateTime.now().getYear() +
+                ". " +
+                LocalDateTime.now().getMonth() +
+                " " +
+                LocalDateTime.now().getDayOfMonth() +
+                ". " +
+                LocalDateTime.now().getHour() +
+                ":" +
+                LocalDateTime.now().getMinute() +
+                ":" +
+                LocalDateTime.now().getSecond();
     }
 
     public List<Fox> getMyFoxes() {

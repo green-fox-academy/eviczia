@@ -8,6 +8,4 @@ public enum Drinks {
     ZERO_COLA
 
 
-
-
 }

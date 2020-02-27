@@ -43,13 +43,13 @@ public class FoxController {
     @PostMapping("/trickCenter")
     public String sendTricksData(@RequestParam(value = "name") String name, @ModelAttribute(name = "trick") String trick) {
         myFoxes.findMyFoxByName(name).addTrick(trick);
-        return "redirect:/?name="+name;
+        return "redirect:/?name=" + name;
     }
 
     @GetMapping("/actionHistory")
     public String showLog(Model model, @RequestParam(value = "name") String name) {
         model.addAttribute("myFox", myFoxes.findMyFoxByName(name));
-        model.addAttribute("timeStamps", myFoxes.findMyFoxByName(name).getTimeStamps());
+        model.addAttribute("timeStamps", myFoxes.findMyFoxByName(name).getLoggedActions());
         return "action_history";
     }
 }
