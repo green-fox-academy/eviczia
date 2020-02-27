@@ -12,25 +12,30 @@ public class Fox {
     private String thisFoxesFood;
     private String thisFoxesDrink;
     private HashMap<Tricks, Boolean> learntTricks;
+    private List<String> timeStamps;
 
 
     public Fox() {
-        learntTricks = new HashMap<>();
         thisFoxesFood = "porridge";
         thisFoxesDrink = "water";
+        learntTricks = new HashMap<>();
         for (int i = 0; i < Tricks.values().length; i++) {
             learntTricks.put(Tricks.values()[i], false);
         }
+        timeStamps = new ArrayList<>();
+        timeStamps.add("2017. december 18. 16:22:24 : Food etc. ");
+        timeStamps.add("2017. december 18. 16:22:24 : Drink etc. ");
     }
 
     public Fox(String name) {
         this.name = name;
-        learntTricks = new HashMap<>();
         thisFoxesFood = "porridge";
         thisFoxesDrink = "water";
+        learntTricks = new HashMap<>();
         for (int i = 0; i < Tricks.values().length; i++) {
             learntTricks.put(Tricks.values()[i], false);
         }
+        timeStamps = new ArrayList<>();
     }
 
     public String getName() {
@@ -63,6 +68,14 @@ public class Fox {
 
     public void setLearntTricks(HashMap<Tricks, Boolean> learntTricks) {
         this.learntTricks = learntTricks;
+    }
+
+    public List<String> getTimeStamps() {
+        return timeStamps;
+    }
+
+    public void setTimeStamps(List<String> timeStamps) {
+        this.timeStamps = timeStamps;
     }
 
     public void addTrick(String trick) {

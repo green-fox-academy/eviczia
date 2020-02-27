@@ -47,4 +47,11 @@ public class FoxController {
         return "redirect:/?name="+name;
 
     }
+
+    @GetMapping("/actionHistory")
+    public String showLog(Model model, @RequestParam(value = "name") String name) {
+        model.addAttribute("myFox", myFoxes.findMyFoxByName(name));
+        model.addAttribute("timeStamps", myFoxes.findMyFoxByName(name).getTimeStamps());
+        return "action_history";
+    }
 }

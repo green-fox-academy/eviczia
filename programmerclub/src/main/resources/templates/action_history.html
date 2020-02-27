@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Action history</title>
+    <link rel="icon" type="image/png"
+          href='greenfox.png'>
+
+</head>
+<body>
+<ul >
+    <li><a th:href="'/?name=' + ${myFox.name}">Information</a></li>
+    <li><a th:href="'/nutritionStore?name=' + ${myFox.name}">Nutrition Store</a></li>
+    <li><a th:href="'/trickCenter?name=' + ${myFox.name}">Trick Center</a></li>
+    <li><a th:href="'/actionHistory?name=' + ${myFox.name}">Action History</a></li>
+</ul>
+
+<br>
+
+<ul th:each="timeStamp : ${timeStamps}">
+    <li th:text="${timeStamp}"></a></li>
+</ul>
+
+<footer><a href="/login">Login with/add another fox</a></footer>
+</body>
+</html>

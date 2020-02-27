@@ -4,6 +4,7 @@ import com.greenfox.programmerclub.models.Fox;
 import com.greenfox.programmerclub.models.Tricks;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,8 +25,14 @@ public class FoxService {
     public void replace(Fox newFox) {
         for (Fox oldFox : myFoxes) {
             if (oldFox.getName().equals(newFox.getName())) {
-                myFoxes.remove(oldFox);
-                myFoxes.add(newFox);
+                if (!oldFox.getThisFoxesFood().equals(newFox.getThisFoxesFood())){
+                    oldFox.getTimeStamps().add(LocalDateTime.now() + " : Food has been changed from: " + oldFox.getThisFoxesFood() + " to: " +newFox.getThisFoxesFood());
+                    oldFox.setThisFoxesFood(newFox.getThisFoxesFood());
+                }
+                if (!oldFox.getThisFoxesDrink().equals(newFox.getThisFoxesDrink())){
+                    oldFox.getTimeStamps().add(LocalDateTime.now() + " : Drink has been changed from: " + oldFox.getThisFoxesDrink() + " to: " + newFox.getThisFoxesDrink());
+                    oldFox.setThisFoxesDrink(newFox.getThisFoxesDrink());
+                }
             }
         }
     }
