@@ -1,6 +1,9 @@
 package com.greenfox.programmerclub.models;
 
-public enum Tricks {
+import java.time.LocalDateTime;
+
+public enum Tricks implements Loggable
+{
 
     JAVA("Codes in Java"),
     PYTHON("Writes wicked Python codes"),
@@ -16,8 +19,23 @@ public enum Tricks {
         this.name = name;
     }
 
+    public static Tricks valueOfName(String name) {
+        for (Tricks trick : values()) {
+            if (trick.name.equals(name)) {
+                return trick;
+            }
+        }
+        return null;
+    }
+
     @Override
     public String toString() {
         return name;
     }
+
+    @Override
+    public String timeStamp(String newTrick) {
+        return LocalDateTime.now().toString() + " : New trick has been added: " +name;
+    }
+
 }

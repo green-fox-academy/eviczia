@@ -17,20 +17,14 @@
 <form action="#" th:action="@{/nutritionStore}" id="nutrition" method="post">
     <div class='form-row'>
         <label for='food'>Food</label>
-        <select id='food' th:field="*{thisFoxesFood}" form="nutrition">
-            <option selected disabled th:placeholder="choose" th:value="'none'">Please choose a food</option>
-            <option th:value="'apple'">Apple</option>
-            <option th:value="'rabbit'">Rabbit</option>
-            <option th:value="'marshmallow'">Marshmallow</option>
-            <option th:value="'chocolate'">Chocolate</option>
-            <option th:value="'cheese'">Cheese</option>
+        <select id='food' name="food" form="nutrition">
+            <option th:each="food: ${availableFood}" th:value="${food}" th:text="${food}"></option>
         </select>
         <label for='drink'>Drink</label>
-        <select id='drink' th:field="*{thisFoxesDrink}" form="nutrition">
-            <option th:value="'tea'">Tea</option>
-            <option th:value="'coffee'">Coffee</option>
-            <option th:value="'zero'">Zero Cola</option>
+        <select id='drink' name="drink" form="nutrition">
+            <option th:each="drink: ${availableDrinks}" th:value="${drink}" th:text="${drink}"></option>
         </select>
+
         <input type="hidden" name="name" th:value="*{name}">
         <button>Go</button>
     </div>

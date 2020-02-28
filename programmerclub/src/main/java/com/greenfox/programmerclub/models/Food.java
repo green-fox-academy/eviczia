@@ -1,10 +1,38 @@
 package com.greenfox.programmerclub.models;
 
-public enum Food {
+import java.time.LocalDateTime;
 
-    SALAD,
-    CHEESE,
-    MEAT
+public enum Food implements Loggable {
+
+    SALAD("Salad"),
+    CHEESE("Cheese"),
+    MEAT("Meat"),
+    ICE_CREAM("Ice cream");
+
+    public final String name;
 
 
+    Food(String name) {
+        this.name = name;
+    }
+
+    public static Food valueOfName(String name) {
+        for (Food food : values()) {
+            if (food.name.equals(name)) {
+                return food;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
+
+
+    @Override
+    public String timeStamp(String newFaveFood) {
+        return LocalDateTime.now().toString() + " : Food has been changed from: " + this.name + " to: " + newFaveFood;
+    }
 }

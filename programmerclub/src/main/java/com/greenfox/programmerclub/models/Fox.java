@@ -10,33 +10,35 @@ import java.util.Map;
 public class Fox {
 
     private String name;
-    private String thisFoxesFood;
-    private String thisFoxesDrink;
-    private HashMap<Tricks, Boolean> learntTricks;
+    private HashMap<String, Loggable> faveFoodAndDrink;
+    private HashMap<Tricks, Boolean> recordTrickProgress;
     private List<String> loggedActions;
 
 
     public Fox() {
-        thisFoxesFood = "porridge";
-        thisFoxesDrink = "water";
-        learntTricks = new HashMap<>();
-        for (int i = 0; i < Tricks.values().length; i++) {
-            learntTricks.put(Tricks.values()[i], false);
-        }
+        initializeFaveFoodAndDrink();
+        initializeRecordTrickProgress();
         loggedActions = new ArrayList<>();
-        loggedActions.add("2017. december 18. 16:22:24 : Food etc. ");
-        loggedActions.add("2017. december 18. 16:22:24 : Drink etc. ");
     }
 
     public Fox(String name) {
         this.name = name;
-        thisFoxesFood = "porridge";
-        thisFoxesDrink = "water";
-        learntTricks = new HashMap<>();
-        for (int i = 0; i < Tricks.values().length; i++) {
-            learntTricks.put(Tricks.values()[i], false);
-        }
+        initializeFaveFoodAndDrink();
+        initializeRecordTrickProgress();
         loggedActions = new ArrayList<>();
+    }
+
+    private void initializeFaveFoodAndDrink() {
+        faveFoodAndDrink = new HashMap<>();
+        faveFoodAndDrink.put("Favorite food", Food.SALAD);
+        faveFoodAndDrink.put("Favorite drink", Drinks.WATER);
+    }
+
+    private void initializeRecordTrickProgress() {
+        recordTrickProgress = new HashMap<>();
+        for (int i = 0; i < Tricks.values().length; i++) {
+            recordTrickProgress.put(Tricks.values()[i], false);
+        }
     }
 
     public String getName() {
@@ -47,41 +49,38 @@ public class Fox {
         this.name = name;
     }
 
-    public String getThisFoxesFood() {
-        return thisFoxesFood;
+    public HashMap<String, Loggable> getFaveFoodAndDrink() {
+        return faveFoodAndDrink;
     }
 
-    public void setThisFoxesFood(String thisFoxesFood) {
-        this.thisFoxesFood = thisFoxesFood;
-    }
-
-    public String getThisFoxesDrink() {
-        return thisFoxesDrink;
-    }
-
-    public void setThisFoxesDrink(String thisFoxesDrink) {
-        this.thisFoxesDrink = thisFoxesDrink;
-    }
-
-    public HashMap<Tricks, Boolean> getLearntTricks() {
-        return learntTricks;
-    }
-
-    public void setLearntTricks(HashMap<Tricks, Boolean> learntTricks) {
-        this.learntTricks = learntTricks;
+    public HashMap<Tricks, Boolean> getRecordTrickProgress() {
+        return recordTrickProgress;
     }
 
     public List<String> getLoggedActions() {
         return loggedActions;
     }
 
+    public void updateFood(String food) {
+        Loggable oldFood = faveFoodAndDrink.get("Favorite food");
+        Loggable newFood = Food.valueOfName(food);
+        if (oldFood != newFood) {
+            faveFoodAndDrink.replace("Favorite food", newFood);
+            loggedActions.add(oldFood.timeStamp(food));
+        }
+    }
 
-    public void setLoggedActions(List<String> loggedActions) {
-        this.loggedActions = loggedActions;
+    public void updateDrink(String drink) {
+        Loggable oldDrink = faveFoodAndDrink.get("Favorite drink");
+        Loggable newDrink = Food.valueOfName(drink);
+        if (oldDrink != newDrink) {
+            faveFoodAndDrink.replace("Favorite drink", newDrink);
+            loggedActions.add(oldDrink.timeStamp(drink));
+        }
     }
 
     public void addTrick(String trick) {
-        for (Map.Entry<Tricks, Boolean> entry : learntTricks.entrySet()) {
+        for (Map.Entry<Tricks, Boolean> entry : recordTrickProgress.entrySet()) {
             if (trick.equals(entry.getKey().toString())) {
                 entry.setValue(true);
                 loggedActions.add(LocalDateTime.now() + " : New trick has been added: " + name + " now " + trick.toLowerCase());
@@ -91,7 +90,7 @@ public class Fox {
 
     public List<Tricks> learnableTricks() {
         List<Tricks> learnableTricks = new ArrayList<>();
-        for (Map.Entry<Tricks, Boolean> entry : learntTricks.entrySet()) {
+        for (Map.Entry<Tricks, Boolean> entry : recordTrickProgress.entrySet()) {
             if (!entry.getValue()) {
                 learnableTricks.add(entry.getKey());
             }
@@ -101,17 +100,12 @@ public class Fox {
 
     public List<Tricks> learntTricks() {
         List<Tricks> tricks = new ArrayList<>();
-        for (Map.Entry<Tricks, Boolean> entry : learntTricks.entrySet()) {
+        for (Map.Entry<Tricks, Boolean> entry : recordTrickProgress.entrySet()) {
             if (entry.getValue()) {
                 tricks.add(entry.getKey());
             }
         }
         return tricks;
-    }
-
-    @Override
-    public String toString() {
-        return "This is " + name + ". Currently living on " + thisFoxesFood + " and " + thisFoxesDrink + ". He knows " + learntTricks().size() + " trick(s).";
     }
 
     public List<String> getTruncatedTimeStamps() {
@@ -122,5 +116,10 @@ public class Fox {
             }
             return truncList;
         } else return loggedActions;
+    }
+
+    @Override
+    public String toString() {
+        return "This is " + name + ". Currently living on " + faveFoodAndDrink.get("Favorite food") + " and " + faveFoodAndDrink.get("Favorite drink") + ". He knows " + learntTricks().size() + " trick(s).";
     }
 }

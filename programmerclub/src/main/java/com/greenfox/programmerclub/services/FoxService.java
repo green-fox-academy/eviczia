@@ -1,5 +1,6 @@
 package com.greenfox.programmerclub.services;
 
+import com.greenfox.programmerclub.models.Food;
 import com.greenfox.programmerclub.models.Fox;
 import org.springframework.stereotype.Service;
 
@@ -40,13 +41,13 @@ public class FoxService {
     public void updateFoodOrDrink(Fox newFox) {
         for (Fox oldFox : myFoxes) {
             if (oldFox.getName().equals(newFox.getName())) {
-                if (!oldFox.getThisFoxesFood().equals(newFox.getThisFoxesFood())) {
-                    oldFox.getLoggedActions().add(dateTimeFormatted() + " : Food has been changed from: " + oldFox.getThisFoxesFood() + " to: " + newFox.getThisFoxesFood());
-                    oldFox.setThisFoxesFood(newFox.getThisFoxesFood());
+                if (!oldFox.getFaveFoodAndDrink().get("Favorite food").equals(newFox.getFaveFoodAndDrink().get("Favorite food"))) {
+//                    oldFox.getLoggedActions().add(dateTimeFormatted() + " : Food has been changed from: " + oldFox.getThisFoxesFood() + " to: " + newFox.getThisFoxesFood());
+                    oldFox.getFaveFoodAndDrink().replace("Favorite food", newFox.getFaveFoodAndDrink().get("Favorite food"));
                 }
-                if (!oldFox.getThisFoxesDrink().equals(newFox.getThisFoxesDrink())) {
-                    oldFox.getLoggedActions().add(dateTimeFormatted() + " : Drink has been changed from: " + oldFox.getThisFoxesDrink() + " to: " + newFox.getThisFoxesDrink());
-                    oldFox.setThisFoxesDrink(newFox.getThisFoxesDrink());
+                if (!oldFox.getFaveFoodAndDrink().get("Favorite drink").equals(newFox.getFaveFoodAndDrink().get("Favorite drink"))) {
+//                    oldFox.getLoggedActions().add(dateTimeFormatted() + " : Drink has been changed from: " + oldFox.getThisFoxesDrink() + " to: " + newFox.getThisFoxesDrink());
+                    oldFox.getFaveFoodAndDrink().replace("Favorite drink", newFox.getFaveFoodAndDrink().get("Favorite drink"));
                 }
             }
         }
