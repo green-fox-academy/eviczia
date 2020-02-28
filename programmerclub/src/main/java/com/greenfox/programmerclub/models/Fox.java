@@ -11,20 +11,20 @@ public class Fox {
 
     private String name;
     private HashMap<String, Loggable> faveFoodAndDrink;
-    private HashMap<Tricks, Boolean> recordTrickProgress;
+    private HashMap<Tricks, Boolean> trackTrickProgress;
     private List<String> loggedActions;
 
 
     public Fox() {
         initializeFaveFoodAndDrink();
-        initializeRecordTrickProgress();
+        initializeTrackTrickProgress();
         loggedActions = new ArrayList<>();
     }
 
     public Fox(String name) {
         this.name = name;
         initializeFaveFoodAndDrink();
-        initializeRecordTrickProgress();
+        initializeTrackTrickProgress();
         loggedActions = new ArrayList<>();
     }
 
@@ -34,10 +34,10 @@ public class Fox {
         faveFoodAndDrink.put("Favorite drink", Drinks.WATER);
     }
 
-    private void initializeRecordTrickProgress() {
-        recordTrickProgress = new HashMap<>();
+    private void initializeTrackTrickProgress() {
+        trackTrickProgress = new HashMap<>();
         for (int i = 0; i < Tricks.values().length; i++) {
-            recordTrickProgress.put(Tricks.values()[i], false);
+            trackTrickProgress.put(Tricks.values()[i], false);
         }
     }
 
@@ -53,8 +53,8 @@ public class Fox {
         return faveFoodAndDrink;
     }
 
-    public HashMap<Tricks, Boolean> getRecordTrickProgress() {
-        return recordTrickProgress;
+    public HashMap<Tricks, Boolean> getTrackTrickProgress() {
+        return trackTrickProgress;
     }
 
     public List<String> getLoggedActions() {
@@ -72,7 +72,7 @@ public class Fox {
 
     public void updateDrink(String drink) {
         Loggable oldDrink = faveFoodAndDrink.get("Favorite drink");
-        Loggable newDrink = Food.valueOfName(drink);
+        Loggable newDrink = Drinks.valueOfName(drink);
         if (oldDrink != newDrink) {
             faveFoodAndDrink.replace("Favorite drink", newDrink);
             loggedActions.add(oldDrink.timeStamp(drink));
@@ -80,17 +80,17 @@ public class Fox {
     }
 
     public void addTrick(String trick) {
-        for (Map.Entry<Tricks, Boolean> entry : recordTrickProgress.entrySet()) {
+        for (Map.Entry<Tricks, Boolean> entry : trackTrickProgress.entrySet()) {
             if (trick.equals(entry.getKey().toString())) {
                 entry.setValue(true);
-                loggedActions.add(LocalDateTime.now() + " : New trick has been added: " + name + " now " + trick.toLowerCase());
+                loggedActions.add(entry.getKey().timeStamp(trick));
             }
         }
     }
 
     public List<Tricks> learnableTricks() {
         List<Tricks> learnableTricks = new ArrayList<>();
-        for (Map.Entry<Tricks, Boolean> entry : recordTrickProgress.entrySet()) {
+        for (Map.Entry<Tricks, Boolean> entry : trackTrickProgress.entrySet()) {
             if (!entry.getValue()) {
                 learnableTricks.add(entry.getKey());
             }
@@ -100,7 +100,7 @@ public class Fox {
 
     public List<Tricks> learntTricks() {
         List<Tricks> tricks = new ArrayList<>();
-        for (Map.Entry<Tricks, Boolean> entry : recordTrickProgress.entrySet()) {
+        for (Map.Entry<Tricks, Boolean> entry : trackTrickProgress.entrySet()) {
             if (entry.getValue()) {
                 tricks.add(entry.getKey());
             }

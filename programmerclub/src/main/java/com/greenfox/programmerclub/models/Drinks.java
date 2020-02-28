@@ -33,7 +33,7 @@ public enum Drinks implements Loggable {
 
     @Override
     public String timeStamp(String newFaveDrink) {
-        return LocalDateTime.now().toString() + " : Drink has been changed from: " + name + " to: " + newFaveDrink;
+        return LocalDateTime.now().toString() + " : Favorite drink has been changed from: " + name + " to: " + newFaveDrink;
     }
 
 

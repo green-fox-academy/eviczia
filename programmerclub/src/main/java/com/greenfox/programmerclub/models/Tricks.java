@@ -2,8 +2,7 @@ package com.greenfox.programmerclub.models;
 
 import java.time.LocalDateTime;
 
-public enum Tricks implements Loggable
-{
+public enum Tricks implements Loggable {
 
     JAVA("Codes in Java"),
     PYTHON("Writes wicked Python codes"),
@@ -35,7 +34,7 @@ public enum Tricks implements Loggable
 
     @Override
     public String timeStamp(String newTrick) {
-        return LocalDateTime.now().toString() + " : New trick has been added: " +name;
+        return LocalDateTime.now().toString() + " : New trick has been added: " + name;
     }
 
 }
