@@ -29,8 +29,8 @@ public class Fox {
 
     private void initializeFaveFoodAndDrink() {
         faveFoodAndDrink = new HashMap<>();
-        faveFoodAndDrink.put("Favorite food", Food.SALAD);
-        faveFoodAndDrink.put("Favorite drink", Drinks.WATER);
+        faveFoodAndDrink.put("Favorite food", Food.HOPE);
+        faveFoodAndDrink.put("Favorite drink", Drinks.FAITH);
     }
 
     private void initializeTrackTrickProgress() {
@@ -50,10 +50,6 @@ public class Fox {
 
     public HashMap<String, Trackable> getFaveFoodAndDrink() {
         return faveFoodAndDrink;
-    }
-
-    public HashMap<Tricks, Boolean> getTrackTrickProgress() {
-        return trackTrickProgress;
     }
 
     public List<String> getLoggedActions() {

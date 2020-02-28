@@ -4,17 +4,26 @@ import java.time.LocalDateTime;
 
 public enum Drinks implements Trackable {
 
-    WATER("Water"),
-    MILK("Milk"),
-    WINE("Wine"),
-    ZERO_COLA("Zero Cola"),
-    COFFEE("Coffee");
+    FAITH("faith"),
+    WATER("water"),
+    MILK("milk"),
+    WINE("wine"),
+    ZERO_COLA("zero cola"),
+    COFFEE("coffee");
 
     public final String name;
 
 
     Drinks(String name) {
         this.name = name;
+    }
+
+    public static String[] toStringArray() {
+        String[] stringArray = new String[Drinks.values().length];
+        for (int i = 0; i < Drinks.values().length; i++) {
+            stringArray[i] = Drinks.values()[i].toString();
+        }
+        return stringArray;
     }
 
     public static Drinks valueOfName(String name) {

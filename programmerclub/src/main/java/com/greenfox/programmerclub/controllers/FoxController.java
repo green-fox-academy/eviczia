@@ -3,6 +3,7 @@ package com.greenfox.programmerclub.controllers;
 import com.greenfox.programmerclub.models.Drinks;
 import com.greenfox.programmerclub.models.Food;
 import com.greenfox.programmerclub.models.Fox;
+import com.greenfox.programmerclub.models.Trackable;
 import com.greenfox.programmerclub.services.FoxService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,9 +26,17 @@ public class FoxController {
 
     @GetMapping("/nutritionStore")
     public String renderNutritionFrom(@RequestParam(value = "name") String name, Model model) {
+        String currentFood = myFoxes.findMyFoxByName(name).getFaveFoodAndDrink().get("Favorite food").toString();
+        String currentDrink = myFoxes.findMyFoxByName(name).getFaveFoodAndDrink().get("Favorite drink").toString();
+        String[] availableFood =  Food.toStringArray();
+        String[] availableDrink =  Drinks.toStringArray();
         model.addAttribute("myFox", myFoxes.findMyFoxByName(name));
-        model.addAttribute("availableFood", Food.values());
-        model.addAttribute("availableDrinks", Drinks.values());
+        model.addAttribute("availableFood", availableFood);
+        model.addAttribute("availableDrinks", availableDrink);
+        model.addAttribute("faveFood", currentFood);
+        model.addAttribute("faveDrink", currentDrink);
+
+
         return "nutrition_store";
     }
 

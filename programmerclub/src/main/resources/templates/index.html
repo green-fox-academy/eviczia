@@ -2,9 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/stylesheet.css}"/>
     <title>My Fox</title>
     <link rel="icon" type="image/png"
           href='greenfox.png'>
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Simonetta&display=swap" rel="stylesheet">
 
 </head>
 <body>
@@ -30,7 +32,7 @@
 <p th:text="${timeStamps.isEmpty()} ? 'Nothing happened yet.' "></p>
 
 <ul th:each="timeStamp : ${timeStamps}">
-    <li th:text="${timeStamp}"></a></li>
+    <li th:text="${timeStamp}"></li>
 </ul>
 <br>
 

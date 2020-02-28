@@ -4,10 +4,11 @@ import java.time.LocalDateTime;
 
 public enum Food implements Trackable {
 
-    SALAD("Salad"),
-    CHEESE("Cheese"),
-    MEAT("Meat"),
-    ICE_CREAM("Ice cream");
+    HOPE("hope"),
+    SALAD("salad"),
+    CHEESE("cheese"),
+    MEAT("meat"),
+    ICE_CREAM("ice cream");
 
     public final String name;
 
@@ -25,6 +26,14 @@ public enum Food implements Trackable {
         return null;
     }
 
+    public static String[] toStringArray() {
+        String[] stringArray = new String[Food.values().length];
+        for (int i = 0; i < Food.values().length; i++) {
+            stringArray[i] = Food.values()[i].toString();
+        }
+        return stringArray;
+    }
+
     @Override
     public String toString() {
         return name;
@@ -33,6 +42,6 @@ public enum Food implements Trackable {
 
     @Override
     public String timeStamp(String newFaveFood) {
-        return LocalDateTime.now().toString() + " : Favorite food has been changed from: " + this.name + " to: " + newFaveFood;
+        return LocalDateTime.now().toString() + " : Favorite food has been changed from: " + name + " to: " + newFaveFood;
     }
 }
