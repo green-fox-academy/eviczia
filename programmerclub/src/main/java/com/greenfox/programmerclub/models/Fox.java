@@ -10,20 +10,20 @@ public class Fox {
 
     private String name;
     private HashMap<String, Trackable> faveFoodAndDrink;
-    private HashMap<Tricks, Boolean> trackTrickProgress;
+    private HashMap<Tricks, Boolean> trickTracker;
     private List<String> loggedActions;
 
 
     public Fox() {
         initializeFaveFoodAndDrink();
-        initializeTrackTrickProgress();
+        initializeTrickTracker();
         loggedActions = new ArrayList<>();
     }
 
     public Fox(String name) {
         this.name = name;
         initializeFaveFoodAndDrink();
-        initializeTrackTrickProgress();
+        initializeTrickTracker();
         loggedActions = new ArrayList<>();
     }
 
@@ -33,10 +33,10 @@ public class Fox {
         faveFoodAndDrink.put("Favorite drink", Drinks.FAITH);
     }
 
-    private void initializeTrackTrickProgress() {
-        trackTrickProgress = new HashMap<>();
+    private void initializeTrickTracker() {
+        trickTracker = new HashMap<>();
         for (int i = 0; i < Tricks.values().length; i++) {
-            trackTrickProgress.put(Tricks.values()[i], false);
+            trickTracker.put(Tricks.values()[i], false);
         }
     }
 
@@ -50,6 +50,10 @@ public class Fox {
 
     public HashMap<String, Trackable> getFaveFoodAndDrink() {
         return faveFoodAndDrink;
+    }
+
+    public HashMap<Tricks, Boolean> getTrickTracker() {
+        return trickTracker;
     }
 
     public List<String> getLoggedActions() {
@@ -75,7 +79,7 @@ public class Fox {
     }
 
     public void addTrick(String trick) {
-        for (Map.Entry<Tricks, Boolean> entry : trackTrickProgress.entrySet()) {
+        for (Map.Entry<Tricks, Boolean> entry : trickTracker.entrySet()) {
             if (trick.equals(entry.getKey().toString())) {
                 entry.setValue(true);
                 loggedActions.add(entry.getKey().timeStamp(trick));
@@ -83,19 +87,9 @@ public class Fox {
         }
     }
 
-    public List<Tricks> learnableTricks() {
-        List<Tricks> learnableTricks = new ArrayList<>();
-        for (Map.Entry<Tricks, Boolean> entry : trackTrickProgress.entrySet()) {
-            if (!entry.getValue()) {
-                learnableTricks.add(entry.getKey());
-            }
-        }
-        return learnableTricks;
-    }
-
     public List<Tricks> learntTricks() {
         List<Tricks> tricks = new ArrayList<>();
-        for (Map.Entry<Tricks, Boolean> entry : trackTrickProgress.entrySet()) {
+        for (Map.Entry<Tricks, Boolean> entry : trickTracker.entrySet()) {
             if (entry.getValue()) {
                 tricks.add(entry.getKey());
             }

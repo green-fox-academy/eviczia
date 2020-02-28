@@ -14,15 +14,15 @@
     <li><a th:href="'/trickCenter?name=' + *{name}">Trick Center</a></li>
     <li><a th:href="'/actionHistory?name=' + *{name}">Action History</a></li>
 </ul>
-<div th:if="*{learnableTricks().isEmpty()}"><img src='yoda_passon.jpg' style='max-width: 300px'
-                                                 alt="Pass on what you have learnt (Yoda)"/></div>
-<div th:if="*{!learnableTricks().isEmpty()}" class='form-row'>
+<div th:if="${learnableTricks.isEmpty()}"><img src='yoda_passon.jpg' style='max-width: 300px'
+                                                    alt="Pass on what you have learnt (Yoda)"/></div>
+<div th:if="${!learnableTricks.isEmpty()}" class='form-row'>
     <label for='tricks'>Tricks</label>
     <select id='tricks' name="trick" form="tricksCenter">
         <option th:each="trick: ${learnableTricks}" th:value="${trick}" th:text="${trick}"></option>
     </select>
 </div>
-<form th:if="*{!learnableTricks().isEmpty()}" action="#" th:action="@{/trickCenter}" id="tricksCenter" method="post">
+<form th:if="${!learnableTricks.isEmpty()}" action="#" th:action="@{/trickCenter}" id="tricksCenter" method="post">
     <input type="hidden" name="name" th:value="*{name}">
     <button>Go</button>
 </form>

@@ -1,11 +1,13 @@
 package com.greenfox.programmerclub.services;
 
 import com.greenfox.programmerclub.models.Fox;
+import com.greenfox.programmerclub.models.Tricks;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class FoxService {
@@ -35,7 +37,15 @@ public class FoxService {
             return "New fox added. Please take good care of him!";
         } else return "Hello again!";
     }
-
+    public List<Tricks> getFoxesLearnables(String foxName) {
+        List<Tricks> learnableTricks = new ArrayList<>();
+        for (Map.Entry<Tricks, Boolean> entry : findMyFoxByName(foxName).getTrickTracker().entrySet()) {
+            if (!entry.getValue()) {
+                learnableTricks.add(entry.getKey());
+            }
+        }
+        return learnableTricks;
+    }
 
     @Override
     public String toString() {
