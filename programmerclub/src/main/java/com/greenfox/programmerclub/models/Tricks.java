@@ -2,7 +2,7 @@ package com.greenfox.programmerclub.models;
 
 import java.time.LocalDateTime;
 
-public enum Tricks implements Loggable {
+public enum Tricks implements Trackable {
 
     JAVA("Codes in Java"),
     PYTHON("Writes wicked Python codes"),

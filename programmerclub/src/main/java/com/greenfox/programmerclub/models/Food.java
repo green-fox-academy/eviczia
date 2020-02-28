@@ -2,7 +2,7 @@ package com.greenfox.programmerclub.models;
 
 import java.time.LocalDateTime;
 
-public enum Food implements Loggable {
+public enum Food implements Trackable {
 
     SALAD("Salad"),
     CHEESE("Cheese"),

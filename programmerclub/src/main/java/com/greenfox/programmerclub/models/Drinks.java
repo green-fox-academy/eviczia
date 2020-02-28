@@ -2,7 +2,7 @@ package com.greenfox.programmerclub.models;
 
 import java.time.LocalDateTime;
 
-public enum Drinks implements Loggable {
+public enum Drinks implements Trackable {
 
     WATER("Water"),
     MILK("Milk"),
@@ -35,7 +35,4 @@ public enum Drinks implements Loggable {
     public String timeStamp(String newFaveDrink) {
         return LocalDateTime.now().toString() + " : Favorite drink has been changed from: " + name + " to: " + newFaveDrink;
     }
-
-
-
 }

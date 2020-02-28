@@ -1,7 +1,6 @@
 package com.greenfox.programmerclub.models;
 
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,7 +9,7 @@ import java.util.Map;
 public class Fox {
 
     private String name;
-    private HashMap<String, Loggable> faveFoodAndDrink;
+    private HashMap<String, Trackable> faveFoodAndDrink;
     private HashMap<Tricks, Boolean> trackTrickProgress;
     private List<String> loggedActions;
 
@@ -49,7 +48,7 @@ public class Fox {
         this.name = name;
     }
 
-    public HashMap<String, Loggable> getFaveFoodAndDrink() {
+    public HashMap<String, Trackable> getFaveFoodAndDrink() {
         return faveFoodAndDrink;
     }
 
@@ -62,8 +61,8 @@ public class Fox {
     }
 
     public void updateFood(String food) {
-        Loggable oldFood = faveFoodAndDrink.get("Favorite food");
-        Loggable newFood = Food.valueOfName(food);
+        Trackable oldFood = faveFoodAndDrink.get("Favorite food");
+        Trackable newFood = Food.valueOfName(food);
         if (oldFood != newFood) {
             faveFoodAndDrink.replace("Favorite food", newFood);
             loggedActions.add(oldFood.timeStamp(food));
@@ -71,8 +70,8 @@ public class Fox {
     }
 
     public void updateDrink(String drink) {
-        Loggable oldDrink = faveFoodAndDrink.get("Favorite drink");
-        Loggable newDrink = Drinks.valueOfName(drink);
+        Trackable oldDrink = faveFoodAndDrink.get("Favorite drink");
+        Trackable newDrink = Drinks.valueOfName(drink);
         if (oldDrink != newDrink) {
             faveFoodAndDrink.replace("Favorite drink", newDrink);
             loggedActions.add(oldDrink.timeStamp(drink));
