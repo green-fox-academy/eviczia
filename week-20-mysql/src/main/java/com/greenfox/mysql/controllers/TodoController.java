@@ -21,10 +21,10 @@ public class TodoController {
     }
 
     @GetMapping({"/", "/list"})
-    public String list(@RequestParam(name="isActive", required = false) boolean isActive, Model model) {
+    public String list(@RequestParam(name="isActive", required = false) String isActive, Model model) {
 
-        Iterable<Todo> myTodos = todoRepository.findAllByIsDone(!isActive);
-        if (isActive == Boolean.parseBoolean(null)) {myTodos = todoRepository.findAll();}
+        Iterable<Todo> myTodos = todoRepository.findAllByIsDone(Boolean.parseBoolean(isActive));
+        if (isActive == null) {myTodos = todoRepository.findAll();}
 
         model.addAttribute("todos", myTodos);
 
