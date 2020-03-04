@@ -28,9 +28,9 @@ public class MysqlApplication implements CommandLineRunner {
         todoRepository.save(new Todo("Call mum"));
         todoRepository.save(new Todo("Do shopping", true));
         Todo todo = todoRepository.findById(2L).get();
-        todo.setDone(true);
+        todo.setIsDone(true);
         todoRepository.save(todo);
-        todoRepository.findById(3L).get().setDone(true);
+        todoRepository.findById(3L).get().setIsDone(true);
         todoRepository.save(todoRepository.findById(3L).get());
     }
 }

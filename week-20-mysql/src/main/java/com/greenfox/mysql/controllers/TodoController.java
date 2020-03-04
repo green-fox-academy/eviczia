@@ -51,7 +51,7 @@ public class TodoController {
 
     @GetMapping(path = "/{id}/edit")
     public String renderEditForm(@PathVariable long id, Model model) {
-        model.addAttribute("todo", todoService.getById(id) );
+        model.addAttribute("todo", todoService.getById(id));
         return "edit";
     }
 

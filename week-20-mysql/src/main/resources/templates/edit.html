@@ -22,14 +22,18 @@
     <label for="isUrgent">Urgent:</label>
     <input
             type="checkbox"
-            id="isUrgent"
+            name="isUrgent"
             th:value="true"
+            th:checked="*{isUrgent}"
+            id="isUrgent"
     /><br>
     <label for="isDone">Done:</label>
     <input
             type="checkbox"
-            id="isDone"
+            name="isDone"
             th:value="true"
+            th:checked="*{isDone}"
+            id="isDone"
     /><br>
     <div>
         <button type="submit">
