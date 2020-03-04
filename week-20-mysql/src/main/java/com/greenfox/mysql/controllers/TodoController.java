@@ -2,6 +2,7 @@ package com.greenfox.mysql.controllers;
 
 import com.greenfox.mysql.models.Todo;
 import com.greenfox.mysql.repositories.TodoRepository;
+import com.greenfox.mysql.services.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,22 +12,20 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/todo")
 public class TodoController {
 
-    private TodoRepository todoRepository;
+    private TodoService todoService;
 
     @Autowired
-    public TodoController(TodoRepository todoRepository) {
-        this.todoRepository = todoRepository;
+    public TodoController(TodoService todoService) {
+        this.todoService = todoService;
     }
 
-    @GetMapping({"/", "/list"})
+    @GetMapping(value = {"", "/", "/list"})
     public String list(@RequestParam(name = "isactive", required = false) Boolean isActive, Model model) {
 
-
         if (isActive == null) {
-            model.addAttribute("todos", todoRepository.findAll());
+            model.addAttribute("todos", todoService.findAll());
         } else
-
-            model.addAttribute("todos", todoRepository.findAllByIsDone(!isActive));
+            model.addAttribute("todos", todoService.findAllByIsDone(!isActive));
 
         return "todolist";
     }
@@ -40,12 +39,26 @@ public class TodoController {
 
     @PostMapping("/add")
     public String addNewTodo(@ModelAttribute Todo todo) {
-        todoRepository.save(todo);
+        todoService.save(todo);
         return "redirect:/todo/list";
     }
-    @RequestMapping(path = "/{id}/delete", method = RequestMethod.POST)
+
+    @PostMapping(path = "/{id}/delete")
     public String deleteTodo(@PathVariable long id) {
-        todoRepository.deleteById(id);
+        todoService.deleteById(id);
+        return "redirect:/todo/list";
+    }
+
+    @GetMapping(path = "/{id}/edit")
+    public String renderEditForm(@PathVariable long id, Model model) {
+        model.addAttribute("todo", todoService.getById(id) );
+        return "edit";
+    }
+
+    @PostMapping(path = "/{id}/edit")
+    public String updateTodo(@ModelAttribute Todo todo) {
+
+        todoService.updateTodo(todo);
         return "redirect:/todo/list";
     }
 
