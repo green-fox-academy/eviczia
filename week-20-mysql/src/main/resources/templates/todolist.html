@@ -15,6 +15,7 @@
         <th>ACTION</th>
         <th>DONE</th>
         <th>URGENT</th>
+        <th>DELETE</th>
     </tr>
     </thead>
     <tbody>
@@ -23,9 +24,20 @@
         <td th:text="*{title}"></td>
         <td th:text="*{isDone()}"></td>
         <td th:text="*{isUrgent()}"></td>
+        <td>
+            <form action="#" th:action="@{'/todo/' + ${todo.id} + '/delete'}" method="post">
+                <input type="hidden" name="todo" th:value="*{id}"/>
+                <button type="submit">delete</button>
+            </form>
+
+        </td>
     </tr>
     </tbody>
 </table>
+
+<div><a href="/todo/add">
+    <input type="button" name="add" value="add new todo"/>
+</a></div>
 
 </body>
 </html>

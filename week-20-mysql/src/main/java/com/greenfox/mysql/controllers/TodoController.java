@@ -5,9 +5,7 @@ import com.greenfox.mysql.repositories.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/todo")
@@ -21,13 +19,34 @@ public class TodoController {
     }
 
     @GetMapping({"/", "/list"})
-    public String list(@RequestParam(name="isActive", required = false) String isActive, Model model) {
+    public String list(@RequestParam(name = "isactive", required = false) Boolean isActive, Model model) {
 
-        Iterable<Todo> myTodos = todoRepository.findAllByIsDone(Boolean.parseBoolean(isActive));
-        if (isActive == null) {myTodos = todoRepository.findAll();}
 
-        model.addAttribute("todos", myTodos);
+        if (isActive == null) {
+            model.addAttribute("todos", todoRepository.findAll());
+        } else
+
+            model.addAttribute("todos", todoRepository.findAllByIsDone(!isActive));
 
         return "todolist";
     }
+
+    @GetMapping("/add")
+    public String renderAddForm(Model model) {
+        model.addAttribute("todo", new Todo());
+
+        return "addtodo";
+    }
+
+    @PostMapping("/add")
+    public String addNewTodo(@ModelAttribute Todo todo) {
+        todoRepository.save(todo);
+        return "redirect:/todo/list";
+    }
+    @RequestMapping(path = "/{id}/delete", method = RequestMethod.POST)
+    public String deleteTodo(@PathVariable long id) {
+        todoRepository.deleteById(id);
+        return "redirect:/todo/list";
+    }
+
 }
