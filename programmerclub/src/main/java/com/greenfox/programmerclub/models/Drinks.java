@@ -41,7 +41,7 @@ public enum Drinks implements Trackable {
     }
 
     @Override
-    public String timeStamp(String newFaveDrink) {
+    public String logEvent(String newFaveDrink) {
         return LocalDateTime.now().toString() + " : Favorite drink has been changed from: " + name + " to: " + newFaveDrink;
     }
 }

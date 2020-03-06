@@ -33,7 +33,7 @@ public enum Tricks implements Trackable {
     }
 
     @Override
-    public String timeStamp(String newTrick) {
+    public String logEvent(String newTrick) {
         return LocalDateTime.now().toString() + " : New trick has been added: " + name;
     }
 

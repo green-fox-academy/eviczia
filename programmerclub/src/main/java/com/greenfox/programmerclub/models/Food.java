@@ -41,7 +41,7 @@ public enum Food implements Trackable {
 
 
     @Override
-    public String timeStamp(String newFaveFood) {
+    public String logEvent(String newFaveFood) {
         return LocalDateTime.now().toString() + " : Favorite food has been changed from: " + name + " to: " + newFaveFood;
     }
 }

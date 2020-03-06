@@ -63,7 +63,7 @@ public class Fox {
         Trackable newFood = Food.valueOfName(food);
         if (oldFood != newFood) {
             faveFoodAndDrink.replace("Favorite food", newFood);
-            loggedActions.add(oldFood.timeStamp(food));
+            loggedActions.add(oldFood.logEvent(food));
         }
     }
 
@@ -72,7 +72,7 @@ public class Fox {
         Trackable newDrink = Drinks.valueOfName(drink);
         if (oldDrink != newDrink) {
             faveFoodAndDrink.replace("Favorite drink", newDrink);
-            loggedActions.add(oldDrink.timeStamp(drink));
+            loggedActions.add(oldDrink.logEvent(drink));
         }
     }
 
@@ -80,7 +80,7 @@ public class Fox {
         for (Map.Entry<Tricks, Boolean> entry : trickTracker.entrySet()) {
             if (trick.equals(entry.getKey().toString())) {
                 entry.setValue(true);
-                loggedActions.add(entry.getKey().timeStamp(trick));
+                loggedActions.add(entry.getKey().logEvent(trick));
             }
         }
     }

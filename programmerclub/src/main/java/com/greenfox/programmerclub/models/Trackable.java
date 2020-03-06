@@ -2,6 +2,6 @@ package com.greenfox.programmerclub.models;
 
 public interface Trackable {
 
-    String timeStamp(String newTrackable);
+    String logEvent(String newTrackable);
 
 }
