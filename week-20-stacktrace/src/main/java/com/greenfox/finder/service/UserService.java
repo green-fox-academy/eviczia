@@ -1,12 +1,14 @@
-package service;
+package com.greenfox.finder.service;
 
-import com.greenfox.error.model.User;
+import com.greenfox.finder.model.User;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
 /**
  * Created by aze on 25/10/17.
  */
+@Service
 public class UserService {
 
     private ArrayList<User> users;
@@ -23,7 +25,7 @@ public class UserService {
         users.add(user);
     }
 
-    public UserService service() {
+/*    public UserService service() {
         return new UserService();
-    }
+    }*/
 }
