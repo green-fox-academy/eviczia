@@ -6,36 +6,39 @@
     <title>My Fox</title>
     <link rel="icon" type="image/png"
           href='greenfox.png'>
-    <link href="https://fonts.googleapis.com/css?family=Roboto|Simonetta&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Assistant|Mansalva&display=swap" rel="stylesheet">
 
 </head>
 <body>
-<ul>
-    <li><a th:href="'/?name=' + ${myFox.name}">Information</a></li>
-    <li><a th:href="'/nutritionStore?name=' + ${myFox.name}">Nutrition Store</a></li>
-    <li><a th:href="'/trickCenter?name=' + ${myFox.name}">Trick Center</a></li>
-    <li><a th:href="'/actionHistory?name=' + ${myFox.name}">Action History</a></li>
+<div class="page-wrapper">
+<nav>
+<ul class="nav">
+    <li class="nav"><a th:href="'/?name=' + ${myFox.name}">Information</a></li>
+    <li class="nav"><a th:href="'/nutritionStore?name=' + ${myFox.name}">Nutrition Store</a></li>
+    <li class="nav"><a th:href="'/trickCenter?name=' + ${myFox.name}">Trick Center</a></li>
+    <li class="nav"><a th:href="'/actionHistory?name=' + ${myFox.name}">Action History</a></li>
 </ul>
-<p><img src='greenfox.png' alt="greenfox logo"/></p>
+</nav>
+    <h1>Programmer Fox Club</h1>
+
+<p><img class="sprite" src='greenfox-removebg-preview.png' alt="greenfox logo"/></p>
 <p th:text="${message}"></p>
 <p th:text="${myFox}"></p>
 
-<h1>Known tricks</h1>
+<h2>Known tricks</h2>
 <p th:text="${myFox.learntTricks().isEmpty()} ? 'You know no tricks yet. Go and learn some.' "></p>
 <ul th:each="trick : ${myFox.learntTricks()}">
     <li th:text="${trick}"></li>
 </ul>
 
-<br>
-
-<h1>Recent events</h1>
+<h2>Recent events</h2>
 <p th:text="${timeStamps.isEmpty()} ? 'Nothing happened yet.' "></p>
 
 <ul th:each="timeStamp : ${timeStamps}">
     <li th:text="${timeStamp}"></li>
 </ul>
-<br>
 
 <footer><a href="/login">Login with/add another fox</a></footer>
+</div>
 </body>
 </html>

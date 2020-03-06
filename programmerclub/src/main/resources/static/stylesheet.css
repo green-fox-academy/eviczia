@@ -1,8 +1,21 @@
-
-body {
-    font-family: 'Roboto', serif;
+* {
+    font-family: 'Assistant', sans-serif;
+    color: #433a49;
+    padding-left: 10px;
 }
 
-h1{
-    font-family: 'Simonetta', serif;
+h1, h2 {
+    font-family: 'Mansalva', cursive;
+    color: #f47a91;
+
 }
+.nav li, .nav ul{
+    display: inline;
+}
+
+ul{
+    list-style-image: url('wheel2.jpg');
+    padding-top: 0;
+    padding-bottom: 0;
+}
+

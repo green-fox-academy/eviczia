@@ -25,7 +25,7 @@ public class MainController {
         }
         model.addAttribute("message", myFoxes.getWelcomeMessage(name));
         model.addAttribute("myFox", myFoxes.findMyFoxByName(name));
-        model.addAttribute("timeStamps", myFoxes.findMyFoxByName(name).getTruncatedTimeStamps());
+        model.addAttribute("timeStamps", myFoxes.findMyFoxByName(name).getLastFiveActions());
 
         return "index";
     }

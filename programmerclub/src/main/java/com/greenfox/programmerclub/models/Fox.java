@@ -21,10 +21,8 @@ public class Fox {
     }
 
     public Fox(String name) {
+        this();
         this.name = name;
-        initializeFaveFoodAndDrink();
-        initializeTrickTracker();
-        loggedActions = new ArrayList<>();
     }
 
     private void initializeFaveFoodAndDrink() {
@@ -97,7 +95,7 @@ public class Fox {
         return tricks;
     }
 
-    public List<String> getTruncatedTimeStamps() {
+    public List<String> getLastFiveActions() {
         if (loggedActions.size() > 5) {
             List<String> truncList = new ArrayList<>();
             for (int i = loggedActions.size() - 5; i < loggedActions.size(); i++) {
