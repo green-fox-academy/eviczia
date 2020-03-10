@@ -16,8 +16,9 @@ public class TodoService {
     }
 
 
-    public Iterable<Todo> findAll() {
-        return todoRepository.findAll();
+    public Iterable<Todo> findAllByText(String text) {
+        if (text == null) return todoRepository.findAll();
+        return todoRepository.findByTitleContaining(text);
     }
 
     public Iterable<Todo> findAllByIsDone(boolean b) {
@@ -36,9 +37,5 @@ public class TodoService {
         if (todoRepository.findById(id).isPresent()) {
             return todoRepository.findById(id).get();
         } else return null;
-    }
-
-    public void updateTodo(Todo todo) {
-        todoRepository.save(todo);
     }
 }

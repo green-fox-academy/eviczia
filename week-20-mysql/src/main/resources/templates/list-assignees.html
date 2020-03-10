@@ -2,17 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Assignees</title>
     <link rel="stylesheet" th:href="@{/style.css}"/>
 </head>
 <body>
-<h1>Todos for today</h1>
-<form action="#" th:action="@{/todo/list}" method="get">
-    <label for="search-text">Filter todo title:</label><br>
+<h1>Assignees for todos</h1>
+<form action="#" th:action="@{/todo/list-assignees}" method="get">
+    <label for="search-text">Select assignee by name:</label><br>
     <input
             type="text"
             id="search-text"
-            th:name="text"
+            th:name="name"
     />
     <button type="submit">filter</button>
 </form>
@@ -20,26 +20,24 @@
     <thead>
     <tr>
         <th>ID</th>
-        <th>ACTION</th>
-        <th>URGENT</th>
-        <th>DONE</th>
+        <th>NAME</th>
+        <th>EMAIL</th>
         <th>EDIT</th>
         <th>DELETE</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="todo : ${todos}" th:object="${todo}">
+    <tr th:each="assignee : ${assignees}" th:object="${assignee}">
         <td th:text="*{id}"></td>
-        <td th:text="*{title}"></td>
-        <td th:text="*{isUrgent}"></td>
-        <td th:text="*{isDone}"></td>
+        <td th:text="*{name}"></td>
+        <td th:text="*{email}"></td>
         <td>
-            <form action="#" th:action="@{'/todo/' + ${todo.id} + '/edit'}" method="get">
+            <form action="#" th:action="@{'/assignees/' + ${assignee.id} + '/edit'}" method="get">
                 <button type="submit">edit</button>
             </form>
         </td>
         <td>
-            <form action="#" th:action="@{'/todo/' + ${todo.id} + '/delete'}" method="post">
+            <form action="#" th:action="@{'/assignees/' + ${assignee.id} + '/delete'}" method="post">
                 <button type="submit">delete</button>
             </form>
 
@@ -48,11 +46,9 @@
     </tbody>
 </table>
 
-<div><a href="/todo/add">
+<div><a href="/assignees/add">
     <input type="button" name="add" value="add new todo"/>
 </a></div>
-
-<a href=/assignees/list>List of assignees</a>
 
 </body>
 </html>

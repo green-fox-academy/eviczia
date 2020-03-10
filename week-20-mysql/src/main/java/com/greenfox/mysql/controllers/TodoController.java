@@ -1,7 +1,6 @@
 package com.greenfox.mysql.controllers;
 
 import com.greenfox.mysql.models.Todo;
-import com.greenfox.mysql.repositories.TodoRepository;
 import com.greenfox.mysql.services.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,10 +19,10 @@ public class TodoController {
     }
 
     @GetMapping(value = {"", "/", "/list"})
-    public String list(@RequestParam(name = "isactive", required = false) Boolean isActive, Model model) {
+    public String list(@RequestParam(name = "isactive", required = false) Boolean isActive, @RequestParam(name = "text", required = false) String text, Model model) {
 
         if (isActive == null) {
-            model.addAttribute("todos", todoService.findAll());
+            model.addAttribute("todos", todoService.findAllByText(text));
         } else
             model.addAttribute("todos", todoService.findAllByIsDone(!isActive));
 
@@ -52,14 +51,13 @@ public class TodoController {
     @GetMapping(path = "/{id}/edit")
     public String renderEditForm(@PathVariable long id, Model model) {
         model.addAttribute("todo", todoService.getById(id));
-        return "edit";
+        return "edit-todo";
     }
 
     @PostMapping(path = "/{id}/edit")
-    public String updateTodo(@ModelAttribute Todo todo) {
+    public String updateTodo(@ModelAttribute Todo todo, @PathVariable long id) {
 
-        todoService.updateTodo(todo);
+        todoService.save(todo);
         return "redirect:/todo/list";
     }
-
 }
