@@ -30,7 +30,7 @@ public class MysqlApplication implements CommandLineRunner {
         todoRepository.save(new Todo("I have to learn Object Relational Mapping"));
         todoRepository.save(new Todo("Finish my sandwich"));
         todoRepository.save(new Todo("Call mum"));
-        todoRepository.save(new Todo("Do shopping", /*new Assignee("Miki"),*/ true));
+        todoRepository.save(new Todo("Do shopping", new Assignee("Miki"), true));
         Todo todo = todoRepository.findById(2L).get();
         todo.setIsDone(true);
         todoRepository.save(todo);

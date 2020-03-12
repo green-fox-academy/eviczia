@@ -1,15 +1,19 @@
 package com.greenfox.mysql.models.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Assignee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String name;
     private String email;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "todo")
+    private List<Todo> todos;
 
 
     public Assignee() {

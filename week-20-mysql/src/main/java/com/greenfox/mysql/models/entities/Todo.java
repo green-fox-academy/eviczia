@@ -7,20 +7,21 @@ public class Todo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String title;
-/*    @ManyToOne
-    private Assignee assignee;*/
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "assignee_id")
+    private Assignee assignee;
     private boolean isUrgent;
     private boolean isDone;
 
     public Todo() {
     }
 
-    public Todo(String title,/* Assignee assignee,*/ boolean isDone) {
+    public Todo(String title, Assignee assignee, boolean isDone) {
         this.title = title;
         this.isDone = isDone;
-//        this.assignee = assignee;
+        this.assignee = assignee;
         isUrgent = false;
     }
 
@@ -46,13 +47,13 @@ public class Todo {
         this.title = title;
     }
 
-/*    public Assignee getAssignee() {
+    public Assignee getAssignee() {
         return assignee;
     }
 
     public void setAssignee(Assignee assignee) {
         this.assignee = assignee;
-    }*/
+    }
 
     public boolean getIsUrgent() {
         return isUrgent;
