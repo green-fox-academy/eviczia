@@ -1,6 +1,6 @@
 package com.greenfox.mysql.repositories;
 
-import com.greenfox.mysql.models.Todo;
+import com.greenfox.mysql.models.entities.Todo;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

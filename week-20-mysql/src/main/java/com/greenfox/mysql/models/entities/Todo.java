@@ -1,9 +1,6 @@
-package com.greenfox.mysql.models;
+package com.greenfox.mysql.models.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Todo {
@@ -12,15 +9,18 @@ public class Todo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String title;
+/*    @ManyToOne
+    private Assignee assignee;*/
     private boolean isUrgent;
     private boolean isDone;
 
     public Todo() {
     }
 
-    public Todo(String title, boolean isDone) {
+    public Todo(String title,/* Assignee assignee,*/ boolean isDone) {
         this.title = title;
         this.isDone = isDone;
+//        this.assignee = assignee;
         isUrgent = false;
     }
 
@@ -45,6 +45,14 @@ public class Todo {
     public void setTitle(String title) {
         this.title = title;
     }
+
+/*    public Assignee getAssignee() {
+        return assignee;
+    }
+
+    public void setAssignee(Assignee assignee) {
+        this.assignee = assignee;
+    }*/
 
     public boolean getIsUrgent() {
         return isUrgent;

@@ -1,6 +1,6 @@
 package com.greenfox.mysql.controllers;
 
-import com.greenfox.mysql.models.Assignee;
+import com.greenfox.mysql.models.entities.Assignee;
 import com.greenfox.mysql.services.AssigneeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
