@@ -7,12 +7,12 @@
 </head>
 <body>
 <h1>Assignees for todos</h1>
-<form action="#" th:action="@{/todo/list-assignees}" method="get">
+<form action="#" th:action="@{/assignees/list}" method="get">
     <label for="search-text">Select assignee by name:</label><br>
     <input
             type="text"
             id="search-text"
-            th:name="name"
+            th:name="text"
     />
     <button type="submit">filter</button>
 </form>

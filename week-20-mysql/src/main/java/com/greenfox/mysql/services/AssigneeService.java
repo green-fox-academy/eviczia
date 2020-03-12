@@ -1,6 +1,7 @@
 package com.greenfox.mysql.services;
 
 import com.greenfox.mysql.models.entities.Assignee;
+import com.greenfox.mysql.models.entities.Todo;
 import com.greenfox.mysql.repositories.AssigneeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,5 +34,10 @@ public class AssigneeService {
         if (assigneeRepository.findById(id).isPresent()) {
             return assigneeRepository.findById(id).get();
         } else return null;
+    }
+
+    public Iterable<Assignee> findAllByText(String text) {
+        if (text == null) return assigneeRepository.findAll();
+        return assigneeRepository.findByNameContaining(text);
     }
 }

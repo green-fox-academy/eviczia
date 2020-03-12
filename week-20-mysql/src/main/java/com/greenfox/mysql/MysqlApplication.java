@@ -15,14 +15,14 @@ public class MysqlApplication implements CommandLineRunner {
     private TodoRepository todoRepository;
     private AssigneeRepository assigneeRepository;
 
-    public static void main(String[] args) {
-        SpringApplication.run(MysqlApplication.class, args);
-    }
-
     @Autowired
     public MysqlApplication(TodoRepository todoRepository, AssigneeRepository assigneeRepository) {
         this.todoRepository = todoRepository;
         this.assigneeRepository = assigneeRepository;
+    }
+
+    public static void main(String[] args) {
+        SpringApplication.run(MysqlApplication.class, args);
     }
 
     @Override
@@ -39,10 +39,10 @@ public class MysqlApplication implements CommandLineRunner {
         assigneeRepository.save(new Assignee("Eszter", "eszter@gmail.com"));
         assigneeRepository.save(new Assignee("Bandi", "bandi@gmail.com"));
 
-/*        if (todoRepository.findById(4L).isPresent()) {
+        if (todoRepository.findById(4L).isPresent()) {
             Todo todo2 = todoRepository.findById(4L).get();
             assigneeRepository.save(todo2.getAssignee());
             System.out.println(todo2.getAssignee().getName());
-        }*/
+        }
     }
 }

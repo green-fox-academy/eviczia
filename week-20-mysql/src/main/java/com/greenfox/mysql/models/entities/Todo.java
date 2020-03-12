@@ -9,7 +9,7 @@ public class Todo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "assignee_id")
     private Assignee assignee;
     private boolean isUrgent;
@@ -31,7 +31,7 @@ public class Todo {
         isUrgent = false;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -39,7 +39,7 @@ public class Todo {
         return title;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

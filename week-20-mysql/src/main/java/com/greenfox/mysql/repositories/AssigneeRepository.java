@@ -8,5 +8,6 @@ import org.springframework.stereotype.Repository;
 public interface AssigneeRepository extends CrudRepository<Assignee, Long> {
 
 
+    Iterable<Assignee> findByNameContaining(String text);
 
 }

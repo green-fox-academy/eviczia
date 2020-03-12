@@ -19,9 +19,9 @@ public class AssigneeController {
     }
 
     @GetMapping(value = {"", "/", "/list"})
-    public String list(Model model) {
+    public String list(@RequestParam(name = "text", required = false) String text, Model model) {
 
-        model.addAttribute("assignees", assigneeService.findAll());
+        model.addAttribute("assignees", assigneeService.findAllByText(text));
 
         return "list-assignees";
     }

@@ -29,11 +29,11 @@ public class TodoService {
         todoRepository.save(todo);
     }
 
-    public void deleteById(long id) {
+    public void deleteById(Long id) {
         todoRepository.deleteById(id);
     }
 
-    public Todo getById(long id) {
+    public Todo getById(Long id) {
         if (todoRepository.findById(id).isPresent()) {
             return todoRepository.findById(id).get();
         } else return null;
