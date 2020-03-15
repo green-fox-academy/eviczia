@@ -6,6 +6,9 @@ import com.greenfox.mysql.repositories.AssigneeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class AssigneeService {
 
@@ -40,4 +43,5 @@ public class AssigneeService {
         if (text == null) return assigneeRepository.findAll();
         return assigneeRepository.findByNameContaining(text);
     }
+
 }

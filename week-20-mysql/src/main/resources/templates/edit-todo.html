@@ -19,6 +19,11 @@
             th:field="*{title}"
             required
             /><br>
+    <label for='assignee'>Assign owner to todo:</label>
+    <select id="assignee" name="assigneeId">
+        <option  th:each="assignee : ${assignees}" th:selected="${assignee.getName()}"th:value="${assignee.getId()}"
+                th:text="${assignee.getName()}"></option>
+    </select>
     <label for="isUrgent">Urgent:</label>
     <input
             type="checkbox"

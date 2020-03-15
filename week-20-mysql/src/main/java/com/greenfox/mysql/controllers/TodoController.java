@@ -1,5 +1,6 @@
 package com.greenfox.mysql.controllers;
 
+import com.greenfox.mysql.models.entities.Assignee;
 import com.greenfox.mysql.models.entities.Todo;
 import com.greenfox.mysql.services.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,20 +44,23 @@ public class TodoController {
     }
 
     @PostMapping(path = "/{id}/delete")
-    public String deleteTodo(@PathVariable long id) {
+    public String deleteTodo(@PathVariable Long id) {
         todoService.deleteById(id);
         return "redirect:/todo/list";
     }
 
     @GetMapping(path = "/{id}/edit")
-    public String renderEditForm(@PathVariable long id, Model model) {
+    public String renderEditForm(@PathVariable Long id, Model model) {
         model.addAttribute("todo", todoService.getById(id));
+        model.addAttribute("assignees", todoService.getAssignees());
         return "edit-todo";
     }
 
     @PostMapping(path = "/{id}/edit")
-    public String updateTodo(@ModelAttribute Todo todo, @PathVariable long id) {
-
+    public String updateTodo(@ModelAttribute Todo todo, Long assigneeId) {
+        Assignee assignee = todoService.findAssigneeById(assigneeId);
+        todoService.saveAssignee(assignee);
+        todo.setAssignee(assignee);
         todoService.save(todo);
         return "redirect:/todo/list";
     }
