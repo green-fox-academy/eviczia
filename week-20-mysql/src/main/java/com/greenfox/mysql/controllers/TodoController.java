@@ -4,9 +4,12 @@ import com.greenfox.mysql.models.entities.Assignee;
 import com.greenfox.mysql.models.entities.Todo;
 import com.greenfox.mysql.services.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
 
 @Controller
 @RequestMapping("/todo")
@@ -33,12 +36,13 @@ public class TodoController {
     @GetMapping("/add")
     public String renderAddForm(Model model) {
         model.addAttribute("todo", new Todo());
+        model.addAttribute("assignees", todoService.getAssignees());
 
-        return "addtodo";
+        return "add-todo";
     }
 
     @PostMapping("/add")
-    public String addNewTodo(@ModelAttribute Todo todo) {
+    public String addNewTodo(@ModelAttribute Todo todo, Long assigneeId, @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate deadline) {
         todoService.save(todo);
         return "redirect:/todo/list";
     }
@@ -57,10 +61,11 @@ public class TodoController {
     }
 
     @PostMapping(path = "/{id}/edit")
-    public String updateTodo(@ModelAttribute Todo todo, Long assigneeId) {
+    public String updateTodo(@ModelAttribute Todo todo, Long assigneeId, @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate deadline) {
         Assignee assignee = todoService.findAssigneeById(assigneeId);
         todoService.saveAssignee(assignee);
         todo.setAssignee(assignee);
+        todo.setDueDate(deadline);
         todoService.save(todo);
         return "redirect:/todo/list";
     }

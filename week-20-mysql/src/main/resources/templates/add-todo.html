@@ -6,13 +6,13 @@
     <link rel="stylesheet" th:href="@{/style.css}"/>
 </head>
 <body>
-<h1 th:text="'Edit todo (id: ' + ${todo.id} + ', created: ' + ${todo.date} + ')'"></h1>
+<h1>Add new todo</h1>
 <form
         action="#"
-        th:action="@{'/todo/' + ${todo.id} + '/edit'}"
+        th:action="@{/todo/add}"
         th:object="${todo}"
         th:method="post">
-    <label for="title">Edit todo title:</label><br>
+    <label for="title">Todo title:</label><br>
     <input
             type="text"
             id="title"
@@ -51,10 +51,12 @@
     /><br>
     <div>
         <button type="submit">
-            Update
+            Add
         </button>
     </div>
 
 </form>
+
+
 </body>
 </html>
