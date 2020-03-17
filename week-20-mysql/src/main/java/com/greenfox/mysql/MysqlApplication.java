@@ -11,6 +11,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
 
+import java.util.TimeZone;
+
 @SpringBootApplication
 public class MysqlApplication implements CommandLineRunner {
 
@@ -35,6 +37,7 @@ public class MysqlApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
         todoRepository.save(new Todo("I have to learn Object Relational Mapping"));
         todoRepository.save(new Todo("Finish my sandwich"));
         todoRepository.save(new Todo("Call mum"));
