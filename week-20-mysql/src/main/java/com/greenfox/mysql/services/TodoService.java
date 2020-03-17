@@ -7,6 +7,7 @@ import com.greenfox.mysql.repositories.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.StyledEditorKit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,5 +58,9 @@ public class TodoService{
 
     public Assignee findAssigneeById(Long assigneeId) {
         return (assigneeRepository.findById(assigneeId).isPresent()?assigneeRepository.findById(assigneeId).get():new Assignee("Eszter", "sv@sv.d"));
+    }
+
+    public Iterable<Todo> findAssigneesTodos(Long id) {
+        return todoRepository.findAllByAssignee(findAssigneeById(id));
     }
 }

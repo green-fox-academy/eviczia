@@ -37,7 +37,7 @@
         <td th:text="*{title}"></td>
         <td>
             <span th:if="*{assignee == null} ">N/A</span>
-            <span th:unless="*{assignee == null}" th:text="*{assignee.getName()}"></span>
+            <a th:unless="*{assignee == null}" th:text="*{assignee.getName()}" th:href="'/todo/' + *{assignee.getId()} + '/list-todos'" ></a>
         </td>
         <td th:text="*{dueDate}"></td>
         <td th:text="*{isUrgent}"></td>

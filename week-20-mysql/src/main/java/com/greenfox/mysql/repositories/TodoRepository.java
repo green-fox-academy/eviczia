@@ -1,5 +1,6 @@
 package com.greenfox.mysql.repositories;
 
+import com.greenfox.mysql.models.entities.Assignee;
 import com.greenfox.mysql.models.entities.Todo;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -12,5 +13,6 @@ public interface TodoRepository extends CrudRepository<Todo, Long> {
 
     Iterable<Todo> findByTitleContaining(String text);
 
+    Iterable<Todo> findAllByAssignee(Assignee assignee);
 
 }

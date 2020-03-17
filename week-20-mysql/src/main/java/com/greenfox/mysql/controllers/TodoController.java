@@ -69,4 +69,15 @@ public class TodoController {
         todoService.save(todo);
         return "redirect:/todo/list";
     }
+
+    @GetMapping(path = "/{id}/list-todos")
+    public String listAssigneesTodos(@PathVariable Long id, Model model) {
+        Assignee queriedAssignee =  todoService.findAssigneeById(id);
+
+        model.addAttribute("assignee", todoService.findAssigneeById(id));
+        model.addAttribute("todos", todoService.findAssigneesTodos(id));
+
+
+        return "show-assignee";
+    }
 }
