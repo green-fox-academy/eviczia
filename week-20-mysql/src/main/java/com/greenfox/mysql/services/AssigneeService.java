@@ -1,13 +1,11 @@
 package com.greenfox.mysql.services;
 
 import com.greenfox.mysql.models.entities.Assignee;
-import com.greenfox.mysql.models.entities.Todo;
 import com.greenfox.mysql.repositories.AssigneeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AssigneeService {
@@ -28,15 +26,12 @@ public class AssigneeService {
     }
 
     public void deleteById(long id) {
-        if (assigneeRepository.existsById(id)) {
-            assigneeRepository.deleteById(id);
-        }
+        assigneeRepository.deleteById(id);
     }
 
     public Assignee getById(long id) {
-        if (assigneeRepository.findById(id).isPresent()) {
-            return assigneeRepository.findById(id).get();
-        } else return null;
+        Optional<Assignee> assignee = assigneeRepository.findById(id);
+        return assignee.orElse(null);
     }
 
     public Iterable<Assignee> findAllByText(String text) {

@@ -27,9 +27,9 @@ public class TodoController {
 
         if (isActive == null) {
             model.addAttribute("todos", todoService.findAllByText(text));
-        } else
+        } else {
             model.addAttribute("todos", todoService.findAllByIsDone(!isActive));
-
+        }
         return "todolist";
     }
 
@@ -62,17 +62,13 @@ public class TodoController {
 
     @PostMapping(path = "/{id}/edit")
     public String updateTodo(@ModelAttribute Todo todo, Long assigneeId, @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate deadline) {
-        Assignee assignee = todoService.findAssigneeById(assigneeId);
-        todoService.saveAssignee(assignee);
-        todo.setAssignee(assignee);
-        todo.setDueDate(deadline);
-        todoService.save(todo);
+        todoService.updateTodo(todo, assigneeId, deadline);
         return "redirect:/todo/list";
     }
 
     @GetMapping(path = "/{id}/list-todos")
     public String listAssigneesTodos(@PathVariable Long id, Model model) {
-        Assignee queriedAssignee =  todoService.findAssigneeById(id);
+        Assignee queriedAssignee = todoService.findAssigneeById(id);
 
         model.addAttribute("assignee", todoService.findAssigneeById(id));
         model.addAttribute("todos", todoService.findAssigneesTodos(id));

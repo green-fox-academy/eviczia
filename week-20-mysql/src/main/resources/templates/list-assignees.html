@@ -31,9 +31,8 @@
         <td th:text="*{id}"></td>
         <td th:text="*{name}"></td>
         <td>
-            <a th:text="*{name}" th:href="'/todo/' + *{id} + '/list-todos'" ></a>
+            <a th:text="*{name}" th:href="'/todo/' + *{id} + '/list-todos'"></a>
         </td>
-
         <td th:text="*{email}"></td>
         <td>
             <form action="#" th:action="@{'/assignees/' + ${assignee.id} + '/edit'}" method="get">
@@ -44,7 +43,6 @@
             <form action="#" th:action="@{'/assignees/' + ${assignee.id} + '/delete'}" method="post">
                 <button type="submit">delete</button>
             </form>
-
         </td>
     </tr>
     </tbody>

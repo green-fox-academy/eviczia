@@ -21,20 +21,17 @@ public class Todo {
     private LocalDate dueDate;
 
     public Todo() {
-        date = LocalDate.now();
-    }
+        this("", new Assignee(),false);    }
 
     public Todo(String title) {
-        this();
-        this.title = title;
-        isDone = false;
-        isUrgent = false;
+        this(title, new Assignee(),false);
     }
 
-    public Todo(String title, Assignee assignee, boolean isDone) {
-        this(title);
-        this.isDone = isDone;
+    public Todo(String title, Assignee assignee, boolean isUrgent) {
+        this.title = title;
+        this.isUrgent = isUrgent;
         this.assignee = assignee;
+        date = LocalDate.now();
     }
 
     public Long getId() {

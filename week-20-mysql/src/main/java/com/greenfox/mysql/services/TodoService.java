@@ -7,12 +7,12 @@ import com.greenfox.mysql.repositories.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.StyledEditorKit;
-import java.util.ArrayList;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
-public class TodoService{
+public class TodoService {
 
     private TodoRepository todoRepository;
     private AssigneeRepository assigneeRepository;
@@ -42,12 +42,11 @@ public class TodoService{
     }
 
     public Todo getById(Long id) {
-        if (todoRepository.findById(id).isPresent()) {
-            return todoRepository.findById(id).get();
-        } else return null;
+        Optional<Todo> todo = todoRepository.findById(id);
+        return todo.orElse(null);
     }
 
-    public List<Assignee> getAssignees(){
+    public List<Assignee> getAssignees() {
         return assigneeRepository.findAll();
     }
 
@@ -57,10 +56,21 @@ public class TodoService{
     }
 
     public Assignee findAssigneeById(Long assigneeId) {
-        return (assigneeRepository.findById(assigneeId).isPresent()?assigneeRepository.findById(assigneeId).get():new Assignee("Eszter", "sv@sv.d"));
+        Optional<Assignee> assignee = assigneeRepository.findById(assigneeId);
+
+        return (assignee.orElseGet(() -> new Assignee("Eszter", "sv@sv.d")));
     }
 
     public Iterable<Todo> findAssigneesTodos(Long id) {
         return todoRepository.findAllByAssignee(findAssigneeById(id));
+    }
+
+    public void updateTodo(Todo todo, Long assigneeId, LocalDate deadline) {
+        Assignee assignee = findAssigneeById(assigneeId);
+        saveAssignee(assignee);
+        todo.setAssignee(assignee);
+        todo.setDueDate(deadline);
+        save(todo);
+
     }
 }

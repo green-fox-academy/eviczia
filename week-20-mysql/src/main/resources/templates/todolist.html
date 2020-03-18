@@ -37,7 +37,8 @@
         <td th:text="*{title}"></td>
         <td>
             <span th:if="*{assignee == null} ">N/A</span>
-            <a th:unless="*{assignee == null}" th:text="*{assignee.getName()}" th:href="'/todo/' + *{assignee.getId()} + '/list-todos'" ></a>
+            <a th:unless="*{assignee == null}" th:text="*{assignee.getName()}"
+               th:href="'/todo/' + *{assignee.getId()} + '/list-todos'"></a>
         </td>
         <td th:text="*{dueDate}"></td>
         <td th:text="*{isUrgent}"></td>
@@ -57,9 +58,11 @@
     </tbody>
 </table>
 
-<div><a href="/todo/add">
-    <input type="button" name="add" value="add new todo"/>
-</a></div>
+<div>
+    <a href="/todo/add">
+        <input type="button" name="add" value="add new todo"/>
+    </a>
+</div>
 
 <a href=/assignees/list>List of assignees</a>
 
