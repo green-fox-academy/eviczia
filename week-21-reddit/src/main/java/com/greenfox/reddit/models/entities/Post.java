@@ -1,4 +1,4 @@
-package com.greenfox.reddit.models;
+package com.greenfox.reddit.models.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +14,7 @@ public class Post {
     private Integer score;
     private String title;
     private String link;
+    private User user;
 
     public Post(Integer score, String title, String link) {
         this.score = score;
@@ -57,5 +58,15 @@ public class Post {
 
     public void setLink(String link) {
         this.link = link;
+    }
+
+    public void setNewRating(Boolean likedIt) {
+        score = likedIt ? score++ : score--;
+    }
+
+    public void editRating(Boolean likedItThen, Boolean likesItNow) {
+        if (likedItThen != likesItNow) {
+            score = score + (likedItThen ? -2 : 2);
+        }
     }
 }

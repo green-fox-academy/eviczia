@@ -1,6 +1,6 @@
 package com.greenfox.reddit;
 
-import com.greenfox.reddit.models.Post;
+import com.greenfox.reddit.models.entities.Post;
 import com.greenfox.reddit.repositories.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
