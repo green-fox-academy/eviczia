@@ -18,4 +18,8 @@ public class PostService {
     public Iterable<Post> listPosts() {
         return postRepository.findAll();
     }
+
+    public void save(Post post) {
+        postRepository.save(post);
+    }
 }
