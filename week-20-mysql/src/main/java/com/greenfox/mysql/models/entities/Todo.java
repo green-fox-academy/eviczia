@@ -31,7 +31,13 @@ public class Todo {
         this.title = title;
         this.isUrgent = isUrgent;
         this.assignee = assignee;
-        date = LocalDate.now();
+        setInitialDate();
+    }
+
+    private void setInitialDate() {
+        if (date == null) {
+            date = LocalDate.now();
+        }
     }
 
     public Long getId() {

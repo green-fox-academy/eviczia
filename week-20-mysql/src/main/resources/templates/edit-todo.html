@@ -26,10 +26,16 @@
                 th:value="${assignee.getId()}"
                 th:text="${assignee.getName()}"></option>
     </select><br>
-    <label for="deadline">Edit todo title:</label>
+    <label for="deadline">Edit todo deadline:</label>
     <input
             type="date"
             id="deadline"
+            th:value="*{dueDate}"
+            name="deadline"
+            th:text="${#temporals.format(todo.dueDate, 'MM-yyyy')}"/><br>
+    <input
+            type="hidden"
+            id="createdOn"
             th:value="*{dueDate}"
             name="deadline"
             th:text="${#temporals.format(todo.dueDate, 'MM-yyyy')}"/><br>

@@ -7,12 +7,47 @@
 </head>
 <body>
 <h1>Todos for today</h1>
+
+
 <form action="#" th:action="@{/todo/list}" method="get">
+    <label for="search-active">Filter todo completion:</label><br>
+    <input
+            type="text"
+            id="search-active"
+            name="active"
+    />
+    <label for="search-urgent">Filter todo urgency:</label><br>
+    <input
+            type="text"
+            id="search-urgent"
+            name="urgent"
+    />
     <label for="search-text">Filter todo title:</label><br>
     <input
             type="text"
             id="search-text"
-            th:name="text"
+            name="text"
+    />
+    <label for="search-create-date">Filter todo createDate:</label><br>
+    <input
+            type="date"
+            id="search-create-date"
+            name="create-date"
+    />
+    <label for="search-due-date">Filter todo dueDate:</label><br>
+    <input
+            type="date"
+            id="search-due-date"
+            name="due-date"
+            th:value="${todo.date}"
+    />
+    <label for="search-assignee">Filter todo assignee:</label><br>
+    <input
+            type="text"
+            id="search-assignee"
+            name="assigneeId"
+            th:value="${todo.date}"
+
     />
     <button type="submit">filter</button>
 </form>

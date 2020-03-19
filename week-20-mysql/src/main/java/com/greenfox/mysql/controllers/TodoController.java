@@ -23,14 +23,25 @@ public class TodoController {
     }
 
     @GetMapping(value = {"", "/", "/list"})
-    public String list(@RequestParam(name = "isactive", required = false) Boolean isActive, @RequestParam(name = "text", required = false) String text, Model model) {
-
-        if (isActive == null) {
-            model.addAttribute("todos", todoService.findAllByText(text));
+    public String list(Model model,
+                       @RequestParam(name = "active", required = false) Boolean isActive,
+                       @RequestParam(name = "urgent", required = false) Boolean isUrgent,
+                       @RequestParam(name = "text", required = false) String text,
+                       @RequestParam(name = "create-date", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate createDate,
+                       @RequestParam(name = "due-date", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dueDate,
+                       @RequestParam(name = "assigneeId", required = false) Long assigneeId
+    ) {
+        Iterable<Todo> todos;
+        if (isActive == null || isUrgent == null || text == null || createDate == null || dueDate == null || assigneeId == null) {
+            todos = todoService.findAll();
         } else {
-            model.addAttribute("todos", todoService.findAllByIsDone(!isActive));
+            Object[] searchParams = {isActive, isUrgent, text, createDate, dueDate, assigneeId};
+            todos = todoService.findAllBySearchParams(searchParams);
         }
+        model.addAttribute("todo", new Todo());
+        model.addAttribute("todos", todos);
         return "todolist";
+
     }
 
     @GetMapping("/add")
