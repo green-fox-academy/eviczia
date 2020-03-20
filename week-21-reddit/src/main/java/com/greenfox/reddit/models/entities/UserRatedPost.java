@@ -1,9 +1,9 @@
-package com.greenfox.reddit.models.dtos;
+package com.greenfox.reddit.models.entities;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 
+@Entity
 public class UserRatedPost {
 
     @Id

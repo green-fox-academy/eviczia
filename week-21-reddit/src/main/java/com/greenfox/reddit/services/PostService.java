@@ -1,9 +1,9 @@
 package com.greenfox.reddit.services;
 
-import com.greenfox.reddit.models.dtos.UserRatedPost;
+//import com.greenfox.reddit.models.entities.UserRatedPost;
 import com.greenfox.reddit.models.entities.Post;
 import com.greenfox.reddit.repositories.PostRepository;
-import com.greenfox.reddit.repositories.UserRatedPostRepository;
+//import com.greenfox.reddit.repositories.UserRatedPostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,12 +13,18 @@ import java.util.Optional;
 public class PostService {
 
     private PostRepository postRepository;
-    private UserRatedPostRepository userRatedPostRepository;
+//    private UserRatedPostRepository userRatedPostRepository;
 
     @Autowired
     public PostService(PostRepository postRepository) {
         this.postRepository = postRepository;
     }
+
+/*    @Autowired
+    public PostService(PostRepository postRepository, UserRatedPostRepository userRatedPostRepository) {
+        this.postRepository = postRepository;
+        this.userRatedPostRepository = userRatedPostRepository;
+    }*/
 
     public Iterable<Post> listPosts() {
         return postRepository.findAll();
@@ -28,7 +34,7 @@ public class PostService {
         postRepository.save(post);
     }
 
-    public void processRating (UserRatedPost userRatedPost) {
+/*    public void processRating (UserRatedPost userRatedPost) {
         Boolean newRating = userRatedPost.getLikedIt();
         Optional<Post> ratedPost = postRepository.findById(userRatedPost.getUserXPost()[1]);
         if (ratedPost.isPresent()) {
@@ -40,5 +46,5 @@ public class PostService {
                 ratedPost.get().editRating(formerRating, newRating);
             }
         }
-    }
+    }*/
 }

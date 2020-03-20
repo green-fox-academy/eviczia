@@ -14,7 +14,7 @@ public class Post {
     private Integer score;
     private String title;
     private String link;
-    private User user;
+//    private User user;
 
     public Post(Integer score, String title, String link) {
         this.score = score;
