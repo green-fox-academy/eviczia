@@ -4,6 +4,7 @@ import com.greenfox.reddit.models.entities.Post;
 import com.greenfox.reddit.models.entities.User;
 import com.greenfox.reddit.models.entities.UserRatedPost;
 import com.greenfox.reddit.services.PostService;
+import com.greenfox.reddit.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,11 +16,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class PostController {
 
-    private PostService postservice;
+    private PostService postService;
+    private UserService userService;
+
+    {
+
+    }
 
     @Autowired
-    public PostController(PostService postservice) {
-        this.postservice = postservice;
+    public PostController(PostService postService, UserService userService) {
+        this.postService = postService;
+        this.userService = userService;
     }
 
     @GetMapping(value = {"", "/", "/list"})
@@ -27,7 +34,7 @@ public class PostController {
         if (id == null) {
             return "redirect:/login";
         }
-        model.addAttribute("posts", postservice.listPosts());
+        model.addAttribute("posts", postService.listPosts());
         model.addAttribute("rater", new UserRatedPost());
         return "main";
     }
@@ -36,6 +43,18 @@ public class PostController {
     public String renderLoginFrom(Model model) {
         model.addAttribute("newuser", new User());
         return "login";
+    }
+
+    @PostMapping("/login")
+    public String sendLoginData(@RequestParam(value = "name") String name) {
+        Long thisNamesId = userService.getIDByName(name);
+        if (name.equals("")) {
+            return "redirect:/login";
+        } else if (thisNamesId == null) {
+            userService.addUser(new User(name));
+            thisNamesId =  userService.getIDByName(name);
+        }
+        return "redirect:/?id=" + thisNamesId;
     }
 
 
@@ -47,7 +66,7 @@ public class PostController {
 
     @PostMapping(value = "/add")
     public String addNewPost(@ModelAttribute Post post) {
-        postservice.save(post);
+        postService.save(post);
         return "redirect:/";
     }
 
