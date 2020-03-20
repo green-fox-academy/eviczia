@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRatedPostRepository extends CrudRepository<UserRatedPost, Long> {
+public interface UserRatedPostRepository extends CrudRepository<UserRatedPost, String> {
 }

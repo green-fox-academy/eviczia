@@ -7,24 +7,24 @@ import javax.persistence.Id;
 public class UserRatedPost {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
     private Long[] userXPost;
     private Boolean likedIt;
 
     public UserRatedPost() {
     }
 
-    public Long getId() {
+    public UserRatedPost(Long[] userXPost) {
+        this.userXPost = userXPost;
+        setId();
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public UserRatedPost(Long[] userXPost) {
-        this.userXPost = new Long[2];
+    public void setId() {
+        this.id = String.format("U%dP%d", userXPost[0], userXPost[1]);
     }
 
     public Long[] getUserXPost() {
