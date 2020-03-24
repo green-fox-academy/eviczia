@@ -6,7 +6,9 @@
     <link rel="stylesheet" th:href="@{/style.css}"/>
 </head>
 <body>
+<a href="/login">Login</a><br>
 <a href="/add">Submit new post</a>
+<h2 th:unless="${user == null}" >Welcome, <span th:text="${user.userName} +'!'"></span></h2>
 <h1>Trending posts</h1>
 <table>
 

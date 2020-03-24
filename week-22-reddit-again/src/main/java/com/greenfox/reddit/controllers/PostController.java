@@ -7,10 +7,7 @@ import com.greenfox.reddit.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class PostController {
@@ -25,17 +22,20 @@ public class PostController {
     }
 
     @GetMapping(value = "/")
-    public String listPosts(Model model, @RequestParam(value = "userId", required = false) Long id) {
-        if (id == null) {
-            return "redirect:/login";
-        }
+    public String listPosts(Model model) {
+        model.addAttribute("posts", postService.listPosts());
+        return "main";
+    }
+
+    @GetMapping(path = "/{userId}")
+    public String listPosts(Model model, @PathVariable(name = "userId") Long id) {
         model.addAttribute("posts", postService.listPosts());
         model.addAttribute("user", userService.findById(id));
         return "main";
     }
 
     @GetMapping("/login")
-    public String renderLoginFrom(Model model) {
+    public String renderLoginFrom() {
         return "login";
     }
 
@@ -47,7 +47,7 @@ public class PostController {
         id = userService.getIdIfExits(userName);
 
         }
-        return "redirect:/?userId=" + id;
+        return String.format("redirect:/%d", id);
     }
 
     @GetMapping(value = "/add")
