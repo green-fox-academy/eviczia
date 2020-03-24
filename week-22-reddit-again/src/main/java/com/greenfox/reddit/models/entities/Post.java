@@ -1,6 +1,7 @@
 package com.greenfox.reddit.models.entities;
 
 import javax.persistence.*;
+import java.util.HashMap;
 import java.util.List;
 
 @Entity
@@ -14,17 +15,20 @@ public class Post {
     private String link;
     @OneToMany
     private List<User> users;
+    private HashMap<Long, Boolean> raters;
 
     public Post(Integer score, String title, String link) {
         this.score = score;
         this.title = title;
         this.link = link;
+        raters = new HashMap<>();
     }
 
     public Post() {
         score = 0;
         title = "new post";
         link = String.format("%s%d", "localhost:8080/edit/", id);
+        raters = new HashMap<>();
     }
 
     public Long getId() {
@@ -61,6 +65,22 @@ public class Post {
 
     public void setNewRating(Boolean likedIt) {
         score = likedIt ? score++ : score--;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+    public HashMap<Long, Boolean> getRaters() {
+        return raters;
+    }
+
+    public void setRaters(HashMap<Long, Boolean> raters) {
+        this.raters = raters;
     }
 
     public void editRating(Boolean likedItThen, Boolean likesItNow) {

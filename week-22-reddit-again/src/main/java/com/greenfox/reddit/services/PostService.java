@@ -2,11 +2,15 @@ package com.greenfox.reddit.services;
 
 //import com.greenfox.reddit.models.entities.UserRatedPost;
 
+import com.greenfox.reddit.models.dtos.PostRater;
 import com.greenfox.reddit.models.entities.Post;
 import com.greenfox.reddit.repositories.PostRepository;
 import com.greenfox.reddit.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
+import java.util.Optional;
 
 //import com.greenfox.reddit.repositories.UserRatedPostRepository;
 
@@ -30,17 +34,28 @@ public class PostService {
         postRepository.save(post);
     }
 
-/*    public void processRating (UserRatedPost userRatedPost) {
-        Boolean newRating = userRatedPost.getLikedIt();
-        Optional<Post> ratedPost = postRepository.findById(userRatedPost.getUserXPost()[1]);
-        if (ratedPost.isPresent()) {
-            if (!userRatedPostRepository.findById(userRatedPost.getId()).isPresent()) {
-                ratedPost.get().setNewRating(newRating);
-                userRatedPostRepository.save(userRatedPost);
+    public void processRating (PostRater postRater) {
+        Optional<Post> optRatedPost = postRepository.findById(postRater.getPostId());
+        if (optRatedPost.isPresent()) {
+            Post ratedPost = optRatedPost.get();
+            Integer oldScore = ratedPost.getScore();
+            HashMap<Long, Boolean> thisPostsRatings = ratedPost.getRaters();
+            if (!thisPostsRatings.containsKey(postRater.getUserId())) {
+                //new
+                ratedPost.setScore(oldScore + (postRater.getLikedIt() ? 1 : -1));
+                thisPostsRatings.put(postRater.getUserId(), postRater.getLikedIt());
             } else {
-                Boolean formerRating = userRatedPostRepository.findById(userRatedPost.getId()).get().getLikedIt();
-                ratedPost.get().editRating(formerRating, newRating);
+                // edit
+                if (thisPostsRatings.get(postRater.getUserId()) != postRater.getLikedIt()) {
+                    ratedPost.setScore(oldScore + (postRater.getLikedIt() ? 2 : -2));
+                }
             }
         }
-    }*/
+    }
+
+    private void setNewRating(PostRater postRater) {
+    }
+
+    private void editRating(PostRater postRater) {
+    }
 }

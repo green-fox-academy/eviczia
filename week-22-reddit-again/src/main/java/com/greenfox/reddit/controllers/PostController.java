@@ -1,5 +1,6 @@
 package com.greenfox.reddit.controllers;
 
+import com.greenfox.reddit.models.dtos.PostRater;
 import com.greenfox.reddit.models.entities.Post;
 import com.greenfox.reddit.models.entities.User;
 import com.greenfox.reddit.services.PostService;
@@ -31,6 +32,7 @@ public class PostController {
     public String listPosts(Model model, @PathVariable(name = "userId") Long id) {
         model.addAttribute("posts", postService.listPosts());
         model.addAttribute("user", userService.findById(id));
+        model.addAttribute("postrater", new PostRater());
         return "main";
     }
 
@@ -61,6 +63,13 @@ public class PostController {
     public String addNewPost(@ModelAttribute Post post, @RequestParam(value = "userId", required = false) Long id) {
         postService.save(post);
         return "redirect:/?userId=" + id;
+    }
+
+    @PostMapping(value = "/rate")
+    public String processRating(@ModelAttribute PostRater postRater) {
+        postService.processRating(postRater);
+
+        return String.format("redirect:/%d", postRater.getUserId());
     }
 
 
