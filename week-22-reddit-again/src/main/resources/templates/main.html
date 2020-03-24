@@ -15,8 +15,8 @@
 <tr th:each="post:${posts}" th:object="${post}">
     <td th:text="*{score}"></td>
     <td th:unless="${user == null}" >
-        <form action="#" th:action="@{/rate}" th:object="${postrater}" method="post">
-            <input type="hidden" name="postId" th:value="*{postId}"/>
+        <form action="#" th:action="@{/rate}" method="post">
+            <input type="hidden" name="postId" th:value="*{id}"/>
             <input type="hidden" name="userId" th:value="${userId}"/>
             <input type="hidden" name="likedIt" value="true"/>
             <button type="submit">+</button>

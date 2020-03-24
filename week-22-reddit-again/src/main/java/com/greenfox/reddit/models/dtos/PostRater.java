@@ -1,7 +1,5 @@
 package com.greenfox.reddit.models.dtos;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
 public class PostRater {
 
     private Long userId;
@@ -11,11 +9,6 @@ public class PostRater {
     public PostRater() {
     }
 
-    public PostRater(Long userId, Long postId, Boolean likedIt) {
-        this.userId = userId;
-        this.postId = postId;
-        this.likedIt = likedIt;
-    }
 
     public Long getUserId() {
         return userId;

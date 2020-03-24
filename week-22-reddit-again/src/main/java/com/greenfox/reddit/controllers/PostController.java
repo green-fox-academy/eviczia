@@ -60,9 +60,9 @@ public class PostController {
     }
 
     @PostMapping(value = "/add")
-    public String addNewPost(@ModelAttribute Post post, @RequestParam(value = "userId", required = false) Long id) {
+    public String addNewPost(@ModelAttribute Post post, @PathVariable(name = "userId") Long id) {
         postService.save(post);
-        return "redirect:/?userId=" + id;
+        return String.format("redirect:/%d", id);
     }
 
     @PostMapping(value = "/rate")
