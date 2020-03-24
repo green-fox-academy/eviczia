@@ -6,6 +6,8 @@ import com.greenfox.reddit.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
 
@@ -16,15 +18,21 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public void addUser(User user) {
-        userRepository.save(user);
+    public void addUserIfNew(String userName) {
+        if (getIdIfExits(userName) == null) {
+            userRepository.save(new User(userName));
+        }
+    }
+
+    public Long getIdIfExits(String name) {
+        List<User> users = userRepository.findAllByUserName(name);
+        if (users.isEmpty()) {
+            return null;
+        } else return users.get(0).getId();
     }
 
 
-
-    public Long getIDByName(String name) {
-        return userRepository.findAllByName(name).get(0).getId();
+    public User findById(Long id) {
+        return userRepository.findById(id).orElse(null);
     }
-
-
 }

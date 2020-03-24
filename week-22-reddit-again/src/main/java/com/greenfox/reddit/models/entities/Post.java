@@ -1,6 +1,7 @@
 package com.greenfox.reddit.models.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Post {
@@ -11,8 +12,8 @@ public class Post {
     private Integer score;
     private String title;
     private String link;
-    @ManyToOne
-    private User user;
+    @OneToMany
+    private List<User> users;
 
     public Post(Integer score, String title, String link) {
         this.score = score;

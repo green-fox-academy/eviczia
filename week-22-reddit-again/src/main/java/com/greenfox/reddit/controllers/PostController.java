@@ -30,23 +30,24 @@ public class PostController {
             return "redirect:/login";
         }
         model.addAttribute("posts", postService.listPosts());
+        model.addAttribute("user", userService.findById(id));
         return "main";
     }
 
     @GetMapping("/login")
     public String renderLoginFrom(Model model) {
-        model.addAttribute("newUser", new User());
         return "login";
     }
 
     @PostMapping("/login")
-    public String sendLoginData(String name) {
-        Long thisNamesId = userService.getIDByName(name);
-        if (thisNamesId == null) {
-            userService.addUser(new User(name));
-            thisNamesId = userService.getIDByName(name);
+    public String sendLoginData(String userName) {
+        Long id = userService.getIdIfExits(userName);
+        if (id == null) {
+        userService.addUserIfNew(userName);
+        id = userService.getIdIfExits(userName);
+
         }
-        return "redirect:/?userId=" + thisNamesId;
+        return "redirect:/?userId=" + id;
     }
 
     @GetMapping(value = "/add")
