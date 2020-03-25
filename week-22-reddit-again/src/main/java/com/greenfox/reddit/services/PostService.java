@@ -37,19 +37,23 @@ public class PostService {
     public void processRating (PostRater postRater) {
         Optional<Post> optRatedPost = postRepository.findById(postRater.getPostId());
         if (optRatedPost.isPresent()) {
+//if rated post not null
             Post ratedPost = optRatedPost.get();
             Integer oldScore = ratedPost.getScore();
             HashMap<Long, Boolean> thisPostsRatings = ratedPost.getRaters();
+//if this post has not been rated by this user before
             if (!thisPostsRatings.containsKey(postRater.getUserId())) {
                 //new
                 ratedPost.setScore(oldScore + (postRater.getLikedIt() ? 1 : -1));
                 thisPostsRatings.put(postRater.getUserId(), postRater.getLikedIt());
             } else {
                 // edit
-                if (thisPostsRatings.get(postRater.getUserId()) != postRater.getLikedIt()) {
+                if (!thisPostsRatings.get(postRater.getUserId()).equals(postRater.getLikedIt())) {
                     ratedPost.setScore(oldScore + (postRater.getLikedIt() ? 2 : -2));
+                    thisPostsRatings.replace(postRater.getUserId(), postRater.getLikedIt());
                 }
             }
+            postRepository.save(ratedPost);
         }
     }
 

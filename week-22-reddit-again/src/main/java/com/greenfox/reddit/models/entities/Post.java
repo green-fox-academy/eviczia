@@ -17,8 +17,8 @@ public class Post {
     private List<User> users;
     private HashMap<Long, Boolean> raters;
 
-    public Post(Integer score, String title, String link) {
-        this.score = score;
+    public Post(String title, String link) {
+        score = 0;
         this.title = title;
         this.link = link;
         raters = new HashMap<>();
@@ -26,8 +26,6 @@ public class Post {
 
     public Post() {
         score = 0;
-        title = "new post";
-        link = String.format("%s%d", "localhost:8080/edit/", id);
         raters = new HashMap<>();
     }
 
