@@ -1,12 +1,15 @@
-package com.greenfox.reddit.models.entities;
+/*package com.greenfox.reddit.models.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class UserRatedPost {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
     private Long[] userXPost;
     private Boolean likedIt;
@@ -14,8 +17,8 @@ public class UserRatedPost {
     public UserRatedPost() {
     }
 
-    public UserRatedPost(Long[] userXPost) {
-        this.userXPost = userXPost;
+    public UserRatedPost(Long userId) {
+        this.userXPost = new Long[]{userId, 0L};
         setId();
     }
 
@@ -26,6 +29,7 @@ public class UserRatedPost {
     public void setId() {
         this.id = String.format("U%dP%d", userXPost[0], userXPost[1]);
     }
+
 
     public Long[] getUserXPost() {
         return userXPost;
@@ -43,3 +47,4 @@ public class UserRatedPost {
         this.likedIt = likedIt;
     }
 }
+*/

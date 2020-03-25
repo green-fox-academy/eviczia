@@ -2,7 +2,7 @@ package com.greenfox.reddit.services;
 
 
 import com.greenfox.reddit.models.entities.User;
-import com.greenfox.reddit.models.entities.UserRatedPost;
+//import com.greenfox.reddit.models.entities.UserRatedPost;
 import com.greenfox.reddit.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

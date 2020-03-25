@@ -13,12 +13,14 @@
 <tr th:each="post:${posts}" th:object="${post}">
     <td th:text="*{score}"></td>
     <td>
-        <form action="#" th:action="@{'/submit'}" method="get">
+        <form action="#" th:action="@{/rate}" method="post">
+            <input type="hidden" name="postId" th:value="*{id}" />
             <button type="submit">+</button>
         </form>
     </td>
     <td>
-        <form action="#" th:action="@{'/submit'}" method="get">
+        <form action="#" th:action="@{/rate}" method="post">
+            <input type="hidden" name="name" th:value="*{name}"/>
             <button type="submit">-</button>
         </form>
     </td>
