@@ -3,7 +3,6 @@ package com.greenfox.reddit.models.entities;
 import javax.persistence.*;
 
 @Entity
-@IdClass(UserRateId.class)
 public class User {
 
     @Id

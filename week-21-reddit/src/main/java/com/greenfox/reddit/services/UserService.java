@@ -19,8 +19,10 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public void addUser(User user) {
-        userRepository.save(user);
+    public void addUserIfNew(String userName) {
+        if (getIDByName(userName) == null) {
+            userRepository.save(new User(userName));
+        }
     }
 
 

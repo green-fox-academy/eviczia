@@ -8,12 +8,12 @@
 
 <h1>Welcome to Little Reddit!</h1>
 <p>Please introduce yourself!</p>
-<form action="#" th:action="@{/login}" th:object="${newUser}" method="post">
-    <label for="name">My name is </label><br>
+<form action="#" th:action="@{/login}" method="post">
+    <label for="username">My name is </label><br>
     <input
             type="text"
-            id="name"
-            th:field="*{userName}"
+            id="username"
+            name="userName"
             required
     />
     <button type="submit">send</button>

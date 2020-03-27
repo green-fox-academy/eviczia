@@ -6,53 +6,40 @@ import com.greenfox.reddit.models.entities.User;
 import javax.persistence.*;
 
 @Entity
+@IdClass(UserRateId.class)
 public class UserRating {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @ManyToOne
-    private User rater;
-    @ManyToOne
+    private Long userId;
 
-    private Post ratedPost;
+    @Id
+    private Long postId;
+
     private Boolean likedIt;
 
     public UserRating() {
     }
 
-    public UserRating(User rater, Post ratedPost, Boolean likedIt) {
-        this.rater = rater;
-        this.ratedPost = ratedPost;
+    public UserRating(Long userId, Long postId, Boolean likedIt) {
+        this.userId = userId;
+        this.postId = postId;
         this.likedIt = likedIt;
     }
 
-    public Long getId() {
-        return id;
+    public Long getUserId() {
+        return userId;
     }
 
-    public UserRating(User rater) {
-        this.rater = rater;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Long getPostId() {
+        return postId;
     }
 
-    public User getRater() {
-        return rater;
-    }
-
-    public void setRater(User rater) {
-        this.rater = rater;
-    }
-
-    public Post getRatedPost() {
-        return ratedPost;
-    }
-
-    public void setRatedPost(Post ratedPost) {
-        this.ratedPost = ratedPost;
+    public void setPostId(Long postId) {
+        this.postId = postId;
     }
 
     public Boolean getLikedIt() {

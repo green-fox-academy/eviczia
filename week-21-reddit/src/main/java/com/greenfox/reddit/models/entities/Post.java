@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@IdClass(UserRateId.class)
 public class Post {
 
     @Id
@@ -14,7 +13,7 @@ public class Post {
     private Integer score;
     private String title;
     private String link;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ratedPost")
+    @OneToMany(cascade = CascadeType.ALL)
     private List<UserRating> raters;
 
 
@@ -74,10 +73,10 @@ public class Post {
         score = score + (userLikesItNow ? 1 : -1);
     }
 
-    public void addNewRater(User newRater, Boolean userLikesItNow) {
+/*    public void addNewRater(User newRater, Boolean userLikesItNow) {
         raters.add(new UserRating(newRater, userLikesItNow));
         setScore(userLikesItNow);
-    }
+    }*/
 
     /*    public void setNewRating(Boolean likedIt) {
         score = likedIt ? score++ : score--;

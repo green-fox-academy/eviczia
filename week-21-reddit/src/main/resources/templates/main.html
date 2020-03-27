@@ -8,30 +8,28 @@
 <body>
 <a href="/login">Login</a><br>
 <a th:unless="${user == null}" th:href="'/add/' + ${user.id}">Submit new post</a>
-<h2 th:unless="${user == null}" >Welcome, <span th:text="${user.userName} +'!'"></span></h2>
+<h2 th:unless="${user == null}">Welcome, <span th:text="${user.userName} +'!'"></span></h2>
 <h1>Trending posts</h1>
 <table>
 
-<tr th:each="post:${posts}" th:object="${post}">
-    <td th:text="*{score}"></td>
-    <td  th:unless="${user == null}">
-        <form action="#" th:action="@{/rate}" method="post">
-            <input type="hidden" name="postId" th:value="*{id}"/>
-            <input type="hidden" name="userId" th:value="${user.id}"/>
-            <input type="hidden" name="likedIt" value="true"/>
-            <button type="submit">+</button>
-        </form>
-    </td>
-    <td th:unless="${user == null}" >
-        <form action="#" th:action="@{/rate}" method="post">
-            <input type="hidden" name="postId" th:value="*{id}"/>
-            <input type="hidden" name="userId" th:value="${user.id}"/>
-            <input type="hidden" name="likedIt" value="false"/>
-            <button type="submit">-</button>
-        </form>
-    </td>
-    <td><a th:href="*{link}" th:text="*{title}"></a></td>
-</tr>
+    <tr th:each="post:${posts}" th:object="${post}">
+        <td th:text="*{score}"></td>
+        <td th:unless="${user == null}">
+            <form action="#" th:action="@{'/rate/' + ${user.id}}" method="post">
+                <input type="hidden" name="postId" th:value="*{id}"/>
+                <input type="hidden" name="likedIt" value="true"/>
+                <button type="submit">+</button>
+            </form>
+        </td>
+        <td th:unless="${user == null}">
+            <form action="#" th:action="@{'/rate/' + ${user.id}}" method="post">
+                <input type="hidden" name="postId" th:value="*{id}"/>
+                <input type="hidden" name="likedIt" value="false"/>
+                <button type="submit">-</button>
+            </form>
+        </td>
+        <td><a th:href="*{link}" th:text="*{title}"></a></td>
+    </tr>
 </table>
 
 </body>
