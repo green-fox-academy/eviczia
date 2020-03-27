@@ -1,9 +1,11 @@
 package com.greenfox.reddit.models.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@IdClass(UserRateId.class)
 public class Post {
 
     @Id
@@ -12,20 +14,20 @@ public class Post {
     private Integer score;
     private String title;
     private String link;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ratedPost")
+    private List<UserRating> raters;
 
-    @OneToMany
-    private List<User> users;
 
-    public Post(Integer score, String title, String link) {
-        this.score = score;
+    public Post(String title, String link) {
+        this.score = 0;
         this.title = title;
         this.link = link;
+        raters = new ArrayList<>();
     }
 
     public Post() {
         score = 0;
-        title = "new post";
-        link = String.format("%s%d", "localhost:8080/edit/", id);
+        raters = new ArrayList<>();
     }
 
     public Long getId() {
@@ -60,7 +62,24 @@ public class Post {
         this.link = link;
     }
 
-    public void setNewRating(Boolean likedIt) {
+    public List<UserRating> getRaters() {
+        return raters;
+    }
+
+    public void setRaters(List<UserRating> raters) {
+        this.raters = raters;
+    }
+
+    public void setScore(Boolean userLikesItNow) {
+        score = score + (userLikesItNow ? 1 : -1);
+    }
+
+    public void addNewRater(User newRater, Boolean userLikesItNow) {
+        raters.add(new UserRating(newRater, userLikesItNow));
+        setScore(userLikesItNow);
+    }
+
+    /*    public void setNewRating(Boolean likedIt) {
         score = likedIt ? score++ : score--;
     }
 
@@ -68,5 +87,5 @@ public class Post {
         if (likedItThen != likesItNow) {
             score = score + (likedItThen ? -2 : 2);
         }
-    }
+    }*/
 }

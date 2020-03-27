@@ -1,7 +1,9 @@
 package com.greenfox.reddit;
 
 import com.greenfox.reddit.models.entities.Post;
+import com.greenfox.reddit.models.entities.User;
 import com.greenfox.reddit.repositories.PostRepository;
+import com.greenfox.reddit.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -11,10 +13,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class RedditApplication implements CommandLineRunner {
 
     private PostRepository postRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    public RedditApplication(PostRepository postRepository) {
+    public RedditApplication(PostRepository postRepository, UserRepository userRepository) {
         this.postRepository = postRepository;
+        this.userRepository = userRepository;
     }
 
     public static void main(String[] args) {
@@ -24,6 +28,7 @@ public class RedditApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         postRepository.save(new Post());
-        postRepository.save(new Post(0, "Greenfox", "https://www.greenfoxacademy.com/" ));
+        postRepository.save(new Post("Greenfox", "https://www.greenfoxacademy.com/" ));
+        userRepository.save(new User("Eszter"));
     }
 }
