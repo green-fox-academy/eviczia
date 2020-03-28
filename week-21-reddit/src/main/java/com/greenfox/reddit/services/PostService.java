@@ -33,16 +33,19 @@ public class PostService {
         Post ratedPost = findById(ratingInfo.getPostId());
         Boolean likedIt = ratingInfo.getLikedIt();
 
-        for (UserRating rating : ratedPost.getRaters()) {
-            if (!rating.getUserId().equals(rater.getId())) {
-                ratedPost.getRaters().add(new UserRating(rater.getId(), ratedPost.getId(), likedIt));
-            } else if (!rating.getLikedIt().equals(likedIt)) {
-                rating.setLikedIt(likedIt);
-                ratedPost.setScore(likedIt);
-            }
-            ratedPost.setScore(likedIt);
-            postRepository.save(ratedPost);
-        }
+        if (!ratedPost.getRaters().isEmpty()){ //if the list of rating are not empty, check who rated
+            for (UserRating rating : ratedPost.getRaters()) {
+                if (rating.getUserId().equals(rater.getId())) { // if rater exits in list
+                    if (!rating.getLikedIt().equals(likedIt)) {//AND had DIFFERENT opinion
+                        ratedPost.withdrawRating(ratedPost.getRaters().indexOf(rating), likedIt); //withdraw previous rating (resets score)
+                        ratedPost.processNewRating(new UserRating(rater.getId(), ratedPost.getId(), likedIt), likedIt); //adds new rating (sets new sore)
+                        postRepository.save(ratedPost);
+                    } return;
+                } break;
+            } ratedPost.processNewRating(new UserRating(rater.getId(), ratedPost.getId(), likedIt), likedIt); // if rating list is not empty, but doesn't have this rating, add new rating(sets score)
+        } else {
+            ratedPost.processNewRating(new UserRating(rater.getId(), ratedPost.getId(), likedIt), likedIt); // if rating  list is empty, add new rating(sets score)
+        } postRepository.save(ratedPost);
     }
 
     public Post findById(Long postId) {

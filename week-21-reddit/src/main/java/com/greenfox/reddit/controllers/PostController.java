@@ -2,7 +2,6 @@ package com.greenfox.reddit.controllers;
 
 import com.greenfox.reddit.models.dtos.RatingInfo;
 import com.greenfox.reddit.models.entities.Post;
-import com.greenfox.reddit.models.entities.User;
 import com.greenfox.reddit.services.PostService;
 import com.greenfox.reddit.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -10,7 +10,7 @@
 <h1>Submit a new post</h1>
 <form
         action="#"
-        th:action="@{/add}"
+        th:action="@{'/add/'+${userId}}"
         th:object="${post}"
         th:method="post">
     <label for="title">Title:</label><br>

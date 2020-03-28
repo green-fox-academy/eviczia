@@ -69,14 +69,29 @@ public class Post {
         this.raters = raters;
     }
 
+    public void addNewRating(UserRating rating) {
+        raters.add(rating);
+    }
+
+    public void removeRating(int index) {
+        raters.remove(index);
+    }
+
+
     public void setScore(Boolean userLikesItNow) {
         score = score + (userLikesItNow ? 1 : -1);
     }
 
-/*    public void addNewRater(User newRater, Boolean userLikesItNow) {
-        raters.add(new UserRating(newRater, userLikesItNow));
-        setScore(userLikesItNow);
-    }*/
+    public void processNewRating(UserRating rating, Boolean likedIt) {
+        setScore(likedIt);
+        addNewRating(rating);
+    }
+    public void withdrawRating(int index, Boolean likedIt) {
+        setScore(likedIt);
+        removeRating(index);
+
+    }
+
 
     /*    public void setNewRating(Boolean likedIt) {
         score = likedIt ? score++ : score--;
