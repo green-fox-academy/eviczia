@@ -1,15 +1,15 @@
-package com.greenfox.backendapi;
+package com.greenfox.backendapi.models;
 
 public class Doubler {
 
-    private int received;
-    private int result;
+    private Integer received;
+    private Integer result;
 
 
     public Doubler() {
     }
 
-    public Doubler(int input) {
+    public Doubler(Integer input) {
         received = input;
         setResult();
     }
@@ -18,7 +18,7 @@ public class Doubler {
         return received;
     }
 
-    public void setReceived(int received) {
+    public void setReceived(Integer received) {
         this.received = received;
     }
 
