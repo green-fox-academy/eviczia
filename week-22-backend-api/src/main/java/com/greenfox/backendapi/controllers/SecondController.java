@@ -1,14 +1,8 @@
 package com.greenfox.backendapi.controllers;
 
-import com.greenfox.backendapi.models.Appender;
-import com.greenfox.backendapi.models.Doubler;
-import com.greenfox.backendapi.models.ErrorMessage;
-import com.greenfox.backendapi.models.Greeter;
+import com.greenfox.backendapi.models.*;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class SecondController {
@@ -39,5 +33,12 @@ public class SecondController {
         return ResponseEntity.status(200).body(new Appender(appendable));
     }
 
+    @PostMapping("/dountil/{action}")
+    public ResponseEntity dountil(@RequestBody Limit limit, @PathVariable(value = "action") String action) {
+        if (limit == null) return ResponseEntity.status(200).body(new ErrorMessage("Please provide a number!"));
+        if (action.equals("sum")) return ResponseEntity.status(200).body(limit.sum());
+        if (action.equals("factor")) return ResponseEntity.status(200).body(limit.factor());
+        else return ResponseEntity.status(404).body(new ErrorMessage("Something went wrong"));
+    }
 
-}
+    }
