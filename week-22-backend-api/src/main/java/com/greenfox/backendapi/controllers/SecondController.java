@@ -41,4 +41,16 @@ public class SecondController {
         else return ResponseEntity.status(404).body(new ErrorMessage("Something went wrong"));
     }
 
+    @PostMapping("/arrays")
+    public ResponseEntity doWhat(@RequestBody MathExercise exercise) {
+        if (exercise == null) return ResponseEntity.status(200).body(new ErrorMessage("Please give a math exercise!"));
+        if (exercise.getWhat() == null)
+            return ResponseEntity.status(200).body(new Error("Please provide what to do with the numbers!"));
+        if (exercise.getNumbers() == null) return ResponseEntity.status(200).body(new Error("Please provide numbers!"));
+        if (exercise.getWhat().equals("double")) return ResponseEntity.status(200).body(exercise.solveDouble());
+        return ResponseEntity.status(200).body(exercise.solve());
+
+
     }
+
+}
