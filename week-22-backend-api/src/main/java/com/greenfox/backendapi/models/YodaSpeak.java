@@ -25,4 +25,11 @@ public class YodaSpeak {
     public void setTranslated(String translated) {
         this.translated = translated;
     }
+
+    @Override
+    public String toString() {
+        return "YodaSpeak{" +
+                "translated='" + translated + '\'' +
+                '}';
+    }
 }

@@ -19,7 +19,7 @@ public class SecondController {
 
     @GetMapping("/doubling")
     public ResponseEntity multiplyByTwo(@RequestParam(name = "input", required = false) Integer received) {
-        logRepository.save(new Log("GET /doubling", Integer.toString(received)));
+        logRepository.save(new Log("GET /doubling", received == null ? "null": Integer.toString(received)));
         if (received == null) return ResponseEntity.status(200).body(new ErrorMessage("Please provide an input!"));
         return ResponseEntity.status(200).body(new Doubler(received));
     }
@@ -49,7 +49,7 @@ public class SecondController {
     @PostMapping("/dountil/{action}")
     public ResponseEntity dountil(@RequestBody Limit limit, @PathVariable(value = "action") String action) {
         logRepository.save(new Log("POST /dountil/" + action, limit.toString()));
-        if (limit == null) return ResponseEntity.status(200).body(new ErrorMessage("Please provide a number!"));
+        if (limit.getLimit() == null) return ResponseEntity.status(200).body(new ErrorMessage("Please provide a number!"));
         if (action.equals("sum")) return ResponseEntity.status(200).body(limit.sum());
         if (action.equals("factor")) return ResponseEntity.status(200).body(limit.factor());
         else return ResponseEntity.status(404).body(new ErrorMessage("Something went wrong"));
@@ -58,9 +58,7 @@ public class SecondController {
     @PostMapping("/arrays")
     public ResponseEntity doWhat(@RequestBody MathExercise exercise) {
         logRepository.save(new Log("POST /arrays", exercise.toString()));
-        if (exercise == null) return ResponseEntity.status(200).body(new ErrorMessage("Please give a math exercise!"));
-        if (exercise.getWhat() == null)
-            return ResponseEntity.status(200).body(new Error("Please provide what to do with the numbers!"));
+        if (exercise.getWhat() == null) return ResponseEntity.status(200).body(new Error("Please provide what to do with the numbers!"));
         if (exercise.getNumbers() == null) return ResponseEntity.status(200).body(new Error("Please provide numbers!"));
         if (exercise.getWhat().equals("double")) return ResponseEntity.status(200).body(exercise.solveDouble());
         return ResponseEntity.status(200).body(exercise.solve());
@@ -74,8 +72,14 @@ public class SecondController {
     @GetMapping("/sith")
     public ResponseEntity askYoda(@RequestBody Text text) {
         logRepository.save(new Log("GET /sith", text.toString()));
-        if (text == null || text.getText().equals("")) return ResponseEntity.status(400).body(new ErrorMessage("Feed me some text you have to, padawan young you are. Hmmm."));
+        if (text.getText() == null ||text.getText().equals("")) return ResponseEntity.status(400).body(new ErrorMessage("Feed me some text you have to, padawan young you are. Hmmm."));
         return ResponseEntity.status(200).body(new YodaSpeak(text));
+    }
+
+    @PostMapping("/translate")
+    public ResponseEntity translate(@RequestBody SourceText sourceText) {
+        return ResponseEntity.status(200).body(new TargetText(sourceText.getSourceText()));
+
     }
 
 
