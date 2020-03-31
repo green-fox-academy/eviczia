@@ -18,6 +18,9 @@ public class Log {
     private String endpoint;
     private String data;
 
+    public Log() {
+    }
+
     public Log(String endpoint, String data) {
         createdAt = LocalDateTime.now();
         this.endpoint = endpoint;
