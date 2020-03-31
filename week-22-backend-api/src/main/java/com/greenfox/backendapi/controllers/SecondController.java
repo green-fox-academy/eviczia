@@ -74,7 +74,7 @@ public class SecondController {
     @GetMapping("/sith")
     public ResponseEntity askYoda(@RequestBody Text text) {
         logRepository.save(new Log("GET /sith", text.toString()));
-        if (text.equals(null) || text.equals("")) return ResponseEntity.status(400).body(new ErrorMessage("Feed me some text you have to, padawan young you are. Hmmm."));
+        if (text == null || text.getText().equals("")) return ResponseEntity.status(400).body(new ErrorMessage("Feed me some text you have to, padawan young you are. Hmmm."));
         return ResponseEntity.status(200).body(new YodaSpeak(text));
     }
 
