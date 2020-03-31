@@ -2,7 +2,7 @@ package com.greenfox.backendapi.controllers;
 
 import com.greenfox.backendapi.models.*;
 import com.greenfox.backendapi.models.entities.Log;
-import com.greenfox.backendapi.models.repositories.LogRepository;
+import com.greenfox.backendapi.repositories.LogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -69,7 +69,12 @@ public class SecondController {
     @GetMapping("/log")
     public ResponseEntity getLogs() {
         return ResponseEntity.status(200).body(new Entries(logRepository.findAll()));
-
     }
+
+    @GetMapping("/sith")
+    public ResponseEntity askYoda(@RequestBody Text text) {
+        return ResponseEntity.status(200).body(new YodaSpeak(text));
+    }
+
 
 }

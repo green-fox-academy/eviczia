@@ -1,4 +1,4 @@
-package com.greenfox.backendapi.models.repositories;
+package com.greenfox.backendapi.repositories;
 
 import com.greenfox.backendapi.models.entities.Log;
 import org.springframework.data.repository.CrudRepository;
