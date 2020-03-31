@@ -30,32 +30,33 @@ public class PostService {
         return postRepository.findAll();
     }
 
-    public void save(Post post) {
+    public void savePostAndProcessRating(Post post, Long userId) {
+        post.addNewRater(userId, true);
         postRepository.save(post);
     }
 
     public void processRating (PostRater postRater) {
         Optional<Post> optRatedPost = postRepository.findById(postRater.getPostId());
         if (optRatedPost.isPresent()) {
-//if rated post not null
+            optRatedPost.orElseGet(null);
             Post ratedPost = optRatedPost.get();
-            Integer oldScore = ratedPost.getScore();
-            HashMap<Long, Boolean> thisPostsRatings = ratedPost.getRaters();
-//if this post has not been rated by this user before
-            if (!thisPostsRatings.containsKey(postRater.getUserId())) {
-                //new
-                ratedPost.setScore(oldScore + (postRater.getLikedIt() ? 1 : -1));
-                thisPostsRatings.put(postRater.getUserId(), postRater.getLikedIt());
-            } else {
-                // edit
-                if (!thisPostsRatings.get(postRater.getUserId()).equals(postRater.getLikedIt())) {
-                    ratedPost.setScore(oldScore + (postRater.getLikedIt() ? 2 : -2));
-                    thisPostsRatings.replace(postRater.getUserId(), postRater.getLikedIt());
+            HashMap<Long, Boolean> thisUsersRating = ratedPost.getRaters();
+//if this post has been rated by this user before
+            if (thisUsersRating.containsKey(postRater.getUserId())) {
+                // edit, only if new rating differs
+                if (!thisUsersRating.get(postRater.getUserId()).equals(postRater.getLikedIt())) {
+                    //withdraw previous
+                    ratedPost.withdrawRater(postRater.getUserId(), postRater.getLikedIt());
+                    ratedPost.addNewRater(postRater.getUserId(), postRater.getLikedIt());
                 }
+            } else {
+                //set new
+                ratedPost.addNewRater(postRater.getUserId(), postRater.getLikedIt());
             }
             postRepository.save(ratedPost);
         }
     }
+
 
     private void setNewRating(PostRater postRater) {
     }

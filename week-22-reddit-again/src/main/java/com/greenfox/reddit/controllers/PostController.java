@@ -2,7 +2,6 @@ package com.greenfox.reddit.controllers;
 
 import com.greenfox.reddit.models.dtos.PostRater;
 import com.greenfox.reddit.models.entities.Post;
-import com.greenfox.reddit.models.entities.User;
 import com.greenfox.reddit.services.PostService;
 import com.greenfox.reddit.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,7 +60,7 @@ public class PostController {
 
     @PostMapping(value = "/add")
     public String addNewPost(@ModelAttribute Post post, @PathVariable(name = "userId") Long id) {
-        postService.save(post);
+        postService.savePostAndProcessRating(post, id);
         return String.format("redirect:/%d", id);
     }
 

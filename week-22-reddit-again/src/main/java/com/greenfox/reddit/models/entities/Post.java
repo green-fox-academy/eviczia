@@ -41,9 +41,19 @@ public class Post {
         return score;
     }
 
-    public void setScore(Integer score) {
-        this.score = score;
+    public void setScore(Boolean userLikesItNow) {
+        score = score + (userLikesItNow ? 1 : -1);
     }
+
+    public void addNewRater(Long userId, Boolean userLikesItNow) {
+        raters.put(userId, userLikesItNow);
+        setScore(userLikesItNow);
+    }
+    public void withdrawRater(Long userId, Boolean userLikesItNow) {
+        raters.remove(userId, userLikesItNow);
+        setScore(userLikesItNow);
+    }
+
 
     public String getTitle() {
         return title;
@@ -59,10 +69,6 @@ public class Post {
 
     public void setLink(String link) {
         this.link = link;
-    }
-
-    public void setNewRating(Boolean likedIt) {
-        score = likedIt ? score++ : score--;
     }
 
     public List<User> getUsers() {
@@ -81,9 +87,4 @@ public class Post {
         this.raters = raters;
     }
 
-    public void editRating(Boolean likedItThen, Boolean likesItNow) {
-        if (likedItThen != likesItNow) {
-            score = score + (likedItThen ? -2 : 2);
-        }
-    }
 }

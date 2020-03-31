@@ -1,5 +1,7 @@
 package com.greenfox.backendapi.models;
 
+import java.util.Arrays;
+
 public class MathExercise {
 
     private String what;
@@ -11,6 +13,14 @@ public class MathExercise {
     }
 
     public MathExercise() {
+    }
+
+    @Override
+    public String toString() {
+        return "MathExercise{" +
+                "what='" + what + '\'' +
+                ", numbers=" + Arrays.toString(numbers) +
+                '}';
     }
 
     public String getWhat() {

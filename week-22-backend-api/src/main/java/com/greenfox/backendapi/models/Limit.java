@@ -14,6 +14,13 @@ public class Limit {
     public Limit() {
     }
 
+    @Override
+    public String toString() {
+        return "Limit{" +
+                "limit=" + limit +
+                '}';
+    }
+
     public Result sum() {
         return new Result(sumUpTo(limit));
     }

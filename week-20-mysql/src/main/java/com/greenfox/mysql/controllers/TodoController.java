@@ -53,7 +53,7 @@ public class TodoController {
     }
 
     @PostMapping("/add")
-    public String addNewTodo(@ModelAttribute Todo todo, Long assigneeId, @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate deadline) {
+    public String addNewTodo(@ModelAttribute Todo todo, @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate deadline) {
         todoService.save(todo);
         return "redirect:/todo/list";
     }
