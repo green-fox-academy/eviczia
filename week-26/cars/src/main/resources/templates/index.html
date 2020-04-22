@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cars database</title>
+    <link rel="icon" type="image/png" href='greencar.png'>
+
+</head>
+<body>
+
+<form action="#" th:action="@{/}" method="get">
+    <label for="searchterm">Enter licence plate: </label><br>
+    <input
+            type="text"
+            id="searchterm"
+            name="searchterm"
+            required
+    />
+    <button type="submit">Search</button>
+
+</form>
+
+<div th:text="${valid}"></div>
+
+
+<table>
+    <thead>
+    <tr>
+        <th>Licence plate</th>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>Color</th>
+        <th>Year</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="car : ${cars}" th:object="${car}">
+        <td th:text="*{plate}"></td>
+        <td th:text="*{carBrand}"></td>
+        <td th:text="*{carModel}"></td>
+        <td th:text="*{color}"></td>
+        <td th:text="*{year}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
