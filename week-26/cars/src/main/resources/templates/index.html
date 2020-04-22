@@ -7,23 +7,17 @@
 
 </head>
 <body>
-
-<form action="#" th:action="@{/}" method="get">
+<h2 th:if="${cars == null}">Sorry, the submitted licence plate is not valid</h2>
+<form action="/" method="get">
     <label for="searchterm">Enter licence plate: </label><br>
     <input
             type="text"
             id="searchterm"
             name="searchterm"
-            required
     />
     <button type="submit">Search</button>
-
 </form>
-
-<div th:text="${valid}"></div>
-
-
-<table>
+<table th:if="${cars != null}">
     <thead>
     <tr>
         <th>Licence plate</th>

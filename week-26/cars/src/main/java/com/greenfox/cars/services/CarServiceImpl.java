@@ -25,7 +25,6 @@ public class CarServiceImpl implements CarService {
         return validationService.checkInput(searchterm);
     }
 
-
     @Override
     public List<Car> findAllCars() {
         return carRepository.findAll();
