@@ -8,7 +8,7 @@
 </head>
 <body>
 <h2 th:if="${cars == null}">Sorry, the submitted licence plate is not valid</h2>
-<form action="/" method="get">
+<form action="/search" method="get">
     <label for="searchterm">Enter licence plate: </label><br>
     <input
             type="text"
@@ -17,6 +17,10 @@
     />
     <button type="submit">Search</button>
 </form>
+<a th:href="'/search?searchterm=RB'">Police cars only</a>
+<a th:href="'/search?searchterm=DT'">Diplomats only</a>
+
+
 <table th:if="${cars != null}">
     <thead>
     <tr>
@@ -30,7 +34,7 @@
     <tbody>
     <tr th:each="car : ${cars}" th:object="${car}">
         <td th:text="*{plate}"></td>
-        <td th:text="*{carBrand}"></td>
+        <td><a th:href="'/search/' +*{carBrand}" th:text="*{carBrand}"></a></td>
         <td th:text="*{carModel}"></td>
         <td th:text="*{color}"></td>
         <td th:text="*{year}"></td>

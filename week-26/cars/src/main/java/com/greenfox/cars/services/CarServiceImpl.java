@@ -31,8 +31,13 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public List<Car> returnQuery(String searchterm) {
+    public List<Car> returnPlateQuery(String searchterm) {
         if (!checkTermIsValid(searchterm)) return null;
         return carRepository.findAllByPlateContaining(searchterm);
+    }
+
+    @Override
+    public List<Car> returnBrandQuery(String searchterm) {
+        return carRepository.findAllByCarBrand(searchterm);
     }
 }

@@ -8,6 +8,8 @@ public interface CarService {
 
     List<Car> findAllCars();
 
-    List<Car> returnQuery(String searchterm);
+    List<Car> returnPlateQuery(String searchterm);
+
+    List<Car> returnBrandQuery(String searchterm);
 }
 
